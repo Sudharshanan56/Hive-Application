@@ -92,19 +92,32 @@ class DashboardPage extends StatelessWidget {
                 borderRadius: BorderRadius.circular(30),
               ),
               padding: const EdgeInsets.symmetric(horizontal: 30),
-              child: Row(
-                children: [
-                  Icon(
-                    Icons.search,
-                    color: Colors.grey,
+              child: Center(
+                child: TextFormField(
+                  decoration: InputDecoration(
+                    border: InputBorder.none,
+                    prefixIcon: Icon(
+                            Icons.search,
+                            color: Colors.grey,
+                          ),
+                    hintText: "Search"
                   ),
-                  SizedBox(width: 8),
-                  Text(
-                    'Search',
-                    style: TextStyle(color: Colors.grey, fontSize: 16),
-                  ),
-                ],
+
+                ),
               ),
+              // child: Row(
+              //   children: [
+              //     Icon(
+              //       Icons.search,
+              //       color: Colors.grey,
+              //     ),
+              //     SizedBox(width: 8),
+              //     Text(
+              //       'Search',
+              //       style: TextStyle(color: Colors.grey, fontSize: 16),
+              //     ),
+              //   ],
+              // ),
             ),
             SizedBox(height: 30),
             Row(
@@ -128,6 +141,10 @@ class DashboardPage extends StatelessWidget {
                     height: 200,
                     width: 150,
                     child: Stack(children:[ Image.asset("assets/16.png"),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 10,top: 60),
+                        child: Text("MockMaster",style: TextStyle(color: Colors.white,fontSize: 20,fontWeight: FontWeight.bold),),
+                      )
 
                     ]
                   ),
