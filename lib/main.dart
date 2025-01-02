@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hive_application/Intro/Page_2.dart';
 import 'package:hive_application/Intro/Page_3.dart';
 import 'package:hive_application/Intro/Page_4.dart';
+import 'package:hive_application/Responsive/Res_2.dart';
 
 import 'Dashboard/Dashboard_1.dart';
 import 'HomePage/HomePage1.dart';
@@ -9,6 +10,9 @@ import 'Intro/Page_1.dart';
 import 'Intro/Page_5.dart';
 import 'List/List_1.dart';
 import 'OTP/otp_1.dart';
+import 'Profile Page/Profile_1.dart';
+import 'Profile Page/Profile_Settings.dart';
+import 'Responsive/Res_1.dart';
 
 void main() {
   runApp(const MyApp());
@@ -42,7 +46,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: DashboardPage(),
+      home: Page1(),
     );
   }
 }
