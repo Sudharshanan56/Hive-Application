@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 
+import 'Exam Cracker/Exam Cracker 1.dart';
+import 'MockMaster/MockMaster_1.dart';
+import 'Online Exam/Online Exam 1.dart';
+
 
 
 
@@ -123,32 +127,44 @@ class DashboardPage extends StatelessWidget {
             Row(
               children: [
                 Padding(
-                  padding: const EdgeInsets.only(left: 20),
-                  child: Container(
-                    height: 200,
-                    width: 175,
-                    child: Stack(children:[Image.asset("assets/17.png",fit: BoxFit.fill,),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 20,top: 70),
-                      child: Text("Exam Craker",style: TextStyle(color: Colors.red,fontWeight: FontWeight.bold,fontSize: 20),),
-                    )],
+                  padding:  EdgeInsets.only(left: 20),
+                  child: GestureDetector(
+                    onTap: ()=>Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => ExamCracker1()),
+                    ),
+                    child: Container(
+                      height: 200,
+                      width: 175,
+                      child: Stack(children:[Image.asset("assets/17.png",fit: BoxFit.fill,),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 20,top: 70),
+                        child: Text("Exam Craker",style: TextStyle(color: Colors.red,fontWeight: FontWeight.bold,fontSize: 20),),
+                      )],
+                    ),
+                                    ),
                   ),
-                ),
       ),
                 Padding(
                   padding: const EdgeInsets.only(bottom: 0),
-                  child: Container(
-                    height: 200,
-                    width: 150,
-                    child: Stack(children:[ Image.asset("assets/16.png"),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 10,top: 60),
-                        child: Text("MockMaster",style: TextStyle(color: Colors.white,fontSize: 20,fontWeight: FontWeight.bold),),
-                      )
+                  child: GestureDetector(
+                    onTap: ()=>Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => Mockmaster1()),
+                    ),
+                    child: Container(
+                      height: 200,
+                      width: 150,
+                      child: Stack(children:[ Image.asset("assets/16.png"),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 10,top: 60),
+                          child: Text("MockMaster",style: TextStyle(color: Colors.white,fontSize: 20,fontWeight: FontWeight.bold),),
+                        )
 
-                    ]
+                      ]
+                    ),
+                                    ),
                   ),
-                ),
                 )
             ],
             ),
@@ -156,34 +172,40 @@ class DashboardPage extends StatelessWidget {
 
             // SizedBox(height: 10),
             SizedBox(width: 0,),
-            Container(
-              height: 150,
-              width: 350,
-              child: Stack(children:[ Image.asset("assets/15.png",fit: BoxFit.fill,),
-                           Padding(
-                             padding: const EdgeInsets.only(top: 10,left: 10),
-                             child: Text("Crack it Right:",style: TextStyle(color: Colors.white,fontSize: 18),),
-                           ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 10,top: 40),
-                  child: Text("Easy Exam Registration",style: TextStyle(color: Colors.white,fontSize: 25),),
-                ),
-
-                Padding(
-                  padding: const EdgeInsets.only(left: 10,top: 95),
-                  child: Row(
-                    children: [
-                      Text("Get started",style: TextStyle(color: Colors.white,fontSize: 20),),
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Icon(Icons.arrow_forward_outlined,color: Colors.white,),
-                      )
-                    ],
+            GestureDetector(
+              onTap: ()=>Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => OnlineExam()),
+              ),
+              child: Container(
+                height: 150,
+                width: 350,
+                child: Stack(children:[ Image.asset("assets/15.png",fit: BoxFit.fill,),
+                             Padding(
+                               padding: const EdgeInsets.only(top: 10,left: 10),
+                               child: Text("Crack it Right:",style: TextStyle(color: Colors.white,fontSize: 18),),
+                             ),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 10,top: 40),
+                    child: Text("Easy Exam Registration",style: TextStyle(color: Colors.white,fontSize: 25),),
                   ),
-                )
-                           ],
-                           //   color: Colors.blue,
-            )
+
+                  Padding(
+                    padding: const EdgeInsets.only(left: 10,top: 95),
+                    child: Row(
+                      children: [
+                        Text("Get started",style: TextStyle(color: Colors.white,fontSize: 20),),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Icon(Icons.arrow_forward_outlined,color: Colors.white,),
+                        )
+                      ],
+                    ),
+                  )
+                             ],
+                             //   color: Colors.blue,
+              )
+              ),
             )
           ],
         ),

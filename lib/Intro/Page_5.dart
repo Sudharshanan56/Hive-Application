@@ -132,7 +132,7 @@ class LoginSelectionScreen extends StatelessWidget {
             child: Icon(
               Icons.shield_outlined,
               color: Colors.black,
-              size: screenWidth * 0.08,
+              size: screenWidth * 0.07,
             ),
           ),
         ],

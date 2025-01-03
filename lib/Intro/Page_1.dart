@@ -155,7 +155,7 @@ class Page1 extends StatelessWidget {
           Positioned.fill(
             child: Image.asset(
               'assets/main.png', // Ensure the path matches your pubspec.yaml
-              fit: BoxFit.cover,
+              fit: BoxFit.fill,
             ),
           ),
 

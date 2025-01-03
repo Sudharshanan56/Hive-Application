@@ -165,6 +165,7 @@ class Page2 extends StatelessWidget {
     double screenWidth = MediaQuery.of(context).size.width;
 
     return Scaffold(
+      extendBody: true,
       body: SafeArea(
         child: Stack(
           children: [
@@ -240,7 +241,7 @@ class Page2 extends StatelessWidget {
                   padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.1),
                   child: Text(
                     "Track your exam performance\nand eligibility for top medical\n universities.",
-                    textAlign: TextAlign.center,
+                    //textAlign: TextAlign.center,
                     style: TextStyle(
                       fontSize: screenWidth * 0.05, // Responsive font size
                       fontWeight: FontWeight.w400,

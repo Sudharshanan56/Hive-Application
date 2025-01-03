@@ -2,14 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:hive_application/Intro/Page_2.dart';
 import 'package:hive_application/Intro/Page_3.dart';
 import 'package:hive_application/Intro/Page_4.dart';
+// import 'package:hive_application/MockMaster/MockMaster_1.dart';
 import 'package:hive_application/Responsive/Res_2.dart';
 
+import 'Bottom Navigation Bar/Navigation 1.dart';
 import 'Dashboard/Dashboard_1.dart';
+import 'Dashboard/Exam Cracker/Exam Cracker 1.dart';
+import 'Dashboard/MockMaster/MockMaster_2.dart';
+import 'Dashboard/Online Exam/Online Exam 1.dart';
 import 'HomePage/HomePage1.dart';
 import 'Intro/Page_1.dart';
 import 'Intro/Page_5.dart';
 import 'List/List_1.dart';
+import 'Notification/Notification_1.dart';
 import 'OTP/otp_1.dart';
+import 'PlayGround/navi.dart';
+import 'PlayGround/navi2.dart';
 import 'Profile Page/Profile_1.dart';
 import 'Profile Page/Profile_Settings.dart';
 import 'Responsive/Res_1.dart';
@@ -46,7 +54,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: Page1(),
+      home: Notification_1(),
     );
   }
 }

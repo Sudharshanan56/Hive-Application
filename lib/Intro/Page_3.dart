@@ -175,11 +175,11 @@ class Page3 extends StatelessWidget {
                   onPressed: () {
                     // Handle Skip button press
                   },
-                  child: const Text(
+                  child:  Text(
                     "Skip",
                     style: TextStyle(
                       color: Colors.black54,
-                      fontSize: 16,
+                      fontSize: screenWidth * 0.045,
                     ),
                   ),
                 ),
@@ -234,14 +234,14 @@ class Page3 extends StatelessWidget {
                 SizedBox(height: screenHeight * 0.05),
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.1),
-                  child: const Text(
+                  child:  Text(
                     "Access curated articles and tips\n tailored for medical entrance\n preparation.",
                     style: TextStyle(
-                      fontSize: 20,
+                      fontSize: screenWidth * 0.05,
                       fontWeight: FontWeight.w400,
                       color: Colors.black87,
                     ),
-                    textAlign: TextAlign.center,
+                    // textAlign: TextAlign.center,
                   ),
                 ),
 
@@ -314,9 +314,9 @@ class Page3 extends StatelessWidget {
                   child: Text.rich(
                     TextSpan(
                       text: "By registering, you agree to ",
-                      style: const TextStyle(
+                      style:  TextStyle(
                         color: Colors.black54,
-                        fontSize: 14,
+                        fontSize: screenWidth * 0.035,
                         fontWeight: FontWeight.bold,
                       ),
                       children: [
