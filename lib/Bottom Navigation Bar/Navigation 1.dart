@@ -18,7 +18,7 @@ class _navi_homeState extends State<navi_home> {
   int _selectedIndex = 0;
 
   static List<Widget> _widgetOptions = <Widget>[
-     Page1(),
+     Text("Homepage"),
     UniversityListPage(),
     DashboardPage(),
     Notification_1(),
@@ -30,9 +30,12 @@ class _navi_homeState extends State<navi_home> {
     return Scaffold(
       backgroundColor: Colors.white,
 
-      body: Center(
-        child: _widgetOptions.elementAt(_selectedIndex),
+      body:
+      IndexedStack(
+        index: _selectedIndex,
+        children: _widgetOptions,
       ),
+
       bottomNavigationBar: Container(
         height: 80,
         decoration: BoxDecoration(
@@ -45,7 +48,7 @@ class _navi_homeState extends State<navi_home> {
             )
           ],
         ),
-        margin: EdgeInsets.all(16), // Margin for spacing around the bar
+        margin: EdgeInsets.only(left: 16,top: 16,bottom: 16), // Margin for spacing around the bar
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
           child: GNav(

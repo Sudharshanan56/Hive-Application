@@ -4,8 +4,11 @@ import 'package:hive_application/Intro/Page_3.dart';
 import 'package:hive_application/Intro/Page_4.dart';
 // import 'package:hive_application/MockMaster/MockMaster_1.dart';
 import 'package:hive_application/Responsive/Res_2.dart';
+import 'package:hive_application/University/Intro_2.dart';
+import 'package:hive_application/University/Intro_3.dart';
 
 import 'Bottom Navigation Bar/Navigation 1.dart';
+import 'Credentials/Credentials_1.dart';
 import 'Dashboard/Dashboard_1.dart';
 import 'Dashboard/Exam Cracker/Exam Cracker 1.dart';
 import 'Dashboard/MockMaster/MockMaster_2.dart';
@@ -21,6 +24,7 @@ import 'PlayGround/navi2.dart';
 import 'Profile Page/Profile_1.dart';
 import 'Profile Page/Profile_Settings.dart';
 import 'Responsive/Res_1.dart';
+import 'University/Intro_1.dart';
 
 void main() {
   runApp(const MyApp());
@@ -54,7 +58,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: Notification_1(),
+      home: Intro3(),
     );
   }
 }

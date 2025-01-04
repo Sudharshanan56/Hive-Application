@@ -175,15 +175,9 @@
 
 import 'package:flutter/material.dart';
 
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: OTPVerificationScreen(),
-    );
-  }
-}
+import '../Credentials/Credentials_1.dart';
+
+
 
 class OTPVerificationScreen extends StatefulWidget {
   @override
@@ -337,6 +331,10 @@ class _OTPVerificationScreenState extends State<OTPVerificationScreen> {
               Center(
                 child: ElevatedButton(
                   onPressed: () {
+                    if(phoneController.text.isNotEmpty&&phoneController.text.length==10)
+                      {
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=>NEETFormPage()));
+                      }
                     // Handle Get OTP or Verify action
                   },
                   style: ElevatedButton.styleFrom(
@@ -349,15 +347,17 @@ class _OTPVerificationScreenState extends State<OTPVerificationScreen> {
                       borderRadius: BorderRadius.circular(8),
                     ),
                   ),
-                  child: Text(
-                    isPhoneEntered ? "Verify Now" : "Get OTP",
-                    style: TextStyle(
-                      fontSize: screenWidth * 0.045,
-                      color: Colors.white,
-                    ),
+                  child: Text("Get OTP",style: TextStyle(
+                    fontSize: screenWidth * 0.045,
+                    color: Colors.white,
+                  ),),
+                  // style: TextStyle(
+                  //     fontSize: screenWidth * 0.045,
+                  //     color: Colors.white,
+                  //   ),
                   ),
                 ),
-              ),
+
               SizedBox(height: screenHeight * 0.02),
               const Center(
                 child: Text(

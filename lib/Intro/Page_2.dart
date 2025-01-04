@@ -306,14 +306,21 @@ class Page2 extends StatelessWidget {
                         ),
                       ],
                     ),
+
                     textAlign: TextAlign.center,
                   ),
+
                 ),
+                // SizedBox(height: 20,)
               ],
+
             ),
           ],
         ),
+
+
       ),
+
     );
   }
 }
