@@ -77,7 +77,7 @@ class DashboardPage extends StatelessWidget {
                     ],
                   ),
                   CircleAvatar(
-                    backgroundImage: AssetImage('assets/profile.jpg'), // Replace with your image path
+                    backgroundImage: AssetImage('assets/person.png'), // Replace with your image path
                     radius: 30,
                   ),
                 ],
