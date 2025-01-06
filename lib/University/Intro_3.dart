@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hive_application/University/Intro_4.dart';
 
 
 class Intro3 extends StatelessWidget {
@@ -73,6 +74,7 @@ class Intro3 extends StatelessWidget {
                 ),
               ),
               onPressed: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context)=>Intro4()));
                 // Add your logic here
               },
               child: Text(

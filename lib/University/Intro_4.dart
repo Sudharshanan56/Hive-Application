@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../HomePage/HomePage1.dart';
 import 'Manual location.dart';
+import 'Profile Setup.dart';
 
 class Intro4 extends StatelessWidget {
   @override
@@ -63,6 +64,7 @@ class Intro4 extends StatelessWidget {
                 children: [
                   ElevatedButton(
                     onPressed: () {
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=>SetProfilePicturePage()));
                       // Add location permission logic here
                     },
                     style: ElevatedButton.styleFrom(

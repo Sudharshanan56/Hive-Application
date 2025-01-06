@@ -16,9 +16,11 @@ import 'Dashboard/Online Exam/Online Exam 1.dart';
 import 'HomePage/HomePage1.dart';
 import 'Intro/Page_1.dart';
 import 'Intro/Page_5.dart';
+// import 'Intro/Test_Indicator.dart';
 import 'List/List_1.dart';
 import 'Notification/Notification_1.dart';
 import 'OTP/otp_1.dart';
+import 'PlayGround/Count_down_sample.dart';
 import 'PlayGround/navi.dart';
 import 'PlayGround/navi2.dart';
 import 'PlayGround/sample3.dart';
@@ -26,15 +28,18 @@ import 'PlayGround/sample4.dart';
 import 'Profile Page/Profile_1.dart';
 import 'Profile Page/Profile_Settings.dart';
 import 'Responsive/Res_1.dart';
+import 'University/Bottom_Navigation.dart';
 import 'University/Dashboard.dart';
 import 'University/Help & support.dart';
 import 'University/Intro_1.dart';
 import 'University/Intro_4.dart';
 import 'University/Manual location.dart';
 import 'University/Notification.dart';
+import 'University/Profile Setup.dart';
 import 'University/Screen_1.dart';
 import 'University/Screen_2.dart';
 import 'University/Settings.dart';
+import 'University/Viewall_univprofile.dart';
 
 void main() {
   runApp(const MyApp());
@@ -68,7 +73,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: sample4(),
+      home: UnivProfilePage(),
     );
   }
 }

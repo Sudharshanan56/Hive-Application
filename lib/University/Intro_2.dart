@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 
 import '../Credentials/Credentials_1.dart';
+import 'Intro_3.dart';
 
 
 
@@ -123,14 +124,13 @@ class _Intro2State extends State<Intro2> {
               Center(
                 child: ElevatedButton(
                   onPressed: () {
-                    if(phoneController.text.isNotEmpty&&phoneController.text.length==10)
-                    {
-                      Navigator.push(context, MaterialPageRoute(builder: (context)=>NEETFormPage()));
-                    }
+
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=>Intro3()));
+
                     // Handle Get OTP or Verify action
                   },
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.blue,
+                    backgroundColor: Color(0xFF333333),
                     padding: EdgeInsets.symmetric(
                       horizontal: screenWidth * 0.3,
                       vertical: screenHeight * 0.02,
@@ -139,7 +139,7 @@ class _Intro2State extends State<Intro2> {
                       borderRadius: BorderRadius.circular(8),
                     ),
                   ),
-                  child: Text("Get OTP",style: TextStyle(
+                  child: Text("Verify now",style: TextStyle(
                     fontSize: screenWidth * 0.045,
                     color: Colors.white,
                   ),),
