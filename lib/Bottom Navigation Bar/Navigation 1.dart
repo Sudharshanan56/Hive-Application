@@ -3,6 +3,7 @@ import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:hive_application/Profile%20Page/Profile_1.dart';
 
 import '../Dashboard/Dashboard_1.dart';
+import '../HomePage/HomePage1.dart';
 import '../Intro/Page_1.dart';
 import '../List/List_1.dart';
 import '../Notification/Notification_1.dart';
@@ -18,7 +19,7 @@ class _navi_homeState extends State<navi_home> {
   int _selectedIndex = 0;
 
   static List<Widget> _widgetOptions = <Widget>[
-     Text("Homepage"),
+    BottomSheetApp(),
     UniversityListPage(),
     DashboardPage(),
     Notification_1(),

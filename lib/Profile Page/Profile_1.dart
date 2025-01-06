@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+import '../University/Help & support.dart';
+import '../University/Settings.dart';
+
 
 class ProfilePage extends StatelessWidget {
   @override
@@ -225,7 +228,9 @@ class ProfilePage extends StatelessWidget {
                 title: Text('Help & Support',
                     style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500)),
                 trailing: Icon(Icons.arrow_forward_ios, size: 16),
-                onTap: () {},
+                onTap: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>HelpSupportPage()));
+                },
               ),
 
               ListTile(
@@ -233,7 +238,9 @@ class ProfilePage extends StatelessWidget {
                 title: Text('Settings',
                     style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500)),
                 trailing: Icon(Icons.arrow_forward_ios, size: 16),
-                onTap: () {},
+                onTap: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>SettingsScreen()));
+                },
               ),
             ],
           ),

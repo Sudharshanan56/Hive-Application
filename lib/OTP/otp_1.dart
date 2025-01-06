@@ -331,10 +331,10 @@ class _OTPVerificationScreenState extends State<OTPVerificationScreen> {
               Center(
                 child: ElevatedButton(
                   onPressed: () {
-                    if(phoneController.text.isNotEmpty&&phoneController.text.length==10)
-                      {
+                    //if(phoneController.text.isNotEmpty&&phoneController.text.length==10)
+                      //{
                         Navigator.push(context, MaterialPageRoute(builder: (context)=>NEETFormPage()));
-                      }
+                      //}
                     // Handle Get OTP or Verify action
                   },
                   style: ElevatedButton.styleFrom(

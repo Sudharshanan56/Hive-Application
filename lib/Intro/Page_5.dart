@@ -112,6 +112,7 @@
 
 
 import 'package:flutter/material.dart';
+import 'package:hive_application/University/Intro_1.dart';
 import '../OTP/otp_1.dart';
 
 class LoginSelectionScreen extends StatelessWidget {
@@ -193,6 +194,7 @@ class LoginSelectionScreen extends StatelessWidget {
               width: screenWidth * 0.9,
               child: ElevatedButton(
                 onPressed: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>Intro1()));
                   // Navigate to Universities Login
                 },
                 style: ElevatedButton.styleFrom(

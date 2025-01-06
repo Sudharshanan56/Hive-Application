@@ -2,6 +2,8 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'dart:math';
 
+import 'Screen_1.dart';
+
 
 
 class PopularTopicsScreen extends StatelessWidget {
@@ -65,44 +67,49 @@ class PopularTopicsScreen extends StatelessWidget {
                     // Image Section
                     Stack(
                       children: [
-                        Container(
-                          height: 350,
-                          width: 350,
-                          decoration: BoxDecoration(
-                              //border: Border.all(),
-                            borderRadius: BorderRadius.circular(20),
-                            color: Color(0xFFFFF14),
-                          ),
-                          child: CarouselSlider.builder(
-                              options: CarouselOptions(
-                                height: 300.0,
-
-                                enlargeCenterPage: true,
-                                autoPlay: true,
-                                aspectRatio: 16 / 9,
-                                autoPlayCurve: Curves.fastOutSlowIn,
-                                enableInfiniteScroll: true,
-                                scrollDirection: Axis.horizontal,
-                                autoPlayAnimationDuration: Duration(milliseconds: 800),
-                                viewportFraction: 1,
-
-
-                              ),
-                              itemCount: img.length,
-                              itemBuilder: (BuildContext context, int index, int realIndex)
-                              {
-                                return Container(
-                                  height: 200,
-                                  width: 400,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(50),
-                                      image: DecorationImage(
-
-                                        image: AssetImage(img[index]),fit: BoxFit.cover,
-                                      )
-                                  ),
-                                );
-                              }
+                        GestureDetector(
+                          onTap:(){
+                            Navigator.push(context, MaterialPageRoute(builder: (context)=>SliverAppBarExample()));
+                          },
+                          child: Container(
+                            height: 350,
+                            width: 350,
+                            decoration: BoxDecoration(
+                                //border: Border.all(),
+                              borderRadius: BorderRadius.circular(20),
+                              color: Color(0xFFFFF14),
+                            ),
+                            child: CarouselSlider.builder(
+                                options: CarouselOptions(
+                                  height: 300.0,
+                          
+                                  enlargeCenterPage: true,
+                                  autoPlay: true,
+                                  aspectRatio: 16 / 9,
+                                  autoPlayCurve: Curves.fastOutSlowIn,
+                                  enableInfiniteScroll: true,
+                                  scrollDirection: Axis.horizontal,
+                                  autoPlayAnimationDuration: Duration(milliseconds: 800),
+                                  viewportFraction: 1,
+                          
+                          
+                                ),
+                                itemCount: img.length,
+                                itemBuilder: (BuildContext context, int index, int realIndex)
+                                {
+                                  return Container(
+                                    height: 200,
+                                    width: 400,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(50),
+                                        image: DecorationImage(
+                          
+                                          image: AssetImage(img[index]),fit: BoxFit.cover,
+                                        )
+                                    ),
+                                  );
+                                }
+                            ),
                           ),
                         ),
 

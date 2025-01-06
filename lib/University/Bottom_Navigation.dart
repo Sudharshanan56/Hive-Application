@@ -6,8 +6,11 @@ import '../Dashboard/Dashboard_1.dart';
 import '../Intro/Page_1.dart';
 import '../List/List_1.dart';
 import '../Notification/Notification_1.dart';
+import 'Dashboard.dart';
 import 'Intro_1.dart';
 import 'Notification.dart';
+import 'Screen_2.dart';
+import 'Viewall_univprofile.dart';
 
 
 
@@ -20,11 +23,11 @@ class _University_naviState extends State<University_navi> {
   int _selectedIndex = 0;
 
   static List<Widget> _widgetOptions = <Widget>[
-    Intro1(),
-    // UniversityListPage(),
+    // Intro1(),
+    PopularTopicsScreen(),
     Notifications(),
     // Notification_1(),
-    ProfilePage(),
+    UnivProfilePage(),
   ];
 
   @override

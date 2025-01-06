@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+import '../Bottom Navigation Bar/Navigation 1.dart';
+import '../HomePage/HomePage1.dart';
+
 
 
 class NEETFormPage extends StatelessWidget {
@@ -67,6 +70,7 @@ class NEETFormPage extends StatelessWidget {
                 ElevatedButton(
                   
                   onPressed: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=>navi_home()));
                     // Add your form submission logic here
                   },
                   style: ElevatedButton.styleFrom(

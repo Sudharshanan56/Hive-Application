@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'New Post.dart';
 import 'Screen_1.dart';
 
 class ViewallUnivprofile extends StatefulWidget {
@@ -92,16 +93,22 @@ class _ViewallUnivprofileState extends State<ViewallUnivprofile> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                ElevatedButton(
-                  onPressed: () {
-                    // Handle New Post
+                GestureDetector(
+                  onTap: (){
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=>new_post()));
                   },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.white,
-                  ),
-                  child: Text(
-                    'New Post',
-                    style: TextStyle(color: Colors.blue),
+                  child: ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=>new_post()));
+                      // Handle New Post
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.white,
+                    ),
+                    child: Text(
+                      'New Post',
+                      style: TextStyle(color: Colors.blue),
+                    ),
                   ),
                 ),
                 SizedBox(width: 10),
@@ -177,7 +184,7 @@ class _ViewallUnivprofileState extends State<ViewallUnivprofile> {
                             BorderRadius.vertical(top: Radius.circular(15)),
                             child: Image.asset(
                               articles[index].imageUrl,
-                              height: 160,
+                              height: 140,
                               width: double.infinity,
                               fit: BoxFit.cover,
                             ),

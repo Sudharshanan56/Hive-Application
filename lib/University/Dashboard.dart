@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
+import 'Edit Profile.dart';
 import 'Help & support.dart';
+import 'New Post.dart';
 import 'Screen_1.dart';
 import 'Settings.dart';
 import 'Viewall_univprofile.dart';
@@ -104,6 +106,7 @@ class UnivProfilePage extends StatelessWidget {
                 ElevatedButton(
                   onPressed: () {
                     // Handle New Post
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=>new_post()));
                   },
                   style: ElevatedButton.styleFrom(
 
@@ -115,6 +118,7 @@ class UnivProfilePage extends StatelessWidget {
                 SizedBox(width: 10),
                 ElevatedButton(
                   onPressed: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=>EditProfileScreen()));
                     // Handle Edit Profile
                   },
                   style: ElevatedButton.styleFrom(
@@ -309,7 +313,7 @@ class UnivProfilePage extends StatelessWidget {
                                         Navigator.push(context, MaterialPageRoute(builder: (context)=>SliverAppBarExample()));
                                         // Add your read action here
                                       },
-                                      child: Text('Read'),
+                                      child: Text('Read',style: TextStyle(color: Colors.white),),
                                       style: ElevatedButton.styleFrom(
                                         backgroundColor: Colors.blue,
                                         minimumSize: Size(double.infinity, 36),

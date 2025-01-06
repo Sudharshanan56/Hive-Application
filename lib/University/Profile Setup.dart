@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'Bottom_Navigation.dart';
 import 'Screen_2.dart';
 
 
@@ -65,7 +66,7 @@ class SetProfilePicturePage extends StatelessWidget {
             const Spacer(),
             ElevatedButton(
               onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context)=>PopularTopicsScreen()));
+                Navigator.push(context, MaterialPageRoute(builder: (context)=>University_navi()));
                 // Add functionality for Done button
               },
               style: ElevatedButton.styleFrom(
