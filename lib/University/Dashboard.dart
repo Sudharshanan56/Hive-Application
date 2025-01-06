@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'Help & support.dart';
 import 'Screen_1.dart';
 import 'Settings.dart';
+import 'Viewall_univprofile.dart';
 
 class UnivProfilePage extends StatelessWidget {
   final List<ArticleModel> articles = [
@@ -332,6 +333,7 @@ class UnivProfilePage extends StatelessWidget {
                   padding: const EdgeInsets.all(8.0),
                   child: TextButton(
                     onPressed: () {
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=>ViewallUnivprofile()));
                       // Add your view all action here
                     },
                     child: Center(child: Text('View all')),
