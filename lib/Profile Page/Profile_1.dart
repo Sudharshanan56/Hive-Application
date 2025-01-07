@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../University/Help & support.dart';
 import '../University/Settings.dart';
+import 'Profile Edit.dart';
 
 
 class ProfilePage extends StatelessWidget {
@@ -53,7 +54,9 @@ class ProfilePage extends StatelessWidget {
                     ),
                   ),
                   ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=>ProfilePage_edit()));
+                    },
                     child: Text('Edit',style: TextStyle(color: Colors.white),),
                     style: ElevatedButton.styleFrom(
                       shape: RoundedRectangleBorder(

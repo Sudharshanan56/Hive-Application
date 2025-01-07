@@ -156,6 +156,8 @@
 import 'package:flutter/material.dart';
 import 'package:hive_application/Intro/Page_3.dart';
 
+import 'Page_5.dart';
+
 class Page2 extends StatelessWidget {
   const Page2({Key? key}) : super(key: key);
 
@@ -176,6 +178,8 @@ class Page2 extends StatelessWidget {
                 padding: EdgeInsets.only(top: screenHeight * 0.05, right: screenWidth * 0.05),
                 child: TextButton(
                   onPressed: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=>LoginSelectionScreen()));
+
                     // Handle Skip button press
                   },
                   child: Text(

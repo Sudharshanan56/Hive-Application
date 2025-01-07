@@ -180,6 +180,8 @@ class Page4 extends StatelessWidget {
                     top: screenHeight * 0.05, right: screenWidth * 0.05),
                 child: TextButton(
                   onPressed: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=>LoginSelectionScreen()));
+
                     // Handle Skip button press
                   },
                   child:  Text(
