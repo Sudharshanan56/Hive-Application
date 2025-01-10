@@ -154,13 +154,32 @@
 
 
 import 'package:flutter/material.dart';
+import 'package:page_transition/page_transition.dart';
 
 import '../OTP/otp_1.dart';
 import 'Page_5.dart';
 
-class Page4 extends StatelessWidget {
+class Page4 extends StatefulWidget {
   const Page4({Key? key}) : super(key: key);
 
+  @override
+  State<Page4> createState() => _Page4State();
+}
+
+class _Page4State extends State<Page4> {
+  // void initState() {
+  //   // TODO: implement initState
+  //   super.initState();
+  //   Future.delayed(Duration(milliseconds: 500),(){
+  //     Navigator.push(context, PageTransition(type: PageTransitionType.bottomToTop,
+  //
+  //         child: LoginSelectionScreen(),
+  //         duration: Duration(milliseconds: 300)),
+  //
+  //
+  //     );
+  //   });
+  // }
   @override
   Widget build(BuildContext context) {
     // Retrieve screen size
@@ -270,10 +289,25 @@ class Page4 extends StatelessWidget {
                       ),
                     ),
                     onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => LoginSelectionScreen()));
+                      // Navigator.push(
+                      //     context,
+                      //     MaterialPageRoute(
+                      //         builder: (context) {LoginSelectionScreen();
+                      //         Navigator.push(context, PageTransition(type: PageTransitionType.bottomToTop,
+                      //
+                      //             child: LoginSelectionScreen(),
+                      //             duration: Duration(milliseconds: 300)),
+                      //
+                      //
+                      //         );
+                      //         }));
+                      Navigator.push(context, PageTransition(type: PageTransitionType.bottomToTop,
+
+                          child: LoginSelectionScreen(),
+                          duration: Duration(milliseconds: 300)),
+
+
+                      );
                     },
                     child:  Text(
                       "Let's go",

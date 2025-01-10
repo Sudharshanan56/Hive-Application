@@ -41,14 +41,14 @@ class _ExamCracker1State extends State<ExamCracker1> {
             child: Text("Prepare for success with our \nMedical Entrance Mock Test!\n Sharpen your skills, boost \n confidence, and ace your\n exam with practice tailored to\n your goals.",style: TextStyle(fontSize: 18,color: Color(0xff9F0000),fontFamily: 'poppins',letterSpacing: 3.0),),
           ),
 
-          Padding(
-            padding: const EdgeInsets.only(right: 250,top: 20),
-            child: CircleAvatar(
-              radius: 20,
-              backgroundColor: Colors.white,
-              child: Icon(Icons.arrow_right_alt,size: 30,),
-            ),
-          )
+          // Padding(
+          //   padding: const EdgeInsets.only(right: 250,top: 20),
+          //   child: CircleAvatar(
+          //     radius: 20,
+          //     backgroundColor: Colors.white,
+          //     child: Icon(Icons.arrow_right_alt,size: 30,),
+          //   ),
+          // )
         ],
       ),
     );

@@ -43,14 +43,15 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   fontWeight: FontWeight.w400,
                 ),
               ),
-              trailing: Switch(
+              trailing: Switch.adaptive(
                 value: _notificationsEnabled,
                 onChanged: (value) {
                   setState(() {
                     _notificationsEnabled = value;
                   });
                 },
-                activeColor: Colors.blue,
+
+                //activeColor: Colors.blue,
               ),
             ),
             //const Divider(height: 1),

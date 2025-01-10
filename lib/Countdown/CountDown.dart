@@ -54,6 +54,11 @@ class _CountdownPageState extends State<CountdownPage> {
     final int seconds = _duration.inSeconds % 60;
 
     return Scaffold(
+      appBar: AppBar(
+        leading: IconButton(onPressed: (){
+          Navigator.pop(context);
+        }, icon: Icon(Icons.arrow_back_ios)),
+      ),
       backgroundColor: Color(0xFF3C97D3),
       body: Center(
         child: Column(

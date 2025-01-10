@@ -365,6 +365,23 @@ class BottomSheetApp extends StatelessWidget {
       home: Scaffold(
         appBar: AppBar(title: const Text('Bottom Sheet Sample')),
         body: PostsList(posts: posts),
+        floatingActionButton: FloatingActionButton(
+          shape: CircleBorder(),
+            backgroundColor:  Color(0xFF5A9ECF),
+            onPressed: (){
+         Navigator.push(context, MaterialPageRoute(builder: (context)=>CountdownPage()));
+        },
+        child:  Container(
+          height: 50,
+          width: 50,
+          margin: const EdgeInsets.symmetric(vertical: 8),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(90),
+            color: const Color(0xFF5A9ECF),
+          ),
+          child: const Icon(Icons.school_outlined, color: Colors.white, size: 30),
+        )),
+
       ),
     );
   }
@@ -380,7 +397,9 @@ class PostsList extends StatefulWidget {
 }
 
 class _PostsListState extends State<PostsList> {
+
   final TextEditingController mail = TextEditingController();
+  double _opacity = 0.1;
 
   @override
   void initState() {
@@ -388,6 +407,138 @@ class _PostsListState extends State<PostsList> {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       _showEmailVerificationSheet();
     });
+    Future.delayed(const Duration(milliseconds: 3000), () {
+      setState(() {
+        _opacity = 1.0;
+      });
+    });
+  }
+  void _otp_verification(BuildContext context) {
+    final mediaQuery = MediaQuery.of(context);
+    final screenHeight = mediaQuery.size.height;
+    final screenWidth = mediaQuery.size.width;
+    showModalBottomSheet<void>(
+      context: context,
+      isDismissible: false,
+      enableDrag: false,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.only(
+          topRight: Radius.circular(30),
+          topLeft: Radius.circular(30),
+        ),
+      ),
+      builder: (BuildContext context) {
+        return Container(
+          height: 450,
+          decoration: const BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.only(
+              topRight: Radius.circular(30),
+              topLeft: Radius.circular(30),
+            ),
+          ),
+          padding: const EdgeInsets.all(16),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: <Widget>[
+              const Text(
+                "Enter your OTP to verify.",
+                style: TextStyle(
+                  fontSize: 22,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black,
+                ),
+                textAlign: TextAlign.center,
+              ),
+              SizedBox(height: screenHeight * 0.04),
+              Row(
+                children: [
+                  Text("OTP sent to ",style: TextStyle(fontWeight: FontWeight.bold),),
+                  Text("sample@gmail.com",style: TextStyle(color: Colors.blue),),
+                  Icon(Icons.edit),
+                ],
+              ),
+
+              SizedBox(height: screenHeight * 0.02),
+
+              SizedBox(height: screenHeight * 0.03),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: List.generate(
+                  4,
+                      (index) => Container(
+                    width: screenWidth * 0.12,
+                    height: screenHeight * 0.08,
+                    alignment: Alignment.center,
+                    decoration: BoxDecoration(
+                      border: Border.all(color: Colors.black, width: 1),
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    child: TextField(
+                      textAlign: TextAlign.center,
+                      keyboardType: TextInputType.number,
+                      maxLength: 1,
+                      decoration: const InputDecoration(
+                        border: InputBorder.none,
+                        counterText: '',
+                        hintText: "0",
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              SizedBox(height: screenHeight * 0.02),
+              TextButton(
+                onPressed: () {
+                  // Resend OTP action
+                },
+                child: Center(
+                  child:  Row(
+                    children: [
+                      Text(
+                        "OTP not received?",
+                        style: TextStyle(color: Colors.black),
+                      ),
+                      Text(" Resend now",style: TextStyle(color: Colors.blue),)
+                    ],
+                  ),
+
+                ),
+              ),
+              SizedBox(height: screenHeight * 0.05),
+              Center(
+                child: ElevatedButton(
+                  onPressed: () {
+
+                    Navigator.pop(context);
+
+                    // Handle Get OTP or Verify action
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Color(0xFF333333),
+                    padding: EdgeInsets.symmetric(
+                      horizontal: screenWidth * 0.3,
+                      vertical: screenHeight * 0.02,
+                    ),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                  ),
+                  child: Text("Verify now",style: TextStyle(
+                    fontSize: screenWidth * 0.045,
+                    color: Colors.white,
+                  ),),
+                  // style: TextStyle(
+                  //     fontSize: screenWidth * 0.045,
+                  //     color: Colors.white,
+                  //   ),
+                ),
+              ),
+            ],
+          ),
+        );
+      },
+    );
   }
 
   void _showEmailVerificationSheet() {
@@ -417,14 +568,23 @@ class _PostsListState extends State<PostsList> {
                 onTap: () {
                   if (mail.text.isNotEmpty) {
                     Navigator.pop(context);
+                    _otp_verification(context);
                   }
                 },
                 child: Container(
                   height: 50,
                   width: double.infinity,
-                  color: const Color(0xff3C97D3),
-                  child: const Center(
-                    child: Text(
+                  //color:  Color(0xff3C97D3),
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Color(0xff3C97D3),
+                    ),
+                    onPressed: (){
+                      Navigator.pop(context);
+                      _otp_verification(context);
+
+                  },
+                    child:  Text(
                       "Verify Email",
                       style: TextStyle(color: Colors.white, fontSize: 20),
                     ),
@@ -440,37 +600,42 @@ class _PostsListState extends State<PostsList> {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      itemCount: widget.posts.length,
-      itemBuilder: (context, index) {
-        final post = widget.posts[index];
-        return Column(
-          children: [
-            if (index == 0) _buildSchoolIcon(),
-            _buildPostCard(post, context),
-          ],
-        );
-      },
+    return AnimatedOpacity(
+      duration: Duration(milliseconds: 300),
+      opacity: 1.0,
+      child: ListView.builder(
+        itemCount: widget.posts.length,
+        itemBuilder: (context, index) {
+          final post = widget.posts[index];
+          return Column(
+            children: [
+              if (index == 0) _buildSchoolIcon(),
+              _buildPostCard(post, context),
+            ],
+          );
+        },
+      ),
     );
   }
 
   Widget _buildSchoolIcon() {
-    return GestureDetector(
-      onTap: () => Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => CountdownPage()),
-      ),
-      child: Container(
-        height: 50,
-        width: 50,
-        margin: const EdgeInsets.symmetric(vertical: 8),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(90),
-          color: const Color(0xFF5A9ECF),
-        ),
-        child: const Icon(Icons.school_outlined, color: Colors.white, size: 30),
-      ),
-    );
+    return Text("");
+    // GestureDetector(
+    //   onTap: () => Navigator.push(
+    //     context,
+    //     MaterialPageRoute(builder: (context) => CountdownPage()),
+    //   ),
+    //   child: Container(
+    //     height: 50,
+    //     width: 50,
+    //     margin: const EdgeInsets.symmetric(vertical: 8),
+    //     decoration: BoxDecoration(
+    //       borderRadius: BorderRadius.circular(90),
+    //       color: const Color(0xFF5A9ECF),
+    //     ),
+    //     child: const Icon(Icons.school_outlined, color: Colors.white, size: 30),
+    //   ),
+    // );
   }
 
   Widget _buildPostCard(Map<String, String> post, BuildContext context) {

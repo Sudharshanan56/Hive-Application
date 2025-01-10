@@ -22,6 +22,7 @@ import 'List/List_1.dart';
 import 'Notification/Notification_1.dart';
 import 'OTP/otp_1.dart';
 import 'PlayGround/Count_down_sample.dart';
+import 'PlayGround/OTP_animation.dart';
 import 'PlayGround/navi.dart';
 import 'PlayGround/navi2.dart';
 import 'PlayGround/sample3.dart';
@@ -72,7 +73,7 @@ class MyApp extends StatelessWidget {
         //
         // This works for code too, not just values: Most code changes can be
         // tested with just a hot reload.
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.red),
         useMaterial3: true,
       ),
       home: Page1(),

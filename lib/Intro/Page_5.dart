@@ -113,9 +113,29 @@
 
 import 'package:flutter/material.dart';
 import 'package:hive_application/University/Intro_1.dart';
+import 'package:page_transition/page_transition.dart';
 import '../OTP/otp_1.dart';
 
-class LoginSelectionScreen extends StatelessWidget {
+class LoginSelectionScreen extends StatefulWidget {
+  @override
+  State<LoginSelectionScreen> createState() => _LoginSelectionScreenState();
+}
+
+class _LoginSelectionScreenState extends State<LoginSelectionScreen> {
+  @override
+  // void initState() {
+  //   // TODO: implement initState
+  //   super.initState();
+  //   Future.delayed(Duration(milliseconds: 500),(){
+  //     Navigator.push(context, PageTransition(type: PageTransitionType.bottomToTop,
+  //
+  //     child: LoginSelectionScreen(),
+  //     duration: Duration(milliseconds: 300)),
+  //
+  //
+  //     );
+  //   });
+  // }
   @override
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context);
@@ -124,20 +144,20 @@ class LoginSelectionScreen extends StatelessWidget {
 
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        actions: [
-          Padding(
-            padding: EdgeInsets.all(screenWidth * 0.01),
-            child: Icon(
-              Icons.shield_outlined,
-              color: Colors.black,
-              size: screenWidth * 0.07,
-            ),
-          ),
-        ],
-      ),
+      // appBar: AppBar(
+      //   backgroundColor: Colors.transparent,
+      //   elevation: 0,
+      //   actions: [
+      //     Padding(
+      //       padding: EdgeInsets.all(screenWidth * 0.01),
+      //       child: Icon(
+      //         Icons.shield_outlined,
+      //         color: Colors.black,
+      //         size: screenWidth * 0.07,
+      //       ),
+      //     ),
+      //   ],
+      // ),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.05),
         child: Column(
@@ -159,9 +179,12 @@ class LoginSelectionScreen extends StatelessWidget {
               width: screenWidth * 0.9,
               child: ElevatedButton(
                 onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => OTPVerificationScreen()),
+                  Navigator.push(context, PageTransition(type: PageTransitionType.bottomToTop,
+
+                      child: OTPVerificationScreen(),
+                      duration: Duration(milliseconds: 300)),
+
+
                   );
                 },
                 style: ElevatedButton.styleFrom(
@@ -194,7 +217,13 @@ class LoginSelectionScreen extends StatelessWidget {
               width: screenWidth * 0.9,
               child: ElevatedButton(
                 onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context)=>Intro1()));
+                  Navigator.push(context, PageTransition(type: PageTransitionType.bottomToTop,
+
+                      child: Intro1(),
+                      duration: Duration(milliseconds: 300)),
+
+
+                  );
                   // Navigate to Universities Login
                 },
                 style: ElevatedButton.styleFrom(
