@@ -7,6 +7,7 @@ import '../HomePage/HomePage1.dart';
 import '../Intro/Page_1.dart';
 import '../List/List_1.dart';
 import '../Notification/Notification_1.dart';
+import '../PlayGround/HomePage_Without_email.dart';
 
 
 
@@ -19,7 +20,8 @@ class _navi_homeState extends State<navi_home> {
   int _selectedIndex = 0;
 
   static List<Widget> _widgetOptions = <Widget>[
-    BottomSheetApp(),
+    // BottomSheetApp(),
+    HomepageWithoutEmail(),
     UniversityListPage(),
     DashboardPage(),
     Notification_1(),

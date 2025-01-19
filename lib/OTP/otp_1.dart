@@ -172,12 +172,8 @@
 //     );
 //   }
 // }
-
 import 'package:flutter/material.dart';
-
 import '../Credentials/Credentials_1.dart';
-
-
 
 class OTPVerificationScreen extends StatefulWidget {
   @override
@@ -229,10 +225,10 @@ class _OTPVerificationScreenState extends State<OTPVerificationScreen> {
                 ),
               ),
               SizedBox(height: screenHeight * 0.02),
-              const Text(
+              Text(
                 "Step in and explore\nendless possibilities!",
                 style: TextStyle(
-                  fontSize: 22,
+                  fontSize: screenWidth * 0.055,
                   fontWeight: FontWeight.bold,
                   color: Colors.black,
                 ),
@@ -243,7 +239,7 @@ class _OTPVerificationScreenState extends State<OTPVerificationScreen> {
                 children: [
                   Container(
                     height: screenHeight * 0.07,
-                    width: screenWidth * 0.12,
+                    width: screenWidth * 0.15,
                     decoration: BoxDecoration(
                       border: Border.all(color: Colors.grey),
                     ),
@@ -264,6 +260,7 @@ class _OTPVerificationScreenState extends State<OTPVerificationScreen> {
                         decoration: InputDecoration(
                           hintText: "Enter number",
                           border: OutlineInputBorder(),
+                          hintStyle: TextStyle(fontSize: screenWidth * 0.04),
                         ),
                       ),
                     ),
@@ -295,7 +292,7 @@ class _OTPVerificationScreenState extends State<OTPVerificationScreen> {
                 children: List.generate(
                   4,
                       (index) => Container(
-                    width: screenWidth * 0.12,
+                    width: screenWidth * 0.15,
                     height: screenHeight * 0.08,
                     alignment: Alignment.center,
                     decoration: BoxDecoration(
@@ -306,6 +303,7 @@ class _OTPVerificationScreenState extends State<OTPVerificationScreen> {
                       textAlign: TextAlign.center,
                       keyboardType: TextInputType.number,
                       maxLength: 1,
+                      style: TextStyle(fontSize: screenWidth * 0.045),
                       decoration: const InputDecoration(
                         border: InputBorder.none,
                         counterText: '',
@@ -321,48 +319,55 @@ class _OTPVerificationScreenState extends State<OTPVerificationScreen> {
                   // Resend OTP action
                 },
                 child: Center(
-                  child: const Text(
+                  child: Text(
                     "OTP not received? Resend now",
-                    style: TextStyle(color: Colors.black),
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: screenWidth * 0.04,
+                    ),
                   ),
                 ),
               ),
               SizedBox(height: screenHeight * 0.05),
               Center(
-                child: ElevatedButton(
-                  onPressed: () {
-                    //if(phoneController.text.isNotEmpty&&phoneController.text.length==10)
-                      //{
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=>NEETFormPage()));
-                      //}
-                    // Handle Get OTP or Verify action
-                  },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.blue,
-                    padding: EdgeInsets.symmetric(
-                      horizontal: screenWidth * 0.3,
-                      vertical: screenHeight * 0.02,
+                child: Container(
+                  height: screenHeight * 0.07,
+                  width: screenWidth * 0.9,
+                  child: ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => NEETFormPage()),
+                      );
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.blue,
+                      padding: EdgeInsets.symmetric(
+                        horizontal: screenWidth * 0.3,
+                        vertical: screenHeight * 0.02,
+                      ),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8),
+                      ),
                     ),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8),
+                    child: Text(
+                      "Get OTP",
+                      style: TextStyle(
+                        fontSize: screenWidth * 0.045,
+                        color: Colors.white,
+                      ),
                     ),
-                  ),
-                  child: Text("Get OTP",style: TextStyle(
-                    fontSize: screenWidth * 0.045,
-                    color: Colors.white,
-                  ),),
-                  // style: TextStyle(
-                  //     fontSize: screenWidth * 0.045,
-                  //     color: Colors.white,
-                  //   ),
                   ),
                 ),
-
+              ),
               SizedBox(height: screenHeight * 0.02),
-              const Center(
+              Center(
                 child: Text(
                   "By registering, you agree to our terms.",
-                  style: TextStyle(fontSize: 14, color: Colors.grey),
+                  style: TextStyle(
+                    fontSize: screenWidth * 0.035,
+                    color: Colors.grey,
+                  ),
                 ),
               ),
             ],
