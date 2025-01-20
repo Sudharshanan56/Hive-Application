@@ -719,6 +719,7 @@ class BottomSheetApp extends StatelessWidget {
     final screenWidth = mediaQuery.size.width;
 
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
           title: Text(

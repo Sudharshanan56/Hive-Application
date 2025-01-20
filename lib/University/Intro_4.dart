@@ -38,7 +38,7 @@ class Intro4 extends StatelessWidget {
               ),
             ),
             SizedBox(height: 20),
-            Icon(Icons.edit_location_alt_outlined,color: Colors.blue,size: 30,),
+            Icon(Icons.edit_location_alt_outlined,color: Color(0xFF3C97D3),size: 30,),
             SizedBox(height: 10,),
             Text(
               'Location Access',

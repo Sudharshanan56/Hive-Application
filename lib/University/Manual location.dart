@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:hive_application/University/Intro_4.dart';
 
+import 'Profile Setup.dart';
+
 class LocationAccessPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -108,6 +110,8 @@ class LocationAccessPage extends StatelessWidget {
                   SizedBox(height: 20),
                   ElevatedButton(
                     onPressed: () {
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=>SetProfilePicturePage()));
+
                       // Handle next button logic
                     },
                     style: ElevatedButton.styleFrom(

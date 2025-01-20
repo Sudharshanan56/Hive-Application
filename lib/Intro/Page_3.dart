@@ -217,13 +217,13 @@ class Page3 extends StatelessWidget {
                       Container(
                         height: screenHeight * 0.005,
                         width: screenWidth * 0.1,
-                        color: const Color(0xff9BA8B5FF),
+                        color:  Color(0xff9BA8B5FF),
                       ),
                       SizedBox(width: screenWidth * 0.02),
                       Container(
                         height: screenHeight * 0.005,
                         width: screenWidth * 0.1,
-                        color: Colors.blue,
+                        color: Color(0xFF3C97D3),
                       ),
                       SizedBox(width: screenWidth * 0.02),
                       Container(
@@ -287,7 +287,7 @@ class Page3 extends StatelessWidget {
                       width: screenWidth * 0.9,
                       child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.blue, // Button color
+                          backgroundColor: Color(0xFF3C97D3),// Button color
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(screenWidth * 0.02),
                           ),
@@ -327,7 +327,7 @@ class Page3 extends StatelessWidget {
                         TextSpan(
                           text: "our terms.",
                           style: const TextStyle(
-                            color: Colors.lightBlueAccent,
+                            color: Color(0xFF3C97D3),
                           ),
                         ),
                       ],

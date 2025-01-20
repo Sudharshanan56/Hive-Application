@@ -188,7 +188,7 @@ class _LoginSelectionScreenState extends State<LoginSelectionScreen> {
                   );
                 },
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.blue,
+                  backgroundColor: Color(0xFF3C97D3),
                   padding: EdgeInsets.symmetric(vertical: screenHeight * 0.01),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(8),
@@ -255,7 +255,7 @@ class _LoginSelectionScreenState extends State<LoginSelectionScreen> {
                   TextSpan(
                     text: "our terms.",
                     style: TextStyle(
-                      color: Colors.lightBlueAccent,
+                      color: Color(0xFF3C97D3),
                     ),
                   ),
                 ],

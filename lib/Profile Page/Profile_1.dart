@@ -8,6 +8,8 @@ import 'Profile Edit.dart';
 class ProfilePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    double screenwidth=MediaQuery.of(context).size.width;
+    double screenheight=MediaQuery.of(context).size.height;
     return Scaffold(
       // appBar: AppBar(
       //   title: Text('Profile', style: TextStyle(color: Colors.black)),
@@ -24,14 +26,14 @@ class ProfilePage extends StatelessWidget {
               SizedBox(height: 10,),
               // Profile Header
               Text("Profile",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
-              SizedBox(height: 20,),
+              SizedBox(height: screenheight * 0.05,),
               Row(
                 children: [
                   CircleAvatar(
-                    radius: 40,
+                    radius: screenwidth * 0.10,
                     backgroundImage: AssetImage('assets/profile.jpg'), // Replace with your image
                   ),
-                  SizedBox(width: 16),
+                  SizedBox(width: screenwidth * 0.08),
                   Expanded(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -39,55 +41,59 @@ class ProfilePage extends StatelessWidget {
                         Text(
                           'Rajasekar',
                           style: TextStyle(
-                            fontSize: 20,
+                            fontSize: screenwidth * 0.05,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
                         Text(
                           'NEET202454321',
                           style: TextStyle(
-                            fontSize: 16,
+                            fontSize: screenwidth * 0.04,
                             color: Colors.grey,
                           ),
                         ),
                       ],
                     ),
                   ),
-                  ElevatedButton(
-                    onPressed: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context)=>ProfilePage_edit()));
-                    },
-                    child: Text('Edit',style: TextStyle(color: Colors.white),),
-                    style: ElevatedButton.styleFrom(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10),
+                  Container(
+                    height: screenheight * 0.045,
+                    width:  screenwidth * 0.20,
+                    child: ElevatedButton(
+                      onPressed: () {
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=>ProfilePage_edit()));
+                      },
+                      child: Text('Edit',style: TextStyle(color: Colors.white,fontSize: screenwidth * 0.045 ),),
+                      style: ElevatedButton.styleFrom(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
 
+                        ),
+                        backgroundColor: Color(0xff5A9ECF),
                       ),
-                      backgroundColor: Color(0xff5A9ECF),
                     ),
                   ),
                 ],
               ),
-              SizedBox(height: 24),
+              SizedBox(height: screenheight * 0.04),
 
               // Average Score and Tests Taken
               Row(
                 children: [
                   Container(
-                    height: 100,
-                    width: 180,
+                    height: screenheight * 0.10,
+                    width: screenwidth * 0.45,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Container(
-                          height: 100,
-                          width: 80,
+                          height: screenheight * 0.20,
+                          width: screenwidth * 0.20,
                           child:
                               Column(
                                 children: [
-                                  SizedBox(height: 25,),
-                                  Text("Average",style: TextStyle(fontSize: 16,fontWeight: FontWeight.bold),),
-                                  Text("Score",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),)
+                                  SizedBox(height: screenheight * 0.01,),
+                                  Text("Average",style: TextStyle(fontSize: screenwidth * 0.04,fontWeight: FontWeight.bold),),
+                                  Text("Score",style: TextStyle(fontSize: screenwidth * 0.06,fontWeight: FontWeight.bold),)
                                 ],
                               ),
 
@@ -96,8 +102,8 @@ class ProfilePage extends StatelessWidget {
                         Row(
                           children: [
                             Container(
-                              height: 100,
-                              width: 100,
+                              height: screenheight * 0.25,
+                              width: screenwidth * 0.25,
                              // color: Color(0xff5A9ECF),
                               decoration: BoxDecoration(
                                 color: const Color(0xff5A9ECF), // Light blue color
@@ -127,8 +133,8 @@ class ProfilePage extends StatelessWidget {
                   SizedBox(width: 20,),
 
                   Container(
-                    height: 100,
-                    width: 180,
+                    height: screenheight * 0.10,
+                    width: screenwidth * 0.45,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -136,8 +142,8 @@ class ProfilePage extends StatelessWidget {
                         Row(
                           children: [
                             Container(
-                              height: 100,
-                              width: 100,
+                              height: screenheight * 0.25,
+                              width: screenwidth * 0.25,
                               // color: Color(0xff5A9ECF),
                               decoration: BoxDecoration(
                                 color: const Color(0xff5A9ECF), // Light blue color

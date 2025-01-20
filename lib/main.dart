@@ -12,7 +12,9 @@ import 'Credentials/Credentials_1.dart';
 import 'Dashboard/Dashboard_1.dart';
 import 'Dashboard/Exam Cracker/Exam Cracker 1.dart';
 import 'Dashboard/MockMaster/Mock Test.dart';
+import 'Dashboard/MockMaster/MockMaster_1.dart';
 import 'Dashboard/MockMaster/MockMaster_2.dart';
+import 'Dashboard/MockMaster/Score.dart';
 import 'Dashboard/Online Exam/Online Exam 1.dart';
 import 'HomePage/HomePage1.dart';
 import 'Intro/Page_1.dart';
@@ -77,7 +79,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.red),
         useMaterial3: true,
       ),
-      home: ExamCracker1(),
+      home: ProfilePage(),
     );
   }
 }

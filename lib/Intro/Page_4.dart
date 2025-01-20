@@ -253,7 +253,7 @@ class _Page4State extends State<Page4> {
                       Container(
                         height: screenHeight * 0.005,
                         width: screenWidth * 0.1,
-                        color: Colors.blue,
+                        color: Color(0xFF3C97D3),
                       ),
                     ],
                   ),
@@ -283,7 +283,7 @@ class _Page4State extends State<Page4> {
                     style: ElevatedButton.styleFrom(
                       padding: EdgeInsets.symmetric(
                           horizontal: screenWidth * 0.37, vertical: screenHeight * 0.02),
-                      backgroundColor: Colors.blue, // Button color
+                      backgroundColor: Color(0xFF3C97D3), // Button color
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(8),
                       ),
@@ -333,7 +333,7 @@ class _Page4State extends State<Page4> {
                         TextSpan(
                           text: "our terms.",
                           style: const TextStyle(
-                            color: Colors.lightBlueAccent,
+                            color: Color(0xFF3C97D3),
                           ),
                           // Add navigation to terms here
                         ),

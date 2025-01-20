@@ -195,7 +195,7 @@ class Page1 extends StatelessWidget {
                 width: screenWidth * 0.9,
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.blue, // Button color
+                    backgroundColor: Color(0xFF3C97D3), // Button color
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(screenWidth * 0.02),
                     ),
@@ -237,8 +237,8 @@ class Page1 extends StatelessWidget {
                     TextSpan(
                       text: "our terms.",
                       style: TextStyle(
-                        color: Colors.blue,
-                        decoration: TextDecoration.underline,
+                        color: Color(0xFF3C97D3),
+                        // decoration: TextDecoration.underline,
                       ),
                       // Add navigation to terms here
                     ),

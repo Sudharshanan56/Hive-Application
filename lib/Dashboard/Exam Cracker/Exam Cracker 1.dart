@@ -97,7 +97,7 @@ class _ExamCracker1State extends State<ExamCracker1> {
           Padding(
             padding: EdgeInsets.only(right: screenWidth * 0.25),
             child: Text(
-              "Master Your\nMedical Entrance!",
+              "    Master Your\n    Medical Entrance!",
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: screenWidth * 0.06,

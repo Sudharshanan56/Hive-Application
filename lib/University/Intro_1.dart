@@ -81,7 +81,7 @@ class Intro1 extends StatelessWidget {
                         style: TextStyle(fontSize: 14, color: Colors.grey),
                         textAlign: TextAlign.center,
                       ),
-                      Text("our terms.",style: TextStyle(color: Colors.blue,fontSize: 14),textAlign: TextAlign.center,),
+                      Text("our terms.",style: TextStyle(color: Color(0xFF3C97D3),fontSize: 14),textAlign: TextAlign.center,),
                     ],
                   ),
                 ),
