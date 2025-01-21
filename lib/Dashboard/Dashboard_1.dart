@@ -282,6 +282,10 @@ class DashboardPage extends StatelessWidget {
               padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.05),
               child: Center(
                 child: TextFormField(
+                  readOnly: true,
+                  onTap: (){
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=>SearchPage()));
+                  },
                   decoration: InputDecoration(
                     border: InputBorder.none,
                     prefixIcon: Icon(

@@ -23,8 +23,9 @@ import 'Intro/Page_5.dart';
 import 'List/List_1.dart';
 import 'Notification/Notification_1.dart';
 import 'OTP/otp_1.dart';
+import 'PlayGround/Comment Section.dart';
 import 'PlayGround/Count_down_sample.dart';
-import 'PlayGround/HomePage_Without_email.dart';
+import 'HomePage/HomePage_Without_email.dart';
 import 'PlayGround/OTP_animation.dart';
 import 'PlayGround/navi.dart';
 import 'PlayGround/navi2.dart';
@@ -34,6 +35,7 @@ import 'Profile Page/Profile Edit.dart';
 import 'Profile Page/Profile_1.dart';
 import 'Profile Page/Profile_Settings.dart';
 import 'Responsive/Res_1.dart';
+import 'Score  Card/Score_Card.dart';
 import 'University/Bottom_Navigation.dart';
 import 'University/Dashboard.dart';
 import 'University/Help & support.dart';
@@ -79,7 +81,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.red),
         useMaterial3: true,
       ),
-      home: ProfilePage(),
+      home: ReplyPopupExample(),
     );
   }
 }

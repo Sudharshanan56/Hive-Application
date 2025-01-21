@@ -287,32 +287,6 @@ class _OTPVerificationScreenState extends State<OTPVerificationScreen> {
                 ],
               ),
               SizedBox(height: screenHeight * 0.03),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: List.generate(
-                  4,
-                      (index) => Container(
-                    width: screenWidth * 0.15,
-                    height: screenHeight * 0.08,
-                    alignment: Alignment.center,
-                    decoration: BoxDecoration(
-                      border: Border.all(color: Colors.black, width: 1),
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                    child: TextField(
-                      textAlign: TextAlign.center,
-                      keyboardType: TextInputType.number,
-                      maxLength: 1,
-                      style: TextStyle(fontSize: screenWidth * 0.045),
-                      decoration: const InputDecoration(
-                        border: InputBorder.none,
-                        counterText: '',
-                        hintText: "0",
-                      ),
-                    ),
-                  ),
-                ),
-              ),
               SizedBox(height: screenHeight * 0.02),
               TextButton(
                 onPressed: () {

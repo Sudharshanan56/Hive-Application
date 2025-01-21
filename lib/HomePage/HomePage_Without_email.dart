@@ -398,6 +398,7 @@
 // }
 
 import 'package:flutter/material.dart';
+import 'package:page_transition/page_transition.dart';
 import '../Countdown/CountDown.dart';
 import '../University/Screen_1.dart';
 
@@ -504,17 +505,25 @@ class _PostsListState extends State<PostsList> {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            const Image(image: AssetImage("assets/post1.png")),
+             Image(image: AssetImage("assets/post1.png")),
             SizedBox(height: screenHeight * 0.02),
             Center(
               child: SizedBox(
                 height: screenHeight * 0.07,
                 width: screenWidth * 0.75,
                 child: ElevatedButton(
-                  onPressed: () => Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => SliverAppBarExample()),
-                  ),
+                  onPressed: () =>
+                  //     Navigator.push(
+                  //   context,
+                  //   MaterialPageRoute(builder: (context) => SliverAppBarExample()),
+                  // ),
+                  Navigator.push(context, PageTransition(type: PageTransitionType.bottomToTop,
+
+    child: SliverAppBarExample(),
+    duration: Duration(milliseconds: 300)),
+
+
+    ),
                   style: ElevatedButton.styleFrom(
                     backgroundColor: const Color(0xFF5A9ECF),
                     shape: RoundedRectangleBorder(

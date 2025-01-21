@@ -700,7 +700,7 @@
 import 'package:flutter/material.dart';
 import 'package:hive_application/Bottom%20Navigation%20Bar/Navigation%201.dart';
 import '../Countdown/CountDown.dart';
-import '../PlayGround/HomePage_Without_email.dart';
+import 'HomePage_Without_email.dart';
 import '../University/Screen_1.dart';
 
 class BottomSheetApp extends StatelessWidget {
@@ -728,27 +728,27 @@ class BottomSheetApp extends StatelessWidget {
           ),
         ),
         body: PostsList(posts: posts),
-        floatingActionButton: FloatingActionButton(
-          shape: const CircleBorder(),
-          backgroundColor: const Color(0xFF5A9ECF),
-          onPressed: () {
-            Navigator.push(context, MaterialPageRoute(builder: (context) => CountdownPage()));
-          },
-          child: Container(
-            height: screenWidth * 0.13,
-            width: screenWidth * 0.13,
-            margin: EdgeInsets.symmetric(vertical: screenWidth * 0.02),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(90),
-              color: const Color(0xFF5A9ECF),
-            ),
-            child: Icon(
-              Icons.school_outlined,
-              color: Colors.white,
-              size: screenWidth * 0.08,
-            ),
-          ),
-        ),
+        // floatingActionButton: FloatingActionButton(
+        //   shape: const CircleBorder(),
+        //   backgroundColor: const Color(0xFF5A9ECF),
+        //   onPressed: () {
+        //     Navigator.push(context, MaterialPageRoute(builder: (context) => CountdownPage()));
+        //   },
+        //   child: Container(
+        //     height: screenWidth * 0.13,
+        //     width: screenWidth * 0.13,
+        //     margin: EdgeInsets.symmetric(vertical: screenWidth * 0.02),
+        //     decoration: BoxDecoration(
+        //       borderRadius: BorderRadius.circular(90),
+        //       color: const Color(0xFF5A9ECF),
+        //     ),
+        //     child: Icon(
+        //       Icons.school_outlined,
+        //       color: Colors.white,
+        //       size: screenWidth * 0.08,
+        //     ),
+        //   ),
+        // ),
       ),
     );
   }
@@ -933,7 +933,10 @@ class _PostsListState extends State<PostsList> {
       builder: (BuildContext context) {
         return Container(
           height: screenHeight * 0.3,
-          color: Colors.white,
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.only(topLeft: Radius.circular(30,),topRight: Radius.circular(30,))
+          ),
           padding: EdgeInsets.all(screenWidth * 0.04),
           child: Column(
             mainAxisSize: MainAxisSize.min,
