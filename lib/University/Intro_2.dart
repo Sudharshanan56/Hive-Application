@@ -1,12 +1,14 @@
 
 import 'package:flutter/material.dart';
 
-import '../Credentials/Credentials_1.dart';
+// import '../Credentials/Credentials_1.dart';
 import 'Intro_3.dart';
 
 
 
 class Intro2 extends StatefulWidget {
+  const Intro2({super.key});
+
   @override
   _Intro2State createState() => _Intro2State();
 }
@@ -46,7 +48,7 @@ class _Intro2State extends State<Intro2> {
             children: [
               SizedBox(height: screenHeight * 0.05),
               Center(
-                child: Container(
+                child: SizedBox(
                   height: screenHeight * 0.4,
                   width: screenWidth * 0.9,
                   child: Image.asset(
@@ -66,7 +68,7 @@ class _Intro2State extends State<Intro2> {
                 textAlign: TextAlign.center,
               ),
               SizedBox(height: screenHeight * 0.04),
-              Row(
+              const Row(
                 children: [
                   Text("OTP sent to ",style: TextStyle(fontWeight: FontWeight.bold),),
                   Text("sample@gmail.com",style: TextStyle(color: Colors.blue),),
@@ -89,11 +91,11 @@ class _Intro2State extends State<Intro2> {
                       border: Border.all(color: Colors.black, width: 1),
                       borderRadius: BorderRadius.circular(8),
                     ),
-                    child: TextField(
+                    child: const TextField(
                       textAlign: TextAlign.center,
                       keyboardType: TextInputType.number,
                       maxLength: 1,
-                      decoration: const InputDecoration(
+                      decoration: InputDecoration(
                         border: InputBorder.none,
                         counterText: '',
                         hintText: "0",
@@ -107,7 +109,7 @@ class _Intro2State extends State<Intro2> {
                 onPressed: () {
                   // Resend OTP action
                 },
-                child: Center(
+                child: const Center(
                   child:  Row(
                     children: [
                       Text(
@@ -130,7 +132,7 @@ class _Intro2State extends State<Intro2> {
                     // Handle Get OTP or Verify action
                   },
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Color(0xFF333333),
+                    backgroundColor: const Color(0xFF333333),
                     padding: EdgeInsets.symmetric(
                       horizontal: screenWidth * 0.3,
                       vertical: screenHeight * 0.02,

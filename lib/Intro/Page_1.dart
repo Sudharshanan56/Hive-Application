@@ -195,7 +195,7 @@ class Page1 extends StatelessWidget {
                 width: screenWidth * 0.9,
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Color(0xFF3C97D3), // Button color
+                    backgroundColor: const Color(0xFF3C97D3), // Button color
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(screenWidth * 0.02),
                     ),
@@ -203,7 +203,7 @@ class Page1 extends StatelessWidget {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => Page2()),
+                      MaterialPageRoute(builder: (context) => const Page2()),
                     );
                   },
                   child: Center(
@@ -233,7 +233,7 @@ class Page1 extends StatelessWidget {
                     color: Colors.white,
                     fontSize: screenWidth * 0.035, // Responsive font size
                   ),
-                  children: [
+                  children: const [
                     TextSpan(
                       text: "our terms.",
                       style: TextStyle(

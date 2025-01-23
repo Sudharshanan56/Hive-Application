@@ -3,6 +3,8 @@ import 'package:hive_application/University/Intro_4.dart';
 
 
 class Intro3 extends StatelessWidget {
+  const Intro3({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -10,7 +12,7 @@ class Intro3 extends StatelessWidget {
         backgroundColor: Colors.transparent,
         elevation: 0,
         leading: IconButton(
-          icon: Icon(Icons.arrow_back, color: Colors.black),
+          icon: const Icon(Icons.arrow_back, color: Colors.black),
           onPressed: () {
             Navigator.pop(context);
           },
@@ -23,20 +25,20 @@ class Intro3 extends StatelessWidget {
           children: [
             //SizedBox(height: 20),
             Center(
-              child: Container(
+              child: SizedBox(
                   height: 300,
                   width: 350,
                   child: Image.asset("assets/u1.png"))
             ),
-            SizedBox(height: 20),
-            Text(
+            const SizedBox(height: 20),
+            const Text(
               'Step in and share\n your story with us!',
               style: TextStyle(
                 fontSize: 25,
                 fontWeight: FontWeight.bold,
               ),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             TextField(
               decoration: InputDecoration(
                 labelText: 'Enter University Name',
@@ -45,7 +47,7 @@ class Intro3 extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(height: 15),
+            const SizedBox(height: 15),
             TextField(
               decoration: InputDecoration(
                 labelText: 'Enter tagline',
@@ -54,7 +56,7 @@ class Intro3 extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(height: 15),
+            const SizedBox(height: 15),
             TextField(
               maxLines: 5,
               decoration: InputDecoration(
@@ -64,11 +66,11 @@ class Intro3 extends StatelessWidget {
                 ),
               ),
             ),
-            Spacer(),
+            const Spacer(),
             ElevatedButton(
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.black,
-                minimumSize: Size(double.infinity, 50),
+                minimumSize: const Size(double.infinity, 50),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10),
                 ),
@@ -77,7 +79,7 @@ class Intro3 extends StatelessWidget {
                 Navigator.push(context, MaterialPageRoute(builder: (context)=>Intro4()));
                 // Add your logic here
               },
-              child: Text(
+              child: const Text(
                 'Next',
                 style: TextStyle(
                   color: Colors.white,
@@ -85,8 +87,8 @@ class Intro3 extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(height: 10),
-            Center(
+            const SizedBox(height: 10),
+            const Center(
               child: Row(
                 children: [
                   Text(
@@ -100,7 +102,7 @@ class Intro3 extends StatelessWidget {
                 ],
               ),
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
           ],
         ),
       ),

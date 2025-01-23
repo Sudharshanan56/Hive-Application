@@ -7,6 +7,8 @@ import 'Profile Edit.dart';
 
 
 class ProfilePage extends StatelessWidget {
+  const ProfilePage({super.key});
+
   @override
   Widget build(BuildContext context) {
     double screenwidth=MediaQuery.of(context).size.width;
@@ -24,15 +26,15 @@ class ProfilePage extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(height: 10,),
+              const SizedBox(height: 10,),
               // Profile Header
-              Text("Profile",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
+              const Text("Profile",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
               SizedBox(height: screenheight * 0.05,),
               Row(
                 children: [
                   CircleAvatar(
                     radius: screenwidth * 0.10,
-                    backgroundImage: AssetImage('assets/profile.jpg'), // Replace with your image
+                    backgroundImage: const AssetImage('assets/profile.jpg'), // Replace with your image
                   ),
                   SizedBox(width: screenwidth * 0.08),
                   Expanded(
@@ -56,21 +58,21 @@ class ProfilePage extends StatelessWidget {
                       ],
                     ),
                   ),
-                  Container(
+                  SizedBox(
                     height: screenheight * 0.045,
                     width:  screenwidth * 0.20,
                     child: ElevatedButton(
                       onPressed: () {
                         Navigator.push(context, MaterialPageRoute(builder: (context)=>ProfilePage_edit()));
                       },
-                      child: Text('Edit',style: TextStyle(color: Colors.white,fontSize: screenwidth * 0.045 ),),
                       style: ElevatedButton.styleFrom(
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10),
 
                         ),
-                        backgroundColor: Color(0xff5A9ECF),
+                        backgroundColor: const Color(0xff5A9ECF),
                       ),
+                      child: Text('Edit',style: TextStyle(color: Colors.white,fontSize: screenwidth * 0.045 ),),
                     ),
                   ),
                 ],
@@ -192,14 +194,14 @@ class ProfilePage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 // First Container
-                Container(
+                SizedBox(
                   height: screenheight * 0.15,
                   width: screenwidth * 0.45,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       // Text Section
-                      Container(
+                      SizedBox(
                         height: screenheight * 0.15,
                         width: screenwidth * 0.2,
                         child: Column(
@@ -260,7 +262,7 @@ class ProfilePage extends StatelessWidget {
                   ),
                 ),
                 // Second Container
-                Container(
+                SizedBox(
                   height: screenheight * 0.15,
                   width: screenwidth * 0.45,
                   child: Row(
@@ -299,7 +301,7 @@ class ProfilePage extends StatelessWidget {
                         ),
                       ),
                       // Text Section
-                      Container(
+                      SizedBox(
                         height: screenheight * 0.15,
                         width: screenwidth * 0.2,
                         child: Column(
@@ -330,7 +332,7 @@ class ProfilePage extends StatelessWidget {
               ],
             ),
 
-              SizedBox(height: 24),
+              const SizedBox(height: 24),
 
               // Eligibility Section
               // Container(
@@ -487,7 +489,7 @@ class ProfilePage extends StatelessWidget {
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => SettingsScreen()),
+                    MaterialPageRoute(builder: (context) => const SettingsScreen()),
                   );
                 },
               ),

@@ -8,7 +8,7 @@ import 'Screen_1.dart';
 
 class PopularTopicsScreen extends StatelessWidget {
 
-  const PopularTopicsScreen({Key? key}) : super(key: key);
+  const PopularTopicsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +21,7 @@ class PopularTopicsScreen extends StatelessWidget {
 
     ];
     return Scaffold(
-      backgroundColor: Color(0xFF3C97D3),
+      backgroundColor: const Color(0xFF3C97D3),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
@@ -30,7 +30,7 @@ class PopularTopicsScreen extends StatelessWidget {
             children: [
 
               // Title
-              Text(
+              const Text(
                 'Asia International University',
                 style: TextStyle(
                   fontSize: 24,
@@ -39,7 +39,7 @@ class PopularTopicsScreen extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 4),
-              Text(
+              const Text(
                 'Popular Topics',
                 style: TextStyle(
                   fontSize: 18,
@@ -51,13 +51,13 @@ class PopularTopicsScreen extends StatelessWidget {
               // Card Section
               Container(
                 decoration: BoxDecoration(
-                  color: Color(0xFF3C97D3),
+                  color: const Color(0xFF3C97D3),
                   borderRadius: BorderRadius.circular(16),
                   boxShadow: [
                     BoxShadow(
                       color: Colors.black.withOpacity(0.1),
                       blurRadius: 8,
-                      offset: Offset(0, 4),
+                      offset: const Offset(0, 4),
                     ),
                   ],
                 ),
@@ -77,7 +77,7 @@ class PopularTopicsScreen extends StatelessWidget {
                             decoration: BoxDecoration(
                                 //border: Border.all(),
                               borderRadius: BorderRadius.circular(20),
-                              color: Color(0xFFFFF14),
+                              color: const Color(0x0fffff14),
                             ),
                             child: CarouselSlider.builder(
                                 options: CarouselOptions(
@@ -89,7 +89,7 @@ class PopularTopicsScreen extends StatelessWidget {
                                   autoPlayCurve: Curves.fastOutSlowIn,
                                   enableInfiniteScroll: true,
                                   scrollDirection: Axis.horizontal,
-                                  autoPlayAnimationDuration: Duration(milliseconds: 800),
+                                  autoPlayAnimationDuration: const Duration(milliseconds: 800),
                                   viewportFraction: 1,
                           
                           
@@ -186,11 +186,11 @@ class PopularTopicsScreen extends StatelessWidget {
                         height: 100,
                         width: 380,
                         decoration: BoxDecoration(
-                          color: Color(0xFFFFF14), // Move color here
+                          color: const Color(0x0fffff14), // Move color here
                           //border: Border.all(),
                           borderRadius: BorderRadius.circular(20),
                         ),
-                        child: Column(
+                        child: const Column(
                           mainAxisAlignment: MainAxisAlignment.center, // Center vertically
                           crossAxisAlignment: CrossAxisAlignment.center, // Center horizontally
                           children: [
@@ -201,7 +201,7 @@ class PopularTopicsScreen extends StatelessWidget {
                                 color: Colors.white,
                               ),
                             ),
-                            const SizedBox(height: 4),
+                            SizedBox(height: 4),
                             Text(
                               '246',
                               style: TextStyle(
@@ -210,7 +210,7 @@ class PopularTopicsScreen extends StatelessWidget {
                                 color: Colors.white,
                               ),
                             ),
-                            const SizedBox(height: 4),
+                            SizedBox(height: 4),
                             Text(
                               'Total Views Across All Articles',
                               style: TextStyle(
@@ -218,11 +218,11 @@ class PopularTopicsScreen extends StatelessWidget {
                                 color: Colors.white,
                               ),
                             ),
-                            const SizedBox(height: 16),
+                            SizedBox(height: 16),
                           ],
                         ),
                       ),
-                        SizedBox(height: 20,),
+                        const SizedBox(height: 20,),
 
                       // Articles and Last Update Row
                           Row(
@@ -233,17 +233,17 @@ class PopularTopicsScreen extends StatelessWidget {
                                 height:120,
                                 width: 170,
                                decoration: BoxDecoration(
-                                 color: Color(0xFFDBB0BD),
+                                 color: const Color(0xFFDBB0BD),
                                  borderRadius: BorderRadius.circular(10)
                                ),
-                                child: Column(
+                                child: const Column(
 
                                   children: [
 
                                     Row(
                                       children: [
                                         Padding(
-                                          padding: const EdgeInsets.only(top: 15,bottom: 10),
+                                          padding: EdgeInsets.only(top: 15,bottom: 10),
                                           child: Text("   Articles",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 18),),
 
                                         ),
@@ -270,15 +270,15 @@ class PopularTopicsScreen extends StatelessWidget {
                                 width: 170,
                               //
                                 decoration: BoxDecoration(
-                                    color: Color(0xFFA9C6E6),
+                                    color: const Color(0xFFA9C6E6),
                                   borderRadius: BorderRadius.circular(10)
                                 ),
-                                child: Column(
+                                child: const Column(
                                   children: [
                                     Row(
                                       children: [
                                         Padding(
-                                          padding: const EdgeInsets.only(top: 15,bottom: 10),
+                                          padding: EdgeInsets.only(top: 15,bottom: 10),
                                           child: Text("   Last update",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 18),),
 
                                         ),
@@ -322,12 +322,12 @@ class StatCard extends StatelessWidget {
   final Color color;
 
   const StatCard({
-    Key? key,
+    super.key,
     required this.label,
     required this.value,
     required this.description,
     required this.color,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -343,7 +343,7 @@ class StatCard extends StatelessWidget {
         children: [
           Text(
             label,
-            style: TextStyle(
+            style: const TextStyle(
               fontSize: 12,
               fontWeight: FontWeight.bold,
               color: Colors.black,
@@ -352,7 +352,7 @@ class StatCard extends StatelessWidget {
           const SizedBox(height: 4),
           Text(
             value,
-            style: TextStyle(
+            style: const TextStyle(
               fontSize: 20,
               fontWeight: FontWeight.bold,
               color: Colors.black,

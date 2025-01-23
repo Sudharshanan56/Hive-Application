@@ -87,11 +87,11 @@ class _Mockmaster1State extends State<Mockmaster1> {
             onTap: () => Navigator.pop(context),
             child: CircleAvatar(
               radius: screenWidth * 0.03,
+              backgroundColor: const Color(0xff1d1d1d66),
               child: const Icon(
                 Icons.keyboard_arrow_left,
                 color: Colors.white,
               ),
-              backgroundColor: const Color(0xff1D1D1D66),
             ),
           ),
         ),

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class ReplyPopupExample extends StatefulWidget {
+  const ReplyPopupExample({super.key});
+
   @override
   _ReplyPopupExampleState createState() => _ReplyPopupExampleState();
 }
@@ -14,7 +16,7 @@ class _ReplyPopupExampleState extends State<ReplyPopupExample> {
     showModalBottomSheet(
       context: context,
       isScrollControlled: true,
-      shape: RoundedRectangleBorder(
+      shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
       ),
       builder: (context) {
@@ -33,10 +35,10 @@ class _ReplyPopupExampleState extends State<ReplyPopupExample> {
                 children: [
                   Text(
                     userName,
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                    style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
                   ),
                   IconButton(
-                    icon: Icon(Icons.close),
+                    icon: const Icon(Icons.close),
                     onPressed: () => Navigator.of(context).pop(),
                   ),
                 ],
@@ -51,14 +53,14 @@ class _ReplyPopupExampleState extends State<ReplyPopupExample> {
                 ),
                 maxLines: null,
               ),
-              SizedBox(height: 16),
+              const SizedBox(height: 16),
               ElevatedButton(
                 onPressed: () {
                   // Handle reply action here
                   print("Reply: ${_replyController.text}");
                   Navigator.of(context).pop(); // Close the popup
                 },
-                child: Text("Post"),
+                child: const Text("Post"),
               ),
             ],
           ),
@@ -77,10 +79,10 @@ class _ReplyPopupExampleState extends State<ReplyPopupExample> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Reply Popup Example'),
+        title: const Text('Reply Popup Example'),
       ),
       body: ListView(
-        padding: EdgeInsets.all(16),
+        padding: const EdgeInsets.all(16),
         children: [
           _buildCommentCard(
             userName: "Sanjay",
@@ -101,7 +103,7 @@ class _ReplyPopupExampleState extends State<ReplyPopupExample> {
   Widget _buildCommentCard({required String userName, required String comment}) {
     return Card(
       elevation: 4,
-      margin: EdgeInsets.symmetric(vertical: 8),
+      margin: const EdgeInsets.symmetric(vertical: 8),
       child: Padding(
         padding: const EdgeInsets.all(12.0),
         child: Column(
@@ -109,17 +111,17 @@ class _ReplyPopupExampleState extends State<ReplyPopupExample> {
           children: [
             Text(
               userName,
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+              style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
             ),
-            SizedBox(height: 8),
+            const SizedBox(height: 8),
             Text(comment),
-            SizedBox(height: 12),
+            const SizedBox(height: 12),
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 ElevatedButton(
                   onPressed: () => _showReplyPopup(context, userName),
-                  child: Text("Reply"),
+                  child: const Text("Reply"),
                 ),
               ],
             ),

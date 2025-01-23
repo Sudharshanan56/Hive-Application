@@ -33,16 +33,16 @@ class _ViewallUnivprofileState extends State<ViewallUnivprofile> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             // Profile Header
-            Container(
+            SizedBox(
               height: 200,
               child: Stack(
                 children: [
-                  Container(
+                  SizedBox(
                     width: double.infinity,
                     height: 150,
-                    child: Image(
+                    child: const Image(
                       image: AssetImage("assets/bg.png"),
                       fit: BoxFit.cover,
                     ),
@@ -50,13 +50,13 @@ class _ViewallUnivprofileState extends State<ViewallUnivprofile> {
                   Positioned(
                     top: 90, // Adjust this value to move the CircleAvatar above the bg.png
                     left: MediaQuery.of(context).size.width / 2 - 50,
-                    child: CircleAvatar(
+                    child: const CircleAvatar(
                       radius: 50,
                       backgroundImage:
                       AssetImage('assets/7.png'), // Replace with your image path
                     ),
                   ),
-                  Positioned(
+                  const Positioned(
                     top: 150,
                     left: 230,
                     child: CircleAvatar(
@@ -71,8 +71,8 @@ class _ViewallUnivprofileState extends State<ViewallUnivprofile> {
               ),
             ),
 
-            SizedBox(height: 10),
-            Text(
+            const SizedBox(height: 10),
+            const Text(
               'ASIA INTERNATIONAL UNIVERSITY',
               style: TextStyle(
                 fontSize: 20,
@@ -80,7 +80,7 @@ class _ViewallUnivprofileState extends State<ViewallUnivprofile> {
                 color: Colors.black,
               ),
             ),
-            SizedBox(height: 5),
+            const SizedBox(height: 5),
             Text(
               'Empowering Your Future, Shaping Skilled Professionals',
               style: TextStyle(
@@ -89,39 +89,39 @@ class _ViewallUnivprofileState extends State<ViewallUnivprofile> {
               ),
               textAlign: TextAlign.center,
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 GestureDetector(
                   onTap: (){
-                    Navigator.push(context, MaterialPageRoute(builder: (context)=>new_post()));
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=>const new_post()));
                   },
                   child: ElevatedButton(
                     onPressed: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context)=>new_post()));
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=>const new_post()));
                       // Handle New Post
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.white,
                     ),
-                    child: Text(
+                    child: const Text(
                       'New Post',
                       style: TextStyle(color: Colors.blue),
                     ),
                   ),
                 ),
-                SizedBox(width: 10),
+                const SizedBox(width: 10),
               ],
             ),
-            Divider(),
+            const Divider(),
             Row(
               children: [
-                SizedBox(width: 35,),
-                Container(
+                const SizedBox(width: 35,),
+                SizedBox(
                   height: 100,
                   width: 100,
-                  child: Column(
+                  child: const Column(
                     children: [
                       SizedBox(height: 20,),
                       Center(child: Text("6",style: TextStyle(color: Colors.blue,fontWeight: FontWeight.bold,fontSize: 25),)),
@@ -130,11 +130,11 @@ class _ViewallUnivprofileState extends State<ViewallUnivprofile> {
                     ],
                   ),
                 ),
-                SizedBox(width: 35,),
-                Container(
+                const SizedBox(width: 35,),
+                SizedBox(
                   height: 100,
                   width: 100,
-                  child: Column(
+                  child: const Column(
                     children: [
                       SizedBox(height: 20,),
                       Center(child: Text("4",style: TextStyle(color: Colors.blue,fontWeight: FontWeight.bold,fontSize: 25),)),
@@ -143,11 +143,11 @@ class _ViewallUnivprofileState extends State<ViewallUnivprofile> {
                     ],
                   ),
                 ),
-                SizedBox(width: 35,),
-                Container(
+                const SizedBox(width: 35,),
+                SizedBox(
                   height: 100,
                   width: 100,
-                  child: Column(
+                  child: const Column(
                     children: [
                       SizedBox(height: 20,),
                       Center(child: Text("1",style: TextStyle(color: Colors.blue,fontWeight: FontWeight.bold,fontSize: 25),)),
@@ -159,9 +159,9 @@ class _ViewallUnivprofileState extends State<ViewallUnivprofile> {
 
               ],
             ),
-            Divider(),
+            const Divider(),
 
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             SizedBox(
               height: 280, // Set height for the horizontal ListView
               child: ListView.builder(
@@ -170,7 +170,7 @@ class _ViewallUnivprofileState extends State<ViewallUnivprofile> {
                 itemBuilder: (context, index) {
                   return Container(
                     width: 200, // Set width for each item in the ListView
-                    margin: EdgeInsets.symmetric(horizontal: 8), // Space between items
+                    margin: const EdgeInsets.symmetric(horizontal: 8), // Space between items
                     child: Card(
                       elevation: 2,
                       shape: RoundedRectangleBorder(
@@ -181,7 +181,7 @@ class _ViewallUnivprofileState extends State<ViewallUnivprofile> {
                         children: [
                           ClipRRect(
                             borderRadius:
-                            BorderRadius.vertical(top: Radius.circular(15)),
+                            const BorderRadius.vertical(top: Radius.circular(15)),
                             child: Image.asset(
                               articles[index].imageUrl,
                               height: 140,
@@ -190,7 +190,7 @@ class _ViewallUnivprofileState extends State<ViewallUnivprofile> {
                             ),
                           ),
                           Padding(
-                            padding: EdgeInsets.all(12),
+                            padding: const EdgeInsets.all(12),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
@@ -198,26 +198,26 @@ class _ViewallUnivprofileState extends State<ViewallUnivprofile> {
                                   articles[index].title,
                                   maxLines: 2,
                                   overflow: TextOverflow.ellipsis,
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                     fontSize: 14,
                                     fontWeight: FontWeight.w500,
                                   ),
                                 ),
-                                SizedBox(height: 8),
+                                const SizedBox(height: 8),
                                 ElevatedButton(
                                   onPressed: () {
                                     Navigator.push(context, MaterialPageRoute(builder: (context)=>SliverAppBarExample()));
 
                                     // Add your read action here
                                   },
-                                  child: Text('Read',style: TextStyle(color: Colors.white),),
                                   style: ElevatedButton.styleFrom(
                                     backgroundColor: Colors.blue,
-                                    minimumSize: Size(double.infinity, 36),
+                                    minimumSize: const Size(double.infinity, 36),
                                     shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(8),
                                     ),
                                   ),
+                                  child: Text('Read',style: TextStyle(color: Colors.white),),
                                 ),
                               ],
                             ),

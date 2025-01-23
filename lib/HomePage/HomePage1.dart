@@ -933,7 +933,7 @@ class _PostsListState extends State<PostsList> {
       builder: (BuildContext context) {
         return Container(
           height: screenHeight * 0.3,
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.only(topLeft: Radius.circular(30,),topRight: Radius.circular(30,))
           ),
@@ -960,7 +960,7 @@ class _PostsListState extends State<PostsList> {
                     _otp_verification(context);
                   }
                 },
-                child: Container(
+                child: SizedBox(
                   height: screenHeight * 0.07,
                   width: double.infinity,
                   child: ElevatedButton(

@@ -3,12 +3,14 @@ import 'package:flutter/material.dart';
 
 
 class Notifications extends StatelessWidget {
+  const Notifications({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text('Notifications'),
+          title: const Text('Notifications'),
         ),
         body: NotificationList(),
       ),
@@ -25,6 +27,8 @@ class NotificationList extends StatelessWidget {
     {'initial': 'K', 'name': 'K***', 'time': '9m'},
   ];
 
+   NotificationList({super.key});
+
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
@@ -35,7 +39,7 @@ class NotificationList extends StatelessWidget {
             child: Text(notifications[index]['initial']!),
           ),
           title: Text('${notifications[index]['name']} visited your profile.'),
-          subtitle: Text('Pay to reveal profile visitors!'),
+          subtitle: const Text('Pay to reveal profile visitors!'),
           trailing: Text(notifications[index]['time']!),
         );
       },

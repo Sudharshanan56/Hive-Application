@@ -160,7 +160,7 @@ import '../OTP/otp_1.dart';
 import 'Page_5.dart';
 
 class Page4 extends StatefulWidget {
-  const Page4({Key? key}) : super(key: key);
+  const Page4({super.key});
 
   @override
   State<Page4> createState() => _Page4State();
@@ -222,7 +222,7 @@ class _Page4State extends State<Page4> {
                 // Illustration Image
                 Padding(
                   padding: EdgeInsets.only(top: screenHeight * 0.1),
-                  child: Container(
+                  child: SizedBox(
                     height: screenHeight * 0.4,
                     width: screenWidth * 0.8,
                     child: Image.asset(
@@ -241,19 +241,19 @@ class _Page4State extends State<Page4> {
                       Container(
                         height: screenHeight * 0.005,
                         width: screenWidth * 0.1,
-                        color: const Color(0xff9BA8B5FF),
+                        color: const Color(0xff9ba8b5ff),
                       ),
                       SizedBox(width: screenWidth * 0.02),
                       Container(
                         height: screenHeight * 0.005,
                         width: screenWidth * 0.1,
-                        color: const Color(0xff9BA8B5FF),
+                        color: const Color(0xff9ba8b5ff),
                       ),
                       SizedBox(width: screenWidth * 0.02),
                       Container(
                         height: screenHeight * 0.005,
                         width: screenWidth * 0.1,
-                        color: Color(0xFF3C97D3),
+                        color: const Color(0xFF3C97D3),
                       ),
                     ],
                   ),
@@ -283,7 +283,7 @@ class _Page4State extends State<Page4> {
                     style: ElevatedButton.styleFrom(
                       padding: EdgeInsets.symmetric(
                           horizontal: screenWidth * 0.37, vertical: screenHeight * 0.02),
-                      backgroundColor: Color(0xFF3C97D3), // Button color
+                      backgroundColor: const Color(0xFF3C97D3), // Button color
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(8),
                       ),
@@ -304,7 +304,7 @@ class _Page4State extends State<Page4> {
                       Navigator.push(context, PageTransition(type: PageTransitionType.bottomToTop,
 
                           child: LoginSelectionScreen(),
-                          duration: Duration(milliseconds: 300)),
+                          duration: const Duration(milliseconds: 300)),
 
 
                       );
@@ -329,10 +329,10 @@ class _Page4State extends State<Page4> {
                           color: Colors.black54,
                           fontSize: screenWidth * 0.035,
                           fontWeight: FontWeight.bold),
-                      children: [
+                      children: const [
                         TextSpan(
                           text: "our terms.",
-                          style: const TextStyle(
+                          style: TextStyle(
                             color: Color(0xFF3C97D3),
                           ),
                           // Add navigation to terms here

@@ -271,6 +271,8 @@ class MockMasterScreen extends StatelessWidget {
     "Focus on Key Topics: Prioritize\nhigh-weightage subjects and\nfrequently tested concepts."
   ];
 
+   MockMasterScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
@@ -407,7 +409,7 @@ class MockMasterScreen extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  Spacer(),
+                  const Spacer(),
                   Text(
                     '12th Dec 2024',
                     style: TextStyle(
@@ -576,7 +578,7 @@ class MockMasterScreen extends StatelessWidget {
               Icon(
                 Icons.camera_alt,
                 size: screenWidth * 0.12,
-                color: Color(0xFFF3434E),
+                color: const Color(0xFFF3434E),
               ),
               SizedBox(height: screenHeight * 0.02),
               Text(
@@ -599,7 +601,7 @@ class MockMasterScreen extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  Container(
+                  SizedBox(
                     height: screenHeight * 0.06,
                     width: screenWidth * 0.35,
                     child: ElevatedButton(
@@ -613,7 +615,7 @@ class MockMasterScreen extends StatelessWidget {
                       onPressed: () {
                         _MicrophoneAccess(context);
                       },
-                      child: Text(
+                      child: const Text(
                         'Allow',
                         style: TextStyle(fontWeight: FontWeight.bold),
                       ),
@@ -623,7 +625,7 @@ class MockMasterScreen extends StatelessWidget {
                     height: screenHeight * 0.06,
                     width: screenWidth * 0.35,
                     decoration: BoxDecoration(
-                      border: Border.all(color: Color(0xFFF3434E)),
+                      border: Border.all(color: const Color(0xFFF3434E)),
                       borderRadius: BorderRadius.circular(screenWidth * 0.08),
                     ),
                     child: ElevatedButton(
@@ -637,7 +639,7 @@ class MockMasterScreen extends StatelessWidget {
                       onPressed: () {
                         Navigator.pop(context);
                       },
-                      child: Text(
+                      child: const Text(
                         'Deny',
                         style: TextStyle(fontWeight: FontWeight.bold),
                       ),
@@ -822,7 +824,7 @@ class MockMasterScreen extends StatelessWidget {
                       onPressed: () {
                         _ScreenAccess(context);
                       },
-                      child: Text(
+                      child: const Text(
                         'Allow',
                         style: TextStyle(fontWeight: FontWeight.bold),
                       ),
@@ -838,12 +840,12 @@ class MockMasterScreen extends StatelessWidget {
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(screenHeight * 0.03),
                         ),
-                        side: BorderSide(color: const Color(0xFFF3434E)),
+                        side: const BorderSide(color: Color(0xFFF3434E)),
                       ),
                       onPressed: () {
                         Navigator.pop(context);
                       },
-                      child: Text(
+                      child: const Text(
                         'Deny',
                         style: TextStyle(fontWeight: FontWeight.bold),
                       ),
@@ -1199,10 +1201,10 @@ class MockMasterScreen extends StatelessWidget {
                   ),
                 ),
                 SizedBox(height: screenHeight * 0.02), // Responsive spacing
-                LinearProgressIndicator(
+                const LinearProgressIndicator(
                   value: 0.0, // Progress value
-                  backgroundColor: const Color(0xFFB1B1FF),
-                  color: const Color(0xFFF3434E),
+                  backgroundColor: Color(0xFFB1B1FF),
+                  color: Color(0xFFF3434E),
                 ),
                 SizedBox(height: screenHeight * 0.01), // Responsive spacing
                 Align(

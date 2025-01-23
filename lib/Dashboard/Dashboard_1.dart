@@ -226,6 +226,8 @@ import 'MockMaster/MockMaster_1.dart';
 import 'Online Exam/Online Exam 1.dart';
 
 class DashboardPage extends StatelessWidget {
+  const DashboardPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
@@ -266,7 +268,7 @@ class DashboardPage extends StatelessWidget {
                     ],
                   ),
                   CircleAvatar(
-                    backgroundImage: AssetImage('assets/person.png'),
+                    backgroundImage: const AssetImage('assets/person.png'),
                     radius: screenWidth * 0.08,
                   ),
                 ],
@@ -288,7 +290,7 @@ class DashboardPage extends StatelessWidget {
                   },
                   decoration: InputDecoration(
                     border: InputBorder.none,
-                    prefixIcon: Icon(
+                    prefixIcon: const Icon(
                       Icons.search,
                       color: Colors.grey,
                     ),
@@ -304,9 +306,9 @@ class DashboardPage extends StatelessWidget {
                 GestureDetector(
                   onTap: () => Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => ExamCracker1()),
+                    MaterialPageRoute(builder: (context) => const ExamCracker1()),
                   ),
-                  child: Container(
+                  child: SizedBox(
                     height: screenHeight * 0.25,
                     width: screenWidth * 0.4,
                     child: Stack(
@@ -335,9 +337,9 @@ class DashboardPage extends StatelessWidget {
                 GestureDetector(
                   onTap: () => Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => Mockmaster1()),
+                    MaterialPageRoute(builder: (context) => const Mockmaster1()),
                   ),
-                  child: Container(
+                  child: SizedBox(
                     height: screenHeight * 0.25,
                     width: screenWidth * 0.4,
                     child: Stack(
@@ -365,9 +367,9 @@ class DashboardPage extends StatelessWidget {
             GestureDetector(
               onTap: () => Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => OnlineExam()),
+                MaterialPageRoute(builder: (context) => const OnlineExam()),
               ),
-              child: Container(
+              child: SizedBox(
                 height: screenHeight * 0.2,
                 width: screenWidth * 0.9,
                 child: Stack(
@@ -412,7 +414,7 @@ class DashboardPage extends StatelessWidget {
                           ),
                           Padding(
                             padding: EdgeInsets.all(screenWidth * 0.01),
-                            child: Icon(
+                            child: const Icon(
                               Icons.arrow_forward_outlined,
                               color: Colors.white,
                             ),

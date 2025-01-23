@@ -176,6 +176,8 @@ import 'package:flutter/material.dart';
 import '../Credentials/Credentials_1.dart';
 
   class OTPVerificationScreen extends StatefulWidget {
+  const OTPVerificationScreen({super.key});
+
   @override
   _OTPVerificationScreenState createState() => _OTPVerificationScreenState();
 }
@@ -215,7 +217,7 @@ class _OTPVerificationScreenState extends State<OTPVerificationScreen> {
             children: [
               SizedBox(height: screenHeight * 0.05),
               Center(
-                child: Container(
+                child: SizedBox(
                   height: screenHeight * 0.4,
                   width: screenWidth * 0.9,
                   child: Image.asset(
@@ -252,14 +254,14 @@ class _OTPVerificationScreenState extends State<OTPVerificationScreen> {
                   ),
                   SizedBox(width: screenWidth * 0.05),
                   Expanded(
-                    child: Container(
+                    child: SizedBox(
                       height: screenHeight * 0.07,
                       child: TextField(
                         controller: phoneController,
                         keyboardType: TextInputType.phone,
                         decoration: InputDecoration(
                           hintText: "Enter number",
-                          border: OutlineInputBorder(),
+                          border: const OutlineInputBorder(),
                           hintStyle: TextStyle(fontSize: screenWidth * 0.04),
                         ),
                       ),
@@ -304,7 +306,7 @@ class _OTPVerificationScreenState extends State<OTPVerificationScreen> {
               ),
               SizedBox(height: screenHeight * 0.05),
               Center(
-                child: Container(
+                child: SizedBox(
                   height: screenHeight * 0.07,
                   width: screenWidth * 0.9,
                   child: ElevatedButton(

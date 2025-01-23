@@ -2,13 +2,15 @@ import 'package:flutter/material.dart';
 
 
 class HelpSupportPage extends StatelessWidget {
+  const HelpSupportPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Help & Support"),
+        title: const Text("Help & Support"),
         leading: IconButton(
-          icon: Icon(Icons.arrow_back_ios),
+          icon: const Icon(Icons.arrow_back_ios),
           onPressed: () {
             Navigator.pop(context);
             // Add back button functionality here
@@ -25,19 +27,19 @@ class HelpSupportPage extends StatelessWidget {
               label: "Address",
               content: "NV Arcade, 5 Roads, Salem, TN - 636 004",
             ),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
             InfoItem(
               icon: Icons.phone,
               label: "Phone",
               content: "+91 94889 26736",
             ),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
             InfoItem(
               icon: Icons.language,
               label: "Website",
               content: "www.hiveeduco.in",
             ),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
             InfoItem(
               icon: Icons.email,
               label: "Email",
@@ -55,7 +57,7 @@ class InfoItem extends StatelessWidget {
   final String label;
   final String content;
 
-  InfoItem({required this.icon, required this.label, required this.content});
+  const InfoItem({super.key, required this.icon, required this.label, required this.content});
 
   @override
   Widget build(BuildContext context) {
@@ -63,7 +65,7 @@ class InfoItem extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Icon(icon, color: Colors.blue),
-        SizedBox(width: 16),
+        const SizedBox(width: 16),
         Expanded(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -75,10 +77,10 @@ class InfoItem extends StatelessWidget {
                   color: Colors.grey[700],
                 ),
               ),
-              SizedBox(height: 4),
+              const SizedBox(height: 4),
               Text(
                 content,
-                style: TextStyle(color: Colors.black),
+                style: const TextStyle(color: Colors.black),
               ),
             ],
           ),

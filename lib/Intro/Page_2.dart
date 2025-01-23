@@ -159,7 +159,7 @@ import 'package:hive_application/Intro/Page_3.dart';
 import 'Page_5.dart';
 
 class Page2 extends StatelessWidget {
-  const Page2({Key? key}) : super(key: key);
+  const Page2({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -201,7 +201,7 @@ class Page2 extends StatelessWidget {
                 // Illustration Image
                 Padding(
                   padding: EdgeInsets.only(top: screenHeight * 0.1),
-                  child: Container(
+                  child: SizedBox(
                     height: screenHeight * 0.4,
                     width: screenWidth * 0.8,
                     child: Image.asset(
@@ -220,19 +220,19 @@ class Page2 extends StatelessWidget {
                       Container(
                         height: screenHeight * 0.005,
                         width: screenWidth * 0.1,
-                        color: Color(0xFF3C97D3),
+                        color: const Color(0xFF3C97D3),
                       ),
                       SizedBox(width: screenWidth * 0.02),
                       Container(
                         height: screenHeight * 0.005,
                         width: screenWidth * 0.1,
-                        color: const Color(0xff9BA8B5FF),
+                        color: const Color(0xff9ba8b5ff),
                       ),
                       SizedBox(width: screenWidth * 0.02),
                       Container(
                         height: screenHeight * 0.005,
                         width: screenWidth * 0.1,
-                        color: const Color(0xff9BA8B5FF),
+                        color: const Color(0xff9ba8b5ff),
                       ),
                     ],
                   ),
@@ -254,7 +254,7 @@ class Page2 extends StatelessWidget {
                   ),
                 ),
 
-                Spacer(),
+                const Spacer(),
 
                 // Next Button
                 Align(
@@ -266,7 +266,7 @@ class Page2 extends StatelessWidget {
                       width: screenWidth * 0.9,
                       child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: Color(0xFF3C97D3), // Button color
+                          backgroundColor: const Color(0xFF3C97D3), // Button color
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(screenWidth * 0.02),
                           ),
@@ -274,7 +274,7 @@ class Page2 extends StatelessWidget {
                         onPressed: () {
                           Navigator.push(
                             context,
-                            MaterialPageRoute(builder: (context) => Page3()),
+                            MaterialPageRoute(builder: (context) => const Page3()),
                           );
                         },
                         child: Text(
@@ -301,7 +301,7 @@ class Page2 extends StatelessWidget {
                         fontSize: screenWidth * 0.035, // Responsive font size
                         fontWeight: FontWeight.bold,
                       ),
-                      children: [
+                      children: const [
                         TextSpan(
                           text: "our terms.",
                           style: TextStyle(

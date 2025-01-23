@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class ScrollBehindBottomNavBar extends StatelessWidget {
+  const ScrollBehindBottomNavBar({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,7 +20,7 @@ class ScrollBehindBottomNavBar extends StatelessWidget {
                   child: Center(
                     child: Text(
                       'Item $index',
-                      style: TextStyle(fontSize: 20),
+                      style: const TextStyle(fontSize: 20),
                     ),
                   ),
                 ),
@@ -29,26 +31,26 @@ class ScrollBehindBottomNavBar extends StatelessWidget {
         ],
       ),
       bottomNavigationBar: BottomAppBar(
-        shape: CircularNotchedRectangle(),
+        shape: const CircularNotchedRectangle(),
         notchMargin: 8.0,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             IconButton(
-              icon: Icon(Icons.home_outlined),
+              icon: const Icon(Icons.home_outlined),
               onPressed: () {},
             ),
             IconButton(
-              icon: Icon(Icons.menu),
+              icon: const Icon(Icons.menu),
               onPressed: () {},
             ),
-            SizedBox(width: 50), // Space for FloatingActionButton
+            const SizedBox(width: 50), // Space for FloatingActionButton
             IconButton(
-              icon: Icon(Icons.grid_view),
+              icon: const Icon(Icons.grid_view),
               onPressed: () {},
             ),
             IconButton(
-              icon: Icon(Icons.person_outline),
+              icon: const Icon(Icons.person_outline),
               onPressed: () {},
             ),
           ],
@@ -57,7 +59,7 @@ class ScrollBehindBottomNavBar extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
         backgroundColor: Colors.blue,
-        child: Icon(Icons.home, color: Colors.white),
+        child: const Icon(Icons.home, color: Colors.white),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );

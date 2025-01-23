@@ -505,7 +505,7 @@ class _PostsListState extends State<PostsList> {
                 fontWeight: FontWeight.bold,
               ),
             ),
-             Image(image: AssetImage("assets/post1.png")),
+             const Image(image: AssetImage("assets/post1.png")),
             SizedBox(height: screenHeight * 0.02),
             Center(
               child: SizedBox(
@@ -520,7 +520,7 @@ class _PostsListState extends State<PostsList> {
                   Navigator.push(context, PageTransition(type: PageTransitionType.bottomToTop,
 
     child: SliverAppBarExample(),
-    duration: Duration(milliseconds: 300)),
+    duration: const Duration(milliseconds: 300)),
 
 
     ),

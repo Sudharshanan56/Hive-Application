@@ -4,6 +4,8 @@ import 'package:hive_application/University/Intro_2.dart';
 
 
 class Intro1 extends StatelessWidget {
+  const Intro1({super.key});
+
 
   @override
   Widget build(BuildContext context) {
@@ -17,9 +19,9 @@ class Intro1 extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                SizedBox(height: 40),
+                const SizedBox(height: 40),
                 Center(
-                  child: Container(
+                  child: SizedBox(
                     height: 400,
                     width: screenWidth * 0.9,
                     child: Image.asset(
@@ -28,8 +30,8 @@ class Intro1 extends StatelessWidget {
                     ),
                   ),
                 ),
-                SizedBox(height: 40),
-                Row(
+                const SizedBox(height: 40),
+                const Row(
                   children: [
                     Text(
                       "Securely access your\nlearning portal.",
@@ -41,7 +43,7 @@ class Intro1 extends StatelessWidget {
                     ),
                   ],
                 ),
-                SizedBox(height: 30),
+                const SizedBox(height: 30),
                 TextField(
                   decoration: InputDecoration(
                     labelText: "Enter University email",
@@ -52,7 +54,7 @@ class Intro1 extends StatelessWidget {
                 ),
                 // SizedBox(height: 20),
 
-                SizedBox(height: 50),
+                const SizedBox(height: 50),
                 ElevatedButton(
 
                   onPressed: () {
@@ -60,20 +62,20 @@ class Intro1 extends StatelessWidget {
                     // Add your form submission logic here
                   },
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Color(0xFF333333),
-                    minimumSize: Size(double.infinity, 50),
+                    backgroundColor: const Color(0xFF333333),
+                    minimumSize: const Size(double.infinity, 50),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10),
                     ),
                   ),
-                  child: Text(
+                  child: const Text(
                     "Get OTP",
                     style: TextStyle(fontSize: 18,color: Colors.white),
                   ),
                 ),
-                SizedBox(height: 20),
-                Padding(
-                  padding: const EdgeInsets.only(left: 50),
+                const SizedBox(height: 20),
+                const Padding(
+                  padding: EdgeInsets.only(left: 50),
                   child: Row(
                     children: [
                       Text(

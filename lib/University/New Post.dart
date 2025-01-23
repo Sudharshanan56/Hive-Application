@@ -7,7 +7,7 @@ import '../University/Intro_3.dart';
 
 class new_post extends StatefulWidget {
 
-  const new_post({Key? key}) : super(key: key);
+  const new_post({super.key});
 
   @override
   State<new_post> createState() => _new_postState();
@@ -19,15 +19,15 @@ class _new_postState extends State<new_post> {
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
     final screenHeight = MediaQuery.of(context).size.height;
-    final TextEditingController _controller = TextEditingController();
-    final List<String> _tags = [];
+    final TextEditingController controller = TextEditingController();
+    final List<String> tags = [];
 
-    void _addTag(String tag) {
-      if (tag.isNotEmpty && !_tags.contains(tag)) {
+    void addTag(String tag) {
+      if (tag.isNotEmpty && !tags.contains(tag)) {
         setState(() {
-          _tags.add(tag);
+          tags.add(tag);
         });
-        _controller.clear();
+        controller.clear();
       }
     }
     return Scaffold(
@@ -55,16 +55,16 @@ class _new_postState extends State<new_post> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             // University Info
-            Row(
+            const Row(
               children: [
                 CircleAvatar(
                   backgroundImage: AssetImage('assets/7.png'), // Replace with your image asset
                   radius: 24,
                 ),
-                const SizedBox(width: 12),
+                SizedBox(width: 12),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  children: const [
+                  children: [
                     Text(
                       'Asia International University',
                       style: TextStyle(
@@ -108,7 +108,7 @@ class _new_postState extends State<new_post> {
               height: 200,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20),
-                image:  DecorationImage(
+                image:  const DecorationImage(
                   image: AssetImage('assets/person.png'), // Replace with your image asset
                   fit: BoxFit.cover,
                 ),
@@ -134,25 +134,25 @@ class _new_postState extends State<new_post> {
                       spacing: 8.0,
                       runSpacing: 8.0,
                       children: [
-                        ..._tags.map((tag) => Chip(
+                        ...tags.map((tag) => Chip(
                           label: Text(tag),
                           deleteIcon: const Icon(Icons.close),
                           onDeleted: () {
                             setState(() {
-                              _tags.remove(tag);
+                              tags.remove(tag);
                             });
                           },
                         )),
                         SizedBox(
                           width: 400,
                           child: TextField(
-                            controller: _controller,
+                            controller: controller,
                             decoration: const InputDecoration(
                               hintText: 'Add tag',
                               border: InputBorder.none,
                             ),
                             onSubmitted: (value) {
-                              _addTag(value);
+                              addTag(value);
                             },
                           ),
                         ),
@@ -165,7 +165,7 @@ class _new_postState extends State<new_post> {
             const SizedBox(height: 24),
 
             // Article Description
-            TextField(
+            const TextField(
               maxLines: 5,
               decoration: InputDecoration(
                 hintText:
@@ -174,14 +174,14 @@ class _new_postState extends State<new_post> {
               ),
             ),
             const SizedBox(height: 24),
-            TextField(
+            const TextField(
               maxLines: 5,
               decoration: InputDecoration(
                 hintText:"Highlights",
                 border: OutlineInputBorder(),
               ),
             ),
-            SizedBox(height: 20,),
+            const SizedBox(height: 20,),
             Center(
               child: ElevatedButton(
                 onPressed: () {
@@ -191,7 +191,7 @@ class _new_postState extends State<new_post> {
                   // Handle Get OTP or Verify action
                 },
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Color(0xFF333333),
+                  backgroundColor: const Color(0xFF333333),
                   padding: EdgeInsets.symmetric(
                     horizontal: screenWidth * 0.3,
                     vertical: screenHeight * 0.02,

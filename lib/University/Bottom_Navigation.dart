@@ -15,6 +15,8 @@ import 'Viewall_univprofile.dart';
 
 
 class University_navi extends StatefulWidget {
+  const University_navi({super.key});
+
   @override
   _University_naviState createState() => _University_naviState();
 }
@@ -22,9 +24,9 @@ class University_navi extends StatefulWidget {
 class _University_naviState extends State<University_navi> {
   int _selectedIndex = 0;
 
-  static List<Widget> _widgetOptions = <Widget>[
+  static final List<Widget> _widgetOptions = <Widget>[
     // Intro1(),
-    PopularTopicsScreen(),
+    const PopularTopicsScreen(),
     Notifications(),
     // Notification_1(),
     UnivProfilePage(),
@@ -53,7 +55,7 @@ class _University_naviState extends State<University_navi> {
             )
           ],
         ),
-        margin: EdgeInsets.only(left: 16,top: 16,bottom: 16), // Margin for spacing around the bar
+        margin: const EdgeInsets.only(left: 16,top: 16,bottom: 16), // Margin for spacing around the bar
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
           child: GNav(
@@ -62,12 +64,12 @@ class _University_naviState extends State<University_navi> {
             gap: 10,
             activeColor: Colors.white,
             iconSize: 30,
-            padding: EdgeInsets.symmetric(horizontal: 20, vertical: 12),
-            duration: Duration(milliseconds: 200),
-            tabBackgroundColor: Color(0xff3C97D3),
+            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+            duration: const Duration(milliseconds: 200),
+            tabBackgroundColor: const Color(0xff3C97D3),
             // Active tab background color
             color: Colors.black, // Inactive icon color
-            tabs: [
+            tabs: const [
               // GButton(
               //   icon: Icons.home_outlined,
               //   // text: 'Home',

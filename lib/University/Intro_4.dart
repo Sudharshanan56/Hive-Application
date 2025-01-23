@@ -5,6 +5,8 @@ import 'Manual location.dart';
 import 'Profile Setup.dart';
 
 class Intro4 extends StatelessWidget {
+  const Intro4({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -13,8 +15,8 @@ class Intro4 extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            SizedBox(height: 40),
-            Row(
+            const SizedBox(height: 40),
+            const Row(
               children: [
                 Text(
                   'Enhance with location',
@@ -37,10 +39,10 @@ class Intro4 extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(height: 20),
-            Icon(Icons.edit_location_alt_outlined,color: Color(0xFF3C97D3),size: 30,),
-            SizedBox(height: 10,),
-            Text(
+            const SizedBox(height: 20),
+            const Icon(Icons.edit_location_alt_outlined,color: Color(0xFF3C97D3),size: 30,),
+            const SizedBox(height: 10,),
+            const Text(
               'Location Access',
               style: TextStyle(
                 fontSize: 18,
@@ -48,8 +50,8 @@ class Intro4 extends StatelessWidget {
                 color: Colors.black,
               ),
             ),
-            SizedBox(height: 10),
-            Text(
+            const SizedBox(height: 10),
+            const Text(
               'Enable location for personalized\nrecommendations.',
               style: TextStyle(
                 fontSize: 14,
@@ -57,14 +59,14 @@ class Intro4 extends StatelessWidget {
               ),
               textAlign: TextAlign.center,
             ),
-            SizedBox(height: 30),
+            const SizedBox(height: 30),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: Column(
                 children: [
                   ElevatedButton(
                     onPressed: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context)=>SetProfilePicturePage()));
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=>const SetProfilePicturePage()));
                       // Add location permission logic here
                     },
                     style: ElevatedButton.styleFrom(
@@ -72,9 +74,9 @@ class Intro4 extends StatelessWidget {
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10),
                       ),
-                      padding: EdgeInsets.symmetric(vertical: 15),
+                      padding: const EdgeInsets.symmetric(vertical: 15),
                     ),
-                    child: Center(
+                    child: const Center(
                       child: Text(
                         'Allow',
                         style: TextStyle(
@@ -85,13 +87,13 @@ class Intro4 extends StatelessWidget {
                       ),
                     ),
                   ),
-                  SizedBox(height: 15),
+                  const SizedBox(height: 15),
                   TextButton(
                     onPressed: () {
                       Navigator.push(context, MaterialPageRoute(builder: (context)=>LocationAccessPage()));
                       // Add manual location entry logic here
                     },
-                    child: Text(
+                    child: const Text(
                       'Enter Manually',
                       style: TextStyle(
                         color: Colors.black,
@@ -102,7 +104,7 @@ class Intro4 extends StatelessWidget {
                 ],
               ),
             ),
-            SizedBox(height: 40),
+            const SizedBox(height: 40),
           ],
         ),
       ),

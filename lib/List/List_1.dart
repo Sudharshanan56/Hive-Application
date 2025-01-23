@@ -288,6 +288,8 @@
 import 'package:flutter/material.dart';
 
 class UniversityListPage extends StatefulWidget {
+  const UniversityListPage({super.key});
+
   @override
   State<UniversityListPage> createState() => _UniversityListPageState();
 }
@@ -296,7 +298,7 @@ class _UniversityListPageState extends State<UniversityListPage> {
   bool _isChecked = false;
 
   // Track bookmark state for each university
-  List<bool> _bookmarked = [false, false, false, false, false];
+  final List<bool> _bookmarked = [false, false, false, false, false];
 
   final List<Map<String, String>> universities = [
     {
@@ -418,7 +420,7 @@ class _UniversityListPageState extends State<UniversityListPage> {
 
                   // If 'Saved' checkbox is checked, show only bookmarked universities
                   if (_isChecked && !_bookmarked[index]) {
-                    return SizedBox.shrink(); // Skip this item
+                    return const SizedBox.shrink(); // Skip this item
                   }
 
                   return Column(

@@ -81,11 +81,11 @@ class _OnlineExamState extends State<OnlineExam> {
             onTap: () => Navigator.pop(context),
             child: const CircleAvatar(
               radius: 1,
+              backgroundColor: Color(0xff1d1d1d66),
               child: Icon(
                 Icons.keyboard_arrow_left,
                 color: Colors.white,
               ),
-              backgroundColor: Color(0xff1D1D1D66),
             ),
           ),
         ),

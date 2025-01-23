@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class DualPageTransitionScreen extends StatefulWidget {
+  const DualPageTransitionScreen({super.key});
+
   @override
   _DualPageTransitionScreenState createState() =>
       _DualPageTransitionScreenState();
@@ -96,9 +98,9 @@ class _DualPageTransitionScreenState extends State<DualPageTransitionScreen> {
                         ),
                         SizedBox(width: screenWidth * 0.05),
                         Expanded(
-                          child: Container(
+                          child: SizedBox(
                             height: screenHeight * 0.07,
-                            child: TextField(
+                            child: const TextField(
                               keyboardType: TextInputType.phone,
                               decoration: InputDecoration(
                                 hintText: "Enter number",

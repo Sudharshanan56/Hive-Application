@@ -13,18 +13,18 @@ class _ProfileSettingsState extends State<ProfileSettings> {
       appBar: AppBar(),
       body: Column(
         children: [
-          Row(
+          const Row(
             children: [
               SizedBox(width: 150,),
               Padding(
-                padding: const EdgeInsets.only(top: 30),
+                padding: EdgeInsets.only(top: 30),
                 child: CircleAvatar(
                   radius: 50,
                   backgroundImage: AssetImage('assets/profile.jpg'), // Replace with your image
                 ),
               ),            ],
           ),
-          SizedBox(height: 50),
+          const SizedBox(height: 50),
           Container(
             height: 50,
             width: 350,
@@ -34,7 +34,7 @@ class _ProfileSettingsState extends State<ProfileSettings> {
 
             ),
             child: TextFormField(
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 enabledBorder: OutlineInputBorder(
                   borderSide: BorderSide(color: Colors.transparent),
                 ),
@@ -45,7 +45,7 @@ class _ProfileSettingsState extends State<ProfileSettings> {
               ),
             ),
           ),
-          SizedBox(height: 20,),
+          const SizedBox(height: 20,),
           Container(
             height: 50,
             width: 350,
@@ -55,7 +55,7 @@ class _ProfileSettingsState extends State<ProfileSettings> {
 
             ),
             child: TextFormField(
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 enabledBorder: OutlineInputBorder(
                   borderSide: BorderSide(color: Colors.transparent),
                 ),

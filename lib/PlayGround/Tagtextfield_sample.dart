@@ -80,7 +80,7 @@ void main() {
 }
 
 class TagInputPage extends StatefulWidget {
-  const TagInputPage({Key? key}) : super(key: key);
+  const TagInputPage({super.key});
 
   @override
   _TagInputPageState createState() => _TagInputPageState();

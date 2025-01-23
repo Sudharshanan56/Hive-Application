@@ -104,6 +104,8 @@ import '../Notification/Notification_1.dart';
 import '../HomePage/HomePage_Without_email.dart';
 
 class navi_home extends StatefulWidget {
+  const navi_home({super.key});
+
   @override
   _navi_homeState createState() => _navi_homeState();
 }
@@ -111,11 +113,11 @@ class navi_home extends StatefulWidget {
 class _navi_homeState extends State<navi_home> {
   int _selectedIndex = 0;
 
-  static List<Widget> _widgetOptions = <Widget>[
+  static final List<Widget> _widgetOptions = <Widget>[
     HomepageWithoutEmail(),
     UniversityListPage(),
     DashboardPage(),
-    Notification_1(),
+    const Notification_1(),
     ProfilePage(),
   ];
 

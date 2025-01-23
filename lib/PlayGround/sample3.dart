@@ -3,10 +3,12 @@ import 'package:flutter/material.dart';
 
 
 class Delete extends StatelessWidget {
+  const Delete({super.key});
+
   void _showBottomSheet(BuildContext context) {
     showModalBottomSheet(
       context: context,
-      shape: RoundedRectangleBorder(
+      shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(
           top: Radius.circular(16),
         ),
@@ -17,14 +19,14 @@ class Delete extends StatelessWidget {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Text(
+              const Text(
                 'Delete Account',
                 style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              SizedBox(height: 8),
+              const SizedBox(height: 8),
               Text(
                 'Delete your account and data permanently.',
                 textAlign: TextAlign.center,
@@ -33,11 +35,11 @@ class Delete extends StatelessWidget {
                   color: Colors.grey[600],
                 ),
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.red,
-                  minimumSize: Size(double.infinity, 50),
+                  minimumSize: const Size(double.infinity, 50),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(8),
                   ),
@@ -46,7 +48,7 @@ class Delete extends StatelessWidget {
                   // Handle Delete Action
                   Navigator.pop(context);
                 },
-                child: Text(
+                child: const Text(
                   'Delete',
                   style: TextStyle(
                     color: Colors.white,
@@ -54,11 +56,11 @@ class Delete extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(height: 12),
+              const SizedBox(height: 12),
               OutlinedButton(
                 style: OutlinedButton.styleFrom(
-                  minimumSize: Size(double.infinity, 50),
-                  side: BorderSide(color: Colors.grey),
+                  minimumSize: const Size(double.infinity, 50),
+                  side: const BorderSide(color: Colors.grey),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(8),
                   ),
@@ -85,12 +87,12 @@ class Delete extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Bottom Sheet Modal Example'),
+        title: const Text('Bottom Sheet Modal Example'),
       ),
       body: Center(
         child: ElevatedButton(
           onPressed: () => _showBottomSheet(context),
-          child: Text('Show Bottom Sheet'),
+          child: const Text('Show Bottom Sheet'),
         ),
       ),
     );

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class NEETDetailsScreen extends StatelessWidget {
+  const NEETDetailsScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -13,7 +15,7 @@ class NEETDetailsScreen extends StatelessWidget {
             children: [
               //const SizedBox(height: 50),
               Center(
-                child: Container(
+                child: SizedBox(
                   height: 400,
                   width: 400,
                   child: Image.asset(

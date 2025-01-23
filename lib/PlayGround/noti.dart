@@ -14,7 +14,7 @@ class _notiState extends State<noti> {
           itemCount: 1,
           scrollDirection: Axis.horizontal,
           itemBuilder: (BuildContext context,int index) {
-            return ListTile(
+            return const ListTile(
               leading: Image(image: AssetImage("assets/7.png")),
               title: Text("data"),
               trailing: Text("12345"),

@@ -6,7 +6,7 @@ import 'Screen_2.dart';
 
 
 class SetProfilePicturePage extends StatelessWidget {
-  const SetProfilePicturePage({Key? key}) : super(key: key);
+  const SetProfilePicturePage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -37,9 +37,9 @@ class SetProfilePicturePage extends StatelessWidget {
                 color: Colors.grey[200],
                 borderRadius: BorderRadius.circular(16),
               ),
-              child: Column(
+              child: const Column(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: const [
+                children: [
                   Icon(
                     Icons.image_outlined,
                     size: 50,

@@ -12,11 +12,13 @@ class sample4 extends StatelessWidget {
     };
   });
 
+  sample4({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Post List'),
+        title: const Text('Post List'),
         backgroundColor: Colors.blueAccent,
       ),
       body: ListView.builder(
@@ -24,7 +26,7 @@ class sample4 extends StatelessWidget {
         itemBuilder: (context, index) {
           final post = posts[index];
           return Card(
-            margin: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+            margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
             elevation: 4,
             child: Padding(
@@ -33,25 +35,25 @@ class sample4 extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   ListTile(
-                    leading: CircleAvatar(
+                    leading: const CircleAvatar(
                       backgroundImage: AssetImage('assets/7.png'), // Replace with your image path
                       radius: 30,
                     ),
                     title: Text(post['university']!),
                     subtitle: Text(post['location']!),
                   ),
-                  SizedBox(height: 8),
+                  const SizedBox(height: 8),
                   Text(
                     '${post['university']} Shines at',
-                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+                    style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
                   ),
-                  SizedBox(height: 4),
+                  const SizedBox(height: 4),
                   Text(
                     post['event']!,
-                    style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+                    style: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
                   ),
-                  Image(image: AssetImage("assets/post1.png")),
-                  SizedBox(height: 16),
+                  const Image(image: AssetImage("assets/post1.png")),
+                  const SizedBox(height: 16),
                   Container(
                     height: 50,
                     width: 300,
@@ -62,14 +64,14 @@ class sample4 extends StatelessWidget {
                       onPressed: () {
                         // Handle button press
                       },
-                      child: Text('Explore Now',style: TextStyle(color: Colors.white),),
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Color(0xFF5A9ECF),
+                        backgroundColor: const Color(0xFF5A9ECF),
                         shape: RoundedRectangleBorder(
 
                           borderRadius: BorderRadius.circular(80),
                         ),
                       ),
+                      child: Text('Explore Now',style: TextStyle(color: Colors.white),),
                     ),
                   ),
                 ],

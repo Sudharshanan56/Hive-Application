@@ -82,7 +82,7 @@ class _ExamCracker1State extends State<ExamCracker1> {
             onTap: () => Navigator.pop(context),
             child: CircleAvatar(
               radius: screenWidth * 0.04,
-              backgroundColor: const Color(0xff1D1D1D66),
+              backgroundColor: const Color(0xff1d1d1d66),
               child: const Icon(
                 Icons.keyboard_arrow_left,
                 color: Colors.white,

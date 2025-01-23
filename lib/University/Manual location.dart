@@ -4,6 +4,8 @@ import 'package:hive_application/University/Intro_4.dart';
 import 'Profile Setup.dart';
 
 class LocationAccessPage extends StatelessWidget {
+  const LocationAccessPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -12,8 +14,8 @@ class LocationAccessPage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            SizedBox(height: 40),
-            Row(
+            const SizedBox(height: 40),
+            const Row(
               children: [
                 Text(
                   'Enhance with location',
@@ -26,7 +28,7 @@ class LocationAccessPage extends StatelessWidget {
                 ),
               ],
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             Expanded(
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -36,12 +38,12 @@ class LocationAccessPage extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             Container(
-              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
               decoration: BoxDecoration(
                 color: Colors.white,
-                borderRadius: BorderRadius.only(
+                borderRadius: const BorderRadius.only(
                   topLeft: Radius.circular(20),
                   topRight: Radius.circular(20),
                 ),
@@ -56,7 +58,7 @@ class LocationAccessPage extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
+                  const Text(
                     'Location Access',
                     style: TextStyle(
                       fontSize: 18,
@@ -64,7 +66,7 @@ class LocationAccessPage extends StatelessWidget {
                       color: Colors.black,
                     ),
                   ),
-                  SizedBox(height: 10),
+                  const SizedBox(height: 10),
                   DropdownButtonFormField<String>(
                     decoration: InputDecoration(
                       labelText: 'Select Country',
@@ -72,7 +74,7 @@ class LocationAccessPage extends StatelessWidget {
                         borderRadius: BorderRadius.circular(10),
                       ),
                     ),
-                    items: [
+                    items: const [
                       DropdownMenuItem(value: 'USA', child: Text('USA')),
                       DropdownMenuItem(value: 'India', child: Text('India')),
                       DropdownMenuItem(value: 'Qatar', child: Text('Qatar')),
@@ -81,7 +83,7 @@ class LocationAccessPage extends StatelessWidget {
                       // Handle country selection
                     },
                   ),
-                  SizedBox(height: 15),
+                  const SizedBox(height: 15),
                   DropdownButtonFormField<String>(
                     decoration: InputDecoration(
                       labelText: 'Select State',
@@ -89,7 +91,7 @@ class LocationAccessPage extends StatelessWidget {
                         borderRadius: BorderRadius.circular(10),
                       ),
                     ),
-                    items: [
+                    items: const [
                       DropdownMenuItem(value: 'State 1', child: Text('State 1')),
                       DropdownMenuItem(value: 'State 2', child: Text('State 2')),
                       DropdownMenuItem(value: 'State 3', child: Text('State 3')),
@@ -98,7 +100,7 @@ class LocationAccessPage extends StatelessWidget {
                       // Handle state selection
                     },
                   ),
-                  SizedBox(height: 15),
+                  const SizedBox(height: 15),
                   TextField(
                     decoration: InputDecoration(
                       labelText: 'Enter City',
@@ -107,10 +109,10 @@ class LocationAccessPage extends StatelessWidget {
                       ),
                     ),
                   ),
-                  SizedBox(height: 20),
+                  const SizedBox(height: 20),
                   ElevatedButton(
                     onPressed: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context)=>SetProfilePicturePage()));
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=>const SetProfilePicturePage()));
 
                       // Handle next button logic
                     },
@@ -119,9 +121,9 @@ class LocationAccessPage extends StatelessWidget {
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10),
                       ),
-                      padding: EdgeInsets.symmetric(vertical: 15),
+                      padding: const EdgeInsets.symmetric(vertical: 15),
                     ),
-                    child: Center(
+                    child: const Center(
                       child: Text(
                         'Next',
                         style: TextStyle(
@@ -132,14 +134,14 @@ class LocationAccessPage extends StatelessWidget {
                       ),
                     ),
                   ),
-                  SizedBox(height: 15),
+                  const SizedBox(height: 15),
                   Center(
                     child: TextButton(
                       onPressed: () {
                         Navigator.push(context, MaterialPageRoute(builder: (context)=>Intro4()));
                         // Handle auto-detect logic
                       },
-                      child: Text(
+                      child: const Text(
                         'Auto Detect',
                         style: TextStyle(
                           color: Colors.black,

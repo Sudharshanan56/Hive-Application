@@ -22,6 +22,8 @@ class UnivProfilePage extends StatelessWidget {
       title: 'Information was provided on...',
     ),
   ];
+
+   UnivProfilePage({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,7 +33,7 @@ class UnivProfilePage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             // Profile Header
             // Stack(
             //   children: [
@@ -51,14 +53,14 @@ class UnivProfilePage extends StatelessWidget {
             //   ],
             // ),
 
-            Container(
+            SizedBox(
               height: 200,
               child: Stack(
                 children: [
-                  Container(
+                  SizedBox(
                     width: double.infinity,
                     height: 150,
-                    child: Image(
+                    child: const Image(
                       image: AssetImage("assets/bg.png"),
                       fit: BoxFit.cover,
                     ),
@@ -66,12 +68,12 @@ class UnivProfilePage extends StatelessWidget {
                   Positioned(
                     top: 90, // Adjust this value to move the CircleAvatar above the bg.png
                     left: MediaQuery.of(context).size.width / 2 - 50,
-                    child: CircleAvatar(
+                    child: const CircleAvatar(
                       radius: 50,
                       backgroundImage: AssetImage('assets/7.png'), // Replace with your image path
                     ),
                   ),
-                  Positioned(
+                  const Positioned(
                       top: 150,
                       left: 230,
                       child: CircleAvatar(
@@ -81,8 +83,8 @@ class UnivProfilePage extends StatelessWidget {
               ),
             ),
 
-            SizedBox(height: 10),
-            Text(
+            const SizedBox(height: 10),
+            const Text(
               'ASIA INTERNATIONAL UNIVERSITY',
               style: TextStyle(
                 fontSize: 20,
@@ -90,7 +92,7 @@ class UnivProfilePage extends StatelessWidget {
                 color: Colors.black,
               ),
             ),
-            SizedBox(height: 5),
+            const SizedBox(height: 5),
             Text(
               'Empowering Your Future, Shaping Skilled Professionals',
               style: TextStyle(
@@ -99,50 +101,50 @@ class UnivProfilePage extends StatelessWidget {
               ),
               textAlign: TextAlign.center,
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 ElevatedButton(
                   onPressed: () {
                     // Handle New Post
-                    Navigator.push(context, MaterialPageRoute(builder: (context)=>new_post()));
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=>const new_post()));
                   },
                   style: ElevatedButton.styleFrom(
 
                     backgroundColor: Colors.white,
 
                   ),
-                  child: Text('New Post',style: TextStyle(color: Colors.blue),),
+                  child: const Text('New Post',style: TextStyle(color: Colors.blue),),
                 ),
-                SizedBox(width: 10),
+                const SizedBox(width: 10),
                 ElevatedButton(
                   onPressed: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context)=>EditProfileScreen()));
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=>const EditProfileScreen()));
                     // Handle Edit Profile
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.blue,
                   ),
-                  child: Text('Edit Profile',style: TextStyle(color: Colors.white),),
+                  child: const Text('Edit Profile',style: TextStyle(color: Colors.white),),
                 ),
               ],
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             // About Section
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
+                  const Text(
                     'About',
                     style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  SizedBox(height: 10),
+                  const SizedBox(height: 10),
                   Text(
                     "Our goal is to provide contemporary education facilities which respond to the highest standards. The university’s academic curriculum aligns with both national and international benchmarks, offering opportunities to realize your talents and passions. Our faculty is committed to sharing their expertise and knowledge with you. Asia International University ensures your development into a seasoned professional in your field.",
                     style: TextStyle(
@@ -150,8 +152,8 @@ class UnivProfilePage extends StatelessWidget {
                       color: Colors.grey[700],
                     ),
                   ),
-                  SizedBox(height: 10),
-                  Text(
+                  const SizedBox(height: 10),
+                  const Text(
                     'Location',
                     style: TextStyle(
                       fontSize: 14,
@@ -159,7 +161,7 @@ class UnivProfilePage extends StatelessWidget {
                       color: Colors.black,
                     ),
                   ),
-                  Text(
+                  const Text(
                     'Bukhara city, UZ',
                     style: TextStyle(
                       fontSize: 14,
@@ -169,10 +171,10 @@ class UnivProfilePage extends StatelessWidget {
                 ],
               ),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             // Stats Section
-            Divider(),
-            Divider(),
+            const Divider(),
+            const Divider(),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: Row(
@@ -180,7 +182,7 @@ class UnivProfilePage extends StatelessWidget {
                 children: [
                   Column(
                     children: [
-                      Text(
+                      const Text(
                         '26',
                         style: TextStyle(
                           fontSize: 18,
@@ -188,7 +190,7 @@ class UnivProfilePage extends StatelessWidget {
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      SizedBox(height: 5),
+                      const SizedBox(height: 5),
                       Text(
                         'Profile views',
                         style: TextStyle(
@@ -201,7 +203,7 @@ class UnivProfilePage extends StatelessWidget {
 
                   Column(
                     children: [
-                      Text(
+                      const Text(
                         '256',
                         style: TextStyle(
                           fontSize: 18,
@@ -209,7 +211,7 @@ class UnivProfilePage extends StatelessWidget {
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      SizedBox(height: 5),
+                      const SizedBox(height: 5),
                       Text(
                         'Post views',
                         style: TextStyle(
@@ -222,8 +224,8 @@ class UnivProfilePage extends StatelessWidget {
 
                   Column(
                     children: [
-                      SizedBox(height: 28,),
-                      Text(
+                      const SizedBox(height: 28,),
+                      const Text(
                         '28th Dec',
                         style: TextStyle(
                           fontSize: 18,
@@ -231,7 +233,7 @@ class UnivProfilePage extends StatelessWidget {
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      SizedBox(height: 5),
+                      const SizedBox(height: 5),
                       Text(
                         'Last Update',
                         style: TextStyle(
@@ -239,14 +241,14 @@ class UnivProfilePage extends StatelessWidget {
                           color: Colors.grey[600],
                         ),
                       ),
-                      Divider(),
-                      Divider(),
+                      const Divider(),
+                      const Divider(),
                     ],
                   ),
                 ],
               ),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -265,12 +267,12 @@ class UnivProfilePage extends StatelessWidget {
                   height: 280,
                   child: ListView.builder(
                     scrollDirection: Axis.horizontal,
-                    padding: EdgeInsets.symmetric(horizontal: 12),
+                    padding: const EdgeInsets.symmetric(horizontal: 12),
                     itemCount: articles.length,
                     itemBuilder: (context, index) {
                       return Container(
                         width: 200,
-                        margin: EdgeInsets.symmetric(horizontal: 4),
+                        margin: const EdgeInsets.symmetric(horizontal: 4),
                         child: Card(
                           elevation: 2,
                           shape: RoundedRectangleBorder(
@@ -280,7 +282,7 @@ class UnivProfilePage extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               ClipRRect(
-                                borderRadius: BorderRadius.vertical(top: Radius.circular(15)),
+                                borderRadius: const BorderRadius.vertical(top: Radius.circular(15)),
                                 child: Image.network(
                                   articles[index].imageUrl,
                                   height: 160,
@@ -289,12 +291,12 @@ class UnivProfilePage extends StatelessWidget {
                                   // Add a placeholder for loading
                                   loadingBuilder: (context, child, loadingProgress) {
                                     if (loadingProgress == null) return child;
-                                    return Center(child: CircularProgressIndicator());
+                                    return const Center(child: CircularProgressIndicator());
                                   },
                                 ),
                               ),
                               Padding(
-                                padding: EdgeInsets.all(12),
+                                padding: const EdgeInsets.all(12),
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
@@ -302,7 +304,7 @@ class UnivProfilePage extends StatelessWidget {
                                       articles[index].title,
                                       maxLines: 2,
                                       overflow: TextOverflow.ellipsis,
-                                      style: TextStyle(
+                                      style: const TextStyle(
                                         fontSize: 14,
                                         fontWeight: FontWeight.w500,
                                       ),
@@ -313,14 +315,14 @@ class UnivProfilePage extends StatelessWidget {
                                         Navigator.push(context, MaterialPageRoute(builder: (context)=>SliverAppBarExample()));
                                         // Add your read action here
                                       },
-                                      child: Text('Read',style: TextStyle(color: Colors.white),),
                                       style: ElevatedButton.styleFrom(
                                         backgroundColor: Colors.blue,
-                                        minimumSize: Size(double.infinity, 36),
+                                        minimumSize: const Size(double.infinity, 36),
                                         shape: RoundedRectangleBorder(
                                           borderRadius: BorderRadius.circular(8),
                                         ),
                                       ),
+                                      child: Text('Read',style: TextStyle(color: Colors.white),),
                                     ),
                                   ],
                                 ),
@@ -332,37 +334,37 @@ class UnivProfilePage extends StatelessWidget {
                     },
                   ),
                 ),
-                Divider(),
+                const Divider(),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: TextButton(
                     onPressed: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context)=>ViewallUnivprofile()));
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=>const ViewallUnivprofile()));
                       // Add your view all action here
                     },
-                    child: Center(child: Text('View all')),
+                    child: const Center(child: Text('View all')),
                   ),
                 ),
-                Divider(),
+                const Divider(),
                 //Help & Support and Settings buttons
                 Material(
                   child: Column(
                     children: [
                       ListTile(
-                        leading: Icon(Icons.help_outline),
-                        title: Text('Help & Support'),
-                        trailing: Icon(Icons.chevron_right),
+                        leading: const Icon(Icons.help_outline),
+                        title: const Text('Help & Support'),
+                        trailing: const Icon(Icons.chevron_right),
                         onTap: () {
                           Navigator.push(context, MaterialPageRoute(builder: (context)=>HelpSupportPage()));
                           // Add your help & support action here
                         },
                       ),
                       ListTile(
-                        leading: Icon(Icons.settings),
-                        title: Text('Settings'),
-                        trailing: Icon(Icons.chevron_right),
+                        leading: const Icon(Icons.settings),
+                        title: const Text('Settings'),
+                        trailing: const Icon(Icons.chevron_right),
                         onTap: () {
-                          Navigator.push(context, MaterialPageRoute(builder: (context)=>SettingsScreen()));
+                          Navigator.push(context, MaterialPageRoute(builder: (context)=>const SettingsScreen()));
                           // Add your settings action here
                         },
                       ),

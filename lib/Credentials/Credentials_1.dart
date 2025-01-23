@@ -116,6 +116,8 @@ import '../Bottom Navigation Bar/Navigation 1.dart';
 import '../HomePage/HomePage1.dart';
 
 class NEETFormPage extends StatelessWidget {
+  const NEETFormPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
@@ -131,7 +133,7 @@ class NEETFormPage extends StatelessWidget {
               children: [
                 SizedBox(height: screenHeight * 0.05),
                 Center(
-                  child: Container(
+                  child: SizedBox(
                     height: screenHeight * 0.4,
                     width: screenWidth * 0.9,
                     child: Image.asset(
@@ -185,7 +187,7 @@ class NEETFormPage extends StatelessWidget {
                     Navigator.push(context, MaterialPageRoute(builder: (context) => BottomSheetApp()));
                   },
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Color(0xFF3C97D3),
+                    backgroundColor: const Color(0xFF3C97D3),
                     minimumSize: Size(double.infinity, screenHeight * 0.07),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10),

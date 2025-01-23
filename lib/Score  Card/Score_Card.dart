@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class ScoreCard extends StatelessWidget {
-  final List<Map<String, String>> universities = [
+  final List<Map<String, String>> universities = const[
     {
       'name': 'Mari State University',
       'location': 'Moscow, RU',
@@ -29,6 +29,8 @@ class ScoreCard extends StatelessWidget {
     },
   ];
 
+  const ScoreCard({super.key});
+
   @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
@@ -40,9 +42,9 @@ class ScoreCard extends StatelessWidget {
           onPressed: () {
             Navigator.pop(context);
           },
-          icon: Icon(Icons.arrow_back_ios),
+          icon: const Icon(Icons.arrow_back_ios),
         ),
-        title: Row(
+        title: const Row(
           children: [
             Text('Score Card'),
           ],
@@ -63,7 +65,7 @@ class ScoreCard extends StatelessWidget {
                   BoxShadow(
                     color: Colors.black.withOpacity(0.1),
                     blurRadius: 10,
-                    offset: Offset(0, 5),
+                    offset: const Offset(0, 5),
                   ),
                 ],
               ),
@@ -79,7 +81,7 @@ class ScoreCard extends StatelessWidget {
                         Container(
                           width: 80,
                           height: 80,
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                             shape: BoxShape.circle,
                             color: Color(0xffe8f2fa),
                           ),
@@ -87,11 +89,11 @@ class ScoreCard extends StatelessWidget {
                         Container(
                           width: 70,
                           height: 70,
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                             shape: BoxShape.circle,
                             color: Color(0xff3c97d3),
                           ),
-                          child: Center(
+                          child: const Center(
                             child: Text(
                               '97',
                               style: TextStyle(
@@ -105,7 +107,7 @@ class ScoreCard extends StatelessWidget {
                       ],
                     ),
                     // Text and Information
-                    Column(
+                    const Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -170,13 +172,13 @@ class ScoreCard extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(height: 10,),
-          Row(
+          const SizedBox(height: 10,),
+          const Row(
             children: [
               Text("Universities",style: TextStyle(fontSize: 30,fontWeight: FontWeight.bold),),
             ],
           ),
-          SizedBox(height: 20),
+          const SizedBox(height: 20),
           // Padding(
           //   padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.05),
           //   child: Container(
@@ -198,7 +200,7 @@ class ScoreCard extends StatelessWidget {
           //     ),
           //   ),
           // ),
-          SizedBox(height: 20),
+          const SizedBox(height: 20),
           Expanded(
             child: ListView.builder(
               itemCount: universities.length,

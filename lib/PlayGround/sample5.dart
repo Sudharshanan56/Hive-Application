@@ -16,6 +16,8 @@ class ArticleList extends StatelessWidget {
     ),
   ];
 
+   ArticleList({super.key});
+
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -37,12 +39,12 @@ class ArticleList extends StatelessWidget {
             height: 280,
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
-              padding: EdgeInsets.symmetric(horizontal: 12),
+              padding: const EdgeInsets.symmetric(horizontal: 12),
               itemCount: articles.length,
               itemBuilder: (context, index) {
                 return Container(
                   width: 200,
-                  margin: EdgeInsets.symmetric(horizontal: 4),
+                  margin: const EdgeInsets.symmetric(horizontal: 4),
                   child: Card(
                     elevation: 2,
                     shape: RoundedRectangleBorder(
@@ -52,7 +54,7 @@ class ArticleList extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         ClipRRect(
-                          borderRadius: BorderRadius.vertical(top: Radius.circular(15)),
+                          borderRadius: const BorderRadius.vertical(top: Radius.circular(15)),
                           child: Image.network(
                             articles[index].imageUrl,
                             height: 160,
@@ -61,12 +63,12 @@ class ArticleList extends StatelessWidget {
                             // Add a placeholder for loading
                             loadingBuilder: (context, child, loadingProgress) {
                               if (loadingProgress == null) return child;
-                              return Center(child: CircularProgressIndicator());
+                              return const Center(child: CircularProgressIndicator());
                             },
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsets.all(12),
+                          padding: const EdgeInsets.all(12),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
@@ -74,7 +76,7 @@ class ArticleList extends StatelessWidget {
                                 articles[index].title,
                                 maxLines: 2,
                                 overflow: TextOverflow.ellipsis,
-                                style: TextStyle(
+                                style: const TextStyle(
                                   fontSize: 14,
                                   fontWeight: FontWeight.w500,
                                 ),
@@ -84,14 +86,14 @@ class ArticleList extends StatelessWidget {
                                 onPressed: () {
                                   // Add your read action here
                                 },
-                                child: Text('Read'),
                                 style: ElevatedButton.styleFrom(
                                   backgroundColor: Colors.blue,
-                                  minimumSize: Size(double.infinity, 36),
+                                  minimumSize: const Size(double.infinity, 36),
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(8),
                                   ),
                                 ),
+                                child: Text('Read'),
                               ),
                             ],
                           ),
@@ -109,7 +111,7 @@ class ArticleList extends StatelessWidget {
               onPressed: () {
                 // Add your view all action here
               },
-              child: Text('View all'),
+              child: const Text('View all'),
             ),
           ),
           //Help & Support and Settings buttons
@@ -117,17 +119,17 @@ class ArticleList extends StatelessWidget {
             child: Column(
               children: [
                 ListTile(
-                  leading: Icon(Icons.help_outline),
-                  title: Text('Help & Support'),
-                  trailing: Icon(Icons.chevron_right),
+                  leading: const Icon(Icons.help_outline),
+                  title: const Text('Help & Support'),
+                  trailing: const Icon(Icons.chevron_right),
                   onTap: () {
                     // Add your help & support action here
                   },
                 ),
                 ListTile(
-                  leading: Icon(Icons.settings),
-                  title: Text('Settings'),
-                  trailing: Icon(Icons.chevron_right),
+                  leading: const Icon(Icons.settings),
+                  title: const Text('Settings'),
+                  trailing: const Icon(Icons.chevron_right),
                   onTap: () {
                     // Add your settings action here
                   },

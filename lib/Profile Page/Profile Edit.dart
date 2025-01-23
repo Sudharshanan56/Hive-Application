@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 
 class ProfilePage_edit extends StatelessWidget {
+  const ProfilePage_edit({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -9,13 +11,13 @@ class ProfilePage_edit extends StatelessWidget {
         backgroundColor: Colors.white,
         elevation: 0,
         leading: IconButton(
-          icon: Icon(Icons.arrow_back, color: Colors.black),
+          icon: const Icon(Icons.arrow_back, color: Colors.black),
           onPressed: () {
             Navigator.pop(context);
             // Handle back action
           },
         ),
-        title: Text(
+        title: const Text(
           'Edit profile',
           style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
         ),
@@ -25,7 +27,7 @@ class ProfilePage_edit extends StatelessWidget {
               Navigator.pop(context);
               // Handle cancel action
             },
-            child: Text(
+            child: const Text(
               'Cancel',
               style: TextStyle(color: Colors.red, fontWeight: FontWeight.bold),
             ),
@@ -41,10 +43,10 @@ class ProfilePage_edit extends StatelessWidget {
                 children: [
                   CircleAvatar(
                     radius: 50,
-                    backgroundImage: AssetImage('assets/profile_placeholder.png'), // Replace with your image asset
+                    backgroundImage: const AssetImage('assets/profile_placeholder.png'), // Replace with your image asset
                     backgroundColor: Colors.grey.shade300,
                   ),
-                  Positioned(
+                  const Positioned(
                     bottom: 0,
                     right: 0,
                     child: CircleAvatar(
@@ -60,7 +62,7 @@ class ProfilePage_edit extends StatelessWidget {
                 ],
               ),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             TextField(
               decoration: InputDecoration(
                 hintText: 'Enter Name',
@@ -72,7 +74,7 @@ class ProfilePage_edit extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             TextField(
               decoration: InputDecoration(
                 hintText: 'Enter email',
@@ -84,10 +86,10 @@ class ProfilePage_edit extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             Row(
               children: [
-                Container(
+                SizedBox(
                   width: 60,
                   child: TextField(
                     decoration: InputDecoration(
@@ -101,7 +103,7 @@ class ProfilePage_edit extends StatelessWidget {
                     ),
                   ),
                 ),
-                SizedBox(width: 10),
+                const SizedBox(width: 10),
                 Expanded(
                   child: TextField(
                     decoration: InputDecoration(
@@ -117,16 +119,16 @@ class ProfilePage_edit extends StatelessWidget {
                 ),
               ],
             ),
-            SizedBox(height: 10),
-            Align(
+            const SizedBox(height: 10),
+            const Align(
               alignment: Alignment.centerLeft,
               child: Text(
                 '*Make changes to your personal details only once per month.',
                 style: TextStyle(color: Colors.red, fontSize: 12),
               ),
             ),
-            Spacer(),
-            Container(
+            const Spacer(),
+            SizedBox(
               height: 50,
               width: 380,
               child: ElevatedButton(
@@ -139,9 +141,9 @@ class ProfilePage_edit extends StatelessWidget {
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10),
                   ),
-                  padding: EdgeInsets.symmetric(horizontal: 100, vertical: 15),
+                  padding: const EdgeInsets.symmetric(horizontal: 100, vertical: 15),
                 ),
-                child: Text(
+                child: const Text(
                   'Save',
                   style: TextStyle(fontSize: 16, color: Colors.white),
                 ),

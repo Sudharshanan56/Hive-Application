@@ -117,6 +117,8 @@ import 'package:page_transition/page_transition.dart';
 import '../OTP/otp_1.dart';
 
 class LoginSelectionScreen extends StatefulWidget {
+  const LoginSelectionScreen({super.key});
+
   @override
   State<LoginSelectionScreen> createState() => _LoginSelectionScreenState();
 }
@@ -164,7 +166,7 @@ class _LoginSelectionScreenState extends State<LoginSelectionScreen> {
           children: [
             SizedBox(height: screenHeight * 0.08),
             Center(
-              child: Container(
+              child: SizedBox(
                 height: screenHeight * 0.4,
                 width: screenWidth * 0.8,
                 child: Image.asset(
@@ -174,7 +176,7 @@ class _LoginSelectionScreenState extends State<LoginSelectionScreen> {
               ),
             ),
             SizedBox(height: screenHeight * 0.1),
-            Container(
+            SizedBox(
               height: screenHeight * 0.07,
               width: screenWidth * 0.9,
               child: ElevatedButton(
@@ -182,13 +184,13 @@ class _LoginSelectionScreenState extends State<LoginSelectionScreen> {
                   Navigator.push(context, PageTransition(type: PageTransitionType.bottomToTop,
 
                       child: OTPVerificationScreen(),
-                      duration: Duration(milliseconds: 300)),
+                      duration: const Duration(milliseconds: 300)),
 
 
                   );
                 },
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Color(0xFF3C97D3),
+                  backgroundColor: const Color(0xFF3C97D3),
                   padding: EdgeInsets.symmetric(vertical: screenHeight * 0.01),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(8),
@@ -212,7 +214,7 @@ class _LoginSelectionScreenState extends State<LoginSelectionScreen> {
               ),
             ),
             SizedBox(height: screenHeight * 0.015),
-            Container(
+            SizedBox(
               height: screenHeight * 0.07,
               width: screenWidth * 0.9,
               child: ElevatedButton(
@@ -220,7 +222,7 @@ class _LoginSelectionScreenState extends State<LoginSelectionScreen> {
                   Navigator.push(context, PageTransition(type: PageTransitionType.bottomToTop,
 
                       child: Intro1(),
-                      duration: Duration(milliseconds: 300)),
+                      duration: const Duration(milliseconds: 300)),
 
 
                   );
@@ -242,7 +244,7 @@ class _LoginSelectionScreenState extends State<LoginSelectionScreen> {
                 ),
               ),
             ),
-            Spacer(),
+            const Spacer(),
             Text.rich(
               TextSpan(
                 text: "By registering, you agree to ",
@@ -251,7 +253,7 @@ class _LoginSelectionScreenState extends State<LoginSelectionScreen> {
                   fontSize: screenWidth * 0.035,
                   fontWeight: FontWeight.bold,
                 ),
-                children: [
+                children: const [
                   TextSpan(
                     text: "our terms.",
                     style: TextStyle(

@@ -6,6 +6,8 @@ import 'Score.dart';
 
 
 class MockTestPage extends StatefulWidget {
+  const MockTestPage({super.key});
+
   @override
   _MockTestPageState createState() => _MockTestPageState();
 }
@@ -21,7 +23,7 @@ class _MockTestPageState extends State<MockTestPage> {
   }
 
   void startTimer() {
-    _timer = Timer.periodic(Duration(seconds: 1), (timer) {
+    _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
       if (_remainingTime > 0) {
         setState(() {
           _remainingTime--;
@@ -48,8 +50,8 @@ class _MockTestPageState extends State<MockTestPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xFFF3434E),
-        title: Text('Mock Test',style: TextStyle(color: Colors.white,fontSize: 25,fontWeight: FontWeight.bold),),
+        backgroundColor: const Color(0xFFF3434E),
+        title: const Text('Mock Test',style: TextStyle(color: Colors.white,fontSize: 25,fontWeight: FontWeight.bold),),
         actions: [
           Padding(
             padding: const EdgeInsets.all(8.0),
@@ -63,10 +65,10 @@ class _MockTestPageState extends State<MockTestPage> {
                 ),
                 child: Row(
                   children: [
-                    Icon(Icons.timer_outlined,color: Color(0xFFF3434E),),
+                    const Icon(Icons.timer_outlined,color: Color(0xFFF3434E),),
                     Text(
                       formatTime(_remainingTime),
-                      style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold,color: Color(0xFFF3434E),),
+                      style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold,color: Color(0xFFF3434E),),
                     ),
                   ],
                 ),
@@ -90,7 +92,7 @@ class _MockTestPageState extends State<MockTestPage> {
                   "37.0 - 38.5°C"
                 ],
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               buildQuestion(
                 "2. Which of the following is the primary function of haemoglobin in the blood?",
                 [
@@ -100,7 +102,7 @@ class _MockTestPageState extends State<MockTestPage> {
                   "Nutrient absorption"
                 ],
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               buildQuestion(
                 "3. What is the largest organ in the human body?",
                 [
@@ -110,7 +112,7 @@ class _MockTestPageState extends State<MockTestPage> {
                   "Lungs"
                 ],
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               buildQuestion(
                 "2. Which of the following is the primary function of haemoglobin in the blood?",
                 [
@@ -120,7 +122,7 @@ class _MockTestPageState extends State<MockTestPage> {
                   "Nutrient absorption"
                 ],
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               buildQuestion(
                 "2. Which of the following is the primary function of haemoglobin in the blood?",
                 [
@@ -130,7 +132,7 @@ class _MockTestPageState extends State<MockTestPage> {
                   "Nutrient absorption"
                 ],
               ),
-              Container(
+              SizedBox(
                 height: 45,
                 width: 350,
                 child: ElevatedButton(
@@ -146,7 +148,7 @@ class _MockTestPageState extends State<MockTestPage> {
 
 
                   },
-                  child:  Text(
+                  child:  const Text(
                     'Submit',
                     style: TextStyle(fontWeight: FontWeight.bold),
                   ),
@@ -168,9 +170,9 @@ class _MockTestPageState extends State<MockTestPage> {
       children: [
         Text(
           question,
-          style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+          style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
         ),
-        SizedBox(height: 10),
+        const SizedBox(height: 10),
         // Column(
         //   children: options.map((option) {
         //     return Row(
@@ -195,7 +197,7 @@ class _MockTestPageState extends State<MockTestPage> {
                     // You can perform other actions based on selection here
                   },
                 ),
-                Text(option, style: TextStyle(fontSize: 16)),
+                Text(option, style: const TextStyle(fontSize: 16)),
               ],
             );
           }).toList(),

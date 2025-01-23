@@ -139,7 +139,7 @@
 import 'package:flutter/material.dart';
 
 class Notification_1 extends StatelessWidget {
-  const Notification_1({Key? key}) : super(key: key);
+  const Notification_1({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -157,7 +157,7 @@ class Notification_1 extends StatelessWidget {
 }
 
 class NotificationList extends StatelessWidget {
-  const NotificationList({Key? key}) : super(key: key);
+  const NotificationList({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -223,7 +223,7 @@ class NotificationList extends StatelessWidget {
           image: "assets/11.png",
           title: 'Fresh Off the Press!',
           subtitle:
-          'Read our new article, \"Scientists’ Week at TSMU\" and excel in your exams!',
+          'Read our new article, "Scientists’ Week at TSMU" and excel in your exams!',
           trailing: '2d',
           imageSize: imageSize,
           fontSizeTitle: fontSizeTitle,

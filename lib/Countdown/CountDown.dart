@@ -4,13 +4,15 @@ import 'package:flutter/material.dart';
 
 
 class CountdownPage extends StatefulWidget {
+  const CountdownPage({super.key});
+
   @override
   _CountdownPageState createState() => _CountdownPageState();
 }
 
 class _CountdownPageState extends State<CountdownPage> {
   late Timer _timer;
-  Duration _duration = Duration();
+  Duration _duration = const Duration();
 
   // Set your target date and time here
   final DateTime targetDate = DateTime(2025, 1, 31, 12, 0, 0);
@@ -28,10 +30,10 @@ class _CountdownPageState extends State<CountdownPage> {
         _duration = targetDate.difference(now);
       });
 
-      _timer = Timer.periodic(Duration(seconds: 1), (timer) {
+      _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
         setState(() {
           if (_duration.inSeconds > 0) {
-            _duration = _duration - Duration(seconds: 1);
+            _duration = _duration - const Duration(seconds: 1);
           } else {
             timer.cancel();
           }
@@ -57,14 +59,14 @@ class _CountdownPageState extends State<CountdownPage> {
       appBar: AppBar(
         leading: IconButton(onPressed: (){
           Navigator.pop(context);
-        }, icon: Icon(Icons.arrow_back_ios)),
+        }, icon: const Icon(Icons.arrow_back_ios)),
       ),
-      backgroundColor: Color(0xFF3C97D3),
+      backgroundColor: const Color(0xFF3C97D3),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(
+            const Text(
               "Your next exam Awaits!",
               style: TextStyle(
                 fontSize: 24,
@@ -72,9 +74,9 @@ class _CountdownPageState extends State<CountdownPage> {
                 color: Colors.white,
               ),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             Container(
-              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
               decoration: BoxDecoration(
                 color: Colors.blue[200],
                 borderRadius: BorderRadius.circular(16),
@@ -103,16 +105,16 @@ class _CountdownPageState extends State<CountdownPage> {
       children: [
         Text(
           value.toString().padLeft(2, '0'),
-          style: TextStyle(
+          style: const TextStyle(
             fontSize: 36,
             fontWeight: FontWeight.bold,
             color: Colors.white,
           ),
         ),
-        SizedBox(height: 8),
+        const SizedBox(height: 8),
         Text(
           label,
-          style: TextStyle(
+          style: const TextStyle(
             fontSize: 16,
             color: Colors.white,
           ),
@@ -122,7 +124,7 @@ class _CountdownPageState extends State<CountdownPage> {
   }
 
   Widget _buildColon() {
-    return Text(
+    return const Text(
       ":",
       style: TextStyle(
         fontSize: 36,

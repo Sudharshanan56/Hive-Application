@@ -209,6 +209,8 @@ import 'package:flutter/material.dart';
 
 
 class SliverAppBarExample extends StatelessWidget {
+  const SliverAppBarExample({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -226,13 +228,13 @@ class SliverAppBarExample extends StatelessWidget {
             ),
             actions: [
               IconButton(
-                icon: Icon(Icons.search),
+                icon: const Icon(Icons.search),
                 onPressed: () {
                   // Action for the search button
                 },
               ),
               IconButton(
-                icon: Icon(Icons.more_vert),
+                icon: const Icon(Icons.more_vert),
                 onPressed: () {
                   // Action for the more button
                 },
@@ -269,7 +271,7 @@ class SliverAppBarExample extends StatelessWidget {
                           ),
                           const SizedBox(width: 12),
                           // Title Section
-                          Expanded(
+                          const Expanded(
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
@@ -281,7 +283,7 @@ class SliverAppBarExample extends StatelessWidget {
                                     color: Colors.black,
                                   ),
                                 ),
-                                const SizedBox(height: 4),
+                                SizedBox(height: 4),
                                 Text(
                                   'plans in the field of investment',
                                   style: TextStyle(
@@ -295,7 +297,7 @@ class SliverAppBarExample extends StatelessWidget {
                           ),
                           // Delete Icon
                           IconButton(
-                            icon: Icon(Icons.delete, color: Colors.grey),
+                            icon: const Icon(Icons.delete, color: Colors.grey),
                             onPressed: () {
                               _delete(context);
                               // Add delete functionality here
@@ -341,7 +343,7 @@ class SliverAppBarExample extends StatelessWidget {
   void _delete(BuildContext context) {
     showModalBottomSheet(
       context: context,
-      shape: RoundedRectangleBorder(
+      shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(
           top: Radius.circular(16),
         ),
@@ -352,14 +354,14 @@ class SliverAppBarExample extends StatelessWidget {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Text(
+              const Text(
                 'Delete Account',
                 style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              SizedBox(height: 8),
+              const SizedBox(height: 8),
               Text(
                 'Delete your account and data permanently.',
                 textAlign: TextAlign.center,
@@ -368,11 +370,11 @@ class SliverAppBarExample extends StatelessWidget {
                   color: Colors.grey[600],
                 ),
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.red,
-                  minimumSize: Size(double.infinity, 50),
+                  minimumSize: const Size(double.infinity, 50),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(8),
                   ),
@@ -381,7 +383,7 @@ class SliverAppBarExample extends StatelessWidget {
                   // Handle Delete Action
                   Navigator.pop(context);
                 },
-                child: Text(
+                child: const Text(
                   'Delete',
                   style: TextStyle(
                     color: Colors.white,
@@ -389,11 +391,11 @@ class SliverAppBarExample extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(height: 12),
+              const SizedBox(height: 12),
               OutlinedButton(
                 style: OutlinedButton.styleFrom(
-                  minimumSize: Size(double.infinity, 50),
-                  side: BorderSide(color: Colors.grey),
+                  minimumSize: const Size(double.infinity, 50),
+                  side: const BorderSide(color: Colors.grey),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(8),
                   ),
@@ -425,7 +427,7 @@ class SliverAppBarExample extends StatelessWidget {
       ),
       child: Text(
         text,
-        style: TextStyle(
+        style: const TextStyle(
           fontSize: 12,
           color: Colors.blue,
         ),

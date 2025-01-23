@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 
 class Res2 extends StatelessWidget {
+  const Res2({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Responsive Layout'),
+        title: const Text('Responsive Layout'),
       ),
       body: Center(
         child: Column(
@@ -15,7 +17,7 @@ class Res2 extends StatelessWidget {
               'Responsive Layout Example',
               style: Theme.of(context).textTheme.headlineMedium,
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             _buildResponsiveContent(context),
           ],
         ),
@@ -32,14 +34,14 @@ class Res2 extends StatelessWidget {
   Widget _buildMobileLayout() {
     return Column(
       children: [
-        Text(
+        const Text(
           'This is the mobile layout.',
           style: TextStyle(fontSize: 18),
         ),
-        SizedBox(height: 20),
+        const SizedBox(height: 20),
         ElevatedButton(
           onPressed: () {},
-          child: Text('Mobile Button'),
+          child: const Text('Mobile Button'),
         ),
       ],
     );
@@ -49,34 +51,34 @@ class Res2 extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
-        Container(
+        SizedBox(
           width: 300,
           child: Column(
             children: [
-              Text(
+              const Text(
                 'This is the left side of the desktop layout.',
                 style: TextStyle(fontSize: 18),
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               ElevatedButton(
                 onPressed: () {},
-                child: Text('Desktop Button 1'),
+                child: const Text('Desktop Button 1'),
               ),
             ],
           ),
         ),
-        Container(
+        SizedBox(
           width: 300,
           child: Column(
             children: [
-              Text(
+              const Text(
                 'This is the right side of the desktop layout.',
                 style: TextStyle(fontSize: 18),
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               ElevatedButton(
                 onPressed: () {},
-                child: Text('Desktop Button 2'),
+                child: const Text('Desktop Button 2'),
               ),
             ],
           ),
