@@ -152,7 +152,6 @@
 //   }
 // }
 
-
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 
@@ -191,6 +190,15 @@ class _Page4State extends State<Page4> {
       body: SafeArea(
         child: Stack(
           children: [
+            Container(
+                // decoration:
+                // BoxDecoration(border: Border.all(style: BorderStyle.solid)),
+                height: 350,
+                width: 400,
+                child: Image.asset(
+                  "assets/Rectangle.png",
+                  fit: BoxFit.fill,
+                )),
             // Skip Button
             Align(
               alignment: Alignment.topRight,
@@ -199,11 +207,14 @@ class _Page4State extends State<Page4> {
                     top: screenHeight * 0.05, right: screenWidth * 0.05),
                 child: TextButton(
                   onPressed: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context)=>LoginSelectionScreen()));
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => LoginSelectionScreen()));
 
                     // Handle Skip button press
                   },
-                  child:  Text(
+                  child: Text(
                     "Skip",
                     style: TextStyle(
                       color: Colors.black54,
@@ -262,7 +273,7 @@ class _Page4State extends State<Page4> {
                 // Description Text
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.1),
-                  child:  Text(
+                  child: Text(
                     "Register, take mock tests, and\nreview scorecards—all in one\napp!",
                     // textAlign: TextAlign.center,
                     style: TextStyle(
@@ -282,7 +293,8 @@ class _Page4State extends State<Page4> {
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
                       padding: EdgeInsets.symmetric(
-                          horizontal: screenWidth * 0.37, vertical: screenHeight * 0.02),
+                          horizontal: screenWidth * 0.37,
+                          vertical: screenHeight * 0.02),
                       backgroundColor: const Color(0xFF3C97D3), // Button color
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(8),
@@ -301,15 +313,15 @@ class _Page4State extends State<Page4> {
                       //
                       //         );
                       //         }));
-                      Navigator.push(context, PageTransition(type: PageTransitionType.bottomToTop,
-
-                          child: LoginSelectionScreen(),
-                          duration: const Duration(milliseconds: 300)),
-
-
+                      Navigator.push(
+                        context,
+                        PageTransition(
+                            type: PageTransitionType.bottomToTop,
+                            child: LoginSelectionScreen(),
+                            duration: const Duration(milliseconds: 300)),
                       );
                     },
-                    child:  Text(
+                    child: Text(
                       "Let's go",
                       style: TextStyle(
                           fontSize: screenWidth * 0.06,
@@ -325,7 +337,7 @@ class _Page4State extends State<Page4> {
                   child: Text.rich(
                     TextSpan(
                       text: "By registering, you agree to ",
-                      style:  TextStyle(
+                      style: TextStyle(
                           color: Colors.black54,
                           fontSize: screenWidth * 0.035,
                           fontWeight: FontWeight.bold),

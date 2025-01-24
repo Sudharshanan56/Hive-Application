@@ -704,12 +704,14 @@ import 'HomePage_Without_email.dart';
 import '../University/Screen_1.dart';
 
 class BottomSheetApp extends StatelessWidget {
-  final List<Map<String, String>> posts = List.generate(10, (index) => {
-    'university': 'Mari State University',
-    'location': 'Moscow, RU',
-    'event': 'Indo-Russian Education Summit',
-    'image': 'https://via.placeholder.com/150'
-  });
+  final List<Map<String, String>> posts = List.generate(
+      10,
+      (index) => {
+            'university': 'Mari State University',
+            'location': 'Moscow, RU',
+            'event': 'Indo-Russian Education Summit',
+            'image': 'https://via.placeholder.com/150'
+          });
 
   BottomSheetApp({super.key});
 
@@ -797,7 +799,7 @@ class _PostsListState extends State<PostsList> {
       ),
       builder: (BuildContext context) {
         return Container(
-          height: screenHeight * 0.6,
+          height: screenHeight * 0.5,
           decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.only(
@@ -843,7 +845,7 @@ class _PostsListState extends State<PostsList> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: List.generate(
                   4,
-                      (index) => Container(
+                  (index) => Container(
                     width: screenWidth * 0.12,
                     height: screenHeight * 0.08,
                     alignment: Alignment.center,
@@ -894,10 +896,11 @@ class _PostsListState extends State<PostsList> {
               SizedBox(height: screenHeight * 0.05),
               ElevatedButton(
                 onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context)=>navi_home()));
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => navi_home()));
                 },
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color(0xFF333333),
+                  backgroundColor: const Color(0xFF5A9ECF),
                   padding: EdgeInsets.symmetric(
                     horizontal: screenWidth * 0.3,
                     vertical: screenHeight * 0.02,
@@ -934,13 +937,32 @@ class _PostsListState extends State<PostsList> {
         return Container(
           height: screenHeight * 0.3,
           decoration: const BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.only(topLeft: Radius.circular(30,),topRight: Radius.circular(30,))
-          ),
+              color: Colors.white,
+              borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(
+                    30,
+                  ),
+                  topRight: Radius.circular(
+                    30,
+                  ))),
           padding: EdgeInsets.all(screenWidth * 0.04),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
+              Row(
+                children: [
+                  Text(
+                    "Add Email",
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ],
+              ),
+              SizedBox(
+                height: screenHeight * 0.01,
+              ),
               TextField(
                 controller: mail,
                 style: TextStyle(fontSize: screenWidth * 0.04),
@@ -951,6 +973,19 @@ class _PostsListState extends State<PostsList> {
                     borderRadius: BorderRadius.circular(screenWidth * 0.025),
                   ),
                 ),
+              ),
+              SizedBox(height: screenHeight * 0.02),
+              Row(
+                children: [
+                  Text(
+                    "*",
+                    style: TextStyle(color: Colors.red),
+                  ),
+                  Text(
+                    "Add your email for updates and security",
+                    style: TextStyle(fontSize: 12),
+                  )
+                ],
               ),
               SizedBox(height: screenHeight * 0.02),
               GestureDetector(
@@ -964,18 +999,25 @@ class _PostsListState extends State<PostsList> {
                   height: screenHeight * 0.07,
                   width: double.infinity,
                   child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: const Color(0xff3C97D3),
-                    ),
                     onPressed: () {
                       Navigator.pop(context);
                       _otp_verification(context);
                     },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: const Color(0xFF5A9ECF),
+                      padding: EdgeInsets.symmetric(
+                        horizontal: screenWidth * 0.3,
+                        vertical: screenHeight * 0.02,
+                      ),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(screenWidth * 0.02),
+                      ),
+                    ),
                     child: Text(
-                      "Verify Email",
+                      "Get OTP",
                       style: TextStyle(
+                        fontSize: screenWidth * 0.045,
                         color: Colors.white,
-                        fontSize: screenWidth * 0.05,
                       ),
                     ),
                   ),
@@ -1074,7 +1116,8 @@ class _PostsListState extends State<PostsList> {
                 child: ElevatedButton(
                   onPressed: () => Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => SliverAppBarExample()),
+                    MaterialPageRoute(
+                        builder: (context) => SliverAppBarExample()),
                   ),
                   style: ElevatedButton.styleFrom(
                     backgroundColor: const Color(0xFF5A9ECF),

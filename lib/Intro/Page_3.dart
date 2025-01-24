@@ -168,6 +168,15 @@ class Page3 extends StatelessWidget {
       body: SafeArea(
         child: Stack(
           children: [
+            Container(
+                // decoration:
+                // BoxDecoration(border: Border.all(style: BorderStyle.solid)),
+                height: 350,
+                width: 400,
+                child: Image.asset(
+                  "assets/Rectangle.png",
+                  fit: BoxFit.fill,
+                )),
             // Skip Button
             Align(
               alignment: Alignment.topRight,

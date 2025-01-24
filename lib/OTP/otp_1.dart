@@ -175,7 +175,7 @@
 import 'package:flutter/material.dart';
 import '../Credentials/Credentials_1.dart';
 
-  class OTPVerificationScreen extends StatefulWidget {
+class OTPVerificationScreen extends StatefulWidget {
   const OTPVerificationScreen({super.key});
 
   @override
@@ -183,6 +183,10 @@ import '../Credentials/Credentials_1.dart';
 }
 
 class _OTPVerificationScreenState extends State<OTPVerificationScreen> {
+  final List<TextEditingController> _otpControllers =
+      List.generate(4, (_) => TextEditingController());
+  final List<FocusNode> _focusNodes = List.generate(4, (_) => FocusNode());
+
   final TextEditingController phoneController = TextEditingController();
   bool isPhoneEntered = false;
 
@@ -200,6 +204,14 @@ class _OTPVerificationScreenState extends State<OTPVerificationScreen> {
   void dispose() {
     phoneController.dispose();
     super.dispose();
+  }
+
+  void _onOtpChanged(String value, int index) {
+    if (value.isNotEmpty && index < 3) {
+      FocusScope.of(context).requestFocus(_focusNodes[index + 1]);
+    } else if (value.isEmpty && index > 0) {
+      FocusScope.of(context).requestFocus(_focusNodes[index - 1]);
+    }
   }
 
   @override
@@ -289,6 +301,37 @@ class _OTPVerificationScreenState extends State<OTPVerificationScreen> {
                 ],
               ),
               SizedBox(height: screenHeight * 0.03),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: List.generate(4, (index) {
+                  return SizedBox(
+                    width: 50,
+                    child: TextFormField(
+                      controller: _otpControllers[index],
+                      focusNode: _focusNodes[index],
+                      keyboardType: TextInputType.number,
+                      textAlign: TextAlign.center,
+                      maxLength: 1,
+                      style:
+                          TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                      decoration: InputDecoration(
+                        counterText: "",
+                        border: OutlineInputBorder(),
+                        enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.grey),
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderSide:
+                              BorderSide(color: Theme.of(context).primaryColor),
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                      ),
+                      onChanged: (value) => _onOtpChanged(value, index),
+                    ),
+                  );
+                }),
+              ),
               SizedBox(height: screenHeight * 0.02),
               TextButton(
                 onPressed: () {
@@ -317,7 +360,7 @@ class _OTPVerificationScreenState extends State<OTPVerificationScreen> {
                       );
                     },
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.blue,
+                      backgroundColor: Color(0xFF5A9ECF),
                       padding: EdgeInsets.symmetric(
                         horizontal: screenWidth * 0.3,
                         vertical: screenHeight * 0.02,

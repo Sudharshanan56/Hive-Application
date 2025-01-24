@@ -136,7 +136,6 @@
 //
 //
 
-
 import 'package:flutter/material.dart';
 import 'package:hive_application/Intro/Page_2.dart';
 
@@ -169,14 +168,17 @@ class Page1 extends StatelessWidget {
                 padding: EdgeInsets.all(screenWidth * 0.04),
                 child: TextButton(
                   onPressed: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context)=>LoginSelectionScreen()));
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => LoginSelectionScreen()));
                     // Handle Skip button press
                   },
                   child: Text(
                     "Skip",
                     style: TextStyle(
-                      color: Colors.white,
-                      fontSize: screenWidth * 0.045, // Responsive font size
+                      color: const Color.fromARGB(190, 255, 255, 255),
+                      fontSize: screenWidth * 0.040, // Responsive font size
                       fontWeight: FontWeight.bold,
                     ),
                   ),

@@ -154,6 +154,7 @@
 // }
 
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:hive_application/Intro/Page_3.dart';
 
 import 'Page_5.dart';
@@ -171,14 +172,27 @@ class Page2 extends StatelessWidget {
       body: SafeArea(
         child: Stack(
           children: [
+            Container(
+                // decoration:
+                // BoxDecoration(border: Border.all(style: BorderStyle.solid)),
+                height: 350,
+                width: 400,
+                child: Image.asset(
+                  "assets/Rectangle.png",
+                  fit: BoxFit.fill,
+                )),
             // Skip Button
             Align(
               alignment: Alignment.topRight,
               child: Padding(
-                padding: EdgeInsets.only(top: screenHeight * 0.05, right: screenWidth * 0.05),
+                padding: EdgeInsets.only(
+                    top: screenHeight * 0.05, right: screenWidth * 0.05),
                 child: TextButton(
                   onPressed: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context)=>LoginSelectionScreen()));
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => LoginSelectionScreen()));
 
                     // Handle Skip button press
                   },
@@ -244,14 +258,15 @@ class Page2 extends StatelessWidget {
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.1),
                   child: Text(
-                    "Track your exam performance\nand eligibility for top medical\n universities.",
-                    //textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: screenWidth * 0.05, // Responsive font size
-                      fontWeight: FontWeight.w400,
-                      color: Colors.black87,
-                    ),
-                  ),
+                      "Track your exam performance\nand eligibility for top medical\n universities.",
+                      //textAlign: TextAlign.center,
+                      style: GoogleFonts.poppins(
+                        textStyle: TextStyle(
+                          fontSize: screenWidth * 0.05, // Responsive font size
+                          fontWeight: FontWeight.w400,
+                          color: Colors.black87,
+                        ),
+                      )),
                 ),
 
                 const Spacer(),
@@ -262,25 +277,29 @@ class Page2 extends StatelessWidget {
                   child: Padding(
                     padding: EdgeInsets.only(bottom: screenHeight * 0.05),
                     child: SizedBox(
-                      height: screenHeight * 0.07,
+                      height: screenHeight * 0.09,
                       width: screenWidth * 0.9,
                       child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: const Color(0xFF3C97D3), // Button color
+                          backgroundColor:
+                              const Color(0xFF3C97D3), // Button color
                           shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(screenWidth * 0.02),
+                            borderRadius:
+                                BorderRadius.circular(screenWidth * 0.02),
                           ),
                         ),
                         onPressed: () {
                           Navigator.push(
                             context,
-                            MaterialPageRoute(builder: (context) => const Page3()),
+                            MaterialPageRoute(
+                                builder: (context) => const Page3()),
                           );
                         },
                         child: Text(
                           "Next",
                           style: TextStyle(
-                            fontSize: screenWidth * 0.06, // Responsive font size
+                            fontSize:
+                                screenWidth * 0.06, // Responsive font size
                             fontWeight: FontWeight.bold,
                             color: Colors.white,
                           ),
@@ -310,21 +329,17 @@ class Page2 extends StatelessWidget {
                         ),
                       ],
                     ),
-
                     textAlign: TextAlign.center,
                   ),
-
                 ),
-                // SizedBox(height: 20,)
+                SizedBox(
+                  height: screenHeight * 0.020,
+                )
               ],
-
             ),
           ],
         ),
-
-
       ),
-
     );
   }
 }

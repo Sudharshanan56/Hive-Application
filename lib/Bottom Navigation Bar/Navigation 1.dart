@@ -160,6 +160,7 @@ class _navi_homeState extends State<navi_home> {
                   horizontal: screenWidth * 0.04,
                   vertical: screenHeight * 0.01,
                 ),
+                
                 child: GNav(
                   backgroundColor: Colors.transparent,
                   rippleColor: Colors.grey[300]!,

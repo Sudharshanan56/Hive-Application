@@ -398,17 +398,20 @@
 // }
 
 import 'package:flutter/material.dart';
+import 'package:like_button/like_button.dart';
 import 'package:page_transition/page_transition.dart';
 import '../Countdown/CountDown.dart';
 import '../University/Screen_1.dart';
 
 class HomepageWithoutEmail extends StatelessWidget {
-  final List<Map<String, String>> posts = List.generate(10, (index) => {
-    'university': 'Mari State University',
-    'location': 'Moscow, RU',
-    'event': 'Indo-Russian Education Summit',
-    'image': 'https://via.placeholder.com/150'
-  });
+  final List<Map<String, String>> posts = List.generate(
+      10,
+      (index) => {
+            'university': 'Mari State University',
+            'location': 'Moscow, RU',
+            'event': 'Indo-Russian Education Summit',
+            'image': 'https://via.placeholder.com/150'
+          });
 
   HomepageWithoutEmail({super.key});
 
@@ -421,8 +424,8 @@ class HomepageWithoutEmail extends StatelessWidget {
         floatingActionButton: FloatingActionButton(
           backgroundColor: const Color(0xFF5A9ECF),
           onPressed: () {
-            Navigator.push(
-                context, MaterialPageRoute(builder: (context) => CountdownPage()));
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => CountdownPage()));
           },
           child: const Icon(Icons.school_outlined, color: Colors.white),
         ),
@@ -488,57 +491,77 @@ class _PostsListState extends State<PostsList> {
                 post['location']!,
                 style: TextStyle(fontSize: screenWidth * 0.035),
               ),
+              // trailing: Positioned(top: 100, child: Icon(Icons.share)),
             ),
             SizedBox(height: screenHeight * 0.01),
-            Text(
-              '${post['university']} Shines at',
-              style: TextStyle(
-                fontSize: screenWidth * 0.04,
-                fontWeight: FontWeight.w500,
-              ),
+            Row(
+              children: [
+                Text(
+                  '${post['university']} Shines at',
+                  style: TextStyle(
+                    fontSize: screenWidth * 0.04,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+                Spacer(),
+                Container(
+                    height: screenHeight * 0.07,
+                    width: screenWidth * 0.10,
+                    child: Icon(Icons.share)),
+              ],
             ),
             SizedBox(height: screenHeight * 0.005),
             Text(
               post['event']!,
               style: TextStyle(
-                fontSize: screenWidth * 0.035,
+                fontSize: screenWidth * 0.040,
                 fontWeight: FontWeight.bold,
               ),
             ),
-             const Image(image: AssetImage("assets/post1.png")),
+            SizedBox(
+              height: screenHeight * 0.05,
+            ),
+            const Image(image: AssetImage("assets/post1.png")),
             SizedBox(height: screenHeight * 0.02),
-            Center(
-              child: SizedBox(
-                height: screenHeight * 0.07,
-                width: screenWidth * 0.75,
-                child: ElevatedButton(
-                  onPressed: () =>
-                  //     Navigator.push(
-                  //   context,
-                  //   MaterialPageRoute(builder: (context) => SliverAppBarExample()),
-                  // ),
-                  Navigator.push(context, PageTransition(type: PageTransitionType.bottomToTop,
-
-    child: SliverAppBarExample(),
-    duration: const Duration(milliseconds: 300)),
-
-
-    ),
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: const Color(0xFF5A9ECF),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(screenWidth * 0.2),
+            Row(
+              children: [
+                SizedBox(
+                  height: screenHeight * 0.07,
+                  width: screenWidth * 0.74,
+                  child: ElevatedButton(
+                    onPressed: () =>
+                        //     Navigator.push(
+                        //   context,
+                        //   MaterialPageRoute(builder: (context) => SliverAppBarExample()),
+                        // ),
+                        Navigator.push(
+                      context,
+                      PageTransition(
+                          type: PageTransitionType.bottomToTop,
+                          child: SliverAppBarExample(),
+                          duration: const Duration(milliseconds: 300)),
                     ),
-                  ),
-                  child: Text(
-                    'Explore Now',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: screenWidth * 0.04,
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: const Color(0xFF5A9ECF),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(screenWidth * 0.2),
+                      ),
+                    ),
+                    child: Text(
+                      'Explore Now',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: screenWidth * 0.04,
+                      ),
                     ),
                   ),
                 ),
-              ),
+                Spacer(),
+                Container(
+                    height: screenHeight * 0.07,
+                    width: screenWidth * 0.10,
+                    child: LikeButton()),
+              ],
             ),
           ],
         ),
