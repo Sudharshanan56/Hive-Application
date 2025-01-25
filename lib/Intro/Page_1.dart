@@ -179,7 +179,7 @@ class Page1 extends StatelessWidget {
                     style: TextStyle(
                       color: const Color.fromARGB(190, 255, 255, 255),
                       fontSize: screenWidth * 0.040, // Responsive font size
-                      fontWeight: FontWeight.bold,
+                      //fontWeight: FontWeight.bold,
                     ),
                   ),
                 ),
@@ -188,39 +188,102 @@ class Page1 extends StatelessWidget {
           ),
 
           // Get Started Button
-          Align(
-            alignment: Alignment.bottomCenter,
-            child: Padding(
-              padding: EdgeInsets.only(bottom: screenHeight * 0.1),
-              child: SizedBox(
-                height: screenHeight * 0.07,
-                width: screenWidth * 0.9,
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: const Color(0xFF3C97D3), // Button color
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(screenWidth * 0.02),
-                    ),
+          // Align(
+          //   alignment: Alignment.bottomCenter,
+          //   child: Padding(
+          //     padding: EdgeInsets.only(bottom: screenHeight * 0.1),
+          //     child: SizedBox(
+          //       height: screenHeight * 0.07,
+          //       width: screenWidth * 0.9,
+          //       child: ElevatedButton(
+          //         style: ElevatedButton.styleFrom(
+          //           backgroundColor: const Color(0xFF3C97D3), // Button color
+          //           shape: RoundedRectangleBorder(
+          //             borderRadius: BorderRadius.circular(screenWidth * 0.02),
+          //           ),
+          //         ),
+          //         onPressed: () {
+          //           Navigator.push(
+          //             context,
+          //             MaterialPageRoute(builder: (context) => const Page2()),
+          //           );
+          //         },
+          //         child: Center(
+          //           child: Text(
+          //             "Get Started",
+          //             style: TextStyle(
+          //               fontSize: screenWidth * 0.040, // Responsive font size
+          //               fontWeight: FontWeight.bold,
+          //               color: Colors.white,
+          //             ),
+          //           ),
+          //         ),
+          //       ),
+          //     ),
+          //   ),
+          // ),
+
+          // // Terms Text
+          // Align(
+          //   alignment: Alignment.bottomCenter,
+          //   child: Padding(
+          //     padding: EdgeInsets.only(bottom: screenHeight * 0.03),
+          //     child: Text.rich(
+          //       TextSpan(
+          //         text: "By registering, you agree to ",
+          //         style: TextStyle(
+          //           color: Colors.white,
+          //           fontSize: screenWidth * 0.035, // Responsive font size
+          //         ),
+          //         children: const [
+          //           TextSpan(
+          //             text: "our terms.",
+          //             style: TextStyle(
+          //               color: Color(0xFF3C97D3),
+          //               // decoration: TextDecoration.underline,
+          //             ),
+          //             // Add navigation to terms here
+          //           ),
+          //         ],
+          //       ),
+          //       textAlign: TextAlign.center,
+          //     ),
+          //   ),
+          // ),
+          Padding(
+            padding: EdgeInsets.only(
+                top: screenHeight * 0.8,
+                left: screenWidth * 0.05,
+                right: screenWidth * 0.05),
+            child: SizedBox(
+              height: screenHeight * 0.08,
+              width: screenWidth * 0.9,
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: const Color(0xFF3C97D3), // Button color
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(screenWidth * 0.02),
                   ),
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => const Page2()),
-                    );
-                  },
-                  child: Center(
-                    child: Text(
-                      "Get Started",
-                      style: TextStyle(
-                        fontSize: screenWidth * 0.055, // Responsive font size
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white,
-                      ),
-                    ),
+                ),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const Page2()),
+                  );
+                },
+                child: Text(
+                  "Get started",
+                  style: TextStyle(
+                    fontSize: screenWidth * 0.04, // Responsive font size
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
                   ),
                 ),
               ),
             ),
+          ),
+          SizedBox(
+            height: screenHeight * 0.020,
           ),
 
           // Terms Text
@@ -234,15 +297,14 @@ class Page1 extends StatelessWidget {
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: screenWidth * 0.035, // Responsive font size
+                    fontWeight: FontWeight.bold,
                   ),
                   children: const [
                     TextSpan(
                       text: "our terms.",
                       style: TextStyle(
                         color: Color(0xFF3C97D3),
-                        // decoration: TextDecoration.underline,
                       ),
-                      // Add navigation to terms here
                     ),
                   ],
                 ),
@@ -250,6 +312,9 @@ class Page1 extends StatelessWidget {
               ),
             ),
           ),
+          SizedBox(
+            height: screenHeight * 0.020,
+          )
         ],
       ),
     );

@@ -109,7 +109,6 @@
 //   }
 // }
 
-
 import 'package:flutter/material.dart';
 
 import '../Bottom Navigation Bar/Navigation 1.dart';
@@ -184,7 +183,10 @@ class NEETFormPage extends StatelessWidget {
                 SizedBox(height: screenHeight * 0.04),
                 ElevatedButton(
                   onPressed: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => BottomSheetApp()));
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => BottomSheetApp()));
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: const Color(0xFF3C97D3),
@@ -208,12 +210,14 @@ class NEETFormPage extends StatelessWidget {
                     children: [
                       Text(
                         "By registering, you agree to",
-                        style: TextStyle(fontSize: screenWidth * 0.035, color: Colors.grey),
+                        style: TextStyle(
+                            fontSize: screenWidth * 0.035, color: Colors.black),
                         textAlign: TextAlign.center,
                       ),
                       Text(
                         " our terms.",
-                        style: TextStyle(color: Colors.blue, fontSize: screenWidth * 0.035),
+                        style: TextStyle(
+                            color: Colors.blue, fontSize: screenWidth * 0.035),
                         textAlign: TextAlign.center,
                       ),
                     ],

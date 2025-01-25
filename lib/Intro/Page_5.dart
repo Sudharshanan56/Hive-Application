@@ -110,7 +110,6 @@
 //   }
 // }
 
-
 import 'package:flutter/material.dart';
 import 'package:hive_application/University/Intro_1.dart';
 import 'package:page_transition/page_transition.dart';
@@ -175,18 +174,18 @@ class _LoginSelectionScreenState extends State<LoginSelectionScreen> {
                 ),
               ),
             ),
-            SizedBox(height: screenHeight * 0.1),
+            SizedBox(height: screenHeight * 0.3),
             SizedBox(
               height: screenHeight * 0.07,
               width: screenWidth * 0.9,
               child: ElevatedButton(
                 onPressed: () {
-                  Navigator.push(context, PageTransition(type: PageTransitionType.bottomToTop,
-
-                      child: OTPVerificationScreen(),
-                      duration: const Duration(milliseconds: 300)),
-
-
+                  Navigator.push(
+                    context,
+                    PageTransition(
+                        type: PageTransitionType.bottomToTop,
+                        child: OTPVerificationScreen(),
+                        duration: const Duration(milliseconds: 300)),
                   );
                 },
                 style: ElevatedButton.styleFrom(
@@ -206,44 +205,43 @@ class _LoginSelectionScreenState extends State<LoginSelectionScreen> {
               ),
             ),
             SizedBox(height: screenHeight * 0.015),
-            Text(
-              "or",
-              style: TextStyle(
-                fontSize: screenWidth * 0.04,
-                color: Colors.grey,
-              ),
-            ),
+            // Text(
+            //   "or",
+            //   style: TextStyle(
+            //     fontSize: screenWidth * 0.04,
+            //     color: Colors.grey,
+            //   ),
+            // ),
             SizedBox(height: screenHeight * 0.015),
-            SizedBox(
-              height: screenHeight * 0.07,
-              width: screenWidth * 0.9,
-              child: ElevatedButton(
-                onPressed: () {
-                  Navigator.push(context, PageTransition(type: PageTransitionType.bottomToTop,
+            // SizedBox(
+            //   height: screenHeight * 0.07,
+            //   width: screenWidth * 0.9,
+            //   child: ElevatedButton(
+            //     onPressed: () {
+            //       Navigator.push(context, PageTransition(type: PageTransitionType.bottomToTop,
 
-                      child: Intro1(),
-                      duration: const Duration(milliseconds: 300)),
+            //           child: Intro1(),
+            //           duration: const Duration(milliseconds: 300)),
 
-
-                  );
-                  // Navigate to Universities Login
-                },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.black,
-                  padding: EdgeInsets.symmetric(vertical: screenHeight * 0.01),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                ),
-                child: Text(
-                  "Universities Login",
-                  style: TextStyle(
-                    fontSize: screenWidth * 0.045,
-                    color: Colors.white,
-                  ),
-                ),
-              ),
-            ),
+            //       );
+            //       // Navigate to Universities Login
+            //     },
+            //     style: ElevatedButton.styleFrom(
+            //       backgroundColor: Colors.black,
+            //       padding: EdgeInsets.symmetric(vertical: screenHeight * 0.01),
+            //       shape: RoundedRectangleBorder(
+            //         borderRadius: BorderRadius.circular(8),
+            //       ),
+            //     ),
+            //     child: Text(
+            //       "Universities Login",
+            //       style: TextStyle(
+            //         fontSize: screenWidth * 0.045,
+            //         color: Colors.white,
+            //       ),
+            //     ),
+            //   ),
+            // ),
             const Spacer(),
             Text.rich(
               TextSpan(

@@ -703,7 +703,17 @@ import '../Countdown/CountDown.dart';
 import 'HomePage_Without_email.dart';
 import '../University/Screen_1.dart';
 
-class BottomSheetApp extends StatelessWidget {
+class BottomSheetApp extends StatefulWidget {
+  BottomSheetApp({super.key});
+
+  @override
+  State<BottomSheetApp> createState() => _BottomSheetAppState();
+}
+
+class _BottomSheetAppState extends State<BottomSheetApp> {
+  final List<TextEditingController> _otpControllers =
+      List.generate(4, (_) => TextEditingController());
+  final List<FocusNode> _focusNodes = List.generate(4, (_) => FocusNode());
   final List<Map<String, String>> posts = List.generate(
       10,
       (index) => {
@@ -713,7 +723,13 @@ class BottomSheetApp extends StatelessWidget {
             'image': 'https://via.placeholder.com/150'
           });
 
-  BottomSheetApp({super.key});
+  void _onOtpChanged(String value, int index) {
+    if (value.isNotEmpty && index < 3) {
+      FocusScope.of(context).requestFocus(_focusNodes[index + 1]);
+    } else if (value.isEmpty && index > 0) {
+      FocusScope.of(context).requestFocus(_focusNodes[index - 1]);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -723,12 +739,7 @@ class BottomSheetApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        appBar: AppBar(
-          title: Text(
-            'Bottom Sheet Sample',
-            style: TextStyle(fontSize: screenWidth * 0.05),
-          ),
-        ),
+        // s
         body: PostsList(posts: posts),
         // floatingActionButton: FloatingActionButton(
         //   shape: const CircleBorder(),
@@ -768,6 +779,9 @@ class PostsList extends StatefulWidget {
 class _PostsListState extends State<PostsList> {
   final TextEditingController mail = TextEditingController();
   double _opacity = 0.1;
+  final List<TextEditingController> _otpControllers =
+      List.generate(4, (_) => TextEditingController());
+  final List<FocusNode> _focusNodes = List.generate(4, (_) => FocusNode());
 
   @override
   void initState() {
@@ -780,6 +794,14 @@ class _PostsListState extends State<PostsList> {
         _opacity = 1.0;
       });
     });
+  }
+
+  void _onOtpChanged(String value, int index) {
+    if (value.isNotEmpty && index < 3) {
+      FocusScope.of(context).requestFocus(_focusNodes[index + 1]);
+    } else if (value.isEmpty && index > 0) {
+      FocusScope.of(context).requestFocus(_focusNodes[index - 1]);
+    }
   }
 
   void _otp_verification(BuildContext context) {
@@ -826,15 +848,15 @@ class _PostsListState extends State<PostsList> {
                   Text(
                     "OTP sent to ",
                     style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: screenWidth * 0.04,
+                      //fontWeight: FontWeight.bold,
+                      fontSize: screenWidth * 0.03,
                     ),
                   ),
                   Text(
                     "sample@gmail.com",
                     style: TextStyle(
                       color: Colors.blue,
-                      fontSize: screenWidth * 0.04,
+                      fontSize: screenWidth * 0.03,
                     ),
                   ),
                   Icon(Icons.edit, size: screenWidth * 0.05),
@@ -843,30 +865,40 @@ class _PostsListState extends State<PostsList> {
               SizedBox(height: screenHeight * 0.03),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: List.generate(
-                  4,
-                  (index) => Container(
-                    width: screenWidth * 0.12,
-                    height: screenHeight * 0.08,
-                    alignment: Alignment.center,
-                    decoration: BoxDecoration(
-                      border: Border.all(color: Colors.black, width: 1),
-                      borderRadius: BorderRadius.circular(screenWidth * 0.02),
-                    ),
-                    child: TextField(
-                      textAlign: TextAlign.center,
+                children: List.generate(4, (index) {
+                  return SizedBox(
+                    width: 50,
+                    child: TextFormField(
+                      controller: _otpControllers[index],
+                      focusNode: _focusNodes[index],
                       keyboardType: TextInputType.number,
+                      textAlign: TextAlign.center,
                       maxLength: 1,
-                      style: TextStyle(fontSize: screenWidth * 0.05),
+                      style:
+                          TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                       decoration: InputDecoration(
-                        border: InputBorder.none,
-                        counterText: '',
-                        hintText: "0",
-                        hintStyle: TextStyle(fontSize: screenWidth * 0.05),
+                        counterText: "",
+                        border: OutlineInputBorder(),
+                        enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.grey),
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderSide:
+                              BorderSide(color: Theme.of(context).primaryColor),
+                          borderRadius: BorderRadius.circular(8),
+                        ),
                       ),
+                      onChanged: (value) {
+                        if (value.isNotEmpty && index < 3) {
+                          FocusScope.of(context)
+                              .requestFocus(_focusNodes[index + 1]);
+                        }
+                        _onOtpChanged(value, index);
+                      },
                     ),
-                  ),
-                ),
+                  );
+                }),
               ),
               SizedBox(height: screenHeight * 0.02),
               TextButton(
@@ -896,21 +928,23 @@ class _PostsListState extends State<PostsList> {
               SizedBox(height: screenHeight * 0.05),
               ElevatedButton(
                 onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => navi_home()));
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => navi_home()),
+                  );
                 },
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color(0xFF5A9ECF),
+                  backgroundColor: Color(0xFF5A9ECF),
                   padding: EdgeInsets.symmetric(
-                    horizontal: screenWidth * 0.3,
+                    horizontal: screenWidth * 0.35,
                     vertical: screenHeight * 0.02,
                   ),
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(screenWidth * 0.02),
+                    borderRadius: BorderRadius.circular(8),
                   ),
                 ),
                 child: Text(
-                  "Verify now",
+                  "Get OTP",
                   style: TextStyle(
                     fontSize: screenWidth * 0.045,
                     color: Colors.white,
@@ -1016,7 +1050,7 @@ class _PostsListState extends State<PostsList> {
                     child: Text(
                       "Get OTP",
                       style: TextStyle(
-                        fontSize: screenWidth * 0.045,
+                        fontSize: screenWidth * 0.040,
                         color: Colors.white,
                       ),
                     ),

@@ -150,8 +150,8 @@
 //   }
 // }
 
-
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:hive_application/Intro/Page_4.dart';
 
 import 'Page_5.dart';
@@ -168,27 +168,48 @@ class Page3 extends StatelessWidget {
       body: SafeArea(
         child: Stack(
           children: [
-            Container(
-                // decoration:
-                // BoxDecoration(border: Border.all(style: BorderStyle.solid)),
+            Padding(
+              padding: const EdgeInsets.only(left: 50),
+              child: Container(
                 height: 350,
-                width: 400,
-                child: Image.asset(
-                  "assets/Rectangle.png",
-                  fit: BoxFit.fill,
-                )),
+                width: 250,
+                decoration: BoxDecoration(
+                  color: Color(0xFFF4FAFF),
+                  // border: Border.all(
+                  //   style: BorderStyle.solid,
+                  // ),
+                  borderRadius: BorderRadius.only(
+                    bottomRight: Radius.circular(200),
+                    bottomLeft: Radius.circular(200),
+                  ),
+                ),
+              ),
+            ),
+            // Container(
+            //     // decoration:
+            //     // BoxDecoration(border: Border.all(style: BorderStyle.solid)),
+            //     height: 350,
+            //     width: 400,
+            //     child: Image.asset(
+            //       "assets/Rectangle.png",
+            //       fit: BoxFit.fill,
+            //     )),
             // Skip Button
             Align(
               alignment: Alignment.topRight,
               child: Padding(
-                padding: EdgeInsets.only(top: screenHeight * 0.05, right: screenWidth * 0.05),
+                padding: EdgeInsets.only(
+                    top: screenHeight * 0.05, right: screenWidth * 0.05),
                 child: TextButton(
                   onPressed: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context)=>LoginSelectionScreen()));
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => LoginSelectionScreen()));
 
                     // Handle Skip button press
                   },
-                  child:  Text(
+                  child: Text(
                     "Skip",
                     style: TextStyle(
                       color: Colors.black54,
@@ -226,36 +247,64 @@ class Page3 extends StatelessWidget {
                       Container(
                         height: screenHeight * 0.005,
                         width: screenWidth * 0.1,
-                        color:  const Color(0xff9ba8b5ff),
+                        decoration: BoxDecoration(
+                          color: const Color(0xff9ba8b5ff),
+                          borderRadius: BorderRadius.circular(30),
+                        ),
                       ),
                       SizedBox(width: screenWidth * 0.02),
                       Container(
                         height: screenHeight * 0.005,
                         width: screenWidth * 0.1,
-                        color: const Color(0xFF3C97D3),
+                        decoration: BoxDecoration(
+                          color: const Color(0xFF3C97D3),
+                          borderRadius: BorderRadius.circular(30),
+                        ),
                       ),
                       SizedBox(width: screenWidth * 0.02),
                       Container(
                         height: screenHeight * 0.005,
                         width: screenWidth * 0.1,
-                        color: const Color(0xff9ba8b5ff),
+                        decoration: BoxDecoration(
+                          color: const Color(0xff9ba8b5ff),
+                          borderRadius: BorderRadius.circular(30),
+                        ),
                       ),
                     ],
                   ),
                 ),
 
                 SizedBox(height: screenHeight * 0.05),
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.1),
-                  child:  Text(
-                    "Access curated articles and tips\n tailored for medical entrance\n preparation.",
-                    style: TextStyle(
-                      fontSize: screenWidth * 0.05,
-                      fontWeight: FontWeight.w400,
-                      color: Colors.black87,
+                // Padding(
+                //   padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.1),
+                //   child:  Text(
+                //     "Access curated articles and tips\n tailored for medical entrance\n preparation.",
+                //     style: TextStyle(
+                //       fontSize: screenWidth * 0.05,
+                //       fontWeight: FontWeight.w400,
+                //       color: Colors.black87,
+                //     ),
+                //     // textAlign: TextAlign.center,
+                //   ),
+                // ),
+                Row(
+                  children: [
+                    Padding(
+                      padding:
+                          EdgeInsets.symmetric(horizontal: screenWidth * 0.1),
+                      child: Text(
+                          "Access curated articles and tips\n tailored for medical entrance\n preparation.",
+                          //textAlign: TextAlign.center,
+                          style: GoogleFonts.poppins(
+                            textStyle: TextStyle(
+                              fontSize:
+                                  screenWidth * 0.045, // Responsive font size
+                              fontWeight: FontWeight.w400,
+                              color: Colors.black87,
+                            ),
+                          )),
                     ),
-                    // textAlign: TextAlign.center,
-                  ),
+                  ],
                 ),
 
                 const Spacer(),
@@ -290,46 +339,49 @@ class Page3 extends StatelessWidget {
                 Align(
                   alignment: Alignment.bottomCenter,
                   child: Padding(
-                    padding: EdgeInsets.only(bottom: screenHeight * 0.009),
+                    padding: EdgeInsets.only(bottom: screenHeight * 0.05),
                     child: SizedBox(
-                      height: screenHeight * 0.07,
+                      height: screenHeight * 0.08,
                       width: screenWidth * 0.9,
                       child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: const Color(0xFF3C97D3),// Button color
+                          backgroundColor:
+                              const Color(0xFF3C97D3), // Button color
                           shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(screenWidth * 0.02),
+                            borderRadius:
+                                BorderRadius.circular(screenWidth * 0.02),
                           ),
                         ),
                         onPressed: () {
                           Navigator.push(
                             context,
-                            MaterialPageRoute(builder: (context) => const Page4()),
+                            MaterialPageRoute(
+                                builder: (context) => const Page4()),
                           );
                         },
-                        child: Center(
-                          child: Text(
-                            "Get Started",
-                            style: TextStyle(
-                              fontSize: screenWidth * 0.055, // Responsive font size
-                              fontWeight: FontWeight.bold,
-                              color: Colors.white,
-                            ),
+                        child: Text(
+                          "Next",
+                          style: TextStyle(
+                            fontSize:
+                                screenWidth * 0.04, // Responsive font size
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white,
                           ),
                         ),
                       ),
                     ),
                   ),
                 ),
+
                 // Terms Text
                 Padding(
-                  padding: EdgeInsets.only(bottom: screenHeight * 0.08),
+                  padding: EdgeInsets.only(bottom: screenHeight * 0.03),
                   child: Text.rich(
                     TextSpan(
                       text: "By registering, you agree to ",
-                      style:  TextStyle(
+                      style: TextStyle(
                         color: Colors.black54,
-                        fontSize: screenWidth * 0.035,
+                        fontSize: screenWidth * 0.035, // Responsive font size
                         fontWeight: FontWeight.bold,
                       ),
                       children: const [
@@ -344,6 +396,9 @@ class Page3 extends StatelessWidget {
                     textAlign: TextAlign.center,
                   ),
                 ),
+                SizedBox(
+                  height: screenHeight * 0.020,
+                )
               ],
             ),
           ],

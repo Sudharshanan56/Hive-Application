@@ -172,15 +172,34 @@ class Page2 extends StatelessWidget {
       body: SafeArea(
         child: Stack(
           children: [
-            Container(
-                // decoration:
-                // BoxDecoration(border: Border.all(style: BorderStyle.solid)),
+            // Container(
+            //     // decoration:
+            //     // BoxDecoration(border: Border.all(style: BorderStyle.solid)),
+            //     height: 350,
+            //     width: 400,
+            //     child: Image.asset(
+            //       "assets/Rectangle.png",
+            //       fit: BoxFit.fill,
+            //     )
+            //     ),
+
+            Padding(
+              padding: const EdgeInsets.only(left: 50),
+              child: Container(
                 height: 350,
-                width: 400,
-                child: Image.asset(
-                  "assets/Rectangle.png",
-                  fit: BoxFit.fill,
-                )),
+                width: 250,
+                decoration: BoxDecoration(
+                  color: Color(0xFFF4FAFF),
+                  // border: Border.all(
+                  //   style: BorderStyle.solid,
+                  // ),
+                  borderRadius: BorderRadius.only(
+                    bottomRight: Radius.circular(200),
+                    bottomLeft: Radius.circular(200),
+                  ),
+                ),
+              ),
+            ),
             // Skip Button
             Align(
               alignment: Alignment.topRight,
@@ -234,19 +253,28 @@ class Page2 extends StatelessWidget {
                       Container(
                         height: screenHeight * 0.005,
                         width: screenWidth * 0.1,
-                        color: const Color(0xFF3C97D3),
+                        decoration: BoxDecoration(
+                          color: const Color(0xFF3C97D3),
+                          borderRadius: BorderRadius.circular(30),
+                        ),
                       ),
                       SizedBox(width: screenWidth * 0.02),
                       Container(
                         height: screenHeight * 0.005,
                         width: screenWidth * 0.1,
-                        color: const Color(0xff9ba8b5ff),
+                        decoration: BoxDecoration(
+                          color: const Color(0xff9ba8b5ff),
+                          borderRadius: BorderRadius.circular(30),
+                        ),
                       ),
                       SizedBox(width: screenWidth * 0.02),
                       Container(
                         height: screenHeight * 0.005,
                         width: screenWidth * 0.1,
-                        color: const Color(0xff9ba8b5ff),
+                        decoration: BoxDecoration(
+                          color: const Color(0xff9ba8b5ff),
+                          borderRadius: BorderRadius.circular(30),
+                        ),
                       ),
                     ],
                   ),
@@ -255,18 +283,24 @@ class Page2 extends StatelessWidget {
                 SizedBox(height: screenHeight * 0.05),
 
                 // Description Text
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.1),
-                  child: Text(
-                      "Track your exam performance\nand eligibility for top medical\n universities.",
-                      //textAlign: TextAlign.center,
-                      style: GoogleFonts.poppins(
-                        textStyle: TextStyle(
-                          fontSize: screenWidth * 0.05, // Responsive font size
-                          fontWeight: FontWeight.w400,
-                          color: Colors.black87,
-                        ),
-                      )),
+                Row(
+                  children: [
+                    Padding(
+                      padding:
+                          EdgeInsets.symmetric(horizontal: screenWidth * 0.1),
+                      child: Text(
+                          "Track your exam performance\nand eligibility for top medical\n universities.",
+                          //textAlign: TextAlign.center,
+                          style: GoogleFonts.poppins(
+                            textStyle: TextStyle(
+                              fontSize:
+                                  screenWidth * 0.045, // Responsive font size
+                              fontWeight: FontWeight.w400,
+                              color: Colors.black87,
+                            ),
+                          )),
+                    ),
+                  ],
                 ),
 
                 const Spacer(),
@@ -277,7 +311,7 @@ class Page2 extends StatelessWidget {
                   child: Padding(
                     padding: EdgeInsets.only(bottom: screenHeight * 0.05),
                     child: SizedBox(
-                      height: screenHeight * 0.09,
+                      height: screenHeight * 0.08,
                       width: screenWidth * 0.9,
                       child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
@@ -299,7 +333,7 @@ class Page2 extends StatelessWidget {
                           "Next",
                           style: TextStyle(
                             fontSize:
-                                screenWidth * 0.06, // Responsive font size
+                                screenWidth * 0.04, // Responsive font size
                             fontWeight: FontWeight.bold,
                             color: Colors.white,
                           ),

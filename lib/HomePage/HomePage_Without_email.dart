@@ -398,6 +398,7 @@
 // }
 
 import 'package:flutter/material.dart';
+import 'package:hive_application/Search%20Page/Search%20page.dart';
 import 'package:like_button/like_button.dart';
 import 'package:page_transition/page_transition.dart';
 import '../Countdown/CountDown.dart';
@@ -420,6 +421,51 @@ class HomepageWithoutEmail extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
+        appBar: AppBar(
+          backgroundColor: Colors.white,
+          toolbarHeight: 80,
+          leading: Padding(
+            padding: const EdgeInsets.only(left: 10),
+            child: CircleAvatar(
+              backgroundImage: AssetImage("assets/person.png"),
+              radius: 50,
+            ),
+          ),
+          title: GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => SearchPage()),
+              );
+            },
+            child: Container(
+              height: 50,
+              width: 300,
+              decoration: BoxDecoration(
+                border: Border.all(color: Colors.grey),
+                borderRadius: BorderRadius.circular(30),
+              ),
+              child: ListTile(
+                leading: Icon(Icons.search),
+                title: Text('Search...'),
+              ),
+              // child: TextField(
+              //   readOnly: true,
+              //   decoration: InputDecoration(
+              //     hintText: 'Search...',
+              //     fillColor: Colors.grey[200],
+              //     filled: true,
+              //     prefixIcon: Icon(Icons.search),
+              //     border: OutlineInputBorder(
+              //       borderRadius: BorderRadius.circular(30),
+              //       borderSide: BorderSide.none,
+              //     ),
+              //     contentPadding: EdgeInsets.zero,
+              //   ),
+              // ),
+            ),
+          ),
+        ),
         body: SafeArea(child: PostsList(posts: posts)),
         floatingActionButton: FloatingActionButton(
           backgroundColor: const Color(0xFF5A9ECF),
@@ -521,7 +567,9 @@ class _PostsListState extends State<PostsList> {
             SizedBox(
               height: screenHeight * 0.05,
             ),
-            const Image(image: AssetImage("assets/post1.png")),
+            Hero(
+                tag: "post1",
+                child: const Image(image: AssetImage("assets/post1.png"))),
             SizedBox(height: screenHeight * 0.02),
             Row(
               children: [

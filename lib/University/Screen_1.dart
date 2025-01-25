@@ -206,8 +206,6 @@
 
 import 'package:flutter/material.dart';
 
-
-
 class SliverAppBarExample extends StatelessWidget {
   const SliverAppBarExample({super.key});
 
@@ -221,9 +219,12 @@ class SliverAppBarExample extends StatelessWidget {
             floating: false, // App bar does not float
             pinned: true, // App bar remains visible when scrolling
             flexibleSpace: FlexibleSpaceBar(
-              background: Image.asset(
-                "assets/person.png", // Replace with your image asset path
-                fit: BoxFit.cover,
+              background: Hero(
+                tag: 'post1', // Unique tag for the image
+                child: Image.asset(
+                  "assets/person.png", // Replace with your image asset path
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
             actions: [
@@ -243,7 +244,7 @@ class SliverAppBarExample extends StatelessWidget {
           ),
           SliverList(
             delegate: SliverChildBuilderDelegate(
-                  (BuildContext context, int index) {
+              (BuildContext context, int index) {
                 return Padding(
                   padding: const EdgeInsets.all(16.0),
                   child: Column(
@@ -265,10 +266,9 @@ class SliverAppBarExample extends StatelessWidget {
                         children: [
                           // Circular Logo/Icon
                           CircleAvatar(
-                            backgroundColor: Colors.blue[50],
-                            radius: 24,
-                            child: Image.asset("assets/7.png")
-                          ),
+                              backgroundColor: Colors.blue[50],
+                              radius: 24,
+                              child: Image.asset("assets/7.png")),
                           const SizedBox(width: 12),
                           // Title Section
                           const Expanded(
@@ -321,8 +321,8 @@ class SliverAppBarExample extends StatelessWidget {
                       // Body Paragraph
                       Text(
                         'On December 19, President Shavkat Mirziyoyev held a meeting to review 2024 investment outcomes and set tasks for the upcoming year. Since 2017, 188 billion in investments have been made, including 87 billion in foreign investments, boosting GDP growth with investments now exceeding 30% of GDP.\n\n'
-                            'In 2023, investments grew by 1.3 times to 36 billion, launching 560 projects worth 70 trillion soums and creating opportunities to increase exports by 1 billion next year. For 2024, 43 billion in investments and over 300 major projects are planned, including 662 import-substitution products.\n\n'
-                            'President Mirziyoyev emphasized creating favorable conditions for foreign investors, expediting ongoing projects, and addressing export logistics challenges amid global difficulties. The goal is to double annual exports to 45 billion by 2030 by increasing high-value products and services and expanding export markets.',
+                        'In 2023, investments grew by 1.3 times to 36 billion, launching 560 projects worth 70 trillion soums and creating opportunities to increase exports by 1 billion next year. For 2024, 43 billion in investments and over 300 major projects are planned, including 662 import-substitution products.\n\n'
+                        'President Mirziyoyev emphasized creating favorable conditions for foreign investors, expediting ongoing projects, and addressing export logistics challenges amid global difficulties. The goal is to double annual exports to 45 billion by 2030 by increasing high-value products and services and expanding export markets.',
                         style: TextStyle(
                           fontSize: 24,
                           color: Colors.grey[800],
@@ -340,6 +340,7 @@ class SliverAppBarExample extends StatelessWidget {
       ),
     );
   }
+
   void _delete(BuildContext context) {
     showModalBottomSheet(
       context: context,
@@ -417,6 +418,7 @@ class SliverAppBarExample extends StatelessWidget {
       },
     );
   }
+
   // Helper Widget for Tags
   Widget _buildTag(String text) {
     return Container(

@@ -221,177 +221,214 @@ class _OTPVerificationScreenState extends State<OTPVerificationScreen> {
 
     return Scaffold(
       backgroundColor: Colors.white,
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back_ios_new),
+          iconSize: 15,
+          color: Colors.grey.shade800,
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
+      ),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.05),
-        child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              SizedBox(height: screenHeight * 0.05),
-              Center(
-                child: SizedBox(
-                  height: screenHeight * 0.4,
-                  width: screenWidth * 0.9,
-                  child: Image.asset(
-                    'assets/4.png',
-                    height: screenHeight * 0.25,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            SizedBox(height: screenHeight * 0.03),
+            Center(
+              child: Container(
+                height: screenHeight * 0.3,
+                width: screenWidth * 0.9,
+                // decoration: BoxDecoration(
+                //   border: Border.all(color: Colors.grey),
+                //   // borderRadius: BorderRadius.circular(8),
+                // ),
+                child: Image.asset(
+                  'assets/4.png',
+                  height: screenHeight * 0.20,
+                ),
+              ),
+            ),
+            SizedBox(height: screenHeight * 0.02),
+            Text(
+              "Step in and explore\n   endless possibilities!",
+              style: TextStyle(
+                fontSize: screenWidth * 0.055,
+                fontWeight: FontWeight.bold,
+                color: Colors.black,
+              ),
+              textAlign: TextAlign.center,
+            ),
+            SizedBox(height: screenHeight * 0.02),
+            Row(
+              children: [
+                Container(
+                  height: screenHeight * 0.07,
+                  width: screenWidth * 0.15,
+                  decoration: BoxDecoration(
+                    border: Border.all(color: Colors.grey),
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  child: Center(
+                    child: Text(
+                      '+91',
+                      style: TextStyle(fontSize: screenWidth * 0.045),
+                    ),
                   ),
                 ),
-              ),
-              SizedBox(height: screenHeight * 0.02),
-              Text(
-                "Step in and explore\nendless possibilities!",
-                style: TextStyle(
-                  fontSize: screenWidth * 0.055,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.black,
-                ),
-                textAlign: TextAlign.center,
-              ),
-              SizedBox(height: screenHeight * 0.02),
-              Row(
-                children: [
-                  Container(
+                SizedBox(width: screenWidth * 0.05),
+                Expanded(
+                  child: Container(
                     height: screenHeight * 0.07,
-                    width: screenWidth * 0.15,
                     decoration: BoxDecoration(
                       border: Border.all(color: Colors.grey),
+                      borderRadius: BorderRadius.circular(8),
                     ),
-                    child: Center(
-                      child: Text(
-                        '+91',
-                        style: TextStyle(fontSize: screenWidth * 0.045),
-                      ),
-                    ),
-                  ),
-                  SizedBox(width: screenWidth * 0.05),
-                  Expanded(
-                    child: SizedBox(
-                      height: screenHeight * 0.07,
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
                       child: TextField(
                         controller: phoneController,
                         keyboardType: TextInputType.phone,
                         decoration: InputDecoration(
-                          hintText: "Enter number",
-                          border: const OutlineInputBorder(),
+                          hintText: "  Enter number",
+                          border: InputBorder.none,
+                          //border: const OutlineInputBorder(c),
                           hintStyle: TextStyle(fontSize: screenWidth * 0.04),
                         ),
                       ),
                     ),
                   ),
-                ],
-              ),
-              SizedBox(height: screenHeight * 0.02),
-              Row(
-                children: [
-                  const Text(
-                    "*",
-                    style: TextStyle(
-                      fontSize: 14,
-                      color: Colors.red,
-                    ),
-                  ),
-                  Text(
-                    "Enter your mobile number for verification.",
-                    style: TextStyle(
-                      fontSize: screenWidth * 0.035,
-                      color: Colors.black,
-                    ),
-                  ),
-                ],
-              ),
-              SizedBox(height: screenHeight * 0.03),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: List.generate(4, (index) {
-                  return SizedBox(
-                    width: 50,
-                    child: TextFormField(
-                      controller: _otpControllers[index],
-                      focusNode: _focusNodes[index],
-                      keyboardType: TextInputType.number,
-                      textAlign: TextAlign.center,
-                      maxLength: 1,
-                      style:
-                          TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                      decoration: InputDecoration(
-                        counterText: "",
-                        border: OutlineInputBorder(),
-                        enabledBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.grey),
-                          borderRadius: BorderRadius.circular(8),
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                          borderSide:
-                              BorderSide(color: Theme.of(context).primaryColor),
-                          borderRadius: BorderRadius.circular(8),
-                        ),
-                      ),
-                      onChanged: (value) => _onOtpChanged(value, index),
-                    ),
-                  );
-                }),
-              ),
-              SizedBox(height: screenHeight * 0.02),
-              TextButton(
-                onPressed: () {
-                  // Resend OTP action
-                },
-                child: Center(
-                  child: Text(
-                    "OTP not received? Resend now",
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: screenWidth * 0.04,
-                    ),
+                ),
+              ],
+            ),
+            SizedBox(height: screenHeight * 0.02),
+            Row(
+              children: [
+                const Text(
+                  "*",
+                  style: TextStyle(
+                    fontSize: 14,
+                    color: Colors.red,
                   ),
                 ),
-              ),
-              SizedBox(height: screenHeight * 0.05),
-              Center(
-                child: SizedBox(
-                  height: screenHeight * 0.07,
-                  width: screenWidth * 0.9,
-                  child: ElevatedButton(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => NEETFormPage()),
-                      );
-                    },
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Color(0xFF5A9ECF),
-                      padding: EdgeInsets.symmetric(
-                        horizontal: screenWidth * 0.3,
-                        vertical: screenHeight * 0.02,
+                Text(
+                  "Enter your mobile number for verification.",
+                  style: TextStyle(
+                    fontSize: screenWidth * 0.035,
+                    color: Colors.black,
+                  ),
+                ),
+              ],
+            ),
+            SizedBox(height: screenHeight * 0.03),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: List.generate(4, (index) {
+                return SizedBox(
+                  width: 50,
+                  child: TextFormField(
+                    controller: _otpControllers[index],
+                    focusNode: _focusNodes[index],
+                    keyboardType: TextInputType.number,
+                    textAlign: TextAlign.center,
+                    maxLength: 1,
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                    decoration: InputDecoration(
+                      counterText: "",
+                      border: OutlineInputBorder(),
+                      enabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.grey),
+                        borderRadius: BorderRadius.circular(8),
                       ),
-                      shape: RoundedRectangleBorder(
+                      focusedBorder: OutlineInputBorder(
+                        borderSide:
+                            BorderSide(color: Theme.of(context).primaryColor),
                         borderRadius: BorderRadius.circular(8),
                       ),
                     ),
-                    child: Text(
-                      "Get OTP",
-                      style: TextStyle(
-                        fontSize: screenWidth * 0.045,
-                        color: Colors.white,
-                      ),
+                    onChanged: (value) => _onOtpChanged(value, index),
+                  ),
+                );
+              }),
+            ),
+            SizedBox(height: screenHeight * 0.02),
+            TextButton(
+              onPressed: () {
+                // Resend OTP action
+              },
+              child: Center(
+                child: Text(
+                  "OTP not received? Resend now",
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: screenWidth * 0.04,
+                  ),
+                ),
+              ),
+            ),
+            SizedBox(height: screenHeight * 0.05),
+            Center(
+              child: SizedBox(
+                height: screenHeight * 0.07,
+                width: screenWidth * 0.9,
+                child: ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => NEETFormPage()),
+                    );
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Color(0xFF5A9ECF),
+                    padding: EdgeInsets.symmetric(
+                      horizontal: screenWidth * 0.3,
+                      vertical: screenHeight * 0.02,
+                    ),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                  ),
+                  child: Text(
+                    "Get OTP",
+                    style: TextStyle(
+                      fontSize: screenWidth * 0.045,
+                      color: Colors.white,
                     ),
                   ),
                 ),
               ),
-              SizedBox(height: screenHeight * 0.02),
-              Center(
-                child: Text(
-                  "By registering, you agree to our terms.",
+            ),
+            SizedBox(height: screenHeight * 0.02),
+            Padding(
+              padding: EdgeInsets.only(
+                  bottom: screenHeight * 0.05,
+                  left: screenWidth * 0.10,
+                  right: screenWidth * 0.05),
+              child: Text.rich(
+                TextSpan(
+                  text: "By registering, you agree to ",
                   style: TextStyle(
-                    fontSize: screenWidth * 0.035,
-                    color: Colors.grey,
+                    color: Colors.black54,
+                    fontSize: screenWidth * 0.035, // Responsive font size
+                    fontWeight: FontWeight.bold,
                   ),
+                  children: const [
+                    TextSpan(
+                      text: "our terms.",
+                      style: TextStyle(
+                        color: Color(0xFF3C97D3),
+                      ),
+                    ),
+                  ],
                 ),
+                textAlign: TextAlign.center,
               ),
-              SizedBox(height: screenHeight * 0.05),
-            ],
-          ),
+            ),
+            SizedBox(height: screenHeight * 0.00),
+          ],
         ),
       ),
     );
