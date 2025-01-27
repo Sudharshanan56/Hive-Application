@@ -1,7 +1,7 @@
+// import 'dart:async';
 import 'dart:async';
+
 import 'package:flutter/material.dart';
-
-
 
 class CountdownPage extends StatefulWidget {
   const CountdownPage({super.key});
@@ -10,7 +10,10 @@ class CountdownPage extends StatefulWidget {
   _CountdownPageState createState() => _CountdownPageState();
 }
 
-class _CountdownPageState extends State<CountdownPage> {
+class _CountdownPageState extends State<CountdownPage>
+    with SingleTickerProviderStateMixin {
+  late AnimationController _controller;
+  late Animation<Offset> _animation;
   late Timer _timer;
   Duration _duration = const Duration();
 
@@ -20,6 +23,21 @@ class _CountdownPageState extends State<CountdownPage> {
   @override
   void initState() {
     super.initState();
+    _controller = AnimationController(
+      vsync: this,
+      duration: const Duration(seconds: 1),
+    );
+
+    _animation = Tween<Offset>(
+      begin: Offset(10.0, 10.0),
+      end: Offset(0.0, 0.0),
+    ).animate(CurvedAnimation(
+      parent: _controller,
+      curve: Curves.fastOutSlowIn,
+    ));
+
+    _controller.forward();
+
     _startCountdown();
   }
 
@@ -45,6 +63,7 @@ class _CountdownPageState extends State<CountdownPage> {
   @override
   void dispose() {
     _timer.cancel();
+    _controller.dispose();
     super.dispose();
   }
 
@@ -54,45 +73,120 @@ class _CountdownPageState extends State<CountdownPage> {
     final int hours = _duration.inHours % 24;
     final int minutes = _duration.inMinutes % 60;
     final int seconds = _duration.inSeconds % 60;
-
+    final screenWidth = MediaQuery.of(context).size.width;
+    final screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
       appBar: AppBar(
-        leading: IconButton(onPressed: (){
-          Navigator.pop(context);
-        }, icon: const Icon(Icons.arrow_back_ios)),
+        backgroundColor: Color(0xFF3C97D3),
+        leading: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: CircleAvatar(
+            radius: 1,
+            backgroundColor: Color(0xFF1D1D1D66),
+            child: IconButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                icon: const Icon(
+                  Icons.arrow_back_ios_new,
+                  color: Colors.white,
+                  size: 20,
+                )),
+          ),
+        ),
       ),
       backgroundColor: const Color(0xFF3C97D3),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+        child: Stack(
           children: [
-            const Text(
-              "Your next exam Awaits!",
-              style: TextStyle(
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
-                color: Colors.white,
+            // SlideTransition(
+            //   position: _animation,
+            //   child: Padding(
+            //     padding: const EdgeInsets.only(left: 300),
+            //     child: Positioned(
+            //       left: 100,
+            //       child: Image.asset("assets/Ellipse101.png"),
+            //     ),
+            //   ),
+            // ),
+            // SlideTransition(
+            //   position: _animation,
+            //   child: Padding(
+            //     padding: const EdgeInsets.only(top: 320),
+            //     child: Positioned(
+            //       top: 320,
+            //       child: Image.asset("assets/Ellipse100.png"),
+            //     ),
+            //   ),
+            // ),
+            SlideTransition(
+              position: _animation,
+              child: Padding(
+                padding: EdgeInsets.only(
+                    left: screenWidth * 0.82, bottom: screenHeight * 0.8),
+                child: Image.asset(
+                  "assets/Ellipse101.png",
+                  width: screenWidth * 0.4,
+                  height: screenWidth * 0.4,
+                ),
               ),
             ),
-            const SizedBox(height: 20),
-            Container(
-              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-              decoration: BoxDecoration(
-                color: Colors.blue[200],
-                borderRadius: BorderRadius.circular(16),
+            SlideTransition(
+              position: _animation,
+              child: Padding(
+                padding: EdgeInsets.only(
+                    left: screenWidth * 0.88, top: screenHeight * 0.8),
+                child: Image.asset(
+                  "assets/Ellipse102.png",
+                  width: screenWidth * 0.4,
+                  height: screenWidth * 0.4,
+                ),
               ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  _buildTimeCard(days, "Days"),
-                  _buildColon(),
-                  _buildTimeCard(hours, "Hours"),
-                  _buildColon(),
-                  _buildTimeCard(minutes, "Min"),
-                  _buildColon(),
-                  _buildTimeCard(seconds, "Sec"),
-                ],
+            ),
+            SlideTransition(
+              position: _animation,
+              child: Padding(
+                padding: EdgeInsets.only(top: screenHeight * 0.4),
+                child: Image.asset(
+                  "assets/Ellipse100.png",
+                  // width: screenWidth * 0.2,
+                  // height: screenWidth * 10.0,
+                ),
               ),
+            ),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  "Your next exam Awaits!",
+                  style: TextStyle(
+                    fontSize: screenWidth * 0.06,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
+                ),
+                const SizedBox(height: 20),
+                Container(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+                  decoration: BoxDecoration(
+                    color: Color(0xFF70777C66),
+                    borderRadius: BorderRadius.circular(16),
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      _buildTimeCard(days, "Days"),
+                      _buildColon(),
+                      _buildTimeCard(hours, "Hours"),
+                      _buildColon(),
+                      _buildTimeCard(minutes, "Min"),
+                      _buildColon(),
+                      _buildTimeCard(seconds, "Sec"),
+                    ],
+                  ),
+                ),
+              ],
             ),
           ],
         ),
