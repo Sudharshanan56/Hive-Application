@@ -205,10 +205,16 @@
 // }
 
 import 'package:flutter/material.dart';
+import 'package:like_button/like_button.dart';
 
-class SliverAppBarExample extends StatelessWidget {
+class SliverAppBarExample extends StatefulWidget {
   const SliverAppBarExample({super.key});
 
+  @override
+  State<SliverAppBarExample> createState() => _SliverAppBarExampleState();
+}
+
+class _SliverAppBarExampleState extends State<SliverAppBarExample> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -220,116 +226,137 @@ class SliverAppBarExample extends StatelessWidget {
             pinned: true, // App bar remains visible when scrolling
             flexibleSpace: FlexibleSpaceBar(
               background: Hero(
-                tag: 'post1', // Unique tag for the image
-                child: Image.asset(
-                  "assets/person.png", // Replace with your image asset path
-                  fit: BoxFit.cover,
+                tag: "post1", // Unique tag for the image
+                child: Container(
+                  width: double.infinity,
+                  child: Image.asset(
+                    "assets/person.png", // Replace with your image asset path
+                    fit: BoxFit.fill,
+                  ),
                 ),
               ),
             ),
-            actions: [
-              IconButton(
-                icon: const Icon(Icons.search),
-                onPressed: () {
-                  // Action for the search button
-                },
-              ),
-              IconButton(
-                icon: const Icon(Icons.more_vert),
-                onPressed: () {
-                  // Action for the more button
-                },
-              ),
-            ],
+            // leading: Padding(
+            //   padding: const EdgeInsets.all(16.0),
+            //   child: CircleAvatar(
+            //       backgroundColor: Color(0xFF1D1D1D66),
+            //       child: IconButton(
+            //         onPressed: () {},
+            //         icon: Icon(Icons.arrow_back_ios),
+            //         color: Colors.white,
+            //       )),
+            // ),
+            // actions: [
+            //   IconButton(
+            //     icon: const Icon(Icons.search),
+            //     onPressed: () {
+            //       // Action for the search button
+            //     },
+            //   ),
+            //   IconButton(
+            //     icon: const Icon(Icons.more_vert),
+            //     onPressed: () {
+            //       // Action for the more button
+            //     },
+            //   ),
+            // ],
           ),
           SliverList(
             delegate: SliverChildBuilderDelegate(
               (BuildContext context, int index) {
                 return Padding(
                   padding: const EdgeInsets.all(16.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      // Tags Section
-                      Row(
-                        children: [
-                          _buildTag('Tags'),
-                          const SizedBox(width: 8),
-                          _buildTag('Tags'),
-                        ],
-                      ),
-                      const SizedBox(height: 16),
+                  child: Container(
+                    // decoration: BoxDecoration(
+                    //   border: Border.all(color: Colors.red),
+                    // ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        // Tags Section
+                        Row(
+                          children: [
+                            _buildTag('Tags'),
+                            const SizedBox(width: 8),
+                            _buildTag('Tags'),
+                            Spacer(),
+                            LikeButton(),
+                            SizedBox(width: 8),
+                          ],
+                        ),
+                        const SizedBox(height: 16),
 
-                      // Header Section with Icon and Title
-                      Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          // Circular Logo/Icon
-                          CircleAvatar(
-                              backgroundColor: Colors.blue[50],
-                              radius: 24,
-                              child: Image.asset("assets/7.png")),
-                          const SizedBox(width: 12),
-                          // Title Section
-                          const Expanded(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  'Asia International University',
-                                  style: TextStyle(
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.black,
+                        // Header Section with Icon and Title
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            // Circular Logo/Icon
+                            CircleAvatar(
+                                backgroundColor: Colors.blue[50],
+                                radius: 24,
+                                child: Image.asset("assets/7.png")),
+                            const SizedBox(width: 12),
+                            // Title Section
+                            const Expanded(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    'Asia International University',
+                                    style: TextStyle(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.black,
+                                    ),
                                   ),
-                                ),
-                                SizedBox(height: 4),
-                                Text(
-                                  'plans in the field of investment',
-                                  style: TextStyle(
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.black,
+                                  SizedBox(height: 4),
+                                  Text(
+                                    'plans in the field of investment',
+                                    style: TextStyle(
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.black,
+                                    ),
                                   ),
-                                ),
-                              ],
+                                ],
+                              ),
                             ),
-                          ),
-                          // Delete Icon
-                          IconButton(
-                            icon: const Icon(Icons.delete, color: Colors.grey),
-                            onPressed: () {
-                              _delete(context);
-                              // Add delete functionality here
-                            },
-                          ),
-                        ],
-                      ),
-                      const SizedBox(height: 16),
-
-                      // Subtitle
-                      Text(
-                        'Meeting on 2024 Investment Plans',
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w600,
-                          color: Colors.grey[700],
+                            // Delete Icon
+                            // IconButton(
+                            //   icon: const Icon(Icons.delete, color: Colors.grey),
+                            //   onPressed: () {
+                            //     _delete(context);
+                            //     // Add delete functionality here
+                            //   },
+                            // ),
+                          ],
                         ),
-                      ),
-                      const SizedBox(height: 16),
+                        const SizedBox(height: 16),
 
-                      // Body Paragraph
-                      Text(
-                        'On December 19, President Shavkat Mirziyoyev held a meeting to review 2024 investment outcomes and set tasks for the upcoming year. Since 2017, 188 billion in investments have been made, including 87 billion in foreign investments, boosting GDP growth with investments now exceeding 30% of GDP.\n\n'
-                        'In 2023, investments grew by 1.3 times to 36 billion, launching 560 projects worth 70 trillion soums and creating opportunities to increase exports by 1 billion next year. For 2024, 43 billion in investments and over 300 major projects are planned, including 662 import-substitution products.\n\n'
-                        'President Mirziyoyev emphasized creating favorable conditions for foreign investors, expediting ongoing projects, and addressing export logistics challenges amid global difficulties. The goal is to double annual exports to 45 billion by 2030 by increasing high-value products and services and expanding export markets.',
-                        style: TextStyle(
-                          fontSize: 24,
-                          color: Colors.grey[800],
-                          height: 1.5,
+                        // Subtitle
+                        Text(
+                          'Meeting on 2024 Investment Plans',
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w600,
+                            color: Colors.grey[700],
+                          ),
                         ),
-                      ),
-                    ],
+                        const SizedBox(height: 16),
+
+                        // Body Paragraph
+                        Text(
+                          'On December 19, President Shavkat Mirziyoyev held a meeting to review 2024 investment outcomes and set tasks for the upcoming year. Since 2017, 188 billion in investments have been made, including 87 billion in foreign investments, boosting GDP growth with investments now exceeding 30% of GDP.\n\n'
+                          'In 2023, investments grew by 1.3 times to 36 billion, launching 560 projects worth 70 trillion soums and creating opportunities to increase exports by 1 billion next year. For 2024, 43 billion in investments and over 300 major projects are planned, including 662 import-substitution products.\n\n'
+                          'President Mirziyoyev emphasized creating favorable conditions for foreign investors, expediting ongoing projects, and addressing export logistics challenges amid global difficulties. The goal is to double annual exports to 45 billion by 2030 by increasing high-value products and services and expanding export markets.',
+                          style: TextStyle(
+                            fontSize: 24,
+                            color: Colors.grey[800],
+                            height: 1.5,
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 );
               },

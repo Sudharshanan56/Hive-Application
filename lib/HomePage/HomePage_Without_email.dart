@@ -468,6 +468,7 @@ class HomepageWithoutEmail extends StatelessWidget {
         ),
         body: SafeArea(child: PostsList(posts: posts)),
         floatingActionButton: FloatingActionButton(
+          shape: CircleBorder(),
           backgroundColor: const Color(0xFF5A9ECF),
           onPressed: () {
             Navigator.push(context,
@@ -553,7 +554,8 @@ class _PostsListState extends State<PostsList> {
                 Container(
                     height: screenHeight * 0.07,
                     width: screenWidth * 0.10,
-                    child: Icon(Icons.share)),
+                    child: Image.asset("assets/vector.png")
+                    ),
               ],
             ),
             SizedBox(height: screenHeight * 0.005),
@@ -569,7 +571,8 @@ class _PostsListState extends State<PostsList> {
             ),
             Hero(
                 tag: "post1",
-                child: const Image(image: AssetImage("assets/post1.png"))),
+                
+                child: Image(image: AssetImage("assets/post1.png"))),
             SizedBox(height: screenHeight * 0.02),
             Row(
               children: [
@@ -605,10 +608,13 @@ class _PostsListState extends State<PostsList> {
                   ),
                 ),
                 Spacer(),
-                Container(
+                SizedBox(
                     height: screenHeight * 0.07,
                     width: screenWidth * 0.10,
-                    child: LikeButton()),
+                    child: LikeButton()
+                    // IconButton(
+                    //     onPressed: () {}, icon: Icon(Icons.favorite_border)),
+                    )
               ],
             ),
           ],
