@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hive_application/Countdown/CountDown.dart';
 import 'package:hive_application/Credentials/Credentials_1.dart';
 import 'package:hive_application/Dashboard/Exam%20Cracker/Exam%20Cracker%201.dart';
+import 'package:hive_application/Dashboard/Online%20Exam/Online%20Exam%201.dart';
 import 'package:hive_application/HomePage/HomePage1.dart';
 import 'package:hive_application/HomePage/HomePage_Without_email.dart';
 import 'package:hive_application/Intro/Page_1.dart';
@@ -35,7 +36,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.red),
         useMaterial3: true,
       ),
-      home: Mockmaster1(),
+      home: OnlineExam(),
     );
   }
 }
