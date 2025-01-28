@@ -148,59 +148,116 @@ class _ExamCracker1State extends State<ExamCracker1>
           //   ),
           // ),
           //rectangle-1
-          // AnimatedPositioned(
-          //   child: Container(
-          //     height: screenHeight * 0.22,
-          //     width: screenWidth * 0.35,
-          //     child: Image.asset(
-          //       "assets/Rectangle1.png",
-          //       fit: BoxFit.fill,
-          //     ),
-          //   ),
-          //   duration: Duration(seconds: 1),
-          //   curve: Curves.easeInOut,
-          //   left: screenWidth * 0.09,
-          //   top: _startAnimation ? screenHeight * 0.001 : -100,
-          // ),
+          AnimatedPositioned(
+            child: Container(
+              height: screenHeight * 0.22,
+              width: screenWidth * 0.35,
+              child: Image.asset(
+                "assets/Rectangle1.png",
+                fit: BoxFit.fill,
+              ),
+            ),
+            duration: Duration(seconds: 1),
+            curve: Curves.easeInOut,
+            left: screenWidth * 0.09,
+            top: _startAnimation ? screenHeight * 0.001 : -100,
+          ),
           //rectangle-2
           // AnimatedPositioned(
           //   child:
-          Positioned(
-            left: screenWidth * 0.50,
-            child: Image.asset(
-              "assets/Rectangle2.png",
+
+          AnimatedPositioned(
+            child: Container(
+              height: screenHeight * 0.22,
+              width: screenWidth * 0.35,
+              child: Image.asset(
+                "assets/Rectangle2.png",
+              ),
             ),
+            duration: Duration(seconds: 1),
+            curve: Curves.easeInOut,
+            left: screenWidth * 0.70,
+            top: screenHeight * 0.34,
+            right: _startAnimation ? 0.0 : -300.0,
           ),
+          //rectangle-3
+          AnimatedPositioned(
+            child: Container(
+              height: screenHeight * 0.42,
+              width: screenWidth * 0.40,
+              child: Image.asset(
+                "assets/Rectangle3.png",
+                //fit: BoxFit.fill,
+              ),
+            ),
+            duration: Duration(seconds: 1),
+            curve: Curves.easeInOut,
+            left: screenWidth * 0.70,
+            top: screenHeight * 0.82,
+            right: screenWidth * 0.05,
+            bottom: _startAnimation ? 0.0 : -300.0,
+          ),
+          //rectangle-4
+
+          AnimatedPositioned(
+              child: Container(
+                height: screenHeight * 0.42,
+                width: screenWidth * 0.35,
+                child: Image.asset(
+                  "assets/Rectangle4.png",
+                ),
+              ),
+              duration: Duration(seconds: 1),
+              curve: Curves.easeInOut,
+              left: _startAnimation ? 0.0 : -100,
+              top: screenHeight * 0.62,
+              right: screenWidth * 0.75
+              //bottom: _startAnimation ? 0.0 : -300.0,
+              ),
+          // Positioned(
+          //   left: screenWidth * 0.70,
+          //   top: screenHeight * 0.34,
+          //   child: Image.asset(
+          //     "assets/Rectangle2.png",
+          //   ),
+          // ),
           //   duration: Duration(seconds: 1),
           //   curve: Curves.easeInOut,
           //   left: screenWidth * 0.70,
           //   right: _startAnimation ? screenHeight * 0.00 : -100,
           // ),
-          Column(
+
+          Stack(
             children: [
-              SizedBox(height: screenHeight * 0.25),
-              Padding(
-                padding: EdgeInsets.only(right: screenWidth * 0.25),
-                child: Text(
-                  "    Master Your\n    Medical Entrance!",
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: screenWidth * 0.06,
-                    color: const Color(0xffF45C5C),
-                  ),
-                ),
-              ),
-              SizedBox(height: screenHeight * 0.03),
-              Padding(
-                padding: EdgeInsets.only(left: screenWidth * 0.06),
-                child: Text(
-                  "Prepare for success with our \nMedical Entrance Mock Test!\nSharpen your skills, boost \nconfidence, and ace your\nexam with practice tailored to\nyour goals.",
-                  style: TextStyle(
-                    fontSize: screenWidth * 0.045,
-                    color: const Color(0xff9F0000),
-                    fontFamily: 'poppins',
-                    letterSpacing: 1.5,
-                  ),
+              Positioned(
+                top: 340,
+                child: Column(
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.only(right: screenWidth * 0.25),
+                      child: Text(
+                        "    Master Your\n    Medical Entrance!",
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: screenWidth * 0.06,
+                          color: const Color(0xffF45C5C),
+                        ),
+                      ),
+                    ),
+                    SizedBox(height: screenHeight * 0.03),
+                    Padding(
+                      padding: EdgeInsets.only(left: screenWidth * 0.06),
+                      child: Text(
+                        "Prepare for success with our \nMedical Entrance Mock Test!\nSharpen your skills, boost \nconfidence, and ace your\nexam with practice tailored to\nyour goals.",
+                        style: TextStyle(
+                          fontSize: screenWidth * 0.045,
+                          color: const Color(0xff9F0000),
+                          fontFamily: 'poppins',
+                          letterSpacing: 1.5,
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ],

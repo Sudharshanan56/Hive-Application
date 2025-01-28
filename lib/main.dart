@@ -12,6 +12,7 @@ import 'package:hive_application/Intro/Page_5.dart';
 import 'package:hive_application/OTP/otp_1.dart';
 import 'package:hive_application/University/Screen_1.dart';
 
+import 'Dashboard/MockMaster/MockMaster_1.dart';
 import 'PlayGround/Animated_Positioned.dart';
 import 'PlayGround/Color animation/Color_pageRouteBuilder.dart';
 import 'PlayGround/Color animation/Hero_Color_animation.dart';
@@ -34,7 +35,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.red),
         useMaterial3: true,
       ),
-      home: ExamCracker1(),
+      home: Mockmaster1(),
     );
   }
 }

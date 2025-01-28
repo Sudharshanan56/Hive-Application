@@ -59,7 +59,6 @@
 //   }
 // }
 
-
 import 'package:flutter/material.dart';
 import 'MockMaster_2.dart';
 
@@ -72,72 +71,138 @@ class Mockmaster1 extends StatefulWidget {
 
 class _Mockmaster1State extends State<Mockmaster1> {
   @override
+  bool _startAnimation = false;
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    Future.delayed(Duration(milliseconds: 100), () {
+      setState(() {
+        _startAnimation = true;
+      });
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
+    // bool _startAnimation = false;
     // Get screen width and height
     double screenWidth = MediaQuery.of(context).size.width;
     double screenHeight = MediaQuery.of(context).size.height;
 
     return Scaffold(
       backgroundColor: const Color(0xffF0101E),
-      appBar: AppBar(
-        backgroundColor: const Color(0xffF0101E),
-        leading: Padding(
-          padding: EdgeInsets.all(screenWidth * 0.03),
-          child: GestureDetector(
-            onTap: () => Navigator.pop(context),
-            child: CircleAvatar(
-              radius: screenWidth * 0.03,
-              backgroundColor: const Color(0xff1d1d1d66),
-              child: const Icon(
-                Icons.keyboard_arrow_left,
-                color: Colors.white,
-              ),
-            ),
-          ),
-        ),
-      ),
-      body: Column(
+      // appBar: AppBar(
+      //   backgroundColor: const Color(0xffF0101E),
+      //   leading: Padding(
+      //     padding: EdgeInsets.all(screenWidth * 0.03),
+      //     child: GestureDetector(
+      //       onTap: () => Navigator.pop(context),
+      //       child: CircleAvatar(
+      //         radius: screenWidth * 0.03,
+      //         backgroundColor: const Color(0xff1d1d1d66),
+      //         child: const Icon(
+      //           Icons.keyboard_arrow_left,
+      //           color: Colors.white,
+      //         ),
+      //       ),
+      //     ),
+      //   ),
+      // ),
+      body: Stack(
         children: [
-          SizedBox(height: screenHeight * 0.2),
-          Padding(
-            padding: EdgeInsets.only(right: screenWidth * 0.25),
-            child: Text(
-              "       Master Your\n       Medical Entrance!",
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: screenWidth * 0.06,
-                color: Colors.white,
+          AnimatedPositioned(
+            child: Container(
+              height: screenHeight * 0.62,
+              width: screenWidth * 0.95,
+              child: Image.asset("assets/Rect1.png"),
+            ),
+            duration: Duration(seconds: 1),
+            curve: Curves.easeInOut,
+            left: _startAnimation ? 0.0 : -300.0,
+            right: screenWidth * 0.32,
+            bottom: screenHeight * 0.60,
+          ),
+          AnimatedPositioned(
+              child: Container(
+                child: Image.asset(
+                  "assets/Rect2.png",
+                ),
+              ),
+              height: screenHeight * 0.62,
+              width: screenWidth * 0.95,
+              left: screenWidth * 0.40,
+              duration: Duration(seconds: 1)),
+          AnimatedPositioned(
+            child: Container(
+              child: Image.asset(
+                "assets/Rect3.png",
               ),
             ),
+            duration: Duration(seconds: 1),
+            curve: Curves.easeInOut,
+            left: _startAnimation ? 0.0 : -300.0,
+            right: screenWidth * 0.32,
+            bottom: screenHeight * 0.60,
+            top: screenHeight * 0.30,
           ),
-          SizedBox(height: screenHeight * 0.03),
-          Padding(
-            padding: EdgeInsets.only(left: screenWidth * 0.07),
-            child: Text(
-              "Prepare for success with our \nMedical Entrance Mock Test!\nSharpen your skills, boost \nconfidence, and ace your\nexam with practice tailored to\nyour goals.",
-              style: TextStyle(
-                fontSize: screenWidth * 0.045,
-                color: Colors.white,
-                fontFamily: 'Poppins',
-                letterSpacing: 2.0,
+          Column(
+            children: [
+              SizedBox(height: screenHeight * 0.2),
+              Padding(
+                padding: EdgeInsets.only(right: screenWidth * 0.25),
+                child: Text(
+                  "       Master Your\n       Medical Entrance!",
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: screenWidth * 0.06,
+                    color: Colors.white,
+                  ),
+                ),
               ),
-            ),
+              SizedBox(height: screenHeight * 0.03),
+              Padding(
+                padding: EdgeInsets.only(left: screenWidth * 0.07),
+                child: Text(
+                  "Prepare for success with our \nMedical Entrance Mock Test!\nSharpen your skills, boost \nconfidence, and ace your\nexam with practice tailored to\nyour goals.",
+                  style: TextStyle(
+                    fontSize: screenWidth * 0.045,
+                    color: Colors.white,
+                    fontFamily: 'Poppins',
+                    letterSpacing: 2.0,
+                  ),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.only(
+                  right: screenWidth * 0.6,
+                  top: screenHeight * 0.03,
+                ),
+                child: GestureDetector(
+                  onTap: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => MockMasterScreen()),
+                  ),
+                  child: CircleAvatar(
+                    radius: screenWidth * 0.06,
+                    child: const Icon(
+                      Icons.arrow_right_alt,
+                      size: 30,
+                    ),
+                  ),
+                ),
+              ),
+            ],
           ),
           Padding(
-            padding: EdgeInsets.only(
-              right: screenWidth * 0.6,
-              top: screenHeight * 0.03,
-            ),
+            padding: EdgeInsets.all(screenWidth * 0.03),
             child: GestureDetector(
-              onTap: () => Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => MockMasterScreen()),
-              ),
+              onTap: () => Navigator.pop(context),
               child: CircleAvatar(
-                radius: screenWidth * 0.06,
+                radius: screenWidth * 0.03,
+                backgroundColor: const Color(0xff1d1d1d66),
                 child: const Icon(
-                  Icons.arrow_right_alt,
-                  size: 30,
+                  Icons.keyboard_arrow_left,
+                  color: Colors.white,
                 ),
               ),
             ),
