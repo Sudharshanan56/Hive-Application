@@ -255,41 +255,86 @@ class _MockTestPageState extends State<MockTestPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      // appBar: AppBar(
+      //   backgroundColor: const Color(0xFFF3434E),
+      //   leading: Icon(Icons.transparent),
+      //   title: const Text(
+      //     'Mock Test',
+      //     style: TextStyle(
+      //         color: Colors.white, fontSize: 25, fontWeight: FontWeight.bold),
+      //   ),
+      //   actions: [
+      //     Padding(
+      //       padding: const EdgeInsets.all(8.0),
+      //       child: Center(
+      //         child: Container(
+      //           height: 30,
+      //           width: 75,
+      //           decoration: BoxDecoration(
+      //               color: Colors.white,
+      //               borderRadius: BorderRadius.circular(30)),
+      //           child: Row(
+      //             children: [
+      //               const Icon(
+      //                 Icons.timer_outlined,
+      //                 color: Color(0xFFF3434E),
+      //               ),
+      //               Text(
+      //                 formatTime(_remainingTime),
+      //                 style: const TextStyle(
+      //                   fontSize: 18,
+      //                   fontWeight: FontWeight.bold,
+      //                   color: Color(0xFFF3434E),
+      //                 ),
+      //               ),
+      //             ],
+      //           ),
+      //         ),
+      //       ),
+      //     ),
+      //   ],
+      // ),
       appBar: AppBar(
-        backgroundColor: const Color(0xFFF3434E),
+        toolbarHeight: 150,
+        backgroundColor: Colors.redAccent,
         title: const Text(
           'Mock Test',
           style: TextStyle(
               color: Colors.white, fontSize: 25, fontWeight: FontWeight.bold),
         ),
         actions: [
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Center(
-              child: Container(
-                height: 30,
-                width: 75,
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(30)),
-                child: Row(
-                  children: [
-                    const Icon(
-                      Icons.timer_outlined,
-                      color: Color(0xFFF3434E),
+          Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Center(
+                  child: Container(
+                    height: 30,
+                    width: 75,
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(30)),
+                    child: Row(
+                      children: [
+                        const Icon(
+                          Icons.timer_outlined,
+                          color: Color(0xFFF3434E),
+                        ),
+                        Text(
+                          formatTime(_remainingTime),
+                          style: const TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                            color: Color(0xFFF3434E),
+                          ),
+                        ),
+                      ],
                     ),
-                    Text(
-                      formatTime(_remainingTime),
-                      style: const TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                        color: Color(0xFFF3434E),
-                      ),
-                    ),
-                  ],
+                  ),
                 ),
               ),
-            ),
+              Icon(Icons.person)
+            ],
           ),
         ],
       ),
