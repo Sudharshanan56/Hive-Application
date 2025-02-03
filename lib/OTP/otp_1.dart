@@ -291,7 +291,7 @@ class _OTPVerificationScreenState extends State<OTPVerificationScreen> {
                       padding: const EdgeInsets.all(8.0),
                       child: TextField(
                         controller: phoneController,
-                        keyboardType: TextInputType.phone,
+                        keyboardType: TextInputType.number,
                         decoration: InputDecoration(
                           hintText: "  Enter number",
                           border: InputBorder.none,
