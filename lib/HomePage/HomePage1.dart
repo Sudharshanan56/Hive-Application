@@ -804,6 +804,7 @@ class _PostsListState extends State<PostsList> {
     }
   }
 
+//=========================================================================
   void _otp_verification(BuildContext context) {
     final mediaQuery = MediaQuery.of(context);
     final screenHeight = mediaQuery.size.height;
@@ -957,6 +958,7 @@ class _PostsListState extends State<PostsList> {
       },
     );
   }
+//=========================================================================
 
   void _showEmailVerificationSheet() {
     final mediaQuery = MediaQuery.of(context);
@@ -1063,6 +1065,39 @@ class _PostsListState extends State<PostsList> {
       },
     );
   }
+
+  // void _showDoneAnimationSheet() {
+  //   final mediaQuery = MediaQuery.of(context);
+  //   final screenHeight = mediaQuery.size.height;
+  //   final screenWidth = mediaQuery.size.width;
+
+  //   showModalBottomSheet<void>(
+  //     context: context,
+  //     isDismissible: false,
+  //     enableDrag: false,
+  //     builder: (BuildContext context) {
+  //       return Container(
+  //         height: screenHeight * 0.2,
+  //         decoration: const BoxDecoration(
+  //             color: Colors.white,
+  //             borderRadius: BorderRadius.only(
+  //                 topLeft: Radius.circular(
+  //                   30,
+  //                 ),
+  //                 topRight: Radius.circular(
+  //                   30,
+  //                 ))),
+  //         padding: EdgeInsets.all(screenWidth * 0.04),
+  //         child: Column(
+  //           mainAxisSize: MainAxisSize.min,
+  //           children: <Widget>[
+
+  //           ],
+  //         ),
+  //       );
+  //     },
+  //   );
+  // }
 
   @override
   Widget build(BuildContext context) {
