@@ -73,7 +73,7 @@ class ProfilePage extends StatelessWidget {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => ProfilePage_edit()));
+                                builder: (context) => ProfilePageEdit()));
                       },
                       style: ElevatedButton.styleFrom(
                         shape: RoundedRectangleBorder(
