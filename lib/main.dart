@@ -16,6 +16,7 @@ import 'package:hive_application/OTP/otp_1.dart';
 import 'package:hive_application/University/Screen_1.dart';
 import 'package:hive_application/University/Viewall_univprofile.dart';
 
+import 'Bottom Navigation Bar/Navigation 1.dart';
 import 'Dashboard/MockMaster/MockMaster_1.dart';
 import 'Dashboard/MockMaster/MockMaster_2.dart';
 import 'PlayGround/Animated_Positioned.dart';
@@ -41,10 +42,11 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
+        fontFamily: 'Poppins',
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.red),
         useMaterial3: true,
       ),
-      home: Done(),
+      home: Page1(),
     );
   }
 }

@@ -143,127 +143,129 @@ class _LoginSelectionScreenState extends State<LoginSelectionScreen> {
     final screenHeight = mediaQuery.size.height;
     final screenWidth = mediaQuery.size.width;
 
-    return Scaffold(
-      backgroundColor: Colors.white,
-      // appBar: AppBar(
-      //   backgroundColor: Colors.transparent,
-      //   elevation: 0,
-      //   actions: [
-      //     Padding(
-      //       padding: EdgeInsets.all(screenWidth * 0.01),
-      //       child: Icon(
-      //         Icons.shield_outlined,
-      //         color: Colors.black,
-      //         size: screenWidth * 0.07,
-      //       ),
-      //     ),
-      //   ],
-      // ),
-      body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.05),
-        child: Column(
-          children: [
-            SizedBox(height: screenHeight * 0.08),
-            Center(
-              child: SizedBox(
-                height: screenHeight * 0.4,
-                width: screenWidth * 0.8,
-                child: Image.asset(
-                  'assets/6.png', // Replace with your illustration asset
-                  fit: BoxFit.contain,
-                ),
-              ),
-            ),
-            SizedBox(height: screenHeight * 0.3),
-            SizedBox(
-              height: screenHeight * 0.07,
-              width: screenWidth * 0.9,
-              child: ElevatedButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    PageTransition(
-                        type: PageTransitionType.bottomToTop,
-                        child: OTPVerificationScreen(),
-                        duration: const Duration(milliseconds: 300)),
-                  );
-                },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color(0xFF3C97D3),
-                  padding: EdgeInsets.symmetric(vertical: screenHeight * 0.01),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                ),
-                child: Text(
-                  "User Login",
-                  style: TextStyle(
-                    fontSize: screenWidth * 0.045,
-                    color: Colors.white,
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: Colors.white,
+        // appBar: AppBar(
+        //   backgroundColor: Colors.transparent,
+        //   elevation: 0,
+        //   actions: [
+        //     Padding(
+        //       padding: EdgeInsets.all(screenWidth * 0.01),
+        //       child: Icon(
+        //         Icons.shield_outlined,
+        //         color: Colors.black,
+        //         size: screenWidth * 0.07,
+        //       ),
+        //     ),
+        //   ],
+        // ),
+        body: Padding(
+          padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.05),
+          child: Column(
+            children: [
+              SizedBox(height: screenHeight * 0.08),
+              Center(
+                child: SizedBox(
+                  height: screenHeight * 0.4,
+                  width: screenWidth * 0.8,
+                  child: Image.asset(
+                    'assets/6.png', // Replace with your illustration asset
+                    fit: BoxFit.contain,
                   ),
                 ),
               ),
-            ),
-            SizedBox(height: screenHeight * 0.015),
-            // Text(
-            //   "or",
-            //   style: TextStyle(
-            //     fontSize: screenWidth * 0.04,
-            //     color: Colors.grey,
-            //   ),
-            // ),
-            SizedBox(height: screenHeight * 0.015),
-            // SizedBox(
-            //   height: screenHeight * 0.07,
-            //   width: screenWidth * 0.9,
-            //   child: ElevatedButton(
-            //     onPressed: () {
-            //       Navigator.push(context, PageTransition(type: PageTransitionType.bottomToTop,
-
-            //           child: Intro1(),
-            //           duration: const Duration(milliseconds: 300)),
-
-            //       );
-            //       // Navigate to Universities Login
-            //     },
-            //     style: ElevatedButton.styleFrom(
-            //       backgroundColor: Colors.black,
-            //       padding: EdgeInsets.symmetric(vertical: screenHeight * 0.01),
-            //       shape: RoundedRectangleBorder(
-            //         borderRadius: BorderRadius.circular(8),
-            //       ),
-            //     ),
-            //     child: Text(
-            //       "Universities Login",
-            //       style: TextStyle(
-            //         fontSize: screenWidth * 0.045,
-            //         color: Colors.white,
-            //       ),
-            //     ),
-            //   ),
-            // ),
-            const Spacer(),
-            Text.rich(
-              TextSpan(
-                text: "By registering, you agree to ",
-                style: TextStyle(
-                  color: Colors.black54,
-                  fontSize: screenWidth * 0.035,
-                  fontWeight: FontWeight.bold,
-                ),
-                children: const [
-                  TextSpan(
-                    text: "our terms.",
-                    style: TextStyle(
-                      color: Color(0xFF3C97D3),
+              SizedBox(height: screenHeight * 0.3),
+              SizedBox(
+                height: screenHeight * 0.07,
+                width: screenWidth * 0.9,
+                child: ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      PageTransition(
+                          type: PageTransitionType.bottomToTop,
+                          child: OTPVerificationScreen(),
+                          duration: const Duration(milliseconds: 300)),
+                    );
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: const Color(0xFF3C97D3),
+                    padding: EdgeInsets.symmetric(vertical: screenHeight * 0.01),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8),
                     ),
                   ),
-                ],
+                  child: Text(
+                    "User Login",
+                    style: TextStyle(
+                      fontSize: screenWidth * 0.045,
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
               ),
-              textAlign: TextAlign.center,
-            ),
-            SizedBox(height: screenHeight * 0.02),
-          ],
+              SizedBox(height: screenHeight * 0.015),
+              // Text(
+              //   "or",
+              //   style: TextStyle(
+              //     fontSize: screenWidth * 0.04,
+              //     color: Colors.grey,
+              //   ),
+              // ),
+              SizedBox(height: screenHeight * 0.015),
+              // SizedBox(
+              //   height: screenHeight * 0.07,
+              //   width: screenWidth * 0.9,
+              //   child: ElevatedButton(
+              //     onPressed: () {
+              //       Navigator.push(context, PageTransition(type: PageTransitionType.bottomToTop,
+      
+              //           child: Intro1(),
+              //           duration: const Duration(milliseconds: 300)),
+      
+              //       );
+              //       // Navigate to Universities Login
+              //     },
+              //     style: ElevatedButton.styleFrom(
+              //       backgroundColor: Colors.black,
+              //       padding: EdgeInsets.symmetric(vertical: screenHeight * 0.01),
+              //       shape: RoundedRectangleBorder(
+              //         borderRadius: BorderRadius.circular(8),
+              //       ),
+              //     ),
+              //     child: Text(
+              //       "Universities Login",
+              //       style: TextStyle(
+              //         fontSize: screenWidth * 0.045,
+              //         color: Colors.white,
+              //       ),
+              //     ),
+              //   ),
+              // ),
+              const Spacer(),
+              Text.rich(
+                TextSpan(
+                  text: "By registering, you agree to ",
+                  style: TextStyle(
+                    color: Colors.black54,
+                    fontSize: screenWidth * 0.035,
+                    fontWeight: FontWeight.bold,
+                  ),
+                  children: const [
+                    TextSpan(
+                      text: "our terms.",
+                      style: TextStyle(
+                        color: Color(0xFF3C97D3),
+                      ),
+                    ),
+                  ],
+                ),
+                textAlign: TextAlign.center,
+              ),
+              SizedBox(height: screenHeight * 0.02),
+            ],
+          ),
         ),
       ),
     );

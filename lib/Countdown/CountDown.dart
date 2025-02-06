@@ -23,11 +23,17 @@ class _CountdownPageState extends State<CountdownPage>
   @override
   void initState() {
     super.initState();
+    Future.delayed(Duration(seconds: 5), () {
+      if (mounted) {
+        Navigator.pop(context); // Navigates back after 5 seconds
+      }
+    });
     _controller = AnimationController(
       vsync: this,
       duration: const Duration(seconds: 1),
     );
-
+    // Future.delayed(Duration(seconds: 3));
+    // Navigator.pop(context);
     _animation = Tween<Offset>(
       begin: Offset(10.0, 10.0),
       end: Offset(0.0, 0.0),
@@ -75,120 +81,125 @@ class _CountdownPageState extends State<CountdownPage>
     final int seconds = _duration.inSeconds % 60;
     final screenWidth = MediaQuery.of(context).size.width;
     final screenHeight = MediaQuery.of(context).size.height;
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Color(0xFF3C97D3),
-        leading: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: CircleAvatar(
-            radius: 1,
-            backgroundColor: Color(0xFF1D1D1D66),
-            child: IconButton(
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-                icon: const Icon(
-                  Icons.arrow_back_ios_new,
-                  color: Colors.white,
-                  size: 20,
-                )),
+    return SafeArea(
+      child: Scaffold(
+        appBar: AppBar(
+          backgroundColor: Color(0xFF3C97D3),
+          leading: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: CircleAvatar(
+              radius: 1,
+              backgroundColor: Color(0xFF1D1D1D66),
+              child: IconButton(
+                  onPressed: () {
+                    //Future.delayed(Duration(seconds: 3));
+                    Navigator.pop(context);
+                  },
+                  icon: const Icon(
+                    Icons.arrow_back_ios_new,
+                    color: Colors.white,
+                    size: 20,
+                  )),
+            ),
           ),
         ),
-      ),
-      backgroundColor: const Color(0xFF3C97D3),
-      body: Center(
-        child: Stack(
-          children: [
-            // SlideTransition(
-            //   position: _animation,
-            //   child: Padding(
-            //     padding: const EdgeInsets.only(left: 300),
-            //     child: Positioned(
-            //       left: 100,
-            //       child: Image.asset("assets/Ellipse101.png"),
-            //     ),
-            //   ),
-            // ),
-            // SlideTransition(
-            //   position: _animation,
-            //   child: Padding(
-            //     padding: const EdgeInsets.only(top: 320),
-            //     child: Positioned(
-            //       top: 320,
-            //       child: Image.asset("assets/Ellipse100.png"),
-            //     ),
-            //   ),
-            // ),
-            SlideTransition(
-              position: _animation,
-              child: Padding(
-                padding: EdgeInsets.only(
-                    left: screenWidth * 0.82, bottom: screenHeight * 0.8),
-                child: Image.asset(
-                  "assets/Ellipse101.png",
-                  width: screenWidth * 0.4,
-                  height: screenWidth * 0.4,
-                ),
-              ),
-            ),
-            SlideTransition(
-              position: _animation,
-              child: Padding(
-                padding: EdgeInsets.only(
-                    left: screenWidth * 0.88, top: screenHeight * 0.8),
-                child: Image.asset(
-                  "assets/Ellipse102.png",
-                  width: screenWidth * 0.4,
-                  height: screenWidth * 0.4,
-                ),
-              ),
-            ),
-            SlideTransition(
-              position: _animation,
-              child: Padding(
-                padding: EdgeInsets.only(top: screenHeight * 0.4),
-                child: Image.asset(
-                  "assets/Ellipse100.png",
-                  // width: screenWidth * 0.2,
-                  // height: screenWidth * 10.0,
-                ),
-              ),
-            ),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.center,
+        backgroundColor: const Color(0xFF3C97D3),
+        body: SafeArea(
+          child: Center(
+            child: Stack(
               children: [
-                Text(
-                  "Your next exam Awaits!",
-                  style: TextStyle(
-                    fontSize: screenWidth * 0.06,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
+                // SlideTransition(
+                //   position: _animation,
+                //   child: Padding(
+                //     padding: const EdgeInsets.only(left: 300),
+                //     child: Positioned(
+                //       left: 100,
+                //       child: Image.asset("assets/Ellipse101.png"),
+                //     ),
+                //   ),
+                // ),
+                // SlideTransition(
+                //   position: _animation,
+                //   child: Padding(
+                //     padding: const EdgeInsets.only(top: 320),
+                //     child: Positioned(
+                //       top: 320,
+                //       child: Image.asset("assets/Ellipse100.png"),
+                //     ),
+                //   ),
+                // ),
+                SlideTransition(
+                  position: _animation,
+                  child: Padding(
+                    padding: EdgeInsets.only(
+                        left: screenWidth * 0.82, bottom: screenHeight * 0.8),
+                    child: Image.asset(
+                      "assets/Ellipse101.png",
+                      width: screenWidth * 0.4,
+                      height: screenWidth * 0.4,
+                    ),
                   ),
                 ),
-                const SizedBox(height: 20),
-                Container(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-                  decoration: BoxDecoration(
-                    color: Color(0xFF70777C66),
-                    borderRadius: BorderRadius.circular(16),
+                SlideTransition(
+                  position: _animation,
+                  child: Padding(
+                    padding: EdgeInsets.only(
+                        left: screenWidth * 0.88, top: screenHeight * 0.8),
+                    child: Image.asset(
+                      "assets/Ellipse102.png",
+                      width: screenWidth * 0.4,
+                      height: screenWidth * 0.4,
+                    ),
                   ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      _buildTimeCard(days, "Days"),
-                      _buildColon(),
-                      _buildTimeCard(hours, "Hours"),
-                      _buildColon(),
-                      _buildTimeCard(minutes, "Min"),
-                      _buildColon(),
-                      _buildTimeCard(seconds, "Sec"),
-                    ],
+                ),
+                SlideTransition(
+                  position: _animation,
+                  child: Padding(
+                    padding: EdgeInsets.only(top: screenHeight * 0.4),
+                    child: Image.asset(
+                      "assets/Ellipse100.png",
+                      // width: screenWidth * 0.2,
+                      // height: screenWidth * 10.0,
+                    ),
                   ),
+                ),
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      "Your next exam Awaits!",
+                      style: TextStyle(
+                        fontSize: screenWidth * 0.06,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                      ),
+                    ),
+                    const SizedBox(height: 20),
+                    Container(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 20, vertical: 20),
+                      decoration: BoxDecoration(
+                        color: Color(0xFF70777C66),
+                        borderRadius: BorderRadius.circular(16),
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          _buildTimeCard(days, "Days"),
+                          _buildColon(),
+                          _buildTimeCard(hours, "Hours"),
+                          _buildColon(),
+                          _buildTimeCard(minutes, "Min"),
+                          _buildColon(),
+                          _buildTimeCard(seconds, "Sec"),
+                        ],
+                      ),
+                    ),
+                  ],
                 ),
               ],
             ),
-          ],
+          ),
         ),
       ),
     );

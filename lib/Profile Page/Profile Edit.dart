@@ -165,106 +165,108 @@ class ProfilePageEdit extends StatelessWidget {
     final double screenWidth = MediaQuery.of(context).size.width;
     final double screenHeight = MediaQuery.of(context).size.height;
 
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        elevation: 0,
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Colors.black),
-          onPressed: () => Navigator.pop(context),
-        ),
-        title: const Text(
-          'Edit Profile',
-          style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
-        ),
-        actions: [
-          TextButton(
+    return SafeArea(
+      child: Scaffold(
+        appBar: AppBar(
+          backgroundColor: Colors.white,
+          elevation: 0,
+          leading: IconButton(
+            icon: const Icon(Icons.arrow_back, color: Colors.black),
             onPressed: () => Navigator.pop(context),
-            child:  Text(
-              'Cancel',
-              style: TextStyle(color: Colors.red, fontWeight: FontWeight.bold),
+          ),
+          title: const Text(
+            'Edit Profile',
+            style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+          ),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(context),
+              child:  Text(
+                'Cancel',
+                style: TextStyle(color: Colors.red, fontWeight: FontWeight.bold),
+              ),
             ),
-          ),
-        ],
-      ),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: EdgeInsets.symmetric(
-            horizontal: screenWidth * 0.05,
-            vertical: screenHeight * 0.02,
-          ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Center(
-                child: Stack(
-                  children: [
-                    CircleAvatar(
-                      radius: screenWidth * 0.15,
-                      backgroundImage:
-                           AssetImage('assets/profile_placeholder.png'),
-                      backgroundColor: Colors.grey.shade300,
-                    ),
-                    Positioned(
-                      bottom: 0,
-                      right: 0,
-                      child: CircleAvatar(
-                        radius: screenWidth * 0.05,
-                        backgroundColor: Colors.blue,
-                        child: Icon(
-                          Icons.add,
-                          color: Colors.white,
-                          size: screenWidth * 0.05,
+          ],
+        ),
+        body: SingleChildScrollView(
+          child: Padding(
+            padding: EdgeInsets.symmetric(
+              horizontal: screenWidth * 0.05,
+              vertical: screenHeight * 0.02,
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Center(
+                  child: Stack(
+                    children: [
+                      CircleAvatar(
+                        radius: screenWidth * 0.15,
+                        backgroundImage:
+                             AssetImage('assets/profile_placeholder.png'),
+                        backgroundColor: Colors.grey.shade300,
+                      ),
+                      Positioned(
+                        bottom: 0,
+                        right: 0,
+                        child: CircleAvatar(
+                          radius: screenWidth * 0.05,
+                          backgroundColor: Colors.blue,
+                          child: Icon(
+                            Icons.add,
+                            color: Colors.white,
+                            size: screenWidth * 0.05,
+                          ),
                         ),
                       ),
+                    ],
+                  ),
+                ),
+                SizedBox(height: screenHeight * 0.03),
+                _buildTextField('Enter Name'),
+                SizedBox(height: screenHeight * 0.02),
+                _buildTextField('Enter Email'),
+                SizedBox(height: screenHeight * 0.02),
+                Row(
+                  children: [
+                    SizedBox(
+                      width: screenWidth * 0.2,
+                      child: _buildTextField('+91', isSmall: true),
+                    ),
+                    SizedBox(width: screenWidth * 0.03),
+                    Expanded(
+                      child: _buildTextField('Enter Number'),
                     ),
                   ],
                 ),
-              ),
-              SizedBox(height: screenHeight * 0.03),
-              _buildTextField('Enter Name'),
-              SizedBox(height: screenHeight * 0.02),
-              _buildTextField('Enter Email'),
-              SizedBox(height: screenHeight * 0.02),
-              Row(
-                children: [
-                  SizedBox(
-                    width: screenWidth * 0.2,
-                    child: _buildTextField('+91', isSmall: true),
+                SizedBox(height: screenHeight * 0.02),
+                 Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    '*Make changes to your personal details only once per month.',
+                    style: TextStyle(color: Colors.red, fontSize: 12),
                   ),
-                  SizedBox(width: screenWidth * 0.03),
-                  Expanded(
-                    child: _buildTextField('Enter Number'),
-                  ),
-                ],
-              ),
-              SizedBox(height: screenHeight * 0.02),
-               Align(
-                alignment: Alignment.centerLeft,
-                child: Text(
-                  '*Make changes to your personal details only once per month.',
-                  style: TextStyle(color: Colors.red, fontSize: 12),
                 ),
-              ),
-              SizedBox(height: screenHeight * 0.05),
-              SizedBox(
-                height: screenHeight * 0.07,
-                width: screenWidth * 0.9,
-                child: ElevatedButton(
-                  onPressed: () => Navigator.pop(context),
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Color(0xFF3C97D3),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10),
+                SizedBox(height: screenHeight * 0.05),
+                SizedBox(
+                  height: screenHeight * 0.07,
+                  width: screenWidth * 0.9,
+                  child: ElevatedButton(
+                    onPressed: () => Navigator.pop(context),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Color(0xFF3C97D3),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                    ),
+                    child:  Text(
+                      'Save',
+                      style: TextStyle(fontSize: 16, color: Colors.white),
                     ),
                   ),
-                  child:  Text(
-                    'Save',
-                    style: TextStyle(fontSize: 16, color: Colors.white),
-                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),

@@ -400,11 +400,68 @@
 import 'package:flutter/material.dart';
 import 'package:hive_application/Search%20Page/Search%20page.dart';
 import 'package:like_button/like_button.dart';
+import 'package:lottie/lottie.dart';
 import 'package:page_transition/page_transition.dart';
 import '../Countdown/CountDown.dart';
+import '../Profile Page/Profile_1.dart';
 import '../University/Screen_1.dart';
 
-class HomepageWithoutEmail extends StatelessWidget {
+class HomepageWithoutEmail extends StatefulWidget {
+  HomepageWithoutEmail({super.key});
+
+  @override
+  State<HomepageWithoutEmail> createState() => _HomepageWithoutEmailState();
+}
+
+class _HomepageWithoutEmailState extends State<HomepageWithoutEmail> {
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _showDoneBottomSheet();
+    });
+  }
+
+  void _showDoneBottomSheet() {
+    showModalBottomSheet(
+      context: context,
+      isDismissible: false, // Prevent user from dismissing manually
+      enableDrag: false, // Disable dragging to close
+      builder: (context) {
+        return SizedBox(
+          height: 300,
+          child: Center(
+            child: Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(top: 55),
+                  child: Center(
+                      child: Text(
+                    "All Done!",
+                    style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+                  )),
+                ),
+                Lottie.asset(
+                  'assets/done_1.json', // Add your Lottie animation in assets
+                  width: 200,
+                  height: 200,
+                  repeat: false,
+                ),
+              ],
+            ),
+          ),
+        );
+      },
+    );
+
+    // Auto-close bottom sheet after 3 seconds
+    Future.delayed(const Duration(seconds: 3), () {
+      if (mounted) {
+        Navigator.pop(context);
+      }
+    });
+  }
+
   final List<Map<String, String>> posts = List.generate(
       10,
       (index) => {
@@ -414,67 +471,78 @@ class HomepageWithoutEmail extends StatelessWidget {
             'image': 'https://via.placeholder.com/150'
           });
 
-  HomepageWithoutEmail({super.key});
-
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        appBar: AppBar(
-          backgroundColor: Colors.white,
-          toolbarHeight: 80,
-          leading: Padding(
-            padding: const EdgeInsets.only(left: 10),
-            child: CircleAvatar(
-              backgroundImage: AssetImage("assets/person.png"),
-              radius: 50,
+    return SafeArea(
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        home: Scaffold(
+          appBar: AppBar(
+            backgroundColor: Colors.white,
+            toolbarHeight: 80,
+            leading: Padding(
+              padding: EdgeInsets.only(left: 10),
+              child: GestureDetector(
+                onTap: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => ProfilePage()));
+                },
+                child: Container(
+                  child: CircleAvatar(
+                    backgroundImage: AssetImage("assets/person.png"),
+                    radius: 50,
+                  ),
+                ),
+              ),
+            ),
+            title: GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => SearchPage()),
+                );
+              },
+              child: Container(
+                height: 50,
+                width: 300,
+                decoration: BoxDecoration(
+                    border: Border.all(color: Colors.grey),
+                    borderRadius: BorderRadius.circular(30),
+                    color: Color(0xFFF1F1F1)),
+                child: ListTile(
+                  leading: Icon(Icons.search),
+                  title: Text('Search'),
+                ),
+                // child: TextField(
+                //   readOnly: true,
+                //   decoration: InputDecoration(
+                //     hintText: 'Search...',
+                //     fillColor: Colors.grey[200],
+                //     filled: true,
+                //     prefixIcon: Icon(Icons.search),
+                //     border: OutlineInputBorder(
+                //       borderRadius: BorderRadius.circular(30),
+                //       borderSide: BorderSide.none,
+                //     ),
+                //     contentPadding: EdgeInsets.zero,
+                //   ),
+                // ),
+              ),
             ),
           ),
-          title: GestureDetector(
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => SearchPage()),
-              );
-            },
-            child: Container(
-              height: 50,
-              width: 300,
-              decoration: BoxDecoration(
-                border: Border.all(color: Colors.grey),
-                borderRadius: BorderRadius.circular(30),
-              ),
-              child: ListTile(
-                leading: Icon(Icons.search),
-                title: Text('Search...'),
-              ),
-              // child: TextField(
-              //   readOnly: true,
-              //   decoration: InputDecoration(
-              //     hintText: 'Search...',
-              //     fillColor: Colors.grey[200],
-              //     filled: true,
-              //     prefixIcon: Icon(Icons.search),
-              //     border: OutlineInputBorder(
-              //       borderRadius: BorderRadius.circular(30),
-              //       borderSide: BorderSide.none,
-              //     ),
-              //     contentPadding: EdgeInsets.zero,
-              //   ),
-              // ),
+          body: SafeArea(child: PostsList(posts: posts)),
+          floatingActionButton: Padding(
+            padding: const EdgeInsets.only(bottom: 80),
+            child: FloatingActionButton(
+              shape: CircleBorder(),
+              backgroundColor: const Color(0xFF5A9ECF),
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => CountdownPage()));
+              },
+              child: const Icon(Icons.school_outlined, color: Colors.white),
             ),
           ),
-        ),
-        body: SafeArea(child: PostsList(posts: posts)),
-        floatingActionButton: FloatingActionButton(
-          shape: CircleBorder(),
-          backgroundColor: const Color(0xFF5A9ECF),
-          onPressed: () {
-            Navigator.push(context,
-                MaterialPageRoute(builder: (context) => CountdownPage()));
-          },
-          child: const Icon(Icons.school_outlined, color: Colors.white),
         ),
       ),
     );
@@ -491,6 +559,14 @@ class PostsList extends StatefulWidget {
 }
 
 class _PostsListState extends State<PostsList> {
+  List<bool> isLikedList = [];
+
+  @override
+  void initState() {
+    super.initState();
+    isLikedList = List<bool>.filled(widget.posts.length, false);
+  }
+
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(
@@ -502,7 +578,8 @@ class _PostsListState extends State<PostsList> {
           itemCount: widget.posts.length,
           itemBuilder: (context, index) {
             final post = widget.posts[index];
-            return _buildPostCard(post, screenWidth, screenHeight, context);
+            return _buildPostCard(
+                post, screenWidth, screenHeight, context, index);
           },
         );
       },
@@ -510,16 +587,25 @@ class _PostsListState extends State<PostsList> {
   }
 
   Widget _buildPostCard(Map<String, String> post, double screenWidth,
-      double screenHeight, BuildContext context) {
-    return Card(
+      double screenHeight, BuildContext context, int index) {
+    // bool isLiked = false;
+
+    // void toggleLike() {
+    //   setState(() {
+    //     isLiked = !isLiked;
+    //   });
+    // }
+
+    return Container(
+      decoration: BoxDecoration(color: Color(0xFFF4FAFF)),
       margin: EdgeInsets.symmetric(
         horizontal: screenWidth * 0.04,
         vertical: screenHeight * 0.01,
       ),
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(screenWidth * 0.03),
-      ),
-      elevation: 4,
+      // shape: RoundedRectangleBorder(
+      //   borderRadius: BorderRadius.circular(screenWidth * 0.03),
+      // ),
+      //  elevation: 4,
       child: Padding(
         padding: EdgeInsets.all(screenWidth * 0.04),
         child: Column(
@@ -554,8 +640,7 @@ class _PostsListState extends State<PostsList> {
                 Container(
                     height: screenHeight * 0.07,
                     width: screenWidth * 0.10,
-                    child: Image.asset("assets/vector.png")
-                    ),
+                    child: Image.asset("assets/vector.png")),
               ],
             ),
             SizedBox(height: screenHeight * 0.005),
@@ -571,7 +656,6 @@ class _PostsListState extends State<PostsList> {
             ),
             Hero(
                 tag: "post1",
-                
                 child: Image(image: AssetImage("assets/post1.png"))),
             SizedBox(height: screenHeight * 0.02),
             Row(
@@ -609,12 +693,23 @@ class _PostsListState extends State<PostsList> {
                 ),
                 Spacer(),
                 SizedBox(
-                    height: screenHeight * 0.07,
-                    width: screenWidth * 0.10,
-                    child: LikeButton()
-                    // IconButton(
-                    //     onPressed: () {}, icon: Icon(Icons.favorite_border)),
-                    )
+                  height: screenHeight * 0.07,
+                  width: screenWidth * 0.10,
+                  child: IconButton(
+                    iconSize: screenWidth * 0.12,
+                    icon: Icon(
+                      isLikedList[index]
+                          ? Icons.favorite
+                          : Icons.favorite_border,
+                      color: isLikedList[index] ? Colors.red : Colors.grey,
+                    ),
+                    onPressed: () {
+                      setState(() {
+                        isLikedList[index] = !isLikedList[index];
+                      });
+                    },
+                  ),
+                )
               ],
             ),
           ],

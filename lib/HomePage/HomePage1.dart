@@ -699,6 +699,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:hive_application/Bottom%20Navigation%20Bar/Navigation%201.dart';
+import 'package:lottie/lottie.dart';
 import '../Countdown/CountDown.dart';
 import 'HomePage_Without_email.dart';
 import '../University/Screen_1.dart';
@@ -736,32 +737,34 @@ class _BottomSheetAppState extends State<BottomSheetApp> {
     final mediaQuery = MediaQuery.of(context);
     final screenWidth = mediaQuery.size.width;
 
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        // s
-        body: PostsList(posts: posts),
-        // floatingActionButton: FloatingActionButton(
-        //   shape: const CircleBorder(),
-        //   backgroundColor: const Color(0xFF5A9ECF),
-        //   onPressed: () {
-        //     Navigator.push(context, MaterialPageRoute(builder: (context) => CountdownPage()));
-        //   },
-        //   child: Container(
-        //     height: screenWidth * 0.13,
-        //     width: screenWidth * 0.13,
-        //     margin: EdgeInsets.symmetric(vertical: screenWidth * 0.02),
-        //     decoration: BoxDecoration(
-        //       borderRadius: BorderRadius.circular(90),
-        //       color: const Color(0xFF5A9ECF),
-        //     ),
-        //     child: Icon(
-        //       Icons.school_outlined,
-        //       color: Colors.white,
-        //       size: screenWidth * 0.08,
-        //     ),
-        //   ),
-        // ),
+    return SafeArea(
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        home: Scaffold(
+          // s
+          body: PostsList(posts: posts),
+          // floatingActionButton: FloatingActionButton(
+          //   shape: const CircleBorder(),
+          //   backgroundColor: const Color(0xFF5A9ECF),
+          //   onPressed: () {
+          //     Navigator.push(context, MaterialPageRoute(builder: (context) => CountdownPage()));
+          //   },
+          //   child: Container(
+          //     height: screenWidth * 0.13,
+          //     width: screenWidth * 0.13,
+          //     margin: EdgeInsets.symmetric(vertical: screenWidth * 0.02),
+          //     decoration: BoxDecoration(
+          //       borderRadius: BorderRadius.circular(90),
+          //       color: const Color(0xFF5A9ECF),
+          //     ),
+          //     child: Icon(
+          //       Icons.school_outlined,
+          //       color: Colors.white,
+          //       size: screenWidth * 0.08,
+          //     ),
+          //   ),
+          // ),
+        ),
       ),
     );
   }
@@ -813,6 +816,7 @@ class _PostsListState extends State<PostsList> {
     showModalBottomSheet<void>(
       context: context,
       isDismissible: false,
+      isScrollControlled: true,
       enableDrag: false,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.only(
@@ -822,7 +826,8 @@ class _PostsListState extends State<PostsList> {
       ),
       builder: (BuildContext context) {
         return Container(
-          height: screenHeight * 0.5,
+          height: screenHeight * 0.38,
+          width: screenWidth,
           decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.only(
@@ -830,20 +835,24 @@ class _PostsListState extends State<PostsList> {
               topLeft: Radius.circular(screenWidth * 0.08),
             ),
           ),
-          padding: EdgeInsets.all(screenWidth * 0.04),
+          padding: EdgeInsets.all(screenWidth * 0.045),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
-              Text(
-                "Enter your OTP to verify.",
-                style: TextStyle(
-                  fontSize: screenWidth * 0.055,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.black,
-                ),
-                textAlign: TextAlign.center,
+              Row(
+                children: [
+                  Text(
+                    "Enter OTP",
+                    style: TextStyle(
+                      fontSize: screenWidth * 0.055,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                ],
               ),
-              SizedBox(height: screenHeight * 0.04),
+              SizedBox(height: screenHeight * 0.02),
               Row(
                 children: [
                   Text(
@@ -863,7 +872,7 @@ class _PostsListState extends State<PostsList> {
                   Icon(Icons.edit, size: screenWidth * 0.05),
                 ],
               ),
-              SizedBox(height: screenHeight * 0.03),
+              SizedBox(height: screenHeight * 0.02),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: List.generate(4, (index) {
@@ -901,7 +910,7 @@ class _PostsListState extends State<PostsList> {
                   );
                 }),
               ),
-              SizedBox(height: screenHeight * 0.02),
+              SizedBox(height: screenHeight * 0.0),
               TextButton(
                 onPressed: () {
                   // Resend OTP action
@@ -926,29 +935,36 @@ class _PostsListState extends State<PostsList> {
                   ],
                 ),
               ),
-              SizedBox(height: screenHeight * 0.05),
-              ElevatedButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => navi_home()),
-                  );
-                },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Color(0xFF5A9ECF),
-                  padding: EdgeInsets.symmetric(
-                    horizontal: screenWidth * 0.35,
-                    vertical: screenHeight * 0.02,
+              SizedBox(height: screenHeight * 0.02),
+              Container(
+                height: screenHeight * 0.08,
+                width: screenWidth * 0.88,
+                child: ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => navi_home()),
+                    );
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Color(0xFF5A9ECF),
+                    padding: EdgeInsets.symmetric(
+                      horizontal: screenWidth * 0.35,
+                      vertical: screenHeight * 0.02,
+                    ),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8),
+                    ),
                   ),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                ),
-                child: Text(
-                  "Get OTP",
-                  style: TextStyle(
-                    fontSize: screenWidth * 0.045,
-                    color: Colors.white,
+                  child: FittedBox(
+                    fit: BoxFit.scaleDown,
+                    child: Text(
+                      "Geet OTTP",
+                      style: TextStyle(
+                        fontSize: screenWidth * 0.045,
+                        color: Colors.white,
+                      ),
+                    ),
                   ),
                 ),
               ),
@@ -967,6 +983,7 @@ class _PostsListState extends State<PostsList> {
 
     showModalBottomSheet<void>(
       context: context,
+      isScrollControlled: true,
       isDismissible: false,
       enableDrag: false,
       builder: (BuildContext context) {

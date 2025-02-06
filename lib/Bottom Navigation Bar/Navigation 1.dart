@@ -114,7 +114,13 @@ class _navi_homeState extends State<navi_home> {
   int _selectedIndex = 0;
 
   static final List<Widget> _widgetOptions = <Widget>[
-    HomepageWithoutEmail(),
+    HomepageWithoutEmail(
+      // GoToProfile: () {
+      //     setState(() {
+      //       _selectedIndex = 2;
+      //     });
+      //   },
+    ),
     UniversityListPage(),
     DashboardPage(),
     const Notification_1(),
@@ -126,73 +132,75 @@ class _navi_homeState extends State<navi_home> {
     final screenWidth = MediaQuery.of(context).size.width;
     final screenHeight = MediaQuery.of(context).size.height;
 
-    return Scaffold(
-      body: Stack(
-        children: [
-          // Main Content
-          IndexedStack(
-            index: _selectedIndex,
-            children: _widgetOptions,
-          ),
-          // Bottom Navigation Bar
-          Positioned(
-            left: 0,
-            right: 0,
-            bottom: 0,
-            child: Container(
-              decoration: BoxDecoration(
-                color: Colors.white, // Adjust transparency here
-                borderRadius: BorderRadius.circular(screenWidth * 0.05), // Curved edges
-                boxShadow: [
-                  BoxShadow(
-                    blurRadius: 20,
-                    color: Colors.black.withOpacity(.1),
-                  ),
-                ],
-              ),
-              margin: EdgeInsets.only(
-                left: screenWidth * 0.04,
-                bottom: screenHeight * 0.02,
-                top: screenHeight * 0.01,
-              ),
-              child: Padding(
-                padding: EdgeInsets.symmetric(
-                  horizontal: screenWidth * 0.04,
-                  vertical: screenHeight * 0.01,
+    return SafeArea(
+      child: Scaffold(
+        body: Stack(
+          children: [
+            // Main Content
+            IndexedStack(
+              index: _selectedIndex,
+              children: _widgetOptions,
+            ),
+            // Bottom Navigation Bar
+            Positioned(
+              left: 0,
+              right: 0,
+              bottom: 0,
+              child: Container(
+                decoration: BoxDecoration(
+                  color: Colors.white, // Adjust transparency here
+                  borderRadius: BorderRadius.circular(screenWidth * 0.5), // Curved edges
+                  boxShadow: [
+                    BoxShadow(
+                      blurRadius: 20,
+                      color: Colors.black.withOpacity(.1),
+                    ),
+                  ],
                 ),
-                
-                child: GNav(
-                  backgroundColor: Colors.transparent,
-                  rippleColor: Colors.grey[300]!,
-                  hoverColor: Colors.grey[100]!,
-                  gap: screenWidth * 0.02,
-                  activeColor: Colors.white,
-                  iconSize: screenWidth * 0.07,
+                margin: EdgeInsets.only(
+                  left: screenWidth * 0.04,
+                  bottom: screenHeight * 0.02,
+                  top: screenHeight * 0.01,
+                ),
+                child: Padding(
                   padding: EdgeInsets.symmetric(
-                    horizontal: screenWidth * 0.05,
+                    horizontal: screenWidth * 0.04,
                     vertical: screenHeight * 0.01,
                   ),
-                  duration: const Duration(milliseconds: 200),
-                  tabBackgroundColor: const Color(0xff3C97D3),
-                  color: Colors.black, // Inactive icon color
-                  tabs: const [
-                    GButton(icon: Icons.home_outlined),
-                    GButton(icon: Icons.menu),
-                    GButton(icon: Icons.grid_view),
-                    GButton(icon: Icons.crop_square_outlined),
-                    GButton(icon: Icons.person_outline),
-                  ],
-                  selectedIndex: _selectedIndex,
-                  onTabChange: (index) {
-                    setState(() {
-                      _selectedIndex = index;
-                    });
-                  },
+                  
+                  child: GNav(
+                    backgroundColor: Colors.transparent,
+                    rippleColor: Colors.grey[300]!,
+                    hoverColor: Colors.grey[100]!,
+                    gap: screenWidth * 0.02,
+                    activeColor: Colors.white,
+                    iconSize: screenWidth * 0.07,
+                    padding: EdgeInsets.symmetric(
+                      horizontal: screenWidth * 0.05,
+                      vertical: screenHeight * 0.01,
+                    ),
+                    duration: const Duration(milliseconds: 200),
+                    tabBackgroundColor: const Color(0xff3C97D3),
+                    color: Colors.black, // Inactive icon color
+                    tabs: const [
+                      GButton(icon: Icons.home_outlined),
+                      GButton(icon: Icons.menu),
+                      GButton(icon: Icons.grid_view),
+                      GButton(icon: Icons.crop_square_outlined),
+                      GButton(icon: Icons.person_outline),
+                    ],
+                    selectedIndex: _selectedIndex,
+                    onTabChange: (index) {
+                      setState(() {
+                        _selectedIndex = index;
+                      });
+                    },
+                  ),
                 ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
