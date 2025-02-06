@@ -941,7 +941,8 @@ class _SliverAppBarExampleState extends State<SliverAppBarExample> {
                           //   ),
                           //   child: const Text('Post'),
                           // ),
-                          Positioned(
+                          Align(
+                            alignment: Alignment.bottomRight,
                             child: GestureDetector(
                               onTap: postComment,
                               child: Container(
@@ -961,8 +962,6 @@ class _SliverAppBarExampleState extends State<SliverAppBarExample> {
                                 ),
                               ),
                             ),
-                            top: 100,
-                            left: 900,
                           ),
                         ],
                       ),

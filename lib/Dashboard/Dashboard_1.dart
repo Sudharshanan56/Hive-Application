@@ -233,234 +233,236 @@ class DashboardPage extends StatelessWidget {
     final screenWidth = MediaQuery.of(context).size.width;
     final screenHeight = MediaQuery.of(context).size.height;
 
-    return Scaffold(
-      backgroundColor: Colors.white,
-      body: Padding(
-        padding: EdgeInsets.all(screenWidth * 0.04),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            SizedBox(height: screenHeight * 0.05),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.02),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Hello, Rajasekar',
-                        style: TextStyle(
-                          fontSize: screenWidth * 0.05,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black,
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: Colors.white,
+        body: Padding(
+          padding: EdgeInsets.all(screenWidth * 0.04),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SizedBox(height: screenHeight * 0.05),
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.02),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Hello, Rajasekar',
+                          style: TextStyle(
+                            fontSize: screenWidth * 0.05,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black,
+                          ),
                         ),
-                      ),
-                      SizedBox(height: screenHeight * 0.01),
-                      Text(
-                        'NEET202454321',
-                        style: TextStyle(
-                          fontSize: screenWidth * 0.035,
-                          color: Colors.grey,
+                        SizedBox(height: screenHeight * 0.01),
+                        Text(
+                          'NEET202454321',
+                          style: TextStyle(
+                            fontSize: screenWidth * 0.035,
+                            color: Colors.grey,
+                          ),
                         ),
-                      ),
-                    ],
-                  ),
-                  CircleAvatar(
-                    backgroundImage: const AssetImage('assets/person.png'),
-                    radius: screenWidth * 0.08,
-                  ),
-                ],
-              ),
-            ),
-            SizedBox(height: screenHeight * 0.03),
-            Container(
-              height: screenHeight * 0.07,
-              decoration: BoxDecoration(
-                color: Colors.grey[200],
-                borderRadius: BorderRadius.circular(30),
-              ),
-              padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.05),
-              child: Center(
-                child: TextFormField(
-                  readOnly: true,
-                  onTap: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => SearchPage()));
-                  },
-                  decoration: InputDecoration(
-                    border: InputBorder.none,
-                    prefixIcon: const Icon(
-                      Icons.search,
-                      color: Colors.grey,
+                      ],
                     ),
-                    hintText: "Search",
-                    hintStyle: TextStyle(fontSize: screenWidth * 0.045),
+                    CircleAvatar(
+                      backgroundImage: const AssetImage('assets/person.png'),
+                      radius: screenWidth * 0.08,
+                    ),
+                  ],
+                ),
+              ),
+              SizedBox(height: screenHeight * 0.03),
+              Container(
+                height: screenHeight * 0.07,
+                decoration: BoxDecoration(
+                  color: Colors.grey[200],
+                  borderRadius: BorderRadius.circular(30),
+                ),
+                padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.05),
+                child: Center(
+                  child: TextFormField(
+                    readOnly: true,
+                    onTap: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => SearchPage()));
+                    },
+                    decoration: InputDecoration(
+                      border: InputBorder.none,
+                      prefixIcon: const Icon(
+                        Icons.search,
+                        color: Colors.grey,
+                      ),
+                      hintText: "Search",
+                      hintStyle: TextStyle(fontSize: screenWidth * 0.045),
+                    ),
                   ),
                 ),
               ),
-            ),
-            SizedBox(height: screenHeight * 0.04),
-            Container(
-              height: screenHeight * 0.2,
-              width: screenWidth * 1.0,
-              // decoration: BoxDecoration(
-              //   border: Border.all(color: Colors.black),
-              // ),
-              child: Row(
-                children: [
-                  GestureDetector(
-                    onTap: () => Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const ExamCracker1()),
-                    ),
-                    child: Container(
-                      height: screenHeight * 0.75,
-                      width: screenWidth * 0.45,
-                      // decoration: BoxDecoration(
-                      //   border: Border.all(color: Colors.black),
-                      // ),
-                      child: Stack(
-                        children: [
-                          Container(
-                            height: screenHeight * 0.75,
-                            width: screenWidth * 0.45,
-                            child: Image.asset(
-                              "assets/17.png",
-                              fit: BoxFit.fill,
-                            ),
-                          ),
-                          Positioned(
-                            left: screenWidth * 0.05,
-                            top: screenHeight * 0.08,
-                            child: Center(
-                              child: Text(
-                                "Exam Cracker",
-                                style: TextStyle(
-                                  color: Colors.red,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: screenWidth * 0.045,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                  SizedBox(width: screenWidth * 0.05),
-                  Spacer(),
-                  GestureDetector(
-                    onTap: () => Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const Mockmaster1()),
-                    ),
-                    child: SizedBox(
-                      height: screenHeight * 0.25,
-                      width: screenWidth * 0.4,
-                      child: Stack(
-                        children: [
-                          Container(
-                            height: screenHeight * 0.75,
-                            width: screenWidth * 0.45,
-                            child: Image.asset(
-                              "assets/16.png",
-                              fit: BoxFit.fill,
-                            ),
-                          ),
-                          Positioned(
-                            left: screenWidth * 0.04,
-                            top: screenHeight * 0.08,
-                            child: Center(
-                              child: Text(
-                                "MockMaster",
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: screenWidth * 0.045,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            SizedBox(height: screenHeight * 0.03),
-            GestureDetector(
-              onTap: () => Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const OnlineExam()),
-              ),
-              child: Container(
+              SizedBox(height: screenHeight * 0.04),
+              Container(
                 height: screenHeight * 0.2,
                 width: screenWidth * 1.0,
-                // decoration:
-                //     BoxDecoration(border: Border.all(color: Colors.black)),
-                child: Stack(
+                // decoration: BoxDecoration(
+                //   border: Border.all(color: Colors.black),
+                // ),
+                child: Row(
                   children: [
-                    Container(
-                      width: screenWidth * 1.0,
-                      child: Image.asset(
-                        "assets/15.png",
-                        fit: BoxFit.fill,
+                    GestureDetector(
+                      onTap: () => Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const ExamCracker1()),
                       ),
-                    ),
-                    Positioned(
-                      top: screenHeight * 0.02,
-                      left: screenWidth * 0.03,
-                      child: Text(
-                        "Crack it Right:",
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: screenWidth * 0.045,
+                      child: Container(
+                        height: screenHeight * 0.75,
+                        width: screenWidth * 0.45,
+                        // decoration: BoxDecoration(
+                        //   border: Border.all(color: Colors.black),
+                        // ),
+                        child: Stack(
+                          children: [
+                            Container(
+                              height: screenHeight * 0.75,
+                              width: screenWidth * 0.45,
+                              child: Image.asset(
+                                "assets/17.png",
+                                fit: BoxFit.fill,
+                              ),
+                            ),
+                            Positioned(
+                              left: screenWidth * 0.05,
+                              top: screenHeight * 0.08,
+                              child: Center(
+                                child: Text(
+                                  "Exam Cracker",
+                                  style: TextStyle(
+                                    color: Colors.red,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: screenWidth * 0.045,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
                         ),
                       ),
                     ),
-                    Positioned(
-                      left: screenWidth * 0.03,
-                      top: screenHeight * 0.06,
-                      child: Text(
-                        "Easy Exam Registration",
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: screenWidth * 0.06,
-                        ),
+                    SizedBox(width: screenWidth * 0.05),
+                    Spacer(),
+                    GestureDetector(
+                      onTap: () => Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const Mockmaster1()),
                       ),
-                    ),
-                    Positioned(
-                      left: screenWidth * 0.03,
-                      top: screenHeight * 0.12,
-                      child: Row(
-                        children: [
-                          Text(
-                            "Get started",
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: screenWidth * 0.045,
+                      child: SizedBox(
+                        height: screenHeight * 0.25,
+                        width: screenWidth * 0.4,
+                        child: Stack(
+                          children: [
+                            Container(
+                              height: screenHeight * 0.75,
+                              width: screenWidth * 0.45,
+                              child: Image.asset(
+                                "assets/16.png",
+                                fit: BoxFit.fill,
+                              ),
                             ),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.all(screenWidth * 0.01),
-                            child: const Icon(
-                              Icons.arrow_forward_outlined,
-                              color: Colors.white,
+                            Positioned(
+                              left: screenWidth * 0.04,
+                              top: screenHeight * 0.08,
+                              child: Center(
+                                child: Text(
+                                  "MockMaster",
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: screenWidth * 0.045,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     ),
                   ],
                 ),
               ),
-            ),
-          ],
+              SizedBox(height: screenHeight * 0.03),
+              GestureDetector(
+                onTap: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const OnlineExam()),
+                ),
+                child: Container(
+                  height: screenHeight * 0.2,
+                  width: screenWidth * 1.0,
+                  // decoration:
+                  //     BoxDecoration(border: Border.all(color: Colors.black)),
+                  child: Stack(
+                    children: [
+                      Container(
+                        width: screenWidth * 1.0,
+                        child: Image.asset(
+                          "assets/15.png",
+                          fit: BoxFit.fill,
+                        ),
+                      ),
+                      Positioned(
+                        top: screenHeight * 0.02,
+                        left: screenWidth * 0.03,
+                        child: Text(
+                          "Crack it Right:",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: screenWidth * 0.045,
+                          ),
+                        ),
+                      ),
+                      Positioned(
+                        left: screenWidth * 0.03,
+                        top: screenHeight * 0.06,
+                        child: Text(
+                          "Easy Exam Registration",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: screenWidth * 0.06,
+                          ),
+                        ),
+                      ),
+                      Positioned(
+                        left: screenWidth * 0.03,
+                        top: screenHeight * 0.12,
+                        child: Row(
+                          children: [
+                            Text(
+                              "Get started",
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: screenWidth * 0.045,
+                              ),
+                            ),
+                            Padding(
+                              padding: EdgeInsets.all(screenWidth * 0.01),
+                              child: const Icon(
+                                Icons.arrow_forward_outlined,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

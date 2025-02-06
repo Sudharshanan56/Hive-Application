@@ -342,323 +342,325 @@ class _MockTestPageState extends State<MockTestPage> {
     final double containerHeight =
         showText ? screenHeight * 0.06 : iconSize * 1.5;
 
-    return Scaffold(
-      // appBar: AppBar(
-      //   backgroundColor: const Color(0xFFF3434E),
-      //   leading: Icon(Icons.transparent),
-      //   title: const Text(
-      //     'Mock Test',
-      //     style: TextStyle(
-      //         color: Colors.white, fontSize: 25, fontWeight: FontWeight.bold),
-      //   ),
-      //   actions: [
-      //     Padding(
-      //       padding: const EdgeInsets.all(8.0),
-      //       child: Center(
-      //         child: Container(
-      //           height: 30,
-      //           width: 75,
-      //           decoration: BoxDecoration(
-      //               color: Colors.white,
-      //               borderRadius: BorderRadius.circular(30)),
-      //           child: Row(
-      //             children: [
-      //               const Icon(
-      //                 Icons.timer_outlined,
-      //                 color: Color(0xFFF3434E),
-      //               ),
-      //               Text(
-      //                 formatTime(_remainingTime),
-      //                 style: const TextStyle(
-      //                   fontSize: 18,
-      //                   fontWeight: FontWeight.bold,
-      //                   color: Color(0xFFF3434E),
-      //                 ),
-      //               ),
-      //             ],
-      //           ),
-      //         ),
-      //       ),
-      //     ),
-      //   ],
-      // ),
-      appBar: AppBar(
-        toolbarHeight: screenHeight * 0.15,
-        backgroundColor: Colors.redAccent,
-        title: Text(
-          'Mock Test',
-          style: TextStyle(
-              color: Colors.white,
-              fontSize: screenWidth * 0.070,
-              fontWeight: FontWeight.bold),
-        ),
-        actions: [
-          Column(
-            children: [
-              // Padding(
-              //   padding: const EdgeInsets.all(8.0),
-              //   child: Center(
-              //     child: Container(
-              //       height: 30,
-              //       width: 75,
-              //       decoration: BoxDecoration(
-              //           color: Colors.white,
-              //           borderRadius: BorderRadius.circular(30)),
-              //       child: Row(
-              //         children: [
-              //           const Icon(
-              //             Icons.timer_outlined,
-              //             color: Color(0xFFF3434E),
-              //           ),
-              //           Text(
-              //             formatTime(_remainingTime),
-              //             style: const TextStyle(
-              //               fontSize: 18,
-              //               fontWeight: FontWeight.bold,
-              //               color: Color(0xFFF3434E),
-              //             ),
-              //           ),
-              //         ],
-              //       ),
-              //     ),
-              //   ),
-              // ),
-              Padding(
-                padding:
-                    EdgeInsets.all(screenWidth * 0.02), // 2% of screen width
-                child: Center(
-                  child: Container(
-                    height: screenHeight * 0.04, // 4% of screen height
-                    width: screenWidth * 0.2, // 20% of screen width
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(
-                          screenWidth * 0.05), // Dynamic radius
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(
-                          Icons.timer_outlined,
-                          color: Color(0xFFF3434E),
-                          size: screenWidth * 0.05, // 5% of screen width
-                        ),
-                        SizedBox(
-                            width: screenWidth *
-                                0.01), // 1% of screen width for spacing
-                        Text(
-                          formatTime(_remainingTime),
-                          style: TextStyle(
-                            fontSize:
-                                screenWidth * 0.045, // 4.5% of screen width
-                            fontWeight: FontWeight.bold,
+    return SafeArea(
+      child: Scaffold(
+        // appBar: AppBar(
+        //   backgroundColor: const Color(0xFFF3434E),
+        //   leading: Icon(Icons.transparent),
+        //   title: const Text(
+        //     'Mock Test',
+        //     style: TextStyle(
+        //         color: Colors.white, fontSize: 25, fontWeight: FontWeight.bold),
+        //   ),
+        //   actions: [
+        //     Padding(
+        //       padding: const EdgeInsets.all(8.0),
+        //       child: Center(
+        //         child: Container(
+        //           height: 30,
+        //           width: 75,
+        //           decoration: BoxDecoration(
+        //               color: Colors.white,
+        //               borderRadius: BorderRadius.circular(30)),
+        //           child: Row(
+        //             children: [
+        //               const Icon(
+        //                 Icons.timer_outlined,
+        //                 color: Color(0xFFF3434E),
+        //               ),
+        //               Text(
+        //                 formatTime(_remainingTime),
+        //                 style: const TextStyle(
+        //                   fontSize: 18,
+        //                   fontWeight: FontWeight.bold,
+        //                   color: Color(0xFFF3434E),
+        //                 ),
+        //               ),
+        //             ],
+        //           ),
+        //         ),
+        //       ),
+        //     ),
+        //   ],
+        // ),
+        appBar: AppBar(
+          toolbarHeight: screenHeight * 0.15,
+          backgroundColor: Colors.redAccent,
+          title: Text(
+            'Mock Test',
+            style: TextStyle(
+                color: Colors.white,
+                fontSize: screenWidth * 0.070,
+                fontWeight: FontWeight.bold),
+          ),
+          actions: [
+            Column(
+              children: [
+                // Padding(
+                //   padding: const EdgeInsets.all(8.0),
+                //   child: Center(
+                //     child: Container(
+                //       height: 30,
+                //       width: 75,
+                //       decoration: BoxDecoration(
+                //           color: Colors.white,
+                //           borderRadius: BorderRadius.circular(30)),
+                //       child: Row(
+                //         children: [
+                //           const Icon(
+                //             Icons.timer_outlined,
+                //             color: Color(0xFFF3434E),
+                //           ),
+                //           Text(
+                //             formatTime(_remainingTime),
+                //             style: const TextStyle(
+                //               fontSize: 18,
+                //               fontWeight: FontWeight.bold,
+                //               color: Color(0xFFF3434E),
+                //             ),
+                //           ),
+                //         ],
+                //       ),
+                //     ),
+                //   ),
+                // ),
+                Padding(
+                  padding:
+                      EdgeInsets.all(screenWidth * 0.02), // 2% of screen width
+                  child: Center(
+                    child: Container(
+                      height: screenHeight * 0.04, // 4% of screen height
+                      width: screenWidth * 0.2, // 20% of screen width
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(
+                            screenWidth * 0.05), // Dynamic radius
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(
+                            Icons.timer_outlined,
                             color: Color(0xFFF3434E),
+                            size: screenWidth * 0.05, // 5% of screen width
                           ),
-                        ),
-                      ],
+                          SizedBox(
+                              width: screenWidth *
+                                  0.01), // 1% of screen width for spacing
+                          Text(
+                            formatTime(_remainingTime),
+                            style: TextStyle(
+                              fontSize:
+                                  screenWidth * 0.045, // 4.5% of screen width
+                              fontWeight: FontWeight.bold,
+                              color: Color(0xFFF3434E),
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),
-              ),
-              SizedBox(
-                height: 10,
-              ),
-              // AnimatedContainer(
-              //   duration: Duration(milliseconds: 600),
-              //   curve: Curves.easeInOut,
-              //   width: containerWidth,
-              //   height: 40,
-              //   decoration: BoxDecoration(
-              //     color: Colors.white,
-              //     borderRadius: BorderRadius.circular(20),
-              //   ),
-              //   child: Stack(
-              //     children: [
-              //       // Icon that appears when text is hidden
-              //       Align(
-              //         alignment: Alignment.center,
-              //         child: AnimatedOpacity(
-              //           duration: Duration(milliseconds: 500),
-              //           opacity: showText ? 0.0 : 1.0,
-              //           child: Icon(
-              //             statuses[statusIndex]["icon"],
-              //             color: Colors.redAccent,
-              //             size: 24,
-              //           ),
-              //         ),
-              //       ),
-              //       // Sliding and Fading Text
-              //       AnimatedAlign(
-              //         duration: Duration(milliseconds: 600),
-              //         alignment: textAlignment,
-              //         curve: Curves.easeInOut,
-              //         child: AnimatedOpacity(
-              //           duration: Duration(milliseconds: 500),
-              //           opacity: showText ? textOpacity : 0.0,
-              //           child: Padding(
-              //             padding: EdgeInsets.symmetric(
-              //                 horizontal: 15), // Extra padding
-              //             child: Text(
-              //               statuses[statusIndex]["text"]!,
-              //               style: TextStyle(
-              //                   color: Colors.redAccent, fontSize: 16.0),
-              //             ),
-              //           ),
-              //         ),
-              //       ),
-              //     ],
-              //   ),
-              // ),
-              AnimatedContainer(
-                duration: Duration(milliseconds: 600),
-                curve: Curves.easeInOut,
-                width: screenWidth * 0.5, // 50% of screen width
-                height: screenHeight * 0.05, // 5% of screen height
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(screenWidth * 0.05),
+                SizedBox(
+                  height: 10,
                 ),
-                child: Stack(
-                  children: [
-                    // Icon that appears when text is hiddeni
-                    Align(
-                      alignment: Alignment.center,
-                      child: AnimatedOpacity(
-                        duration: Duration(milliseconds: 500),
-                        opacity: showText ? 0.0 : 1.0,
-                        child: Icon(
-                          statuses[statusIndex]["icon"],
-                          color: Colors.redAccent,
-                          size: screenWidth * 0.06, // 6% of screen width
+                // AnimatedContainer(
+                //   duration: Duration(milliseconds: 600),
+                //   curve: Curves.easeInOut,
+                //   width: containerWidth,
+                //   height: 40,
+                //   decoration: BoxDecoration(
+                //     color: Colors.white,
+                //     borderRadius: BorderRadius.circular(20),
+                //   ),
+                //   child: Stack(
+                //     children: [
+                //       // Icon that appears when text is hidden
+                //       Align(
+                //         alignment: Alignment.center,
+                //         child: AnimatedOpacity(
+                //           duration: Duration(milliseconds: 500),
+                //           opacity: showText ? 0.0 : 1.0,
+                //           child: Icon(
+                //             statuses[statusIndex]["icon"],
+                //             color: Colors.redAccent,
+                //             size: 24,
+                //           ),
+                //         ),
+                //       ),
+                //       // Sliding and Fading Text
+                //       AnimatedAlign(
+                //         duration: Duration(milliseconds: 600),
+                //         alignment: textAlignment,
+                //         curve: Curves.easeInOut,
+                //         child: AnimatedOpacity(
+                //           duration: Duration(milliseconds: 500),
+                //           opacity: showText ? textOpacity : 0.0,
+                //           child: Padding(
+                //             padding: EdgeInsets.symmetric(
+                //                 horizontal: 15), // Extra padding
+                //             child: Text(
+                //               statuses[statusIndex]["text"]!,
+                //               style: TextStyle(
+                //                   color: Colors.redAccent, fontSize: 16.0),
+                //             ),
+                //           ),
+                //         ),
+                //       ),
+                //     ],
+                //   ),
+                // ),
+                AnimatedContainer(
+                  duration: Duration(milliseconds: 600),
+                  curve: Curves.easeInOut,
+                  width: screenWidth * 0.5, // 50% of screen width
+                  height: screenHeight * 0.05, // 5% of screen height
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(screenWidth * 0.05),
+                  ),
+                  child: Stack(
+                    children: [
+                      // Icon that appears when text is hiddeni
+                      Align(
+                        alignment: Alignment.center,
+                        child: AnimatedOpacity(
+                          duration: Duration(milliseconds: 500),
+                          opacity: showText ? 0.0 : 1.0,
+                          child: Icon(
+                            statuses[statusIndex]["icon"],
+                            color: Colors.redAccent,
+                            size: screenWidth * 0.06, // 6% of screen width
+                          ),
                         ),
                       ),
-                    ),
-                    // Sliding and Fading Text
-                    AnimatedAlign(
-                      duration: Duration(milliseconds: 600),
-                      alignment: textAlignment,
-                      curve: Curves.easeInOut,
-                      child: AnimatedOpacity(
-                        duration: Duration(milliseconds: 500),
-                        opacity: showText ? textOpacity : 0.0,
-                        child: Padding(
-                          padding: EdgeInsets.symmetric(
-                              horizontal:
-                                  screenWidth * 0.04), // 4% of screen width
-                          child: Text(
-                            statuses[statusIndex]["text"]!,
-                            style: TextStyle(
-                              color: Colors.redAccent,
-                              fontSize:
-                                  screenWidth * 0.04, // 4% of screen width
+                      // Sliding and Fading Text
+                      AnimatedAlign(
+                        duration: Duration(milliseconds: 600),
+                        alignment: textAlignment,
+                        curve: Curves.easeInOut,
+                        child: AnimatedOpacity(
+                          duration: Duration(milliseconds: 500),
+                          opacity: showText ? textOpacity : 0.0,
+                          child: Padding(
+                            padding: EdgeInsets.symmetric(
+                                horizontal:
+                                    screenWidth * 0.04), // 4% of screen width
+                            child: Text(
+                              statuses[statusIndex]["text"]!,
+                              style: TextStyle(
+                                color: Colors.redAccent,
+                                fontSize:
+                                    screenWidth * 0.04, // 4% of screen width
+                              ),
                             ),
                           ),
                         ),
                       ),
-                    ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
+        body: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                buildQuestion(
+                  1,
+                  "What is the normal range of body temperature in humans?",
+                  [
+                    "35.5 - 37.5°C",
+                    "36.0 - 38.0°C",
+                    "36.5 - 37.5°C",
+                    "37.0 - 38.5°C"
                   ],
                 ),
-              ),
-            ],
-          ),
-        ],
-      ),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              buildQuestion(
-                1,
-                "What is the normal range of body temperature in humans?",
-                [
-                  "35.5 - 37.5°C",
-                  "36.0 - 38.0°C",
-                  "36.5 - 37.5°C",
-                  "37.0 - 38.5°C"
-                ],
-              ),
-              SizedBox(height: screenHeight * 0.020),
-              buildQuestion(
-                2,
-                "Which of the following is the primary function of haemoglobin in the blood?",
-                [
-                  "Blood clotting",
-                  "Oxygen transport",
-                  "Immune response",
-                  "Nutrient absorption"
-                ],
-              ),
-              SizedBox(height: screenHeight * 0.020),
-              buildQuestion(
-                3,
-                "What is the largest organ in the human body?",
-                ["Heart", "Liver", "Skin", "Lungs"],
-              ),
-              SizedBox(height: screenHeight * 0.020),
-
-              // SizedBox(
-              //   height: 45,
-              //   width: double.infinity,
-              //   child: ElevatedButton(
-              //     style: ElevatedButton.styleFrom(
-              //       backgroundColor: Colors.redAccent,
-              //       foregroundColor: Colors.white,
-              //       shape: RoundedRectangleBorder(
-              //         borderRadius: BorderRadius.circular(30),
-              //       ),
-              //     ),
-              //     onPressed: () {
-              //       // Display the selected options in a dialog or submit them to an API
-              //       showDialog(
-              //         context: context,
-              //         builder: (context) => AlertDialog(
-              //           title: const Text('Selected Options'),
-              //           content: Text(selectedOptions.entries
-              //               .map((entry) => 'Q${entry.key}: Option ${entry.value + 1}')
-              //               .join('\n')),
-              //           actions: [
-              //             TextButton(
-              //               onPressed: () => Navigator.pop(context),
-              //               child: const Text('OK'),
-              //             )
-              //           ],
-              //         ),
-              //       );
-              //     },
-              //     child: const Text(
-              //       'Submit',
-              //       style: TextStyle(fontWeight: FontWeight.bold),
-              //     ),
-              //   ),
-              // ),
-              SizedBox(
-                height: screenHeight * 0.045,
-                width: screenWidth * 1.55,
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.redAccent,
-                    foregroundColor: Colors.white,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(30),
+                SizedBox(height: screenHeight * 0.020),
+                buildQuestion(
+                  2,
+                  "Which of the following is the primary function of haemoglobin in the blood?",
+                  [
+                    "Blood clotting",
+                    "Oxygen transport",
+                    "Immune response",
+                    "Nutrient absorption"
+                  ],
+                ),
+                SizedBox(height: screenHeight * 0.020),
+                buildQuestion(
+                  3,
+                  "What is the largest organ in the human body?",
+                  ["Heart", "Liver", "Skin", "Lungs"],
+                ),
+                SizedBox(height: screenHeight * 0.020),
+      
+                // SizedBox(
+                //   height: 45,
+                //   width: double.infinity,
+                //   child: ElevatedButton(
+                //     style: ElevatedButton.styleFrom(
+                //       backgroundColor: Colors.redAccent,
+                //       foregroundColor: Colors.white,
+                //       shape: RoundedRectangleBorder(
+                //         borderRadius: BorderRadius.circular(30),
+                //       ),
+                //     ),
+                //     onPressed: () {
+                //       // Display the selected options in a dialog or submit them to an API
+                //       showDialog(
+                //         context: context,
+                //         builder: (context) => AlertDialog(
+                //           title: const Text('Selected Options'),
+                //           content: Text(selectedOptions.entries
+                //               .map((entry) => 'Q${entry.key}: Option ${entry.value + 1}')
+                //               .join('\n')),
+                //           actions: [
+                //             TextButton(
+                //               onPressed: () => Navigator.pop(context),
+                //               child: const Text('OK'),
+                //             )
+                //           ],
+                //         ),
+                //       );
+                //     },
+                //     child: const Text(
+                //       'Submit',
+                //       style: TextStyle(fontWeight: FontWeight.bold),
+                //     ),
+                //   ),
+                // ),
+                SizedBox(
+                  height: screenHeight * 0.045,
+                  width: screenWidth * 1.55,
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.redAccent,
+                      foregroundColor: Colors.white,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(30),
+                      ),
+                    ),
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => ResultScreen()));
+                    },
+                    child: Text(
+                      'Submit',
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: screenWidth * 0.050),
                     ),
                   ),
-                  onPressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => ResultScreen()));
-                  },
-                  child: Text(
-                    'Submit',
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: screenWidth * 0.050),
-                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),

@@ -169,6 +169,7 @@ class Page2 extends StatelessWidget {
 
     return Scaffold(
       extendBody: true,
+      backgroundColor: Color(0xFFFFFFFF),
       body: SafeArea(
         child: Stack(
           children: [
@@ -218,7 +219,7 @@ class Page2 extends StatelessWidget {
                   child: Text(
                     "Skip",
                     style: TextStyle(
-                      color: Colors.black54,
+                      color: Color(0xFF333333B2),
                       fontSize: screenWidth * 0.04, // Responsive font size
                     ),
                   ),
@@ -263,7 +264,7 @@ class Page2 extends StatelessWidget {
                         height: screenHeight * 0.005,
                         width: screenWidth * 0.1,
                         decoration: BoxDecoration(
-                          color: const Color(0xff9ba8b5ff),
+                          color: const Color(0xffF4FAFF),
                           borderRadius: BorderRadius.circular(30),
                         ),
                       ),
@@ -272,7 +273,7 @@ class Page2 extends StatelessWidget {
                         height: screenHeight * 0.005,
                         width: screenWidth * 0.1,
                         decoration: BoxDecoration(
-                          color: const Color(0xff9ba8b5ff),
+                          color: const Color(0xffF4FAFF),
                           borderRadius: BorderRadius.circular(30),
                         ),
                       ),
@@ -296,7 +297,8 @@ class Page2 extends StatelessWidget {
                               fontSize:
                                   screenWidth * 0.045, // Responsive font size
                               fontWeight: FontWeight.w400,
-                              color: Colors.black87,
+                              height: 2.0,
+                              color: Color(0xFF333333),
                             ),
                           )),
                     ),
@@ -310,9 +312,19 @@ class Page2 extends StatelessWidget {
                   alignment: Alignment.bottomCenter,
                   child: Padding(
                     padding: EdgeInsets.only(bottom: screenHeight * 0.05),
-                    child: SizedBox(
+                    child: Container(
                       height: screenHeight * 0.08,
                       width: screenWidth * 0.9,
+                      decoration: BoxDecoration(
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black.withOpacity(0.3),
+                            spreadRadius: 0,
+                            blurRadius: 4,
+                            offset: Offset(0, 4),
+                          ),
+                        ],
+                      ),
                       child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
                           backgroundColor:
@@ -332,10 +344,10 @@ class Page2 extends StatelessWidget {
                         child: Text(
                           "Next",
                           style: TextStyle(
-                            fontSize:
-                                screenWidth * 0.04, // Responsive font size
+                            fontSize: screenWidth * 0.05,
                             fontWeight: FontWeight.bold,
                             color: Colors.white,
+                            fontFamily: "Poppins",
                           ),
                         ),
                       ),
@@ -350,7 +362,7 @@ class Page2 extends StatelessWidget {
                     TextSpan(
                       text: "By registering, you agree to ",
                       style: TextStyle(
-                        color: Colors.black54,
+                        color: Colors.black,
                         fontSize: screenWidth * 0.035, // Responsive font size
                         fontWeight: FontWeight.bold,
                       ),

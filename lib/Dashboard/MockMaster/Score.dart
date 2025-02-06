@@ -82,67 +82,69 @@ class ResultScreen extends StatelessWidget {
     double screenWidth = MediaQuery.of(context).size.width;
     double screenHeight = MediaQuery.of(context).size.height;
 
-    return Scaffold(
-      backgroundColor: const Color(0xFFF3434E), // Background color
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Container(
-              height: screenHeight * 0.2, // Adjusted size based on screen height
-              width: screenHeight * 0.2,
-              decoration: const BoxDecoration(
-                color: Colors.white,
-                shape: BoxShape.circle,
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: const Color(0xFFF3434E), // Background color
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Container(
+                height: screenHeight * 0.2, // Adjusted size based on screen height
+                width: screenHeight * 0.2,
+                decoration: const BoxDecoration(
+                  color: Colors.white,
+                  shape: BoxShape.circle,
+                ),
+                child: Center(
+                  child: Text(
+                    '93', // Score text
+                    style: TextStyle(
+                      fontSize: screenWidth * 0.12, // Responsive font size
+                      fontWeight: FontWeight.bold,
+                      color: const Color(0xFFF3434E),
+                    ),
+                  ),
+                ),
               ),
-              child: Center(
+              SizedBox(height: screenHeight * 0.03),
+              Text(
+                'Well done!', // Subtext
+                style: TextStyle(
+                  fontSize: screenWidth * 0.06, // Responsive font size
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                ),
+              ),
+              SizedBox(height: screenHeight * 0.06),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => MockMasterScreen()),
+                  );
+                },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.white,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(screenWidth * 0.08),
+                  ),
+                  padding: EdgeInsets.symmetric(
+                    horizontal: screenWidth * 0.1,
+                    vertical: screenHeight * 0.02,
+                  ),
+                ),
                 child: Text(
-                  '93', // Score text
+                  'Done',
                   style: TextStyle(
-                    fontSize: screenWidth * 0.12, // Responsive font size
+                    fontSize: screenWidth * 0.05, // Responsive font size
                     fontWeight: FontWeight.bold,
                     color: const Color(0xFFF3434E),
                   ),
                 ),
               ),
-            ),
-            SizedBox(height: screenHeight * 0.03),
-            Text(
-              'Well done!', // Subtext
-              style: TextStyle(
-                fontSize: screenWidth * 0.06, // Responsive font size
-                fontWeight: FontWeight.bold,
-                color: Colors.white,
-              ),
-            ),
-            SizedBox(height: screenHeight * 0.06),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => MockMasterScreen()),
-                );
-              },
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.white,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(screenWidth * 0.08),
-                ),
-                padding: EdgeInsets.symmetric(
-                  horizontal: screenWidth * 0.1,
-                  vertical: screenHeight * 0.02,
-                ),
-              ),
-              child: Text(
-                'Done',
-                style: TextStyle(
-                  fontSize: screenWidth * 0.05, // Responsive font size
-                  fontWeight: FontWeight.bold,
-                  color: const Color(0xFFF3434E),
-                ),
-              ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

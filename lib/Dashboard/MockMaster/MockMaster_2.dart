@@ -292,35 +292,37 @@ class _MockMasterScreenState extends State<MockMasterScreen> {
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
     double screenHeight = MediaQuery.of(context).size.height;
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        elevation: 0,
-        title: const Text(
-          'Mock Master',
-          style: TextStyle(
-            color: Colors.black,
-            fontWeight: FontWeight.bold,
-            fontSize: 24,
+    return SafeArea(
+      child: Scaffold(
+        appBar: AppBar(
+          backgroundColor: Colors.white,
+          elevation: 0,
+          title: const Text(
+            'Mock Master',
+            style: TextStyle(
+              color: Colors.black,
+              fontWeight: FontWeight.bold,
+              fontSize: 24,
+            ),
           ),
-        ),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.logout, color: Colors.black),
-            onPressed: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => DashboardPage()));
-            },
-          ),
-        ],
-      ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            _buildTodayTaskCard(context),
-            _buildPerformanceCard(context),
-            _buildInfoCard(context, txt),
+          actions: [
+            IconButton(
+              icon: const Icon(Icons.logout, color: Colors.black),
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => DashboardPage()));
+              },
+            ),
           ],
+        ),
+        body: SingleChildScrollView(
+          child: Column(
+            children: [
+              _buildTodayTaskCard(context),
+              _buildPerformanceCard(context),
+              _buildInfoCard(context, txt),
+            ],
+          ),
         ),
       ),
     );

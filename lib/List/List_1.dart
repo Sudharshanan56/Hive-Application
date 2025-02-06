@@ -333,133 +333,135 @@ class _UniversityListPageState extends State<UniversityListPage> {
     final screenWidth = MediaQuery.of(context).size.width;
     final screenHeight = MediaQuery.of(context).size.height;
 
-    return Scaffold(
-      body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.04),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            SizedBox(height: screenHeight * 0.03),
-            Container(
-              height: screenHeight * 0.06,
-              width: screenWidth * 0.9,
-              decoration: BoxDecoration(
-                border: Border.all(),
-                borderRadius: BorderRadius.circular(screenWidth * 0.06),
-              ),
-              child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.03),
-                child: TextFormField(
-                  decoration: InputDecoration(
-                    border: InputBorder.none,
-                    prefixIcon: Icon(Icons.search, size: screenWidth * 0.06),
-                    hintText: "Search",
+    return SafeArea(
+      child: Scaffold(
+        body: Padding(
+          padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.04),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SizedBox(height: screenHeight * 0.03),
+              Container(
+                height: screenHeight * 0.06,
+                width: screenWidth * 0.9,
+                decoration: BoxDecoration(
+                  border: Border.all(),
+                  borderRadius: BorderRadius.circular(screenWidth * 0.06),
+                ),
+                child: Padding(
+                  padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.03),
+                  child: TextFormField(
+                    decoration: InputDecoration(
+                      border: InputBorder.none,
+                      prefixIcon: Icon(Icons.search, size: screenWidth * 0.06),
+                      hintText: "Search",
+                    ),
                   ),
                 ),
               ),
-            ),
-            SizedBox(height: screenHeight * 0.02),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  'Universities',
-                  style: TextStyle(
-                    fontSize: screenWidth * 0.05,
-                    fontWeight: FontWeight.bold,
+              SizedBox(height: screenHeight * 0.02),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    'Universities',
+                    style: TextStyle(
+                      fontSize: screenWidth * 0.05,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
-                ),
-                // Row(
-                //   children: [
-                //     Checkbox(
-                //       value: _isChecked,
-                //       checkColor: Colors.white,
-                //       activeColor: Colors.blue,
-                //       onChanged: (bool? newValue) {
-                //         setState(() {
-                //           _isChecked = newValue!;
-                //         });
-                //       },
-                //     ),
-                //     Text(
-                //       'Saved',
-                //       style: TextStyle(fontSize: screenWidth * 0.04),
-                //     ),
-                //   ],
-                // ),
-                Row(
-                  children: [
-                    Transform.scale(
-                      scale: MediaQuery.of(context).size.width * 0.0020, // Scale dynamically based on screen width
-                      child: Checkbox(
-                        value: _isChecked,
-                        checkColor: Colors.white,
-                        activeColor: Colors.blue,
-                        onChanged: (bool? newValue) {
-                          setState(() {
-                            _isChecked = newValue!;
-                          });
-                        },
-                      ),
-                    ),
-                    Text(
-                      ' Saved',
-                      style: TextStyle(fontSize: MediaQuery.of(context).size.width * 0.04),
-                    ),
-                  ],
-                ),
-
-              ],
-            ),
-            SizedBox(height: screenHeight * 0.02),
-            Expanded(
-              child: ListView.builder(
-                itemCount: universities.length,
-                itemBuilder: (context, index) {
-                  final university = universities[index];
-
-                  // If 'Saved' checkbox is checked, show only bookmarked universities
-                  if (_isChecked && !_bookmarked[index]) {
-                    return const SizedBox.shrink(); // Skip this item
-                  }
-
-                  return Column(
+                  // Row(
+                  //   children: [
+                  //     Checkbox(
+                  //       value: _isChecked,
+                  //       checkColor: Colors.white,
+                  //       activeColor: Colors.blue,
+                  //       onChanged: (bool? newValue) {
+                  //         setState(() {
+                  //           _isChecked = newValue!;
+                  //         });
+                  //       },
+                  //     ),
+                  //     Text(
+                  //       'Saved',
+                  //       style: TextStyle(fontSize: screenWidth * 0.04),
+                  //     ),
+                  //   ],
+                  // ),
+                  Row(
                     children: [
-                      ListTile(
-                        leading: CircleAvatar(
-                          radius: screenWidth * 0.07,
-                          backgroundImage: AssetImage(university['logo']!),
-                        ),
-                        title: Text(
-                          university['name']!,
-                          style: TextStyle(fontSize: screenWidth * 0.045),
-                        ),
-                        subtitle: Text(
-                          university['location']!,
-                          style: TextStyle(fontSize: screenWidth * 0.04),
-                        ),
-                        trailing: IconButton(
-                          icon: Icon(
-                            _bookmarked[index]
-                                ? Icons.bookmark
-                                : Icons.bookmark_border,
-                            color: _bookmarked[index] ? Colors.black : null,
-                            size: screenWidth * 0.06,
-                          ),
-                          onPressed: () {
+                      Transform.scale(
+                        scale: MediaQuery.of(context).size.width * 0.0020, // Scale dynamically based on screen width
+                        child: Checkbox(
+                          value: _isChecked,
+                          checkColor: Colors.white,
+                          activeColor: Colors.blue,
+                          onChanged: (bool? newValue) {
                             setState(() {
-                              _bookmarked[index] = !_bookmarked[index];
+                              _isChecked = newValue!;
                             });
                           },
                         ),
                       ),
-                      Divider(thickness: 1, height: screenHeight * 0.02),
+                      Text(
+                        ' Saved',
+                        style: TextStyle(fontSize: MediaQuery.of(context).size.width * 0.04),
+                      ),
                     ],
-                  );
-                },
+                  ),
+      
+                ],
               ),
-            ),
-          ],
+              SizedBox(height: screenHeight * 0.02),
+              Expanded(
+                child: ListView.builder(
+                  itemCount: universities.length,
+                  itemBuilder: (context, index) {
+                    final university = universities[index];
+      
+                    // If 'Saved' checkbox is checked, show only bookmarked universities
+                    if (_isChecked && !_bookmarked[index]) {
+                      return const SizedBox.shrink(); // Skip this item
+                    }
+      
+                    return Column(
+                      children: [
+                        ListTile(
+                          leading: CircleAvatar(
+                            radius: screenWidth * 0.07,
+                            backgroundImage: AssetImage(university['logo']!),
+                          ),
+                          title: Text(
+                            university['name']!,
+                            style: TextStyle(fontSize: screenWidth * 0.045),
+                          ),
+                          subtitle: Text(
+                            university['location']!,
+                            style: TextStyle(fontSize: screenWidth * 0.04),
+                          ),
+                          trailing: IconButton(
+                            icon: Icon(
+                              _bookmarked[index]
+                                  ? Icons.bookmark
+                                  : Icons.bookmark_border,
+                              color: _bookmarked[index] ? Colors.black : null,
+                              size: screenWidth * 0.06,
+                            ),
+                            onPressed: () {
+                              setState(() {
+                                _bookmarked[index] = !_bookmarked[index];
+                              });
+                            },
+                          ),
+                        ),
+                        Divider(thickness: 1, height: screenHeight * 0.02),
+                      ],
+                    );
+                  },
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
