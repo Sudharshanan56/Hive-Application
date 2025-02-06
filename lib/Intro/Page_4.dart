@@ -435,7 +435,7 @@ class _Page4State extends State<Page4> {
                             "Let's go",
                             style: TextStyle(
                               fontSize:
-                                  screenWidth * 0.04, // Responsive font size
+                                  screenWidth * 0.05, // Responsive font size
                               fontWeight: FontWeight.bold,
                               color: Colors.white,
                             ),

@@ -207,7 +207,7 @@ class Page3 extends StatelessWidget {
                           context,
                           MaterialPageRoute(
                               builder: (context) => LoginSelectionScreen()));
-      
+
                       // Handle Skip button press
                     },
                     child: Text(
@@ -220,7 +220,7 @@ class Page3 extends StatelessWidget {
                   ),
                 ),
               ),
-      
+
               // Main Content
               Column(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -230,7 +230,7 @@ class Page3 extends StatelessWidget {
                   Padding(
                     padding: EdgeInsets.only(top: screenHeight * 0.1),
                     child: SizedBox(
-                      height: screenHeight * 0.4,
+                      height: screenHeight * 0.37,
                       width: screenWidth * 0.8,
                       child: Image.asset(
                         'assets/2.png',
@@ -238,10 +238,11 @@ class Page3 extends StatelessWidget {
                       ),
                     ),
                   ),
-      
+
                   // Description Text
                   Padding(
-                    padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.1),
+                    padding:
+                        EdgeInsets.symmetric(horizontal: screenWidth * 0.1),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -274,7 +275,7 @@ class Page3 extends StatelessWidget {
                       ],
                     ),
                   ),
-      
+
                   SizedBox(height: screenHeight * 0.05),
                   // Padding(
                   //   padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.1),
@@ -297,6 +298,7 @@ class Page3 extends StatelessWidget {
                             "Access curated articles and tips\n tailored for medical entrance\n preparation.",
                             //textAlign: TextAlign.center,
                             style: GoogleFonts.poppins(
+                              height: 2.0,
                               textStyle: TextStyle(
                                 fontSize:
                                     screenWidth * 0.045, // Responsive font size
@@ -307,9 +309,9 @@ class Page3 extends StatelessWidget {
                       ),
                     ],
                   ),
-      
+
                   const Spacer(),
-      
+
                   // Next Button
                   // Padding(
                   //   padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.1, vertical: screenHeight * 0.05),
@@ -341,7 +343,17 @@ class Page3 extends StatelessWidget {
                     alignment: Alignment.bottomCenter,
                     child: Padding(
                       padding: EdgeInsets.only(bottom: screenHeight * 0.05),
-                      child: SizedBox(
+                      child: Container(
+                        decoration: BoxDecoration(
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black.withOpacity(0.3),
+                              spreadRadius: 0,
+                              blurRadius: 4,
+                              offset: Offset(0, 4),
+                            ),
+                          ],
+                        ),
                         height: screenHeight * 0.08,
                         width: screenWidth * 0.9,
                         child: ElevatedButton(
@@ -364,7 +376,7 @@ class Page3 extends StatelessWidget {
                             "Next",
                             style: TextStyle(
                               fontSize:
-                                  screenWidth * 0.04, // Responsive font size
+                                  screenWidth * 0.05, // Responsive font size
                               fontWeight: FontWeight.bold,
                               color: Colors.white,
                             ),
@@ -373,7 +385,7 @@ class Page3 extends StatelessWidget {
                       ),
                     ),
                   ),
-      
+
                   // Terms Text
                   Padding(
                     padding: EdgeInsets.only(bottom: screenHeight * 0.03),

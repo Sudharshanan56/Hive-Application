@@ -109,13 +109,56 @@
 //   }
 // }
 
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 
 import '../Bottom Navigation Bar/Navigation 1.dart';
 import '../HomePage/HomePage1.dart';
+import 'package:http/http.dart' as http;
 
-class NEETFormPage extends StatelessWidget {
+class NEETFormPage extends StatefulWidget {
   const NEETFormPage({super.key});
+
+  @override
+  State<NEETFormPage> createState() => _NEETFormPageState();
+}
+
+class _NEETFormPageState extends State<NEETFormPage> {
+  TextEditingController nameController = TextEditingController();
+  TextEditingController neetidController = TextEditingController();
+  TextEditingController neetscoreController = TextEditingController();
+  Future<void> sendDetailRequest() async {
+    const String apiUrl = "http://localhost:3004/studentDetails/add";
+
+    Map<String, dynamic> requestData = {
+      "Name": nameController.text,
+      "NeetId": neetidController.text,
+      "NeetScore": int.tryParse(neetscoreController.text) ?? 0,
+    };
+
+    try {
+      final response = await http.post(
+        Uri.parse(apiUrl),
+        headers: {"Content-Type": "application/json"},
+        body: jsonEncode(requestData),
+      );
+
+      if (response.statusCode == 201) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text("Post created successfully!")),
+        );
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text("Failed to create post")),
+        );
+      }
+    } catch (error) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text("Error: $error")),
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -157,7 +200,8 @@ class NEETFormPage extends StatelessWidget {
                     ],
                   ),
                   SizedBox(height: screenHeight * 0.04),
-                  TextField(
+                  TextFormField(
+                    controller: nameController,
                     decoration: InputDecoration(
                       labelText: "Enter Name",
                       labelStyle: TextStyle(fontSize: screenWidth * 0.04),
@@ -167,7 +211,8 @@ class NEETFormPage extends StatelessWidget {
                     ),
                   ),
                   SizedBox(height: screenHeight * 0.025),
-                  TextField(
+                  TextFormField(
+                    controller: neetidController,
                     decoration: InputDecoration(
                       labelText: "Enter NEET ID",
                       labelStyle: TextStyle(fontSize: screenWidth * 0.04),
@@ -177,7 +222,8 @@ class NEETFormPage extends StatelessWidget {
                     ),
                   ),
                   SizedBox(height: screenHeight * 0.025),
-                  TextField(
+                  TextFormField(
+                    controller: neetscoreController,
                     decoration: InputDecoration(
                       labelText: "Enter NEET Score",
                       labelStyle: TextStyle(fontSize: screenWidth * 0.04),
@@ -200,10 +246,11 @@ class NEETFormPage extends StatelessWidget {
                     ),
                     child: ElevatedButton(
                       onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => BottomSheetApp()));
+                        sendDetailRequest();
+                        // Navigator.push(
+                        //     context,
+                        //     MaterialPageRoute(
+                        //         builder: (context) => BottomSheetApp()));
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: const Color(0xFF3C97D3),
