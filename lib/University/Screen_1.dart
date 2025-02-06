@@ -761,6 +761,7 @@ class _SliverAppBarExampleState extends State<SliverAppBarExample> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(0xFFFCFEFF),
       body: CustomScrollView(
         slivers: [
           // App Bar
@@ -895,7 +896,20 @@ class _SliverAppBarExampleState extends State<SliverAppBarExample> {
                 // Top Comment Box
                 Container(
                   height: 180,
+                  decoration: BoxDecoration(
+                    // border: Border.all(),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withOpacity(0.05),
+                        spreadRadius: 0,
+                        blurRadius: 4,
+                        offset: Offset(0, 4),
+                      ),
+                    ],
+                  ),
                   child: Card(
+                    color: Color(0xFFFCFEFF),
+
                     margin: EdgeInsets.symmetric(
                         horizontal: 16,
                         vertical: 8), // Add spacing around the card
@@ -1364,14 +1378,145 @@ class _SliverAppBarExampleState extends State<SliverAppBarExample> {
                                       ),
                                       const SizedBox(width: 10),
                                       Expanded(
-                                        child: TextField(
-                                          controller: replyController,
-                                          decoration: InputDecoration(
-                                            hintText:
-                                                'Replying to ${comments[index]['name']}...',
-                                            border: InputBorder.none,
+                                        child: Container(
+                                          height: 180,
+                                          decoration: BoxDecoration(
+                                            // border: Border.all(),
+                                            boxShadow: [
+                                              BoxShadow(
+                                                color: Colors.black
+                                                    .withOpacity(0.05),
+                                                spreadRadius: 0,
+                                                blurRadius: 4,
+                                                offset: Offset(0, 4),
+                                              ),
+                                            ],
+                                          ),
+                                          child: Card(
+                                            color: Color(0xFFFCFEFF),
+
+                                            margin: EdgeInsets.symmetric(
+                                                horizontal: 16,
+                                                vertical:
+                                                    8), // Add spacing around the card
+                                            elevation:
+                                                4, // Add shadow for better visibility
+                                            shape: RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(
+                                                      10), // Rounded corners
+                                            ),
+                                            child: Padding(
+                                              padding: const EdgeInsets.all(
+                                                  12.0), // Add padding inside the card
+                                              child: Column(
+                                                children: [
+                                                  Row(
+                                                    children: [
+                                                      // Profile Picture
+                                                      CircleAvatar(
+                                                        radius: 20,
+                                                        backgroundImage: AssetImage(
+                                                            'assets/profile_placeholder.png'),
+                                                      ),
+                                                      Text("Maria T"),
+                                                    ],
+                                                  ),
+                                                  Row(
+                                                    children: [
+                                                      Expanded(
+                                                        child: TextField(
+                                                          controller:
+                                                              commentController,
+                                                          decoration:
+                                                              const InputDecoration(
+                                                            hintText:
+                                                                'Type something...',
+                                                            border: InputBorder
+                                                                .none,
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                  // TextButton(
+                                                  //   onPressed: postComment,
+                                                  //   style: TextButton.styleFrom(
+                                                  //     foregroundColor: Colors.blue,
+                                                  //     backgroundColor: Colors.grey.shade200,
+                                                  //   ),
+                                                  //   child: const Text('Post'),
+                                                  // ),
+                                                  Align(
+                                                    alignment:
+                                                        Alignment.bottomRight,
+                                                    child: GestureDetector(
+                                                      onTap: postComment,
+                                                      child: Container(
+                                                        height: 40,
+                                                        width: 80,
+                                                        decoration:
+                                                            BoxDecoration(
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(10),
+                                                          color: commentController
+                                                                  .text.isEmpty
+                                                              ? Colors.grey
+                                                              : Color(
+                                                                  0xFF3C97D3),
+                                                        ),
+                                                        child: Center(
+                                                          child: Text(
+                                                            'Post',
+                                                            style: TextStyle(
+                                                                color: Colors
+                                                                    .white),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                              // SizedBox(width: 10),
+                                              // Text Input Field
+
+                                              // Post Button
+
+                                              // GestureDetector(
+                                              //   onTap: () {
+                                              //     postComment;
+                                              //   },
+                                              //   child: Container(
+                                              //     height: 40,
+                                              //     width: 80,
+                                              //     decoration: BoxDecoration(
+                                              //       borderRadius: BorderRadius.circular(10),
+                                              //       color: Color(0xFF3C97D3),
+                                              //     ),
+                                              //     child: Center(
+                                              //         child: Text('Reply',
+                                              //             style: TextStyle(color: Colors.white))),
+                                              //   ),
+                                              // ),
+                                            ),
                                           ),
                                         ),
+                                        //  Container(
+                                        //   height: 200,
+
+                                        //   decoration: BoxDecoration(
+                                        //       border: Border.all()),
+                                        //   child: TextField(
+                                        //     controller: replyController,
+                                        //     decoration: InputDecoration(
+                                        //       hintText:
+                                        //           'Replying to ${comments[index]['name']}...',
+                                        //       border: InputBorder.none,
+                                        //     ),
+                                        //   ),
+                                        // ),
                                       ),
                                       GestureDetector(
                                         onTap: postReply,

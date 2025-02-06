@@ -959,7 +959,7 @@ class _PostsListState extends State<PostsList> {
                   child: FittedBox(
                     fit: BoxFit.scaleDown,
                     child: Text(
-                      "Geet OTTP",
+                      "Verify Now",
                       style: TextStyle(
                         fontSize: screenWidth * 0.045,
                         color: Colors.white,
