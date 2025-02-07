@@ -826,7 +826,7 @@ class _PostsListState extends State<PostsList> {
       ),
       builder: (BuildContext context) {
         return Container(
-          height: screenHeight * 0.38,
+          height: screenHeight * 0.40,
           width: screenWidth,
           decoration: BoxDecoration(
             color: Colors.white,
@@ -865,7 +865,7 @@ class _PostsListState extends State<PostsList> {
                   Text(
                     "sample@gmail.com",
                     style: TextStyle(
-                      color: Colors.blue,
+                      color: Color(0xFF3C97D3),
                       fontSize: screenWidth * 0.03,
                     ),
                   ),
@@ -928,7 +928,7 @@ class _PostsListState extends State<PostsList> {
                     Text(
                       " Resend now",
                       style: TextStyle(
-                        color: Colors.blue,
+                        color: Color(0xFF3C97D3),
                         fontSize: screenWidth * 0.04,
                       ),
                     ),

@@ -160,7 +160,7 @@ class Page1 extends StatelessWidget {
                 fit: BoxFit.fill,
               ),
             ),
-      
+
             // Skip Button
             SafeArea(
               child: Align(
@@ -187,7 +187,7 @@ class Page1 extends StatelessWidget {
                 ),
               ),
             ),
-      
+
             // Get Started Button
             // Align(
             //   alignment: Alignment.bottomCenter,
@@ -223,7 +223,7 @@ class Page1 extends StatelessWidget {
             //     ),
             //   ),
             // ),
-      
+
             // // Terms Text
             // Align(
             //   alignment: Alignment.bottomCenter,
@@ -296,7 +296,7 @@ class Page1 extends StatelessWidget {
             SizedBox(
               height: screenHeight * 0.020,
             ),
-      
+
             // Terms Text
             Align(
               alignment: Alignment.bottomCenter,

@@ -570,6 +570,8 @@ class _OTPVerificationScreenState extends State<OTPVerificationScreen> {
                     },
                   ),
                 ),
+                left: screenWidth * 0.05,
+                top: screenWidth * 0.05,
               ),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.05),
