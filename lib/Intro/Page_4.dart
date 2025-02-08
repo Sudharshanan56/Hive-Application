@@ -196,16 +196,16 @@ class _Page4State extends State<Page4> {
               Padding(
                 padding: const EdgeInsets.only(left: 50),
                 child: Container(
-                  height: 350,
-                  width: 250,
+                  height: screenHeight * 0.48,
+                  width: screenWidth * 0.72,
                   decoration: BoxDecoration(
                     color: Color(0xFFF4FAFF),
                     // border: Border.all(
                     //   style: BorderStyle.solid,
                     // ),
                     borderRadius: BorderRadius.only(
-                      bottomRight: Radius.circular(200),
-                      bottomLeft: Radius.circular(200),
+                      bottomRight: Radius.circular(screenWidth * 0.5),
+                      bottomLeft: Radius.circular(screenWidth * 0.5),
                     ),
                   ),
                 ),
@@ -274,7 +274,7 @@ class _Page4State extends State<Page4> {
                           height: screenHeight * 0.005,
                           width: screenWidth * 0.1,
                           decoration: BoxDecoration(
-                            color: const Color(0xff9ba8b5ff),
+                            color: const Color(0xffF4FAFF),
                             borderRadius: BorderRadius.circular(30),
                           ),
                         ),
@@ -283,7 +283,7 @@ class _Page4State extends State<Page4> {
                           height: screenHeight * 0.005,
                           width: screenWidth * 0.1,
                           decoration: BoxDecoration(
-                            color: const Color(0xff9ba8b5ff),
+                            color: const Color(0xffF4FAFF),
                             borderRadius: BorderRadius.circular(30),
                           ),
                         ),

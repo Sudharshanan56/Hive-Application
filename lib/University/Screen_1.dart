@@ -696,6 +696,8 @@ class _SliverAppBarExampleState extends State<SliverAppBarExample> {
       'replies': [],
     },
   ];
+  List<bool> isLikedList = [];
+
   final TextEditingController commentController = TextEditingController();
   final TextEditingController replyController = TextEditingController();
   @override
@@ -708,6 +710,7 @@ class _SliverAppBarExampleState extends State<SliverAppBarExample> {
     replyController.addListener(() {
       setState(() {});
     });
+    isLikedList = List<bool>.filled(comments.length, false);
   }
 
   // Controllers for text fields
@@ -760,1018 +763,1171 @@ class _SliverAppBarExampleState extends State<SliverAppBarExample> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Color(0xFFFCFEFF),
-      body: CustomScrollView(
-        slivers: [
-          // App Bar
-          SliverAppBar(
-            expandedHeight: 300.0,
-            floating: false,
-            pinned: true,
-            flexibleSpace: FlexibleSpaceBar(
-              background: Hero(
-                tag: "post1",
-                child: Container(
-                  width: double.infinity,
-                  // decoration:
-                  //     BoxDecoration(border: Border.all(color: Colors.black)),
-                  child: Image.asset(
-                    "assets/person.png",
-                    fit: BoxFit.cover,
+    final double screenHeight = MediaQuery.of(context).size.height;
+    final double screenWidth = MediaQuery.of(context).size.width;
+
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: Color(0xFFFCFEFF),
+        body: CustomScrollView(
+          slivers: [
+            // App Bar
+            SliverAppBar(
+              expandedHeight: 300.0,
+              floating: false,
+              pinned: true,
+              flexibleSpace: FlexibleSpaceBar(
+                background: Hero(
+                  tag: "post1",
+                  child: Container(
+                    width: double.infinity,
+                    // decoration:
+                    //     BoxDecoration(border: Border.all(color: Colors.black)),
+                    child: Image.asset(
+                      "assets/person.png",
+                      fit: BoxFit.cover,
+                    ),
                   ),
                 ),
               ),
             ),
-          ),
 
-          // Main Content
-          SliverList(
-            delegate: SliverChildBuilderDelegate(
-              (BuildContext context, int index) {
-                return ClipRRect(
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(90),
-                      topRight: Radius.circular(90),
+            // Main Content
+            SliverList(
+              delegate: SliverChildBuilderDelegate(
+                (BuildContext context, int index) {
+                  return ClipRRect(
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(90),
+                        topRight: Radius.circular(90),
+                      ),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: Color(0xFFFCFEFF),
+                          // border: Border.all(color: Colors.red),
+                          borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(90),
+                              topRight: Radius.circular(90)),
+                        ),
+                        child: Padding(
+                          padding: EdgeInsets.all(25.0),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              // Tags Section
+                              Row(
+                                children: [
+                                  _buildTag('Tags'),
+                                  SizedBox(width: 8),
+                                  _buildTag('Tags'),
+                                  const Spacer(),
+                                  SizedBox(
+                                    height: screenHeight * 0.07,
+                                    width: screenWidth * 0.10,
+                                    child: IconButton(
+                                      iconSize: screenWidth * 0.10,
+                                      icon: Icon(
+                                        isLikedList[index]
+                                            ? Icons.favorite
+                                            : Icons.favorite_border,
+                                        color: isLikedList[index]
+                                            ? Colors.red
+                                            : Colors.black,
+                                      ),
+                                      onPressed: () {
+                                        setState(() {
+                                          isLikedList[index] =
+                                              !isLikedList[index];
+                                        });
+                                      },
+                                    ),
+                                  ),
+                                  SizedBox(width: 8),
+                                ],
+                              ),
+                              SizedBox(height: 16),
+
+                              // Header Section
+                              Row(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  CircleAvatar(
+                                    backgroundColor: Colors.blue[50],
+                                    radius: 24,
+                                    child: Image.asset("assets/7.png"),
+                                  ),
+                                  SizedBox(width: 12),
+                                  Expanded(
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          'Asia International University',
+                                          style: TextStyle(
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.bold,
+                                            color: Colors.black,
+                                          ),
+                                        ),
+                                        SizedBox(height: 4),
+                                        Text(
+                                          'plans in the field of investment',
+                                          style: TextStyle(
+                                            fontSize: 20,
+                                            fontWeight: FontWeight.bold,
+                                            color: Colors.black,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              SizedBox(height: 16),
+
+                              // Subtitle
+                              Text(
+                                'Meeting on 2024 Investment Plans',
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w600,
+                                  color: Colors.grey[700],
+                                ),
+                              ),
+                              SizedBox(height: 16),
+
+                              // Body Paragraph
+                              Text(
+                                'On December 19, President Shavkat Mirziyoyev held a meeting to review 2024 investment outcomes and set tasks for the upcoming year. Since 2017, 188 billion in investments have been made, including 87 billion in foreign investments, boosting GDP growth with investments now exceeding 30% of GDP.\n\n'
+                                'In 2023, investments grew by 1.3 times to 36 billion, launching 560 projects worth 70 trillion soums and creating opportunities to increase exports by 1 billion next year. For 2024, 43 billion in investments and over 300 major projects are planned, including 662 import-substitution products.\n\n'
+                                'President Mirziyoyev emphasized creating favorable conditions for foreign investors, expediting ongoing projects, and addressing export logistics challenges amid global difficulties. The goal is to double annual exports to 45 billion by 2030 by increasing high-value products and services and expanding export markets.',
+                                style: TextStyle(
+                                  fontSize: 24,
+                                  color: Colors.grey[800],
+                                  height: 1.5,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ));
+                },
+                childCount: 1,
+              ),
+            ),
+
+            // Comments Section
+            SliverToBoxAdapter(
+              child: Column(
+                children: [
+                  // Top Comment Box
+                  Container(
+                    height: 180,
+                    decoration: BoxDecoration(
+                      // border: Border.all(),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withOpacity(0.05),
+                          spreadRadius: 0,
+                          blurRadius: 4,
+                          offset: Offset(0, 4),
+                        ),
+                      ],
                     ),
-                    child: Container(
-                      decoration: BoxDecoration(
-                        // border: Border.all(color: Colors.red),
-                        borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(30),
-                            topRight: Radius.circular(30)),
+                    child: Card(
+                      color: Color(0xFFFCFEFF),
+
+                      margin: EdgeInsets.symmetric(
+                          horizontal: 16,
+                          vertical: 8), // Add spacing around the card
+                      elevation: 4, // Add shadow for better visibility
+                      shape: RoundedRectangleBorder(
+                        borderRadius:
+                            BorderRadius.circular(10), // Rounded corners
                       ),
                       child: Padding(
-                        padding: EdgeInsets.all(16.0),
+                        padding: const EdgeInsets.all(
+                            12.0), // Add padding inside the card
                         child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            // Tags Section
                             Row(
                               children: [
-                                _buildTag('Tags'),
-                                SizedBox(width: 8),
-                                _buildTag('Tags'),
-                                const Spacer(),
-                                LikeButton(),
-                                SizedBox(width: 8),
+                                // Profile Picture
+                                CircleAvatar(
+                                  radius: 20,
+                                  backgroundImage: AssetImage(
+                                      'assets/profile_placeholder.png'),
+                                ),
+                                Text("Maria T"),
                               ],
                             ),
-                            SizedBox(height: 16),
-
-                            // Header Section
                             Row(
-                              crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                CircleAvatar(
-                                  backgroundColor: Colors.blue[50],
-                                  radius: 24,
-                                  child: Image.asset("assets/7.png"),
-                                ),
-                                SizedBox(width: 12),
                                 Expanded(
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        'Asia International University',
-                                        style: TextStyle(
-                                          fontSize: 16,
-                                          fontWeight: FontWeight.bold,
-                                          color: Colors.black,
-                                        ),
-                                      ),
-                                      SizedBox(height: 4),
-                                      Text(
-                                        'plans in the field of investment',
-                                        style: TextStyle(
-                                          fontSize: 20,
-                                          fontWeight: FontWeight.bold,
-                                          color: Colors.black,
-                                        ),
-                                      ),
-                                    ],
+                                  child: TextField(
+                                    controller: commentController,
+                                    decoration: const InputDecoration(
+                                      hintText: 'Type something...',
+                                      border: InputBorder.none,
+                                    ),
                                   ),
                                 ),
                               ],
                             ),
-                            SizedBox(height: 16),
-
-                            // Subtitle
-                            Text(
-                              'Meeting on 2024 Investment Plans',
-                              style: TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.w600,
-                                color: Colors.grey[700],
-                              ),
-                            ),
-                            SizedBox(height: 16),
-
-                            // Body Paragraph
-                            Text(
-                              'On December 19, President Shavkat Mirziyoyev held a meeting to review 2024 investment outcomes and set tasks for the upcoming year. Since 2017, 188 billion in investments have been made, including 87 billion in foreign investments, boosting GDP growth with investments now exceeding 30% of GDP.\n\n'
-                              'In 2023, investments grew by 1.3 times to 36 billion, launching 560 projects worth 70 trillion soums and creating opportunities to increase exports by 1 billion next year. For 2024, 43 billion in investments and over 300 major projects are planned, including 662 import-substitution products.\n\n'
-                              'President Mirziyoyev emphasized creating favorable conditions for foreign investors, expediting ongoing projects, and addressing export logistics challenges amid global difficulties. The goal is to double annual exports to 45 billion by 2030 by increasing high-value products and services and expanding export markets.',
-                              style: TextStyle(
-                                fontSize: 24,
-                                color: Colors.grey[800],
-                                height: 1.5,
+                            // TextButton(
+                            //   onPressed: postComment,
+                            //   style: TextButton.styleFrom(
+                            //     foregroundColor: Colors.blue,
+                            //     backgroundColor: Colors.grey.shade200,
+                            //   ),
+                            //   child: const Text('Post'),
+                            // ),
+                            Align(
+                              alignment: Alignment.bottomRight,
+                              child: GestureDetector(
+                                onTap: postComment,
+                                child: Container(
+                                  height: 40,
+                                  width: 80,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(10),
+                                    color: commentController.text.isEmpty
+                                        ? Colors.grey
+                                        : Color(0xFF3C97D3),
+                                  ),
+                                  child: Center(
+                                    child: Text(
+                                      'Post',
+                                      style: TextStyle(color: Colors.white),
+                                    ),
+                                  ),
+                                ),
                               ),
                             ),
                           ],
                         ),
+                        // SizedBox(width: 10),
+                        // Text Input Field
+
+                        // Post Button
+
+                        // GestureDetector(
+                        //   onTap: () {
+                        //     postComment;
+                        //   },
+                        //   child: Container(
+                        //     height: 40,
+                        //     width: 80,
+                        //     decoration: BoxDecoration(
+                        //       borderRadius: BorderRadius.circular(10),
+                        //       color: Color(0xFF3C97D3),
+                        //     ),
+                        //     child: Center(
+                        //         child: Text('Reply',
+                        //             style: TextStyle(color: Colors.white))),
+                        //   ),
+                        // ),
                       ),
-                    ));
-              },
-              childCount: 1,
-            ),
-          ),
-
-          // Comments Section
-          SliverToBoxAdapter(
-            child: Column(
-              children: [
-                // Top Comment Box
-                Container(
-                  height: 180,
-                  decoration: BoxDecoration(
-                    // border: Border.all(),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black.withOpacity(0.05),
-                        spreadRadius: 0,
-                        blurRadius: 4,
-                        offset: Offset(0, 4),
-                      ),
-                    ],
-                  ),
-                  child: Card(
-                    color: Color(0xFFFCFEFF),
-
-                    margin: EdgeInsets.symmetric(
-                        horizontal: 16,
-                        vertical: 8), // Add spacing around the card
-                    elevation: 4, // Add shadow for better visibility
-                    shape: RoundedRectangleBorder(
-                      borderRadius:
-                          BorderRadius.circular(10), // Rounded corners
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.all(
-                          12.0), // Add padding inside the card
-                      child: Column(
-                        children: [
-                          Row(
-                            children: [
-                              // Profile Picture
-                              CircleAvatar(
-                                radius: 20,
-                                backgroundImage: AssetImage(
-                                    'assets/profile_placeholder.png'),
-                              ),
-                              Text("Maria T"),
-                            ],
-                          ),
-                          Row(
-                            children: [
-                              Expanded(
-                                child: TextField(
-                                  controller: commentController,
-                                  decoration: const InputDecoration(
-                                    hintText: 'Type something...',
-                                    border: InputBorder.none,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                          // TextButton(
-                          //   onPressed: postComment,
-                          //   style: TextButton.styleFrom(
-                          //     foregroundColor: Colors.blue,
-                          //     backgroundColor: Colors.grey.shade200,
-                          //   ),
-                          //   child: const Text('Post'),
-                          // ),
-                          Align(
-                            alignment: Alignment.bottomRight,
-                            child: GestureDetector(
-                              onTap: postComment,
-                              child: Container(
-                                height: 40,
-                                width: 80,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(10),
-                                  color: commentController.text.isEmpty
-                                      ? Colors.grey
-                                      : Color(0xFF3C97D3),
-                                ),
-                                child: Center(
-                                  child: Text(
-                                    'Post',
-                                    style: TextStyle(color: Colors.white),
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                      // SizedBox(width: 10),
-                      // Text Input Field
-
-                      // Post Button
-
-                      // GestureDetector(
-                      //   onTap: () {
-                      //     postComment;
-                      //   },
-                      //   child: Container(
-                      //     height: 40,
-                      //     width: 80,
-                      //     decoration: BoxDecoration(
-                      //       borderRadius: BorderRadius.circular(10),
-                      //       color: Color(0xFF3C97D3),
-                      //     ),
-                      //     child: Center(
-                      //         child: Text('Reply',
-                      //             style: TextStyle(color: Colors.white))),
-                      //   ),
-                      // ),
                     ),
                   ),
-                ),
-                SizedBox(height: 15),
+                  SizedBox(height: 15),
 
-                // Comments List
-                // ListView.builder(
-                //   shrinkWrap: true,
-                //   physics: const NeverScrollableScrollPhysics(),
-                //   itemCount: comments.length,
-                //   itemBuilder: (context, index) {
-                //     return Padding(
-                //       padding: const EdgeInsets.all(
-                //           12.0), // Add padding inside the card
-                //       child: Column(
-                //         crossAxisAlignment: CrossAxisAlignment.start,
-                //         children: [
-                //           // Main Comment
-                //           Column(
-                //             crossAxisAlignment: CrossAxisAlignment.start,
-                //             children: [
-                //               // Comment Author
-                //               Row(
-                //                 children: [
-                //                   CircleAvatar(
-                //                     radius: 15,
-                //                     backgroundImage: AssetImage(
-                //                         'assets/profile_placeholder.png'),
-                //                   ),
-                //                   SizedBox(width: 10),
-                //                   Text(
-                //                     comments[index]['name'],
-                //                     style: const TextStyle(
-                //                       fontWeight: FontWeight.bold,
-                //                       fontSize: 16,
-                //                     ),
-                //                   ),
-                //                 ],
-                //               ),
-                //               SizedBox(height: 5),
-                //               // Comment Text
-                //               Text(
-                //                 comments[index]['comment'],
-                //                 style: const TextStyle(fontSize: 14),
-                //               ),
-                //               SizedBox(height: 10),
-                //               // Like & Reply Buttons
-                //               Row(
-                //                 mainAxisAlignment:
-                //                     MainAxisAlignment.spaceBetween,
-                //                 children: [
-                //                   Row(
-                //                     children: [
-                //                       IconButton(
-                //                         icon: const Icon(Icons.favorite_border,
-                //                             size: 18),
-                //                         onPressed:
-                //                             () {}, // Add like functionality
-                //                       ),
-                //                       IconButton(
-                //                         icon: const Icon(Icons.share, size: 18),
-                //                         onPressed:
-                //                             () {}, // Add share functionality
-                //                       ),
-                //                     ],
-                //                   ),
-                //                   GestureDetector(
-                //                     onTap: () {
-                //                       showReplyBox(index);
-                //                     },
-                //                     child: Container(
-                //                       height: 40,
-                //                       width: 80,
-                //                       decoration: BoxDecoration(
-                //                         borderRadius: BorderRadius.circular(10),
-                //                         color: Color(0xFF3C97D3),
-                //                       ),
-                //                       child: Center(
-                //                           child: Text('Reply',
-                //                               style: TextStyle(
-                //                                   color: Colors.white))),
-                //                     ),
-                //                   ),
-                //                 ],
-                //               ),
-                //             ],
-                //           ),
+                  // Comments List
+                  // ListView.builder(
+                  //   shrinkWrap: true,
+                  //   physics: const NeverScrollableScrollPhysics(),
+                  //   itemCount: comments.length,
+                  //   itemBuilder: (context, index) {
+                  //     return Padding(
+                  //       padding: const EdgeInsets.all(
+                  //           12.0), // Add padding inside the card
+                  //       child: Column(
+                  //         crossAxisAlignment: CrossAxisAlignment.start,
+                  //         children: [
+                  //           // Main Comment
+                  //           Column(
+                  //             crossAxisAlignment: CrossAxisAlignment.start,
+                  //             children: [
+                  //               // Comment Author
+                  //               Row(
+                  //                 children: [
+                  //                   CircleAvatar(
+                  //                     radius: 15,
+                  //                     backgroundImage: AssetImage(
+                  //                         'assets/profile_placeholder.png'),
+                  //                   ),
+                  //                   SizedBox(width: 10),
+                  //                   Text(
+                  //                     comments[index]['name'],
+                  //                     style: const TextStyle(
+                  //                       fontWeight: FontWeight.bold,
+                  //                       fontSize: 16,
+                  //                     ),
+                  //                   ),
+                  //                 ],
+                  //               ),
+                  //               SizedBox(height: 5),
+                  //               // Comment Text
+                  //               Text(
+                  //                 comments[index]['comment'],
+                  //                 style: const TextStyle(fontSize: 14),
+                  //               ),
+                  //               SizedBox(height: 10),
+                  //               // Like & Reply Buttons
+                  //               Row(
+                  //                 mainAxisAlignment:
+                  //                     MainAxisAlignment.spaceBetween,
+                  //                 children: [
+                  //                   Row(
+                  //                     children: [
+                  //                       IconButton(
+                  //                         icon: const Icon(Icons.favorite_border,
+                  //                             size: 18),
+                  //                         onPressed:
+                  //                             () {}, // Add like functionality
+                  //                       ),
+                  //                       IconButton(
+                  //                         icon: const Icon(Icons.share, size: 18),
+                  //                         onPressed:
+                  //                             () {}, // Add share functionality
+                  //                       ),
+                  //                     ],
+                  //                   ),
+                  //                   GestureDetector(
+                  //                     onTap: () {
+                  //                       showReplyBox(index);
+                  //                     },
+                  //                     child: Container(
+                  //                       height: 40,
+                  //                       width: 80,
+                  //                       decoration: BoxDecoration(
+                  //                         borderRadius: BorderRadius.circular(10),
+                  //                         color: Color(0xFF3C97D3),
+                  //                       ),
+                  //                       child: Center(
+                  //                           child: Text('Reply',
+                  //                               style: TextStyle(
+                  //                                   color: Colors.white))),
+                  //                     ),
+                  //                   ),
+                  //                 ],
+                  //               ),
+                  //             ],
+                  //           ),
 
-                //           // Replies Section
-                //           if (comments[index]['replies'].isNotEmpty)
-                //             Padding(
-                //               padding: const EdgeInsets.only(left: 40),
-                //               child: Column(
-                //                 children: [
-                //                   for (var reply in comments[index]['replies'])
-                //                     Container(
-                //                       margin: const EdgeInsets.only(bottom: 5),
-                //                       padding: const EdgeInsets.all(8),
-                //                       decoration: BoxDecoration(
-                //                         color: Colors.grey.shade100,
-                //                         borderRadius: BorderRadius.circular(10),
-                //                       ),
-                //                       child: Row(
-                //                         crossAxisAlignment:
-                //                             CrossAxisAlignment.start,
-                //                         children: [
-                //                           const CircleAvatar(
-                //                             radius: 12,
-                //                             backgroundImage: AssetImage(
-                //                                 'assets/profile_placeholder.png'),
-                //                           ),
-                //                           const SizedBox(width: 8),
-                //                           Expanded(
-                //                             child: Column(
-                //                               crossAxisAlignment:
-                //                                   CrossAxisAlignment.start,
-                //                               children: [
-                //                                 Text(
-                //                                   reply['name'],
-                //                                   style: const TextStyle(
-                //                                     fontWeight: FontWeight.bold,
-                //                                     fontSize: 14,
-                //                                   ),
-                //                                 ),
-                //                                 const SizedBox(height: 4),
-                //                                 Text(
-                //                                   reply['comment'],
-                //                                   style: const TextStyle(
-                //                                       fontSize: 12),
-                //                                 ),
-                //                                 Row(
-                //                                   mainAxisAlignment:
-                //                                       MainAxisAlignment
-                //                                           .center, // Center the line horizontally
-                //                                   children: [
-                //                                     SizedBox(
-                //                                       width:
-                //                                           200, // Set the desired length of the line
-                //                                       child: Divider(
-                //                                         color: Colors
-                //                                             .black, // Set the color of the line
-                //                                         thickness:
-                //                                             2, // Set the thickness of the line
-                //                                       ),
-                //                                     ),
-                //                                   ],
-                //                                 ),
-                //                               ],
-                //                             ),
-                //                           ),
-                //                         ],
-                //                       ),
-                //                     ),
-                //                 ],
-                //               ),
-                //             ),
+                  //           // Replies Section
+                  //           if (comments[index]['replies'].isNotEmpty)
+                  //             Padding(
+                  //               padding: const EdgeInsets.only(left: 40),
+                  //               child: Column(
+                  //                 children: [
+                  //                   for (var reply in comments[index]['replies'])
+                  //                     Container(
+                  //                       margin: const EdgeInsets.only(bottom: 5),
+                  //                       padding: const EdgeInsets.all(8),
+                  //                       decoration: BoxDecoration(
+                  //                         color: Colors.grey.shade100,
+                  //                         borderRadius: BorderRadius.circular(10),
+                  //                       ),
+                  //                       child: Row(
+                  //                         crossAxisAlignment:
+                  //                             CrossAxisAlignment.start,
+                  //                         children: [
+                  //                           const CircleAvatar(
+                  //                             radius: 12,
+                  //                             backgroundImage: AssetImage(
+                  //                                 'assets/profile_placeholder.png'),
+                  //                           ),
+                  //                           const SizedBox(width: 8),
+                  //                           Expanded(
+                  //                             child: Column(
+                  //                               crossAxisAlignment:
+                  //                                   CrossAxisAlignment.start,
+                  //                               children: [
+                  //                                 Text(
+                  //                                   reply['name'],
+                  //                                   style: const TextStyle(
+                  //                                     fontWeight: FontWeight.bold,
+                  //                                     fontSize: 14,
+                  //                                   ),
+                  //                                 ),
+                  //                                 const SizedBox(height: 4),
+                  //                                 Text(
+                  //                                   reply['comment'],
+                  //                                   style: const TextStyle(
+                  //                                       fontSize: 12),
+                  //                                 ),
+                  //                                 Row(
+                  //                                   mainAxisAlignment:
+                  //                                       MainAxisAlignment
+                  //                                           .center, // Center the line horizontally
+                  //                                   children: [
+                  //                                     SizedBox(
+                  //                                       width:
+                  //                                           200, // Set the desired length of the line
+                  //                                       child: Divider(
+                  //                                         color: Colors
+                  //                                             .black, // Set the color of the line
+                  //                                         thickness:
+                  //                                             2, // Set the thickness of the line
+                  //                                       ),
+                  //                                     ),
+                  //                                   ],
+                  //                                 ),
+                  //                               ],
+                  //                             ),
+                  //                           ),
+                  //                         ],
+                  //                       ),
+                  //                     ),
+                  //                 ],
+                  //               ),
+                  //             ),
 
-                //           // Reply Box (Visible when reply button is clicked)
-                //           if (replyingToIndex == index)
-                //             Padding(
-                //               padding: const EdgeInsets.only(top: 10, left: 40),
-                //               child: Container(
-                //                 padding: const EdgeInsets.all(8),
-                //                 decoration: BoxDecoration(
-                //                   color: Colors.grey.shade100,
-                //                   borderRadius: BorderRadius.circular(10),
-                //                 ),
-                //                 child: Row(
-                //                   children: [
-                //                     const CircleAvatar(
-                //                       radius: 12,
-                //                       backgroundImage: AssetImage(
-                //                           'assets/profile_placeholder.png'),
-                //                     ),
-                //                     const SizedBox(width: 10),
-                //                     Expanded(
-                //                       child: TextField(
-                //                         controller: replyController,
-                //                         decoration: InputDecoration(
-                //                           hintText:
-                //                               'Replying to ${comments[index]['name']}...',
-                //                           border: InputBorder.none,
-                //                         ),
-                //                       ),
-                //                     ),
-                //                     TextButton(
-                //                       onPressed: postReply,
-                //                       style: TextButton.styleFrom(
-                //                         foregroundColor: Colors.blue,
-                //                       ),
-                //                       child: Text('Post'),
-                //                     ),
-                //                   ],
-                //                 ),
-                //               ),
-                //             ),
-                //           Row(
-                //             mainAxisAlignment: MainAxisAlignment
-                //                 .center, // Center the line horizontally
-                //             children: [
-                //               SizedBox(
-                //                 width:
-                //                     350, // Set the desired length of the line
-                //                 child: Divider(
-                //                   color:
-                //                       Colors.grey, // Set the color of the line
-                //                   thickness:
-                //                       0.5, // Set the thickness of the line
-                //                 ),
-                //               ),
-                //             ],
-                //           ),
-                //         ],
-                //       ),
-                //     );
+                  //           // Reply Box (Visible when reply button is clicked)
+                  //           if (replyingToIndex == index)
+                  //             Padding(
+                  //               padding: const EdgeInsets.only(top: 10, left: 40),
+                  //               child: Container(
+                  //                 padding: const EdgeInsets.all(8),
+                  //                 decoration: BoxDecoration(
+                  //                   color: Colors.grey.shade100,
+                  //                   borderRadius: BorderRadius.circular(10),
+                  //                 ),
+                  //                 child: Row(
+                  //                   children: [
+                  //                     const CircleAvatar(
+                  //                       radius: 12,
+                  //                       backgroundImage: AssetImage(
+                  //                           'assets/profile_placeholder.png'),
+                  //                     ),
+                  //                     const SizedBox(width: 10),
+                  //                     Expanded(
+                  //                       child: TextField(
+                  //                         controller: replyController,
+                  //                         decoration: InputDecoration(
+                  //                           hintText:
+                  //                               'Replying to ${comments[index]['name']}...',
+                  //                           border: InputBorder.none,
+                  //                         ),
+                  //                       ),
+                  //                     ),
+                  //                     TextButton(
+                  //                       onPressed: postReply,
+                  //                       style: TextButton.styleFrom(
+                  //                         foregroundColor: Colors.blue,
+                  //                       ),
+                  //                       child: Text('Post'),
+                  //                     ),
+                  //                   ],
+                  //                 ),
+                  //               ),
+                  //             ),
+                  //           Row(
+                  //             mainAxisAlignment: MainAxisAlignment
+                  //                 .center, // Center the line horizontally
+                  //             children: [
+                  //               SizedBox(
+                  //                 width:
+                  //                     350, // Set the desired length of the line
+                  //                 child: Divider(
+                  //                   color:
+                  //                       Colors.grey, // Set the color of the line
+                  //                   thickness:
+                  //                       0.5, // Set the thickness of the line
+                  //                 ),
+                  //               ),
+                  //             ],
+                  //           ),
+                  //         ],
+                  //       ),
+                  //     );
 
-                //   },
-                // ),
-                ListView.builder(
-                  shrinkWrap: true,
-                  physics: const NeverScrollableScrollPhysics(),
-                  itemCount: comments.length,
-                  itemBuilder: (context, index) {
-                    return Padding(
-                      padding: const EdgeInsets.all(
-                          12.0), // Add padding around the comment
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          // Main Comment
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              // Comment Author
-                              Row(
-                                children: [
-                                  CircleAvatar(
-                                    radius: 15,
-                                    backgroundImage: AssetImage(
-                                        'assets/profile_placeholder.png'),
-                                  ),
-                                  const SizedBox(width: 10),
-                                  Text(
-                                    comments[index]['name'],
-                                    style: const TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 16,
+                  //   },
+                  // ),
+                  ListView.builder(
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    itemCount: comments.length,
+                    itemBuilder: (context, index) {
+                      return Padding(
+                        padding: const EdgeInsets.all(
+                            12.0), // Add padding around the comment
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            // Main Comment
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                // Comment Author
+                                Row(
+                                  children: [
+                                    CircleAvatar(
+                                      radius: 15,
+                                      backgroundImage: AssetImage(
+                                          'assets/profile_placeholder.png'),
                                     ),
-                                  ),
-                                ],
-                              ),
-                              const SizedBox(height: 5),
-                              // Comment Text
-                              Text(
-                                comments[index]['comment'],
-                                style: const TextStyle(fontSize: 14),
-                              ),
-                              const SizedBox(height: 10),
-                              // Like & Reply Buttons
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Row(
-                                    children: [
-                                      IconButton(
-                                        icon: Icon(Icons.favorite_border,
-                                            size: 18),
-                                        onPressed:
-                                            () {}, // Add like functionality
+                                    const SizedBox(width: 10),
+                                    Text(
+                                      comments[index]['name'],
+                                      style: const TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 16,
                                       ),
-                                      IconButton(
-                                        icon: Icon(Icons.ios_share_sharp,
-                                            size: 18),
-                                        onPressed:
-                                            () {}, // Add share functionality
-                                      ),
-                                    ],
-                                  ),
-                                  GestureDetector(
-                                    onTap: () {
-                                      showReplyBox(index);
-                                    },
-                                    child: Container(
-                                      height: 40,
-                                      width: 80,
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(10),
-                                        color: const Color(0xFF3C97D3),
-                                      ),
-                                      child: Center(
-                                        child: Text(
-                                          'Reply',
-                                          style: TextStyle(color: Colors.white),
+                                    ),
+                                  ],
+                                ),
+                                const SizedBox(height: 5),
+                                // Comment Text
+                                Text(
+                                  comments[index]['comment'],
+                                  style: const TextStyle(fontSize: 14),
+                                ),
+                                const SizedBox(height: 10),
+                                // Like & Reply Buttons
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Row(
+                                      children: [
+                                        IconButton(
+                                          icon: Icon(Icons.favorite_border,
+                                              size: 18),
+                                          onPressed:
+                                              () {}, // Add like functionality
+                                        ),
+                                        IconButton(
+                                          icon: Icon(Icons.ios_share_sharp,
+                                              size: 18),
+                                          onPressed:
+                                              () {}, // Add share functionality
+                                        ),
+                                      ],
+                                    ),
+                                    GestureDetector(
+                                      onTap: () {
+                                        showReplyBox(index);
+                                      },
+                                      child: Container(
+                                        height: 40,
+                                        width: 80,
+                                        decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(10),
+                                          color: const Color(0xFF3C97D3),
+                                        ),
+                                        child: Center(
+                                          child: Text(
+                                            'Reply',
+                                            style:
+                                                TextStyle(color: Colors.white),
+                                          ),
                                         ),
                                       ),
                                     ),
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
+                                  ],
+                                ),
+                              ],
+                            ),
 
-                          // Replies Section
-                          if (comments[index]['replies'].isNotEmpty)
-                            Padding(
-                              padding: const EdgeInsets.only(left: 40),
-                              child: Column(
-                                children: [
-                                  for (var reply in comments[index]['replies'])
-                                    Container(
-                                      margin: const EdgeInsets.only(bottom: 5),
-                                      padding: const EdgeInsets.all(8),
-                                      decoration: BoxDecoration(
-                                        color: Colors.grey.shade100,
-                                        borderRadius: BorderRadius.circular(10),
+                            // Replies Section
+                            if (comments[index]['replies'].isNotEmpty)
+                              Padding(
+                                padding: const EdgeInsets.only(left: 40),
+                                child: Column(
+                                  children: [
+                                    for (var reply in comments[index]
+                                        ['replies'])
+                                      Container(
+                                        margin:
+                                            const EdgeInsets.only(bottom: 5),
+                                        padding: const EdgeInsets.all(8),
+                                        decoration: BoxDecoration(
+                                          color: Colors.grey.shade100,
+                                          borderRadius:
+                                              BorderRadius.circular(10),
+                                        ),
+                                        child: Row(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            const CircleAvatar(
+                                              radius: 12,
+                                              backgroundImage: AssetImage(
+                                                  'assets/profile_placeholder.png'),
+                                            ),
+                                            const SizedBox(width: 8),
+                                            Expanded(
+                                              child: Column(
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                children: [
+                                                  Text(
+                                                    reply['name'],
+                                                    style: const TextStyle(
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      fontSize: 14,
+                                                    ),
+                                                  ),
+                                                  const SizedBox(height: 4),
+                                                  Text(
+                                                    reply['comment'],
+                                                    style: const TextStyle(
+                                                        fontSize: 12),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                          ],
+                                        ),
                                       ),
-                                      child: Row(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
+                                  ],
+                                ),
+                              ),
+
+                            // Reply Box (Visible when reply button is clicked)
+                            if (replyingToIndex == index)
+                              Padding(
+                                padding:
+                                    const EdgeInsets.only(top: 10, left: 40),
+                                child: Container(
+                                  height: 180,
+                                  decoration: BoxDecoration(
+                                    // border: Border.all(),
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Colors.black.withOpacity(0.05),
+                                        spreadRadius: 0,
+                                        blurRadius: 4,
+                                        offset: Offset(0, 4),
+                                      ),
+                                    ],
+                                  ),
+                                  child: Card(
+                                    color: Color(0xFFFCFEFF),
+
+                                    margin: EdgeInsets.symmetric(
+                                        horizontal: 16,
+                                        vertical:
+                                            8), // Add spacing around the card
+                                    elevation:
+                                        4, // Add shadow for better visibility
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(
+                                          10), // Rounded corners
+                                    ),
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(
+                                          12.0), // Add padding inside the card
+                                      child: Column(
                                         children: [
-                                          const CircleAvatar(
-                                            radius: 12,
-                                            backgroundImage: AssetImage(
-                                                'assets/profile_placeholder.png'),
+                                          Row(
+                                            children: [
+                                              // Profile Picture
+                                              CircleAvatar(
+                                                radius: 20,
+                                                backgroundImage: AssetImage(
+                                                    'assets/profile_placeholder.png'),
+                                              ),
+                                              Text("Maria T"),
+                                            ],
                                           ),
-                                          const SizedBox(width: 8),
-                                          Expanded(
-                                            child: Column(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: [
-                                                Text(
-                                                  reply['name'],
-                                                  style: const TextStyle(
-                                                    fontWeight: FontWeight.bold,
-                                                    fontSize: 14,
+                                          Row(
+                                            children: [
+                                              Expanded(
+                                                child: TextField(
+                                                  controller: replyController,
+                                                  decoration: InputDecoration(
+                                                    hintText:
+                                                        'Replying to ${comments[index]['name']}...',
+                                                    border: InputBorder.none,
                                                   ),
                                                 ),
-                                                const SizedBox(height: 4),
-                                                Text(
-                                                  reply['comment'],
-                                                  style: const TextStyle(
-                                                      fontSize: 12),
+                                              ),
+                                            ],
+                                          ),
+                                          // TextButton(
+                                          //   onPressed: postComment,
+                                          //   style: TextButton.styleFrom(
+                                          //     foregroundColor: Colors.blue,
+                                          //     backgroundColor: Colors.grey.shade200,
+                                          //   ),
+                                          //   child: const Text('Post'),
+                                          // ),
+                                          Align(
+                                            alignment: Alignment.bottomRight,
+                                            child: GestureDetector(
+                                              onTap: postReply,
+                                              child: Container(
+                                                height: 40,
+                                                width: 80,
+                                                decoration: BoxDecoration(
+                                                  borderRadius:
+                                                      BorderRadius.circular(10),
+                                                  color: replyController
+                                                          .text.isEmpty
+                                                      ? Colors.grey
+                                                      : Color(0xFF3C97D3),
                                                 ),
-                                              ],
+                                                child: Center(
+                                                  child: Text(
+                                                    'Post',
+                                                    style: TextStyle(
+                                                        color: Colors.white),
+                                                  ),
+                                                ),
+                                              ),
                                             ),
                                           ),
                                         ],
                                       ),
-                                    ),
-                                ],
-                              ),
-                            ),
+                                      // SizedBox(width: 10),
+                                      // Text Input Field
 
-                          // Reply Box (Visible when reply button is clicked)
-                          if (replyingToIndex == index)
-                            Padding(
-                              padding: const EdgeInsets.only(top: 10, left: 40),
-                              child: Card(
-                                child: Container(
-                                  height: 200,
-                                  width: 380,
-                                  padding: EdgeInsets.all(8),
-                                  decoration: BoxDecoration(
-                                    //   border: Border.all(color: Colors.grey),
-                                    color: Colors.grey.shade100,
-                                    borderRadius: BorderRadius.circular(10),
-                                  ),
-                                  child: Row(
-                                    children: [
-                                      const CircleAvatar(
-                                        radius: 2,
-                                        backgroundImage: AssetImage(
-                                            'assets/profile_placeholder.png'),
-                                      ),
-                                      const SizedBox(width: 10),
-                                      Expanded(
-                                        child: Container(
-                                          height: 180,
-                                          decoration: BoxDecoration(
-                                            // border: Border.all(),
-                                            boxShadow: [
-                                              BoxShadow(
-                                                color: Colors.black
-                                                    .withOpacity(0.05),
-                                                spreadRadius: 0,
-                                                blurRadius: 4,
-                                                offset: Offset(0, 4),
-                                              ),
-                                            ],
-                                          ),
-                                          child: Card(
-                                            color: Color(0xFFFCFEFF),
+                                      // Post Button
 
-                                            margin: EdgeInsets.symmetric(
-                                                horizontal: 16,
-                                                vertical:
-                                                    8), // Add spacing around the card
-                                            elevation:
-                                                4, // Add shadow for better visibility
-                                            shape: RoundedRectangleBorder(
-                                              borderRadius:
-                                                  BorderRadius.circular(
-                                                      10), // Rounded corners
-                                            ),
-                                            child: Padding(
-                                              padding: const EdgeInsets.all(
-                                                  12.0), // Add padding inside the card
-                                              child: Column(
-                                                children: [
-                                                  Row(
-                                                    children: [
-                                                      // Profile Picture
-                                                      CircleAvatar(
-                                                        radius: 20,
-                                                        backgroundImage: AssetImage(
-                                                            'assets/profile_placeholder.png'),
-                                                      ),
-                                                      Text("Maria T"),
-                                                    ],
-                                                  ),
-                                                  Row(
-                                                    children: [
-                                                      Expanded(
-                                                        child: TextField(
-                                                          controller:
-                                                              commentController,
-                                                          decoration:
-                                                              const InputDecoration(
-                                                            hintText:
-                                                                'Type something...',
-                                                            border: InputBorder
-                                                                .none,
-                                                          ),
-                                                        ),
-                                                      ),
-                                                    ],
-                                                  ),
-                                                  // TextButton(
-                                                  //   onPressed: postComment,
-                                                  //   style: TextButton.styleFrom(
-                                                  //     foregroundColor: Colors.blue,
-                                                  //     backgroundColor: Colors.grey.shade200,
-                                                  //   ),
-                                                  //   child: const Text('Post'),
-                                                  // ),
-                                                  Align(
-                                                    alignment:
-                                                        Alignment.bottomRight,
-                                                    child: GestureDetector(
-                                                      onTap: postComment,
-                                                      child: Container(
-                                                        height: 40,
-                                                        width: 80,
-                                                        decoration:
-                                                            BoxDecoration(
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(10),
-                                                          color: commentController
-                                                                  .text.isEmpty
-                                                              ? Colors.grey
-                                                              : Color(
-                                                                  0xFF3C97D3),
-                                                        ),
-                                                        child: Center(
-                                                          child: Text(
-                                                            'Post',
-                                                            style: TextStyle(
-                                                                color: Colors
-                                                                    .white),
-                                                          ),
-                                                        ),
-                                                      ),
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
-                                              // SizedBox(width: 10),
-                                              // Text Input Field
-
-                                              // Post Button
-
-                                              // GestureDetector(
-                                              //   onTap: () {
-                                              //     postComment;
-                                              //   },
-                                              //   child: Container(
-                                              //     height: 40,
-                                              //     width: 80,
-                                              //     decoration: BoxDecoration(
-                                              //       borderRadius: BorderRadius.circular(10),
-                                              //       color: Color(0xFF3C97D3),
-                                              //     ),
-                                              //     child: Center(
-                                              //         child: Text('Reply',
-                                              //             style: TextStyle(color: Colors.white))),
-                                              //   ),
-                                              // ),
-                                            ),
-                                          ),
-                                        ),
-                                        //  Container(
-                                        //   height: 200,
-
-                                        //   decoration: BoxDecoration(
-                                        //       border: Border.all()),
-                                        //   child: TextField(
-                                        //     controller: replyController,
-                                        //     decoration: InputDecoration(
-                                        //       hintText:
-                                        //           'Replying to ${comments[index]['name']}...',
-                                        //       border: InputBorder.none,
-                                        //     ),
-                                        //   ),
-                                        // ),
-                                      ),
-                                      GestureDetector(
-                                        onTap: postReply,
-                                        child: Container(
-                                          height: 40,
-                                          width: 80,
-                                          decoration: BoxDecoration(
-                                            borderRadius:
-                                                BorderRadius.circular(10),
-                                            color: replyController.text.isEmpty
-                                                ? Colors.grey
-                                                : Color(0xFF3C97D3),
-                                          ),
-                                          child: Center(
-                                            child: Text(
-                                              'Post',
-                                              style: TextStyle(
-                                                  color: Colors.white),
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                      // TextButton(
-                                      //   onPressed: postReply,
-                                      //   style: TextButton.styleFrom(
-                                      //     foregroundColor: Colors.blue,
+                                      // GestureDetector(
+                                      //   onTap: () {
+                                      //     postComment;
+                                      //   },
+                                      //   child: Container(
+                                      //     height: 40,
+                                      //     width: 80,
+                                      //     decoration: BoxDecoration(
+                                      //       borderRadius: BorderRadius.circular(10),
+                                      //       color: Color(0xFF3C97D3),
+                                      //     ),
+                                      //     child: Center(
+                                      //         child: Text('Reply',
+                                      //             style: TextStyle(color: Colors.white))),
                                       //   ),
-                                      //   child:  Text('Post'),
                                       // ),
-                                    ],
+                                    ),
                                   ),
                                 ),
+                                //     child: Card(
+                                //       child: Container(
+                                //         height: 200,
+                                //         width: 380,
+                                //         padding: EdgeInsets.all(8),
+                                //         decoration: BoxDecoration(
+                                //           //   border: Border.all(color: Colors.grey),
+                                //           color: Colors.grey.shade100,
+                                //           borderRadius: BorderRadius.circular(10),
+                                //         ),
+                                //         child: Row(
+                                //           children: [
+                                //             const CircleAvatar(
+                                //               radius: 2,
+                                //               backgroundImage: AssetImage(
+                                //                   'assets/profile_placeholder.png'),
+                                //             ),
+                                //             const SizedBox(width: 10),
+                                //             Expanded(
+                                //               child: Container(
+                                //                 height: 180,
+                                //                 decoration: BoxDecoration(
+                                //                   // border: Border.all(),
+                                //                   boxShadow: [
+                                //                     BoxShadow(
+                                //                       color: Colors.black
+                                //                           .withOpacity(0.05),
+                                //                       spreadRadius: 0,
+                                //                       blurRadius: 4,
+                                //                       offset: Offset(0, 4),
+                                //                     ),
+                                //                   ],
+                                //                 ),
+                                //                 child: Card(
+                                //                   color: Color(0xFFFCFEFF),
+
+                                //                   margin: EdgeInsets.symmetric(
+                                //                       horizontal: 16,
+                                //                       vertical:
+                                //                           8), // Add spacing around the card
+                                //                   elevation:
+                                //                       4, // Add shadow for better visibility
+                                //                   shape: RoundedRectangleBorder(
+                                //                     borderRadius:
+                                //                         BorderRadius.circular(
+                                //                             10), // Rounded corners
+                                //                   ),
+                                //                   child: Padding(
+                                //                     padding: const EdgeInsets.all(
+                                //                         12.0), // Add padding inside the card
+                                //                     child: Column(
+                                //                       children: [
+                                //                         Row(
+                                //                           children: [
+                                //                             // Profile Picture
+                                //                             CircleAvatar(
+                                //                               radius: 20,
+                                //                               backgroundImage: AssetImage(
+                                //                                   'assets/profile_placeholder.png'),
+                                //                             ),
+                                //                             Text("Maria "),
+                                //                           ],
+                                //                         ),
+                                //                         Row(
+                                //                           children: [
+                                //                             Expanded(
+                                //                               child: TextField(
+                                //                                 controller:
+                                //                                     commentController,
+                                //                                 decoration:
+                                //                                     const InputDecoration(
+                                //                                   hintText:
+                                //                                       'Type something...',
+                                //                                   border: InputBorder
+                                //                                       .none,
+                                //                                 ),
+                                //                               ),
+                                //                             ),
+                                //                           ],
+                                //                         ),
+                                //                         // TextButton(
+                                //                         //   onPressed: postComment,
+                                //                         //   style: TextButton.styleFrom(
+                                //                         //     foregroundColor: Colors.blue,
+                                //                         //     backgroundColor: Colors.grey.shade200,
+                                //                         //   ),
+                                //                         //   child: const Text('Post'),
+                                //                         // ),
+                                //                         Align(
+                                //                           alignment:
+                                //                               Alignment.bottomRight,
+                                //                           child: GestureDetector(
+                                //                             onTap: postComment,
+                                //                             child: Container(
+                                //                               height: 40,
+                                //                               width: 80,
+                                //                               decoration:
+                                //                                   BoxDecoration(
+                                //                                 borderRadius:
+                                //                                     BorderRadius
+                                //                                         .circular(10),
+                                //                                 color: commentController
+                                //                                         .text.isEmpty
+                                //                                     ? Colors.grey
+                                //                                     : Color(
+                                //                                         0xFF3C97D3),
+                                //                               ),
+                                //                               child: Center(
+                                //                                 child: Text(
+                                //                                   'Post',
+                                //                                   style: TextStyle(
+                                //                                       color: Colors
+                                //                                           .white),
+                                //                                 ),
+                                //                               ),
+                                //                             ),
+                                //                           ),
+                                //                         ),
+                                //                       ],
+                                //                     ),
+                                //                     // SizedBox(width: 10),
+                                //                     // Text Input Field
+
+                                //                     // Post Button
+
+                                //                     // GestureDetector(
+                                //                     //   onTap: () {
+                                //                     //     postComment;
+                                //                     //   },
+                                //                     //   child: Container(
+                                //                     //     height: 40,
+                                //                     //     width: 80,
+                                //                     //     decoration: BoxDecoration(
+                                //                     //       borderRadius: BorderRadius.circular(10),
+                                //                     //       color: Color(0xFF3C97D3),
+                                //                     //     ),
+                                //                     //     child: Center(
+                                //                     //         child: Text('Reply',
+                                //                     //             style: TextStyle(color: Colors.white))),
+                                //                     //   ),
+                                //                     // ),
+                                //                   ),
+                                //                 ),
+                                //               ),
+                                //               //  Container(
+                                //               //   height: 200,
+
+                                //               //   decoration: BoxDecoration(
+                                //               //       border: Border.all()),
+                                //               //   child: TextField(
+                                //               //     controller: replyController,
+                                //               //     decoration: InputDecoration(
+                                //               //       hintText:
+                                //               //           'Replying to ${comments[index]['name']}...',
+                                //               //       border: InputBorder.none,
+                                //               //     ),
+                                //               //   ),
+                                //               // ),
+                                //             ),
+                                //             // GestureDetector(
+                                //             //   onTap: postReply,
+                                //             //   child: Container(
+                                //             //     height: 40,
+                                //             //     width: 80,
+                                //             //     decoration: BoxDecoration(
+                                //             //       borderRadius:
+                                //             //           BorderRadius.circular(10),
+                                //             //       color: replyController.text.isEmpty
+                                //             //           ? Colors.grey
+                                //             //           : Color(0xFF3C97D3),
+                                //             //     ),
+                                //             //     child: Center(
+                                //             //       child: Text(
+                                //             //         'Post',
+                                //             //         style: TextStyle(
+                                //             //             color: Colors.white),
+                                //             //       ),
+                                //             //     ),
+                                //             //   ),
+                                //             // ),
+                                //             // TextButton(
+                                //             //   onPressed: postReply,
+                                //             //   style: TextButton.styleFrom(
+                                //             //     foregroundColor: Colors.blue,
+                                //             //   ),
+                                //             //   child:  Text('Post'),
+                                //             // ),
+                                //           ],
+                                //         ),
+                                //       ),
+                                //     ),
                               ),
-                            ),
-                        ],
-                      ),
-                    );
+                          ],
+                        ),
+                      );
 
-                    // Divider with controlled width
-                    return Column(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.all(12.0),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              // Main Comment and Replies
-                              ...[
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    // Comment Author
-                                    Row(
-                                      children: [
-                                        CircleAvatar(
-                                          radius: 15,
-                                          backgroundImage: AssetImage(
-                                              'assets/profile_placeholder.png'),
-                                        ),
-                                        const SizedBox(width: 10),
-                                        Text(
-                                          comments[index]['name'],
-                                          style: const TextStyle(
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 16,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                    const SizedBox(height: 5),
-                                    // Comment Text
-                                    Text(
-                                      comments[index]['comment'],
-                                      style: const TextStyle(fontSize: 14),
-                                    ),
-                                    const SizedBox(height: 10),
-                                    // Like & Reply Buttons
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Row(
-                                          children: [
-                                            IconButton(
-                                              icon: const Icon(
-                                                  Icons.favorite_border,
-                                                  size: 18),
-                                              onPressed:
-                                                  () {}, // Add like functionality
-                                            ),
-                                            IconButton(
-                                              icon: const Icon(Icons.share,
-                                                  size: 18),
-                                              onPressed:
-                                                  () {}, // Add share functionality
-                                            ),
-                                          ],
-                                        ),
-                                        GestureDetector(
-                                          onTap: () {
-                                            showReplyBox(index);
-                                          },
-                                          child: Container(
-                                            height: 40,
-                                            width: 80,
-                                            decoration: BoxDecoration(
-                                              borderRadius:
-                                                  BorderRadius.circular(10),
-                                              color: const Color(0xFF3C97D3),
-                                            ),
-                                            child: Center(
-                                              child: Text(
-                                                'Reply',
-                                                style: TextStyle(
-                                                    color: Colors.white),
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ],
-                                ),
-
-                                // Replies Section
-                                if (comments[index]['replies'].isNotEmpty)
-                                  Padding(
-                                    padding: const EdgeInsets.only(left: 40),
-                                    child: Column(
-                                      children: [
-                                        for (var reply in comments[index]
-                                            ['replies'])
-                                          Container(
-                                            margin: const EdgeInsets.only(
-                                                bottom: 5),
-                                            padding: const EdgeInsets.all(8),
-                                            decoration: BoxDecoration(
-                                              color: Colors.grey.shade100,
-                                              borderRadius:
-                                                  BorderRadius.circular(10),
-                                            ),
-                                            child: Row(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: [
-                                                const CircleAvatar(
-                                                  radius: 12,
-                                                  backgroundImage: AssetImage(
-                                                      'assets/profile_placeholder.png'),
-                                                ),
-                                                const SizedBox(width: 8),
-                                                Expanded(
-                                                  child: Column(
-                                                    crossAxisAlignment:
-                                                        CrossAxisAlignment
-                                                            .start,
-                                                    children: [
-                                                      Text(
-                                                        reply['name'],
-                                                        style: const TextStyle(
-                                                          fontWeight:
-                                                              FontWeight.bold,
-                                                          fontSize: 14,
-                                                        ),
-                                                      ),
-                                                      const SizedBox(height: 4),
-                                                      Text(
-                                                        reply['comment'],
-                                                        style: const TextStyle(
-                                                            fontSize: 12),
-                                                      ),
-                                                    ],
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                      ],
-                                    ),
-                                  ),
-
-                                // Reply Box (Visible when reply button is clicked)
-                                if (replyingToIndex == index)
-                                  Padding(
-                                    padding: const EdgeInsets.only(
-                                        top: 10, left: 40),
-                                    child: Container(
-                                      padding: const EdgeInsets.all(8),
-                                      decoration: BoxDecoration(
-                                        color: Colors.grey.shade100,
-                                        borderRadius: BorderRadius.circular(10),
-                                      ),
-                                      child: Row(
+                      // Divider with controlled width
+                      return Column(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.all(12.0),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                // Main Comment and Replies
+                                ...[
+                                  Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      // Comment Author
+                                      Row(
                                         children: [
-                                          const CircleAvatar(
-                                            radius: 12,
+                                          CircleAvatar(
+                                            radius: 15,
                                             backgroundImage: AssetImage(
                                                 'assets/profile_placeholder.png'),
                                           ),
                                           const SizedBox(width: 10),
-                                          Expanded(
-                                            child: TextField(
-                                              controller: replyController,
-                                              decoration: InputDecoration(
-                                                hintText:
-                                                    'Replying to ${comments[index]['name']}...',
-                                                border: InputBorder.none,
-                                              ),
+                                          Text(
+                                            comments[index]['name'],
+                                            style: const TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 16,
                                             ),
-                                          ),
-                                          TextButton(
-                                            onPressed: postReply,
-                                            style: TextButton.styleFrom(
-                                              foregroundColor: Colors.blue,
-                                            ),
-                                            child: const Text('Post'),
                                           ),
                                         ],
                                       ),
-                                    ),
+                                      const SizedBox(height: 5),
+                                      // Comment Text
+                                      Text(
+                                        comments[index]['comment'],
+                                        style: const TextStyle(fontSize: 14),
+                                      ),
+                                      const SizedBox(height: 10),
+                                      // Like & Reply Buttons
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Row(
+                                            children: [
+                                              IconButton(
+                                                icon: const Icon(
+                                                    Icons.favorite_border,
+                                                    size: 18),
+                                                onPressed:
+                                                    () {}, // Add like functionality
+                                              ),
+                                              IconButton(
+                                                icon: const Icon(Icons.share,
+                                                    size: 18),
+                                                onPressed:
+                                                    () {}, // Add share functionality
+                                              ),
+                                            ],
+                                          ),
+                                          GestureDetector(
+                                            onTap: () {
+                                              showReplyBox(index);
+                                            },
+                                            child: Container(
+                                              height: 40,
+                                              width: 80,
+                                              decoration: BoxDecoration(
+                                                borderRadius:
+                                                    BorderRadius.circular(10),
+                                                color: const Color(0xFF3C97D3),
+                                              ),
+                                              child: Center(
+                                                child: Text(
+                                                  'Reply',
+                                                  style: TextStyle(
+                                                      color: Colors.white),
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ],
                                   ),
-                              ],
-                            ],
-                          ),
-                        ),
 
-                        // Divider with controlled width
-                        Padding(
-                          padding: const EdgeInsets.symmetric(
-                              vertical: 8.0), // Add vertical spacing
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment
-                                .center, // Center the divider horizontally
-                            children: [
-                              SizedBox(
-                                width:
-                                    350, // Set the desired length of the line
-                                child: Divider(
-                                  color:
-                                      Colors.grey, // Set the color of the line
-                                  thickness:
-                                      0.5, // Set the thickness of the line
-                                ),
-                              ),
-                            ],
+                                  // Replies Section
+                                  if (comments[index]['replies'].isNotEmpty)
+                                    Padding(
+                                      padding: const EdgeInsets.only(left: 40),
+                                      child: Column(
+                                        children: [
+                                          for (var reply in comments[index]
+                                              ['replies'])
+                                            Container(
+                                              margin: const EdgeInsets.only(
+                                                  bottom: 5),
+                                              padding: const EdgeInsets.all(8),
+                                              decoration: BoxDecoration(
+                                                color: Colors.grey.shade100,
+                                                borderRadius:
+                                                    BorderRadius.circular(10),
+                                              ),
+                                              child: Row(
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                children: [
+                                                  const CircleAvatar(
+                                                    radius: 12,
+                                                    backgroundImage: AssetImage(
+                                                        'assets/profile_placeholder.png'),
+                                                  ),
+                                                  const SizedBox(width: 8),
+                                                  Expanded(
+                                                    child: Column(
+                                                      crossAxisAlignment:
+                                                          CrossAxisAlignment
+                                                              .start,
+                                                      children: [
+                                                        Text(
+                                                          reply['name'],
+                                                          style:
+                                                              const TextStyle(
+                                                            fontWeight:
+                                                                FontWeight.bold,
+                                                            fontSize: 14,
+                                                          ),
+                                                        ),
+                                                        const SizedBox(
+                                                            height: 4),
+                                                        Text(
+                                                          reply['comment'],
+                                                          style:
+                                                              const TextStyle(
+                                                                  fontSize: 12),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                        ],
+                                      ),
+                                    ),
+
+                                  // Reply Box (Visible when reply button is clicked)
+                                  if (replyingToIndex == index)
+                                    Padding(
+                                      padding: const EdgeInsets.only(
+                                          top: 10, left: 40),
+                                      child: Container(
+                                        padding: const EdgeInsets.all(8),
+                                        decoration: BoxDecoration(
+                                          color: Colors.grey.shade100,
+                                          borderRadius:
+                                              BorderRadius.circular(10),
+                                        ),
+                                        child: Row(
+                                          children: [
+                                            const CircleAvatar(
+                                              radius: 12,
+                                              backgroundImage: AssetImage(
+                                                  'assets/profile_placeholder.png'),
+                                            ),
+                                            const SizedBox(width: 10),
+                                            Expanded(
+                                              child: TextField(
+                                                controller: replyController,
+                                                decoration: InputDecoration(
+                                                  hintText:
+                                                      'Replying to ${comments[index]['name']}...',
+                                                  border: InputBorder.none,
+                                                ),
+                                              ),
+                                            ),
+                                            TextButton(
+                                              onPressed: postReply,
+                                              style: TextButton.styleFrom(
+                                                foregroundColor: Colors.blue,
+                                              ),
+                                              child: const Text('Post'),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                ],
+                              ],
+                            ),
                           ),
-                        ),
-                      ],
-                    );
-                  },
-                ),
-              ],
+
+                          // Divider with controlled width
+                          Padding(
+                            padding: const EdgeInsets.symmetric(
+                                vertical: 8.0), // Add vertical spacing
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment
+                                  .center, // Center the divider horizontally
+                              children: [
+                                SizedBox(
+                                  width:
+                                      350, // Set the desired length of the line
+                                  child: Divider(
+                                    color: Colors
+                                        .grey, // Set the color of the line
+                                    thickness:
+                                        0.5, // Set the thickness of the line
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      );
+                    },
+                  ),
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

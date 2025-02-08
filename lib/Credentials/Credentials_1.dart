@@ -144,7 +144,7 @@ class _NEETFormPageState extends State<NEETFormPage> {
         body: jsonEncode(requestData),
       );
 
-      if (response.statusCode == 201) {
+      if (response.statusCode == 201 || response.statusCode == 200) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(content: Text("Post created successfully!")),
         );
@@ -175,31 +175,34 @@ class _NEETFormPageState extends State<NEETFormPage> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  SizedBox(height: screenHeight * 0.05),
+                  SizedBox(height: screenHeight * 0.00),
                   Center(
-                    child: SizedBox(
+                    child: Container(
                       height: screenHeight * 0.4,
                       width: screenWidth * 0.9,
+                      // decoration: BoxDecoration(
+                      //   border: Border.all()
+                      // ),
                       child: Image.asset(
                         'assets/5.png',
                         height: screenHeight * 0.25,
                       ),
                     ),
                   ),
-                  SizedBox(height: screenHeight * 0.03),
+                  SizedBox(height: screenHeight * 0.00),
                   Row(
                     children: [
                       Text(
                         "Step in and share\n  your story with us!",
                         style: TextStyle(
-                          fontSize: screenWidth * 0.05,
+                          fontSize: screenWidth * 0.07,
                           fontWeight: FontWeight.bold,
                         ),
                         textAlign: TextAlign.center,
                       ),
                     ],
                   ),
-                  SizedBox(height: screenHeight * 0.04),
+                  SizedBox(height: screenHeight * 0.02),
                   TextFormField(
                     controller: nameController,
                     decoration: InputDecoration(
@@ -247,10 +250,10 @@ class _NEETFormPageState extends State<NEETFormPage> {
                     child: ElevatedButton(
                       onPressed: () {
                         sendDetailRequest();
-                        // Navigator.push(
-                        //     context,
-                        //     MaterialPageRoute(
-                        //         builder: (context) => BottomSheetApp()));
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => BottomSheetApp()));
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: const Color(0xFF3C97D3),

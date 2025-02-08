@@ -24,7 +24,9 @@ import 'PlayGround/BottomSheet_Done_Animation.dart';
 import 'PlayGround/Color animation/Color_pageRouteBuilder.dart';
 import 'PlayGround/Color animation/Hero_Color_animation.dart';
 import 'PlayGround/Color animation/PageTransition_blackbox.dart';
+import 'PlayGround/New_Profile_Page.dart';
 import 'PlayGround/TimerPeriodic.dart';
+import 'PlayGround/otp api.dart';
 import 'Profile Page/Profile_1.dart';
 import 'University Profile/University_Profile.dart';
 
@@ -46,7 +48,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.red),
         useMaterial3: true,
       ),
-      home: NEETFormPage(),
+      home: OTPVerificationScreen(),
     );
   }
 }

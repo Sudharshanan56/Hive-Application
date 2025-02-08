@@ -187,16 +187,16 @@ class Page2 extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(left: 50),
               child: Container(
-                height: 350,
-                width: 250,
+                height: screenHeight*0.48,
+                width: screenWidth*0.72,
                 decoration: BoxDecoration(
                   color: Color(0xFFF4FAFF),
                   // border: Border.all(
                   //   style: BorderStyle.solid,
                   // ),
                   borderRadius: BorderRadius.only(
-                    bottomRight: Radius.circular(200),
-                    bottomLeft: Radius.circular(200),
+                    bottomRight: Radius.circular(screenWidth*0.5),
+                    bottomLeft: Radius.circular(screenWidth*0.5),
                   ),
                 ),
               ),
