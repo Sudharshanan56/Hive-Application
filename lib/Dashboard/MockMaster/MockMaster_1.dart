@@ -142,7 +142,8 @@ class _Mockmaster1State extends State<Mockmaster1> {
                   ),
                   height: screenHeight * 0.62,
                   width: screenWidth * 0.95,
-                  left: _startAnimation ? screenWidth * 0.40 : screenWidth * 0.90,
+                  left:
+                      _startAnimation ? screenWidth * 0.40 : screenWidth * 0.90,
                   duration: Duration(seconds: 1)),
               AnimatedPositioned(
                 child: Container(
@@ -188,7 +189,7 @@ class _Mockmaster1State extends State<Mockmaster1> {
                 child: GestureDetector(
                   onTap: () => Navigator.pop(context),
                   child: CircleAvatar(
-                    radius: screenWidth * 0.03,
+                    radius: screenWidth * 0.04,
                     backgroundColor: const Color(0xff1d1d1d66),
                     child: const Icon(
                       Icons.keyboard_arrow_left,
