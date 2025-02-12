@@ -542,6 +542,48 @@ class _OTPVerificationScreenState extends State<OTPVerificationScreen> {
   //     }
   //   }
   // }
+  // void _handleButtonPress() async {
+  //   if (!isOtpSent) {
+  //     // Handle sending OTP
+  //     if (phoneController.text.length == 10) {
+  //       setState(() {
+  //         isOtpSent = true;
+  //         x = true;
+  //       });
+  //     } else {
+  //       ScaffoldMessenger.of(context).showSnackBar(
+  //         SnackBar(
+  //             content: Text('Please enter a valid 10-digit mobile number')),
+  //       );
+  //     }
+  //   } else {
+  //     // Handle OTP verification
+  //     if (isOtpComplete()) {
+  //       // Fetch user data before navigating
+  //       await fetchUserData(phoneController.text, phoneController.text);
+
+  //       if (userId.isNotEmpty) {
+
+  //         // Navigate after userId is set
+  //         Navigator.push(
+  //           context,
+  //           MaterialPageRoute(
+  //             builder: (context) => StudentDetailsPage(userId: userId),
+  //           ),
+  //         );
+  //       } else {
+  //         ScaffoldMessenger.of(context).showSnackBar(
+  //           SnackBar(content: Text('Failed to retrieve user ID. Try again.')),
+  //         );
+  //       }
+  //     } else {
+  //       ScaffoldMessenger.of(context).showSnackBar(
+  //         SnackBar(content: Text('Please enter the complete OTP')),
+  //       );
+  //     }
+  //   }
+  // }
+
   void _handleButtonPress() async {
     if (!isOtpSent) {
       // Handle sending OTP
@@ -563,6 +605,7 @@ class _OTPVerificationScreenState extends State<OTPVerificationScreen> {
         await fetchUserData(phoneController.text, phoneController.text);
 
         if (userId.isNotEmpty) {
+          print(userId);
           // Navigate after userId is set
           Navigator.push(
             context,
@@ -582,6 +625,48 @@ class _OTPVerificationScreenState extends State<OTPVerificationScreen> {
       }
     }
   }
+  // void _handleButtonPress() async {
+  //   if (!isOtpSent) {
+  //     // Handle sending OTP
+  //     if (phoneController.text.length == 10) {
+  //       setState(() {
+  //         isOtpSent = true;
+  //         x = true;
+  //       });
+  //     } else {
+  //       ScaffoldMessenger.of(context).showSnackBar(
+  //         SnackBar(
+  //             content: Text('Please enter a valid 10-digit mobile number')),
+  //       );
+  //     }
+  //   } else {
+  //     // Handle OTP verification
+  //     if (isOtpComplete()) {
+  //       // Fetch user data before navigating
+  //       await fetchUserData(phoneController.text, phoneController.text);
+
+  //       // Check if userId is set after fetching user data
+  //       if (userId.isNotEmpty) {
+  //         print(userId);
+  //         // Navigate after userId is set
+  //         Navigator.push(
+  //           context,
+  //           MaterialPageRoute(
+  //             builder: (context) => StudentDetailsPage(userId: "12345"),
+  //           ),
+  //         );
+  //       } else {
+  //         ScaffoldMessenger.of(context).showSnackBar(
+  //           SnackBar(content: Text('Failed to retrieve user ID. Try again.')),
+  //         );
+  //       }
+  //     } else {
+  //       ScaffoldMessenger.of(context).showSnackBar(
+  //         SnackBar(content: Text('Please enter the complete OTP')),
+  //       );
+  //     }
+  //   }
+  // }
 
   String userId = "";
   String mobileNumber = "";
@@ -693,7 +778,9 @@ class _OTPVerificationScreenState extends State<OTPVerificationScreen> {
                           height: screenHeight * 0.07,
                           width: screenWidth * 0.15,
                           decoration: BoxDecoration(
-                            border: Border.all(color: Color(0xFF666666)),
+                            border: Border.all(
+                                color: Color.fromARGB(142, 102, 102, 102)),
+                            color: Color(0xFFFFFFFF),
                             borderRadius: BorderRadius.circular(8),
                           ),
                           child: Center(
@@ -703,16 +790,18 @@ class _OTPVerificationScreenState extends State<OTPVerificationScreen> {
                             ),
                           ),
                         ),
-                        SizedBox(width: screenWidth * 0.05),
+                        SizedBox(width: screenWidth * 0.03),
                         Expanded(
                           child: Container(
                             height: screenHeight * 0.07,
                             decoration: BoxDecoration(
-                              border: Border.all(color: Color(0xFF666666)),
+                              border: Border.all(
+                                  color: Color.fromARGB(142, 102, 102, 102)),
+                              color: Color(0xFFFFFFFF),
                               borderRadius: BorderRadius.circular(8),
                             ),
                             child: Padding(
-                              padding: const EdgeInsets.all(8.0),
+                              padding: EdgeInsets.all(8.0),
                               child: TextField(
                                 controller: phoneController,
                                 keyboardType: TextInputType.number,
@@ -741,7 +830,7 @@ class _OTPVerificationScreenState extends State<OTPVerificationScreen> {
                         Text(
                           "Enter your mobile number for verification.",
                           style: TextStyle(
-                            fontSize: screenWidth * 0.035,
+                            fontSize: screenWidth * 0.030,
                             color: Color(0xFF222222),
                           ),
                         ),
@@ -749,33 +838,41 @@ class _OTPVerificationScreenState extends State<OTPVerificationScreen> {
                     ),
                     SizedBox(height: screenHeight * 0.03),
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: List.generate(4, (index) {
-                        return SizedBox(
-                          width: 50,
-                          child: TextFormField(
-                            controller: _otpControllers[index],
-                            focusNode: _focusNodes[index],
-                            keyboardType: TextInputType.number,
-                            textAlign: TextAlign.center,
-                            maxLength: 1,
-                            style: TextStyle(
-                                fontSize: 18, fontWeight: FontWeight.bold),
-                            decoration: InputDecoration(
-                              counterText: "",
-                              border: OutlineInputBorder(),
-                              enabledBorder: OutlineInputBorder(
-                                borderSide:
-                                    BorderSide(color: Color(0xFF666666)),
-                                borderRadius: BorderRadius.circular(8),
+                        return Padding(
+                          padding: EdgeInsets.symmetric(
+                              horizontal: screenWidth * 0.035),
+                          child: Container(
+                            height: screenHeight * 0.07,
+                            width: screenWidth * 0.155,
+                            child: TextFormField(
+                              controller: _otpControllers[index],
+                              focusNode: _focusNodes[index],
+                              keyboardType: TextInputType.number,
+                              textAlign: TextAlign.center,
+                              maxLength: 1,
+                              style: TextStyle(
+                                fontSize: 18,
+                                // fontWeight: FontWeight.bold
                               ),
-                              focusedBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                    color: Theme.of(context).primaryColor),
-                                borderRadius: BorderRadius.circular(8),
+                              decoration: InputDecoration(
+                                counterText: "",
+                                border: OutlineInputBorder(),
+                                enabledBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                      color:
+                                          Color.fromARGB(142, 102, 102, 102)),
+                                  borderRadius: BorderRadius.circular(8),
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                      color: Theme.of(context).primaryColor),
+                                  borderRadius: BorderRadius.circular(8),
+                                ),
                               ),
+                              onChanged: (value) => _onOtpChanged(value, index),
                             ),
-                            onChanged: (value) => _onOtpChanged(value, index),
                           ),
                         );
                       }),
@@ -803,6 +900,7 @@ class _OTPVerificationScreenState extends State<OTPVerificationScreen> {
                                 style: TextStyle(
                                   color:
                                       x ? Color(0xFF5A9ECF) : Color(0xFF666666),
+                                  fontSize: screenWidth * 0.04,
                                 ),
                               ),
                             )
@@ -863,7 +961,7 @@ class _OTPVerificationScreenState extends State<OTPVerificationScreen> {
                           style: TextStyle(
                             color: Color(0xFF222222),
                             fontSize: screenWidth * 0.035,
-                            fontWeight: FontWeight.bold,
+                            // fontWeight: FontWeight.bold,
                           ),
                           children: const [
                             TextSpan(

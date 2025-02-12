@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
+import 'Email_Api.dart';
+
 class StudentDetailsPage extends StatefulWidget {
   final String userId;
 
@@ -12,11 +14,12 @@ class StudentDetailsPage extends StatefulWidget {
 }
 
 class _StudentDetailsPageState extends State<StudentDetailsPage> {
-    @override
+  @override
   void initState() {
     super.initState();
     print("Received UserId: ${widget.userId}"); // Debugging line
   }
+
   final TextEditingController nameController = TextEditingController();
   final TextEditingController needIdController = TextEditingController();
   final TextEditingController needScoreController = TextEditingController();
@@ -45,10 +48,17 @@ class _StudentDetailsPageState extends State<StudentDetailsPage> {
         body: jsonEncode(data),
       );
 
-      if (response.statusCode == 201||response.statusCode==200) {
+      if (response.statusCode == 201 || response.statusCode == 200) {
         // Successfully added
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(content: Text("Student Details Saved Successfully!")),
+        );
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) =>
+                EmailPage(userId: widget.userId), // Pass userId here
+          ),
         );
       } else {
         // Error response
@@ -92,7 +102,10 @@ class _StudentDetailsPageState extends State<StudentDetailsPage> {
             isLoading
                 ? CircularProgressIndicator()
                 : ElevatedButton(
-                    onPressed: submitStudentDetails,
+                    onPressed: () {
+                      submitStudentDetails();
+                      
+                    },
                     child: Text("Submit"),
                   ),
           ],

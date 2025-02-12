@@ -283,7 +283,7 @@ class Page1 extends StatelessWidget {
                   child: Text(
                     "Get started",
                     style: TextStyle(
-                      fontSize: screenWidth * 0.05, // Responsive font size
+                      fontSize: screenWidth * 0.045, // Responsive font size
                       // fontWeight: FontWeight.bold,
                       color: Colors.white,
                     ),
@@ -306,7 +306,7 @@ class Page1 extends StatelessWidget {
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: screenWidth * 0.035, // Responsive font size
-                      fontWeight: FontWeight.bold,
+                      // fontWeight: FontWeight.bold,
                     ),
                     children: const [
                       TextSpan(
