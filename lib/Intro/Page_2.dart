@@ -187,40 +187,39 @@ class Page2 extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(left: 50),
               child: Container(
-                height: screenHeight*0.48,
-                width: screenWidth*0.72,
+                height: screenHeight * 0.48,
+                width: screenWidth * 0.72,
                 decoration: BoxDecoration(
                   color: Color(0xFFF4FAFF),
                   // border: Border.all(
                   //   style: BorderStyle.solid,
                   // ),
                   borderRadius: BorderRadius.only(
-                    bottomRight: Radius.circular(screenWidth*0.5),
-                    bottomLeft: Radius.circular(screenWidth*0.5),
+                    bottomRight: Radius.circular(screenWidth * 0.5),
+                    bottomLeft: Radius.circular(screenWidth * 0.5),
                   ),
                 ),
               ),
             ),
             // Skip Button
-            Align(
-              alignment: Alignment.topRight,
+            SafeArea(
               child: Padding(
                 padding: EdgeInsets.only(
-                    top: screenHeight * 0.05, right: screenWidth * 0.05),
+                    left: screenWidth * 0.8, top: screenHeight * 0.05),
                 child: TextButton(
                   onPressed: () {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
                             builder: (context) => LoginSelectionScreen()));
-
                     // Handle Skip button press
                   },
                   child: Text(
                     "Skip",
                     style: TextStyle(
-                      color: Color(0xFF333333B2),
-                      fontSize: screenWidth * 0.04, // Responsive font size
+                      color: const Color(0xFF333333),
+                      fontSize: screenWidth * 0.040, // Responsive font size
+                      //fontWeight: FontWeight.bold,
                     ),
                   ),
                 ),
@@ -235,14 +234,18 @@ class Page2 extends StatelessWidget {
                 // Illustration Image
                 Padding(
                   padding: EdgeInsets.only(top: screenHeight * 0.1),
-                  child: SizedBox(
+                  child: Container(
                     height: screenHeight * 0.4,
                     width: screenWidth * 0.8,
+                    //decoration: BoxDecoration(border: Border.all()),
                     child: Image.asset(
                       'assets/1.png',
                       fit: BoxFit.contain,
                     ),
                   ),
+                ),
+                SizedBox(
+                  height: screenHeight * 0.03,
                 ),
 
                 // Progress Indicator
@@ -290,7 +293,7 @@ class Page2 extends StatelessWidget {
                       padding:
                           EdgeInsets.symmetric(horizontal: screenWidth * 0.1),
                       child: Text(
-                          "Track your exam performance\nand eligibility for top medical\n universities.",
+                          "Track your exam performance\nand eligibility for top medical\nuniversities.",
                           //textAlign: TextAlign.center,
                           style: GoogleFonts.poppins(
                             textStyle: TextStyle(
@@ -362,9 +365,9 @@ class Page2 extends StatelessWidget {
                     TextSpan(
                       text: "By registering, you agree to ",
                       style: TextStyle(
-                        color: Colors.black,
+                        color: Color(0xFF222222),
                         fontSize: screenWidth * 0.035, // Responsive font size
-                        fontWeight: FontWeight.bold,
+                        // fontWeight: FontWeight.bold,
                       ),
                       children: const [
                         TextSpan(

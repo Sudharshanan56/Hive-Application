@@ -197,25 +197,24 @@ class Page3 extends StatelessWidget {
               //       fit: BoxFit.fill,
               //     )),
               // Skip Button
-              Align(
-                alignment: Alignment.topRight,
+              SafeArea(
                 child: Padding(
                   padding: EdgeInsets.only(
-                      top: screenHeight * 0.05, right: screenWidth * 0.05),
+                      left: screenWidth * 0.8, top: screenHeight * 0.05),
                   child: TextButton(
                     onPressed: () {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
                               builder: (context) => LoginSelectionScreen()));
-
                       // Handle Skip button press
                     },
                     child: Text(
                       "Skip",
                       style: TextStyle(
-                        color: Colors.black54,
-                        fontSize: screenWidth * 0.045,
+                        color: const Color(0xFF333333),
+                        fontSize: screenWidth * 0.040, // Responsive font size
+                        //fontWeight: FontWeight.bold,
                       ),
                     ),
                   ),
@@ -299,7 +298,7 @@ class Page3 extends StatelessWidget {
                         padding:
                             EdgeInsets.symmetric(horizontal: screenWidth * 0.1),
                         child: Text(
-                            "Access curated articles and tips\n tailored for medical entrance\n preparation.",
+                            "Access curated articles and tips\ntailored for medical entrance\npreparation.",
                             //textAlign: TextAlign.center,
                             style: GoogleFonts.poppins(
                               height: 2.0,
@@ -397,9 +396,9 @@ class Page3 extends StatelessWidget {
                       TextSpan(
                         text: "By registering, you agree to ",
                         style: TextStyle(
-                          color: Colors.black54,
+                          color: Color(0xFF222222),
                           fontSize: screenWidth * 0.035, // Responsive font size
-                          fontWeight: FontWeight.bold,
+                          // fontWeight: FontWeight.bold,
                         ),
                         children: const [
                           TextSpan(

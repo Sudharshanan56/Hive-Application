@@ -477,11 +477,12 @@ class _HomepageWithoutEmailState extends State<HomepageWithoutEmail> {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         home: Scaffold(
+          backgroundColor: Color(0xFFFCFEFF),
           appBar: AppBar(
-            backgroundColor: Colors.white,
-            toolbarHeight: 80,
+            backgroundColor: Color(0xFFFCFEFF),
+            toolbarHeight: 100,
             leading: Padding(
-              padding: EdgeInsets.only(left: 10),
+              padding: EdgeInsets.only(left: 14),
               child: GestureDetector(
                 onTap: () {
                   Navigator.push(context,
@@ -506,7 +507,7 @@ class _HomepageWithoutEmailState extends State<HomepageWithoutEmail> {
                 height: 50,
                 width: 300,
                 decoration: BoxDecoration(
-                    border: Border.all(color: Colors.grey),
+                    border: Border.all(color: Color(0xffF1F1F1)),
                     borderRadius: BorderRadius.circular(30),
                     color: Color(0xFFF1F1F1)),
                 child: ListTile(
@@ -540,7 +541,7 @@ class _HomepageWithoutEmailState extends State<HomepageWithoutEmail> {
                 Navigator.push(context,
                     MaterialPageRoute(builder: (context) => CountdownPage()));
               },
-              child: const Icon(Icons.school_outlined, color: Colors.white),
+              child: const Icon(Icons.school, color: Colors.white),
             ),
           ),
         ),
@@ -597,7 +598,7 @@ class _PostsListState extends State<PostsList> {
     // }
 
     return Container(
-      decoration: BoxDecoration(color: Color(0xFFF4FAFF)),
+      decoration: BoxDecoration(color: Color(0xFFFFFFFF)),
       margin: EdgeInsets.symmetric(
         horizontal: screenWidth * 0.04,
         vertical: screenHeight * 0.01,
@@ -607,62 +608,84 @@ class _PostsListState extends State<PostsList> {
       // ),
       //  elevation: 4,
       child: Padding(
-        padding: EdgeInsets.all(screenWidth * 0.04),
+        padding: EdgeInsets.all(screenWidth * 0.0),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          // crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            ListTile(
-              leading: CircleAvatar(
-                backgroundImage: const AssetImage('assets/7.png'),
-                radius: screenWidth * 0.075,
+            Container(
+              // height: 0,
+              // decoration: BoxDecoration(border: Border.all()),
+              child: ListTile(
+                contentPadding:
+                    EdgeInsets.only(left: 0), // Moves it to the left
+
+                leading: Container(
+                  // decoration: BoxDecoration(border: Border.all()),
+                  child: CircleAvatar(
+                    backgroundImage: const AssetImage('assets/7.png'),
+                    radius: screenWidth * 0.075,
+                  ),
+                ),
+                title: Text(
+                  post['university']!,
+                  style: TextStyle(fontSize: screenWidth * 0.045),
+                ),
+                subtitle: Text(
+                  post['location']!,
+                  style: TextStyle(fontSize: screenWidth * 0.035),
+                ),
+                // trailing: Positioned(top: 100, child: Icon(Icons.share)),
               ),
-              title: Text(
-                post['university']!,
-                style: TextStyle(fontSize: screenWidth * 0.045),
-              ),
-              subtitle: Text(
-                post['location']!,
-                style: TextStyle(fontSize: screenWidth * 0.035),
-              ),
-              // trailing: Positioned(top: 100, child: Icon(Icons.share)),
             ),
-            SizedBox(height: screenHeight * 0.01),
+            // SizedBox(height: screenHeight * 0.0),
             Row(
               children: [
                 Text(
                   '${post['university']} Shines at',
                   style: TextStyle(
-                    fontSize: screenWidth * 0.04,
+                    fontSize: screenWidth * 0.03,
                     fontWeight: FontWeight.w500,
                   ),
                 ),
                 Spacer(),
                 Container(
-                    height: screenHeight * 0.07,
+                    height: screenHeight * 0.04,
                     width: screenWidth * 0.10,
+                    // decoration: BoxDecoration(border: Border.all()),
                     child: Image.asset("assets/vector.png")),
               ],
             ),
-            SizedBox(height: screenHeight * 0.005),
-            Text(
-              post['event']!,
-              style: TextStyle(
-                fontSize: screenWidth * 0.040,
-                fontWeight: FontWeight.bold,
-              ),
+            // SizedBox(height: screenHeight * 0.001),
+            Row(
+              children: [
+                Text(
+                  post['event']!,
+                  style: TextStyle(
+                    fontSize: screenWidth * 0.040,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ],
             ),
             SizedBox(
-              height: screenHeight * 0.05,
+              height: screenHeight * 0.01,
             ),
             Hero(
                 tag: "post1",
-                child: Image(image: AssetImage("assets/post1.png"))),
+                child: Container(
+                    height: screenHeight * 0.40,
+                    width: screenWidth * 0.9,
+                    // decoration: BoxDecoration(border: Border.all()),
+                    child: Image(
+                      image: AssetImage("assets/post1.png"),
+                      fit: BoxFit.fill,
+                    ))),
             SizedBox(height: screenHeight * 0.02),
             Row(
               children: [
                 SizedBox(
                   height: screenHeight * 0.07,
-                  width: screenWidth * 0.74,
+                  width: screenWidth * 0.80,
                   child: ElevatedButton(
                     onPressed: () =>
                         //     Navigator.push(
@@ -696,12 +719,13 @@ class _PostsListState extends State<PostsList> {
                   height: screenHeight * 0.07,
                   width: screenWidth * 0.10,
                   child: IconButton(
-                    iconSize: screenWidth * 0.12,
+                    iconSize: screenWidth * 0.1,
                     icon: Icon(
                       isLikedList[index]
                           ? Icons.favorite
                           : Icons.favorite_border,
-                      color: isLikedList[index] ? Colors.red : Colors.grey,
+                      color:
+                          isLikedList[index] ? Colors.red : Color(0xFF666666),
                     ),
                     onPressed: () {
                       setState(() {
@@ -709,6 +733,9 @@ class _PostsListState extends State<PostsList> {
                       });
                     },
                   ),
+                ),
+                SizedBox(
+                  width: screenWidth * .02,
                 )
               ],
             ),

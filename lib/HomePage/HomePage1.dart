@@ -825,150 +825,157 @@ class _PostsListState extends State<PostsList> {
         ),
       ),
       builder: (BuildContext context) {
-        return Container(
-          height: screenHeight * 0.40,
-          width: screenWidth,
-          decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.only(
-              topRight: Radius.circular(screenWidth * 0.08),
-              topLeft: Radius.circular(screenWidth * 0.08),
-            ),
+        return Padding(
+          padding: EdgeInsets.only(
+            bottom: MediaQuery.of(context).viewInsets.bottom,
           ),
-          padding: EdgeInsets.all(screenWidth * 0.045),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: <Widget>[
-              Row(
-                children: [
-                  Text(
-                    "Enter OTP",
-                    style: TextStyle(
-                      fontSize: screenWidth * 0.055,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black,
-                    ),
-                    textAlign: TextAlign.center,
-                  ),
-                ],
+          child: SingleChildScrollView(
+            child: Container(
+              height: screenHeight * 0.40,
+              width: screenWidth,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.only(
+                  topRight: Radius.circular(screenWidth * 0.08),
+                  topLeft: Radius.circular(screenWidth * 0.08),
+                ),
               ),
-              SizedBox(height: screenHeight * 0.02),
-              Row(
-                children: [
-                  Text(
-                    "OTP sent to ",
-                    style: TextStyle(
-                      //fontWeight: FontWeight.bold,
-                      fontSize: screenWidth * 0.03,
-                    ),
-                  ),
-                  Text(
-                    "sample@gmail.com",
-                    style: TextStyle(
-                      color: Color(0xFF3C97D3),
-                      fontSize: screenWidth * 0.03,
-                    ),
-                  ),
-                  Icon(Icons.edit, size: screenWidth * 0.05),
-                ],
-              ),
-              SizedBox(height: screenHeight * 0.02),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: List.generate(4, (index) {
-                  return SizedBox(
-                    width: 50,
-                    child: TextFormField(
-                      controller: _otpControllers[index],
-                      focusNode: _focusNodes[index],
-                      keyboardType: TextInputType.number,
-                      textAlign: TextAlign.center,
-                      maxLength: 1,
-                      style:
-                          TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                      decoration: InputDecoration(
-                        counterText: "",
-                        border: OutlineInputBorder(),
-                        enabledBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.grey),
-                          borderRadius: BorderRadius.circular(8),
+              padding: EdgeInsets.all(screenWidth * 0.045),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: <Widget>[
+                  Row(
+                    children: [
+                      Text(
+                        "Enter OTP",
+                        style: TextStyle(
+                          fontSize: screenWidth * 0.055,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black,
                         ),
-                        focusedBorder: OutlineInputBorder(
-                          borderSide:
-                              BorderSide(color: Theme.of(context).primaryColor),
-                          borderRadius: BorderRadius.circular(8),
+                        textAlign: TextAlign.center,
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: screenHeight * 0.02),
+                  Row(
+                    children: [
+                      Text(
+                        "OTP sent to ",
+                        style: TextStyle(
+                          //fontWeight: FontWeight.bold,
+                          fontSize: screenWidth * 0.03,
                         ),
                       ),
-                      onChanged: (value) {
-                        if (value.isNotEmpty && index < 3) {
-                          FocusScope.of(context)
-                              .requestFocus(_focusNodes[index + 1]);
-                        }
-                        _onOtpChanged(value, index);
+                      Text(
+                        "sample@gmail.com",
+                        style: TextStyle(
+                          color: Color(0xFF3C97D3),
+                          fontSize: screenWidth * 0.03,
+                        ),
+                      ),
+                      Icon(Icons.edit, size: screenWidth * 0.05),
+                    ],
+                  ),
+                  SizedBox(height: screenHeight * 0.02),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: List.generate(4, (index) {
+                      return SizedBox(
+                        width: 50,
+                        child: TextFormField(
+                          controller: _otpControllers[index],
+                          focusNode: _focusNodes[index],
+                          keyboardType: TextInputType.number,
+                          textAlign: TextAlign.center,
+                          maxLength: 1,
+                          style: TextStyle(
+                              fontSize: 18, fontWeight: FontWeight.bold),
+                          decoration: InputDecoration(
+                            counterText: "",
+                            border: OutlineInputBorder(),
+                            enabledBorder: OutlineInputBorder(
+                              borderSide: BorderSide(color: Colors.grey),
+                              borderRadius: BorderRadius.circular(8),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                  color: Theme.of(context).primaryColor),
+                              borderRadius: BorderRadius.circular(8),
+                            ),
+                          ),
+                          onChanged: (value) {
+                            if (value.isNotEmpty && index < 3) {
+                              FocusScope.of(context)
+                                  .requestFocus(_focusNodes[index + 1]);
+                            }
+                            _onOtpChanged(value, index);
+                          },
+                        ),
+                      );
+                    }),
+                  ),
+                  SizedBox(height: screenHeight * 0.0),
+                  TextButton(
+                    onPressed: () {
+                      // Resend OTP action
+                    },
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          "OTP not received?",
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: screenWidth * 0.04,
+                          ),
+                        ),
+                        Text(
+                          " Resend now",
+                          style: TextStyle(
+                            color: Color(0xFF3C97D3),
+                            fontSize: screenWidth * 0.04,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  SizedBox(height: screenHeight * 0.02),
+                  Container(
+                    height: screenHeight * 0.08,
+                    width: screenWidth * 0.88,
+                    child: ElevatedButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => navi_home()),
+                        );
                       },
-                    ),
-                  );
-                }),
-              ),
-              SizedBox(height: screenHeight * 0.0),
-              TextButton(
-                onPressed: () {
-                  // Resend OTP action
-                },
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      "OTP not received?",
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: screenWidth * 0.04,
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Color(0xFF5A9ECF),
+                        padding: EdgeInsets.symmetric(
+                          horizontal: screenWidth * 0.35,
+                          vertical: screenHeight * 0.02,
+                        ),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8),
+                        ),
                       ),
-                    ),
-                    Text(
-                      " Resend now",
-                      style: TextStyle(
-                        color: Color(0xFF3C97D3),
-                        fontSize: screenWidth * 0.04,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              SizedBox(height: screenHeight * 0.02),
-              Container(
-                height: screenHeight * 0.08,
-                width: screenWidth * 0.88,
-                child: ElevatedButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => navi_home()),
-                    );
-                  },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Color(0xFF5A9ECF),
-                    padding: EdgeInsets.symmetric(
-                      horizontal: screenWidth * 0.35,
-                      vertical: screenHeight * 0.02,
-                    ),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                  ),
-                  child: FittedBox(
-                    fit: BoxFit.scaleDown,
-                    child: Text(
-                      "Verify Now",
-                      style: TextStyle(
-                        fontSize: screenWidth * 0.045,
-                        color: Colors.white,
+                      child: FittedBox(
+                        fit: BoxFit.scaleDown,
+                        child: Text(
+                          "Verify Now",
+                          style: TextStyle(
+                            fontSize: screenWidth * 0.045,
+                            color: Colors.white,
+                          ),
+                        ),
                       ),
                     ),
                   ),
-                ),
+                ],
               ),
-            ],
+            ),
           ),
         );
       },
@@ -987,96 +994,105 @@ class _PostsListState extends State<PostsList> {
       isDismissible: false,
       enableDrag: false,
       builder: (BuildContext context) {
-        return Container(
-          height: screenHeight * 0.3,
-          decoration: const BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(
-                    30,
+        return Padding(
+          padding: EdgeInsets.only(
+            bottom: MediaQuery.of(context).viewInsets.bottom,
+          ),
+          child: SingleChildScrollView(
+            child: Container(
+              height: screenHeight * 0.3,
+              decoration: const BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(
+                        30,
+                      ),
+                      topRight: Radius.circular(
+                        30,
+                      ))),
+              padding: EdgeInsets.all(screenWidth * 0.04),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: <Widget>[
+                  Row(
+                    children: [
+                      Text(
+                        "Add Email",
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ],
                   ),
-                  topRight: Radius.circular(
-                    30,
-                  ))),
-          padding: EdgeInsets.all(screenWidth * 0.04),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: <Widget>[
-              Row(
-                children: [
-                  Text(
-                    "Add Email",
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
+                  SizedBox(
+                    height: screenHeight * 0.01,
+                  ),
+                  TextField(
+                    controller: mail,
+                    style: TextStyle(fontSize: screenWidth * 0.04),
+                    decoration: InputDecoration(
+                      labelText: "Enter email",
+                      labelStyle: TextStyle(fontSize: screenWidth * 0.04),
+                      border: OutlineInputBorder(
+                        borderRadius:
+                            BorderRadius.circular(screenWidth * 0.025),
+                      ),
                     ),
                   ),
-                ],
-              ),
-              SizedBox(
-                height: screenHeight * 0.01,
-              ),
-              TextField(
-                controller: mail,
-                style: TextStyle(fontSize: screenWidth * 0.04),
-                decoration: InputDecoration(
-                  labelText: "Enter email",
-                  labelStyle: TextStyle(fontSize: screenWidth * 0.04),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(screenWidth * 0.025),
+                  SizedBox(height: screenHeight * 0.02),
+                  Row(
+                    children: [
+                      Text(
+                        "*",
+                        style: TextStyle(color: Colors.red),
+                      ),
+                      Text(
+                        "Add your email for updates and security",
+                        style: TextStyle(fontSize: 12),
+                      )
+                    ],
                   ),
-                ),
-              ),
-              SizedBox(height: screenHeight * 0.02),
-              Row(
-                children: [
-                  Text(
-                    "*",
-                    style: TextStyle(color: Colors.red),
-                  ),
-                  Text(
-                    "Add your email for updates and security",
-                    style: TextStyle(fontSize: 12),
-                  )
-                ],
-              ),
-              SizedBox(height: screenHeight * 0.02),
-              GestureDetector(
-                onTap: () {
-                  if (mail.text.isNotEmpty) {
-                    Navigator.pop(context);
-                    _otp_verification(context);
-                  }
-                },
-                child: SizedBox(
-                  height: screenHeight * 0.07,
-                  width: double.infinity,
-                  child: ElevatedButton(
-                    onPressed: () {
-                      Navigator.pop(context);
-                      _otp_verification(context);
+                  SizedBox(height: screenHeight * 0.02),
+                  GestureDetector(
+                    onTap: () {
+                      if (mail.text.isNotEmpty) {
+                        Navigator.pop(context);
+                        _otp_verification(context);
+                      }
                     },
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: const Color(0xFF5A9ECF),
-                      padding: EdgeInsets.symmetric(
-                        horizontal: screenWidth * 0.3,
-                        vertical: screenHeight * 0.02,
-                      ),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(screenWidth * 0.02),
-                      ),
-                    ),
-                    child: Text(
-                      "Get OTP",
-                      style: TextStyle(
-                        fontSize: screenWidth * 0.040,
-                        color: Colors.white,
+                    child: SizedBox(
+                      height: screenHeight * 0.07,
+                      width: double.infinity,
+                      child: ElevatedButton(
+                        onPressed: () {
+                          Navigator.pop(context);
+                          _otp_verification(context);
+                        },
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: const Color(0xFF5A9ECF),
+                          padding: EdgeInsets.symmetric(
+                            horizontal: screenWidth * 0.3,
+                            vertical: screenHeight * 0.02,
+                          ),
+                          shape: RoundedRectangleBorder(
+                            borderRadius:
+                                BorderRadius.circular(screenWidth * 0.02),
+                          ),
+                        ),
+                        child: Text(
+                          "Get OTP",
+                          style: TextStyle(
+                            fontSize: screenWidth * 0.040,
+                            color: Colors.white,
+                          ),
+                        ),
                       ),
                     ),
                   ),
-                ),
+                ],
               ),
-            ],
+            ),
           ),
         );
       },

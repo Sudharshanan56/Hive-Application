@@ -163,25 +163,23 @@ class Page1 extends StatelessWidget {
 
             // Skip Button
             SafeArea(
-              child: Align(
-                alignment: Alignment.topRight,
-                child: Padding(
-                  padding: EdgeInsets.all(screenWidth * 0.04),
-                  child: TextButton(
-                    onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => LoginSelectionScreen()));
-                      // Handle Skip button press
-                    },
-                    child: Text(
-                      "Skip",
-                      style: TextStyle(
-                        color: const Color(0xFFEEEEEEB2),
-                        fontSize: screenWidth * 0.040, // Responsive font size
-                        //fontWeight: FontWeight.bold,
-                      ),
+              child: Padding(
+                padding: EdgeInsets.only(
+                    left: screenWidth * 0.8, top: screenHeight * 0.05),
+                child: TextButton(
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => LoginSelectionScreen()));
+                    // Handle Skip button press
+                  },
+                  child: Text(
+                    "Skip",
+                    style: TextStyle(
+                      color: const Color(0xFFEEEEEE),
+                      fontSize: screenWidth * 0.040, // Responsive font size
+                      //fontWeight: FontWeight.bold,
                     ),
                   ),
                 ),
@@ -285,7 +283,7 @@ class Page1 extends StatelessWidget {
                   child: Text(
                     "Get started",
                     style: TextStyle(
-                      fontSize: screenWidth * 0.05, // Responsive font size
+                      fontSize: screenWidth * 0.045, // Responsive font size
                       // fontWeight: FontWeight.bold,
                       color: Colors.white,
                     ),
@@ -308,7 +306,7 @@ class Page1 extends StatelessWidget {
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: screenWidth * 0.035, // Responsive font size
-                      fontWeight: FontWeight.bold,
+                      // fontWeight: FontWeight.bold,
                     ),
                     children: const [
                       TextSpan(

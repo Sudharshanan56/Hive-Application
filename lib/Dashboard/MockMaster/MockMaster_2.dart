@@ -417,7 +417,10 @@ class _MockMasterScreenState extends State<MockMasterScreen> {
                         ),
                       ),
                       onPressed: () {
-                        _CameraAccess(context);
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => MockTestPage()));
                       },
                       child: FittedBox(
                         fit: BoxFit.scaleDown,
@@ -442,348 +445,348 @@ class _MockMasterScreenState extends State<MockMasterScreen> {
   }
 
   // void _CameraAccess(BuildContext context) {
-  void _CameraAccess(BuildContext context) {
-    final screenHeight = MediaQuery.of(context).size.height;
-    final screenWidth = MediaQuery.of(context).size.width;
+  // void _CameraAccess(BuildContext context) {
+  //   final screenHeight = MediaQuery.of(context).size.height;
+  //   final screenWidth = MediaQuery.of(context).size.width;
 
-    showModalBottomSheet<void>(
-      context: context,
-      isDismissible: false,
-      enableDrag: false,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.only(
-          topRight: Radius.circular(screenWidth * 0.08),
-          topLeft: Radius.circular(screenWidth * 0.08),
-        ),
-      ),
-      builder: (BuildContext context) {
-        return Container(
-          height: screenHeight * 0.35,
-          decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.only(
-              topRight: Radius.circular(screenWidth * 0.08),
-              topLeft: Radius.circular(screenWidth * 0.08),
-            ),
-          ),
-          padding: EdgeInsets.all(screenWidth * 0.04),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: <Widget>[
-              Icon(
-                Icons.camera_alt,
-                size: screenWidth * 0.12,
-                color: const Color(0xFFF3434E),
-              ),
-              SizedBox(height: screenHeight * 0.02),
-              Text(
-                "Camera Access",
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: screenWidth * 0.05,
-                ),
-              ),
-              SizedBox(height: screenHeight * 0.01),
-              Text(
-                "Allow access to your camera to verify your\nidentity and monitor the exam environment.",
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontSize: screenWidth * 0.035,
-                  color: Colors.grey,
-                ),
-              ),
-              SizedBox(height: screenHeight * 0.03),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  SizedBox(
-                    height: screenHeight * 0.06,
-                    width: screenWidth * 0.35,
-                    child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.redAccent,
-                        foregroundColor: Colors.white,
-                        shape: RoundedRectangleBorder(
-                          borderRadius:
-                              BorderRadius.circular(screenWidth * 0.08),
-                        ),
-                      ),
-                      onPressed: () {
-                        Navigator.pop(
-                            context); // Close the current bottom sheet
+  //   showModalBottomSheet<void>(
+  //     context: context,
+  //     isDismissible: false,
+  //     enableDrag: false,
+  //     shape: RoundedRectangleBorder(
+  //       borderRadius: BorderRadius.only(
+  //         topRight: Radius.circular(screenWidth * 0.08),
+  //         topLeft: Radius.circular(screenWidth * 0.08),
+  //       ),
+  //     ),
+  //     builder: (BuildContext context) {
+  //       return Container(
+  //         height: screenHeight * 0.35,
+  //         decoration: BoxDecoration(
+  //           color: Colors.white,
+  //           borderRadius: BorderRadius.only(
+  //             topRight: Radius.circular(screenWidth * 0.08),
+  //             topLeft: Radius.circular(screenWidth * 0.08),
+  //           ),
+  //         ),
+  //         padding: EdgeInsets.all(screenWidth * 0.04),
+  //         child: Column(
+  //           mainAxisSize: MainAxisSize.min,
+  //           children: <Widget>[
+  //             Icon(
+  //               Icons.camera_alt,
+  //               size: screenWidth * 0.12,
+  //               color: const Color(0xFFF3434E),
+  //             ),
+  //             SizedBox(height: screenHeight * 0.02),
+  //             Text(
+  //               "Camera Access",
+  //               style: TextStyle(
+  //                 fontWeight: FontWeight.bold,
+  //                 fontSize: screenWidth * 0.05,
+  //               ),
+  //             ),
+  //             SizedBox(height: screenHeight * 0.01),
+  //             Text(
+  //               "Allow access to your camera to verify your\nidentity and monitor the exam environment.",
+  //               textAlign: TextAlign.center,
+  //               style: TextStyle(
+  //                 fontSize: screenWidth * 0.035,
+  //                 color: Colors.grey,
+  //               ),
+  //             ),
+  //             SizedBox(height: screenHeight * 0.03),
+  //             Row(
+  //               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+  //               children: [
+  //                 SizedBox(
+  //                   height: screenHeight * 0.06,
+  //                   width: screenWidth * 0.35,
+  //                   child: ElevatedButton(
+  //                     style: ElevatedButton.styleFrom(
+  //                       backgroundColor: Colors.redAccent,
+  //                       foregroundColor: Colors.white,
+  //                       shape: RoundedRectangleBorder(
+  //                         borderRadius:
+  //                             BorderRadius.circular(screenWidth * 0.08),
+  //                       ),
+  //                     ),
+  //                     onPressed: () {
+  //                       Navigator.pop(
+  //                           context); // Close the current bottom sheet
 
-                        _MicrophoneAccess(context);
-                      },
-                      child: const Text(
-                        'Allow',
-                        style: TextStyle(fontWeight: FontWeight.bold),
-                      ),
-                    ),
-                  ),
-                  Container(
-                    height: screenHeight * 0.06,
-                    width: screenWidth * 0.35,
-                    decoration: BoxDecoration(
-                      border: Border.all(color: const Color(0xFFF3434E)),
-                      borderRadius: BorderRadius.circular(screenWidth * 0.08),
-                    ),
-                    child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.white,
-                        foregroundColor: Colors.black,
-                        shape: RoundedRectangleBorder(
-                          borderRadius:
-                              BorderRadius.circular(screenWidth * 0.08),
-                        ),
-                      ),
-                      onPressed: () {
-                        Navigator.pop(context);
-                      },
-                      child: const Text(
-                        'Deny',
-                        style: TextStyle(fontWeight: FontWeight.bold),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ],
-          ),
-        );
-      },
-    );
-  }
+  //                       _MicrophoneAccess(context);
+  //                     },
+  //                     child: const Text(
+  //                       'Allow',
+  //                       style: TextStyle(fontWeight: FontWeight.bold),
+  //                     ),
+  //                   ),
+  //                 ),
+  //                 Container(
+  //                   height: screenHeight * 0.06,
+  //                   width: screenWidth * 0.35,
+  //                   decoration: BoxDecoration(
+  //                     border: Border.all(color: const Color(0xFFF3434E)),
+  //                     borderRadius: BorderRadius.circular(screenWidth * 0.08),
+  //                   ),
+  //                   child: ElevatedButton(
+  //                     style: ElevatedButton.styleFrom(
+  //                       backgroundColor: Colors.white,
+  //                       foregroundColor: Colors.black,
+  //                       shape: RoundedRectangleBorder(
+  //                         borderRadius:
+  //                             BorderRadius.circular(screenWidth * 0.08),
+  //                       ),
+  //                     ),
+  //                     onPressed: () {
+  //                       Navigator.pop(context);
+  //                     },
+  //                     child: const Text(
+  //                       'Deny',
+  //                       style: TextStyle(fontWeight: FontWeight.bold),
+  //                     ),
+  //                   ),
+  //                 ),
+  //               ],
+  //             ),
+  //           ],
+  //         ),
+  //       );
+  //     },
+  //   );
+  // }
 
   // void _MicrophoneAccess(BuildContext context) {
-  void _MicrophoneAccess(BuildContext context) {
-    final screenHeight = MediaQuery.of(context).size.height;
-    final screenWidth = MediaQuery.of(context).size.width;
+  // void _MicrophoneAccess(BuildContext context) {
+  //   final screenHeight = MediaQuery.of(context).size.height;
+  //   final screenWidth = MediaQuery.of(context).size.width;
 
-    showModalBottomSheet<void>(
-      context: context,
-      isDismissible: false,
-      enableDrag: false,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.only(
-          topRight: Radius.circular(screenHeight * 0.04),
-          topLeft: Radius.circular(screenHeight * 0.04),
-        ),
-      ),
-      builder: (BuildContext context) {
-        return Container(
-          height: screenHeight * 0.35,
-          decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.only(
-              topRight: Radius.circular(screenHeight * 0.04),
-              topLeft: Radius.circular(screenHeight * 0.04),
-            ),
-          ),
-          padding: EdgeInsets.all(screenWidth * 0.04),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: <Widget>[
-              Icon(
-                Icons.mic_none,
-                size: screenWidth * 0.12,
-                color: const Color(0xFFF3434E),
-              ),
-              SizedBox(height: screenHeight * 0.02),
-              Text(
-                "Microphone Access",
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: screenWidth * 0.045,
-                ),
-              ),
-              SizedBox(height: screenHeight * 0.01),
-              Text(
-                "Allow microphone access to ensure fairness and avoid unauthorized discussions",
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontSize: screenWidth * 0.035,
-                  color: Colors.grey,
-                ),
-              ),
-              SizedBox(height: screenHeight * 0.03),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  SizedBox(
-                    height: screenHeight * 0.06,
-                    width: screenWidth * 0.4,
-                    child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.redAccent,
-                        foregroundColor: Colors.white,
-                        shape: RoundedRectangleBorder(
-                          borderRadius:
-                              BorderRadius.circular(screenHeight * 0.03),
-                        ),
-                      ),
-                      onPressed: () {
-                        Navigator.pop(
-                            context); // Close the current bottom sheet
+  //   showModalBottomSheet<void>(
+  //     context: context,
+  //     isDismissible: false,
+  //     enableDrag: false,
+  //     shape: RoundedRectangleBorder(
+  //       borderRadius: BorderRadius.only(
+  //         topRight: Radius.circular(screenHeight * 0.04),
+  //         topLeft: Radius.circular(screenHeight * 0.04),
+  //       ),
+  //     ),
+  //     builder: (BuildContext context) {
+  //       return Container(
+  //         height: screenHeight * 0.35,
+  //         decoration: BoxDecoration(
+  //           color: Colors.white,
+  //           borderRadius: BorderRadius.only(
+  //             topRight: Radius.circular(screenHeight * 0.04),
+  //             topLeft: Radius.circular(screenHeight * 0.04),
+  //           ),
+  //         ),
+  //         padding: EdgeInsets.all(screenWidth * 0.04),
+  //         child: Column(
+  //           mainAxisSize: MainAxisSize.min,
+  //           children: <Widget>[
+  //             Icon(
+  //               Icons.mic_none,
+  //               size: screenWidth * 0.12,
+  //               color: const Color(0xFFF3434E),
+  //             ),
+  //             SizedBox(height: screenHeight * 0.02),
+  //             Text(
+  //               "Microphone Access",
+  //               style: TextStyle(
+  //                 fontWeight: FontWeight.bold,
+  //                 fontSize: screenWidth * 0.045,
+  //               ),
+  //             ),
+  //             SizedBox(height: screenHeight * 0.01),
+  //             Text(
+  //               "Allow microphone access to ensure fairness and avoid unauthorized discussions",
+  //               textAlign: TextAlign.center,
+  //               style: TextStyle(
+  //                 fontSize: screenWidth * 0.035,
+  //                 color: Colors.grey,
+  //               ),
+  //             ),
+  //             SizedBox(height: screenHeight * 0.03),
+  //             Row(
+  //               mainAxisAlignment: MainAxisAlignment.spaceBetween,
+  //               children: [
+  //                 SizedBox(
+  //                   height: screenHeight * 0.06,
+  //                   width: screenWidth * 0.4,
+  //                   child: ElevatedButton(
+  //                     style: ElevatedButton.styleFrom(
+  //                       backgroundColor: Colors.redAccent,
+  //                       foregroundColor: Colors.white,
+  //                       shape: RoundedRectangleBorder(
+  //                         borderRadius:
+  //                             BorderRadius.circular(screenHeight * 0.03),
+  //                       ),
+  //                     ),
+  //                     onPressed: () {
+  //                       Navigator.pop(
+  //                           context); // Close the current bottom sheet
 
-                        _ScreenAccess(context);
-                      },
-                      child: const Text(
-                        'Allow',
-                        style: TextStyle(fontWeight: FontWeight.bold),
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    height: screenHeight * 0.06,
-                    width: screenWidth * 0.4,
-                    child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.white,
-                        foregroundColor: Colors.black,
-                        shape: RoundedRectangleBorder(
-                          borderRadius:
-                              BorderRadius.circular(screenHeight * 0.03),
-                        ),
-                        side: const BorderSide(color: Color(0xFFF3434E)),
-                      ),
-                      onPressed: () {
-                        Navigator.pop(context);
-                      },
-                      child: const Text(
-                        'Deny',
-                        style: TextStyle(fontWeight: FontWeight.bold),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ],
-          ),
-        );
-      },
-    );
-  }
+  //                       _ScreenAccess(context);
+  //                     },
+  //                     child: const Text(
+  //                       'Allow',
+  //                       style: TextStyle(fontWeight: FontWeight.bold),
+  //                     ),
+  //                   ),
+  //                 ),
+  //                 SizedBox(
+  //                   height: screenHeight * 0.06,
+  //                   width: screenWidth * 0.4,
+  //                   child: ElevatedButton(
+  //                     style: ElevatedButton.styleFrom(
+  //                       backgroundColor: Colors.white,
+  //                       foregroundColor: Colors.black,
+  //                       shape: RoundedRectangleBorder(
+  //                         borderRadius:
+  //                             BorderRadius.circular(screenHeight * 0.03),
+  //                       ),
+  //                       side: const BorderSide(color: Color(0xFFF3434E)),
+  //                     ),
+  //                     onPressed: () {
+  //                       Navigator.pop(context);
+  //                     },
+  //                     child: const Text(
+  //                       'Deny',
+  //                       style: TextStyle(fontWeight: FontWeight.bold),
+  //                     ),
+  //                   ),
+  //                 ),
+  //               ],
+  //             ),
+  //           ],
+  //         ),
+  //       );
+  //     },
+  //   );
+  // }
 
   // void _ScreenAccess(BuildContext context) {
-  void _ScreenAccess(BuildContext context) {
-    final screenHeight = MediaQuery.of(context).size.height;
-    final screenWidth = MediaQuery.of(context).size.width;
+  // void _ScreenAccess(BuildContext context) {
+  //   final screenHeight = MediaQuery.of(context).size.height;
+  //   final screenWidth = MediaQuery.of(context).size.width;
 
-    showModalBottomSheet<void>(
-      context: context,
-      isDismissible: false,
-      enableDrag: false,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.only(
-          topRight: Radius.circular(screenWidth * 0.08),
-          topLeft: Radius.circular(screenWidth * 0.08),
-        ),
-      ),
-      builder: (BuildContext context) {
-        return Container(
-          height: screenHeight * 0.3,
-          decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.only(
-              topRight: Radius.circular(screenWidth * 0.08),
-              topLeft: Radius.circular(screenWidth * 0.08),
-            ),
-          ),
-          padding: EdgeInsets.all(screenWidth * 0.04),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: <Widget>[
-              Icon(
-                Icons.phone_android_outlined,
-                size: screenWidth * 0.12,
-                color: const Color(0xFFF3434E),
-              ),
-              SizedBox(height: screenHeight * 0.02),
-              Text(
-                "Screen Monitoring Access",
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: screenWidth * 0.05,
-                ),
-              ),
-              SizedBox(height: screenHeight * 0.01),
-              Text(
-                "Allow screen access to prevent cheating\n and maintain exam integrity",
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontSize: screenWidth * 0.035,
-                  color: Colors.grey,
-                ),
-              ),
-              SizedBox(height: screenHeight * 0.03),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  SizedBox(
-                    height: screenHeight * 0.06,
-                    width: screenWidth * 0.4,
-                    child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.redAccent,
-                        foregroundColor: Colors.white,
-                        shape: RoundedRectangleBorder(
-                          borderRadius:
-                              BorderRadius.circular(screenWidth * 0.05),
-                        ),
-                      ),
-                      onPressed: () {
-                        Navigator.pop(
-                            context); // Close the current bottom sheet
+  //   showModalBottomSheet<void>(
+  //     context: context,
+  //     isDismissible: false,
+  //     enableDrag: false,
+  //     shape: RoundedRectangleBorder(
+  //       borderRadius: BorderRadius.only(
+  //         topRight: Radius.circular(screenWidth * 0.08),
+  //         topLeft: Radius.circular(screenWidth * 0.08),
+  //       ),
+  //     ),
+  //     builder: (BuildContext context) {
+  //       return Container(
+  //         height: screenHeight * 0.3,
+  //         decoration: BoxDecoration(
+  //           color: Colors.white,
+  //           borderRadius: BorderRadius.only(
+  //             topRight: Radius.circular(screenWidth * 0.08),
+  //             topLeft: Radius.circular(screenWidth * 0.08),
+  //           ),
+  //         ),
+  //         padding: EdgeInsets.all(screenWidth * 0.04),
+  //         child: Column(
+  //           mainAxisSize: MainAxisSize.min,
+  //           children: <Widget>[
+  //             Icon(
+  //               Icons.phone_android_outlined,
+  //               size: screenWidth * 0.12,
+  //               color: const Color(0xFFF3434E),
+  //             ),
+  //             SizedBox(height: screenHeight * 0.02),
+  //             Text(
+  //               "Screen Monitoring Access",
+  //               style: TextStyle(
+  //                 fontWeight: FontWeight.bold,
+  //                 fontSize: screenWidth * 0.05,
+  //               ),
+  //             ),
+  //             SizedBox(height: screenHeight * 0.01),
+  //             Text(
+  //               "Allow screen access to prevent cheating\n and maintain exam integrity",
+  //               textAlign: TextAlign.center,
+  //               style: TextStyle(
+  //                 fontSize: screenWidth * 0.035,
+  //                 color: Colors.grey,
+  //               ),
+  //             ),
+  //             SizedBox(height: screenHeight * 0.03),
+  //             Row(
+  //               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+  //               children: [
+  //                 SizedBox(
+  //                   height: screenHeight * 0.06,
+  //                   width: screenWidth * 0.4,
+  //                   child: ElevatedButton(
+  //                     style: ElevatedButton.styleFrom(
+  //                       backgroundColor: Colors.redAccent,
+  //                       foregroundColor: Colors.white,
+  //                       shape: RoundedRectangleBorder(
+  //                         borderRadius:
+  //                             BorderRadius.circular(screenWidth * 0.05),
+  //                       ),
+  //                     ),
+  //                     onPressed: () {
+  //                       Navigator.pop(
+  //                           context); // Close the current bottom sheet
 
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => MockTestPage(),
-                          ),
-                        );
-                      },
-                      child: Text(
-                        'Allow',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: screenWidth * 0.045,
-                        ),
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    height: screenHeight * 0.06,
-                    width: screenWidth * 0.4,
-                    child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.white,
-                        foregroundColor: Colors.black,
-                        shape: RoundedRectangleBorder(
-                          borderRadius:
-                              BorderRadius.circular(screenWidth * 0.05),
-                        ),
-                        side: const BorderSide(color: Color(0xFFF3434E)),
-                      ),
-                      onPressed: () {
-                        Navigator.pop(context);
-                      },
-                      child: Text(
-                        'Deny',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: screenWidth * 0.045,
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ],
-          ),
-        );
-      },
-    );
-  }
+  //                       Navigator.push(
+  //                         context,
+  //                         MaterialPageRoute(
+  //                           builder: (context) => MockTestPage(),
+  //                         ),
+  //                       );
+  //                     },
+  //                     child: Text(
+  //                       'Allow',
+  //                       style: TextStyle(
+  //                         fontWeight: FontWeight.bold,
+  //                         fontSize: screenWidth * 0.045,
+  //                       ),
+  //                     ),
+  //                   ),
+  //                 ),
+  //                 SizedBox(
+  //                   height: screenHeight * 0.06,
+  //                   width: screenWidth * 0.4,
+  //                   child: ElevatedButton(
+  //                     style: ElevatedButton.styleFrom(
+  //                       backgroundColor: Colors.white,
+  //                       foregroundColor: Colors.black,
+  //                       shape: RoundedRectangleBorder(
+  //                         borderRadius:
+  //                             BorderRadius.circular(screenWidth * 0.05),
+  //                       ),
+  //                       side: const BorderSide(color: Color(0xFFF3434E)),
+  //                     ),
+  //                     onPressed: () {
+  //                       Navigator.pop(context);
+  //                     },
+  //                     child: Text(
+  //                       'Deny',
+  //                       style: TextStyle(
+  //                         fontWeight: FontWeight.bold,
+  //                         fontSize: screenWidth * 0.045,
+  //                       ),
+  //                     ),
+  //                   ),
+  //                 ),
+  //               ],
+  //             ),
+  //           ],
+  //         ),
+  //       );
+  //     },
+  //   );
+  // }
 
   // Widget _buildPerformanceCard() {
   Widget _buildPerformanceCard(BuildContext context) {

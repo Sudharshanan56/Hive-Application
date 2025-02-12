@@ -206,6 +206,41 @@ class _OnlineExamState extends State<OnlineExam> {
                 Stack(
                   children: [
                     AnimatedPositioned(
+                      child: Text(
+                        "Ace Your Medical\nEntrance with Ease!",
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: screenWidth * 0.06,
+                          color: Colors.white,
+                        ),
+                      ),
+                      curve: Curves.easeInOut,
+                      left: _startAnimation
+                          ? screenWidth * 0.08
+                          : -screenWidth, // Start from outside screen
+
+                      top: screenHeight * 0.34,
+                      duration: Duration(seconds: 1),
+                    ),
+                    AnimatedPositioned(
+                      child: Text(
+                        "Track performance, check\n eligibility, access expert tips,\n and take mock tests—all in one\n app designed for medical\n entrance exam success!",
+                        style: TextStyle(
+                          fontSize: screenWidth * 0.045,
+                          color: Colors.white,
+                          fontFamily: 'Poppins',
+                          letterSpacing: 1.5,
+                        ),
+                      ),
+                      curve: Curves.easeInOut,
+                      left: _startAnimation
+                          ? screenWidth * 0.08
+                          : -screenWidth, // Start from outside screen
+
+                      top: screenHeight * 0.45,
+                      duration: Duration(seconds: 1),
+                    ),
+                    AnimatedPositioned(
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -213,45 +248,45 @@ class _OnlineExamState extends State<OnlineExam> {
                           Padding(
                             padding: EdgeInsets.symmetric(
                                 horizontal: screenWidth * 0.1),
-                            child: Text(
-                              "Ace Your Medical\nEntrance with Ease!",
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: screenWidth * 0.06,
-                                color: Colors.white,
-                              ),
-                            ),
+                            // child: Text(
+                            //   "Ace Your Medical\nEntrance with Ease!",
+                            //   style: TextStyle(
+                            //     fontWeight: FontWeight.bold,
+                            //     fontSize: screenWidth * 0.06,
+                            //     color: Colors.white,
+                            //   ),
+                            // ),
                           ),
                           SizedBox(height: screenHeight * 0.03),
                           Padding(
                             padding: EdgeInsets.symmetric(
                                 horizontal: screenWidth * 0.05),
-                            child: Text(
-                              "Track performance, check\n eligibility, access expert tips,\n and take mock tests—all in one\n app designed for medical\n entrance exam success!",
-                              style: TextStyle(
-                                fontSize: screenWidth * 0.045,
-                                color: Colors.white,
-                                fontFamily: 'Poppins',
-                                letterSpacing: 1.5,
-                              ),
-                            ),
+                            // child: Text(
+                            //   "Track performance, check\n eligibility, access expert tips,\n and take mock tests—all in one\n app designed for medical\n entrance exam success!",
+                            //   style: TextStyle(
+                            //     fontSize: screenWidth * 0.045,
+                            //     color: Colors.white,
+                            //     fontFamily: 'Poppins',
+                            //     letterSpacing: 1.5,
+                            //   ),
+                            // ),
                           ),
                           SizedBox(height: screenHeight * 0.05),
-                          Padding(
-                            padding: EdgeInsets.only(left: screenWidth * 0.1),
-                            child: GestureDetector(
-                              onTap: () {
-                                // Add your action here
-                              },
-                              child: const CircleAvatar(
-                                radius: 30,
-                                child: Icon(
-                                  Icons.arrow_right_alt,
-                                  size: 30,
-                                ),
-                              ),
-                            ),
-                          ),
+                          // Padding(
+                          //   padding: EdgeInsets.only(left: screenWidth * 0.1),
+                          //   child: GestureDetector(
+                          //     onTap: () {
+                          //       // Add your action here
+                          //     },
+                          //     child: const CircleAvatar(
+                          //       radius: 30,
+                          //       child: Icon(
+                          //         Icons.arrow_right_alt,
+                          //         size: 30,
+                          //       ),
+                          //     ),
+                          //   ),
+                          // ),
                         ],
                       ),
                       duration: Duration(seconds: 1),

@@ -167,8 +167,8 @@ class ProfilePageEdit extends StatelessWidget {
 
     return SafeArea(
       child: Scaffold(
+        backgroundColor: Color(0xFFFCFEFF),
         appBar: AppBar(
-          backgroundColor: Colors.white,
           elevation: 0,
           leading: IconButton(
             icon: const Icon(Icons.arrow_back, color: Colors.black),
@@ -181,9 +181,10 @@ class ProfilePageEdit extends StatelessWidget {
           actions: [
             TextButton(
               onPressed: () => Navigator.pop(context),
-              child:  Text(
+              child: Text(
                 'Cancel',
-                style: TextStyle(color: Colors.red, fontWeight: FontWeight.bold),
+                style:
+                    TextStyle(color: Colors.red, fontWeight: FontWeight.bold),
               ),
             ),
           ],
@@ -203,7 +204,7 @@ class ProfilePageEdit extends StatelessWidget {
                       CircleAvatar(
                         radius: screenWidth * 0.15,
                         backgroundImage:
-                             AssetImage('assets/profile_placeholder.png'),
+                            AssetImage('assets/profile_placeholder.png'),
                         backgroundColor: Colors.grey.shade300,
                       ),
                       Positioned(
@@ -214,7 +215,7 @@ class ProfilePageEdit extends StatelessWidget {
                           backgroundColor: Colors.blue,
                           child: Icon(
                             Icons.add,
-                            color: Colors.white,
+                            color: Color(0xFFFFFFFF),
                             size: screenWidth * 0.05,
                           ),
                         ),
@@ -240,7 +241,7 @@ class ProfilePageEdit extends StatelessWidget {
                   ],
                 ),
                 SizedBox(height: screenHeight * 0.02),
-                 Align(
+                Align(
                   alignment: Alignment.centerLeft,
                   child: Text(
                     '*Make changes to your personal details only once per month.',
@@ -259,9 +260,9 @@ class ProfilePageEdit extends StatelessWidget {
                         borderRadius: BorderRadius.circular(10),
                       ),
                     ),
-                    child:  Text(
+                    child: Text(
                       'Save',
-                      style: TextStyle(fontSize: 16, color: Colors.white),
+                      style: TextStyle(fontSize: 16, color: Color(0XffFFFFFF)),
                     ),
                   ),
                 ),
@@ -278,7 +279,7 @@ class ProfilePageEdit extends StatelessWidget {
       decoration: InputDecoration(
         hintText: hintText,
         filled: true,
-        fillColor: Colors.grey.shade100,
+        fillColor: Color(0xFFFFFFFF),
         contentPadding:
             isSmall ? const EdgeInsets.all(10) : const EdgeInsets.all(16),
         border: OutlineInputBorder(
