@@ -19,6 +19,7 @@ import 'package:hive_application/University/Viewall_univprofile.dart';
 import 'Bottom Navigation Bar/Navigation 1.dart';
 import 'Dashboard/MockMaster/MockMaster_1.dart';
 import 'Dashboard/MockMaster/MockMaster_2.dart';
+import 'OTP/API Playground/otpEx.dart';
 import 'PlayGround/Animated_Positioned.dart';
 import 'PlayGround/BottomSheet_Done_Animation.dart';
 import 'PlayGround/Color animation/Color_pageRouteBuilder.dart';
@@ -27,6 +28,7 @@ import 'PlayGround/Color animation/PageTransition_blackbox.dart';
 import 'PlayGround/New_Profile_Page.dart';
 import 'PlayGround/TimerPeriodic.dart';
 import 'PlayGround/otp api.dart';
+import 'Profile Page/Profile Edit.dart';
 import 'Profile Page/Profile_1.dart';
 import 'University Profile/University_Profile.dart';
 
@@ -45,7 +47,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         fontFamily: 'Poppins',
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.red),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
         useMaterial3: true,
       ),
       home: OTPVerificationScreen(),

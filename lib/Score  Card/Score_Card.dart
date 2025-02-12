@@ -2,7 +2,14 @@ import 'package:flutter/material.dart';
 
 import '../University Profile/University_Profile.dart';
 
-class ScoreCard extends StatelessWidget {
+class ScoreCard extends StatefulWidget {
+  const ScoreCard({super.key});
+
+  @override
+  State<ScoreCard> createState() => _ScoreCardState();
+}
+
+class _ScoreCardState extends State<ScoreCard> {
   final List<Map<String, String>> universities = const [
     {
       'name': 'Mari State University',
@@ -31,8 +38,6 @@ class ScoreCard extends StatelessWidget {
     },
   ];
 
-  const ScoreCard({super.key});
-
   @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
@@ -40,6 +45,7 @@ class ScoreCard extends StatelessWidget {
 
     return SafeArea(
       child: Scaffold(
+        backgroundColor: Color(0xFFFCFEFF),
         appBar: AppBar(
           leading: IconButton(
             onPressed: () {

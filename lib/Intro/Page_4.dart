@@ -219,26 +219,61 @@ class _Page4State extends State<Page4> {
               //       "assets/Rectangle.png",
               //       fit: BoxFit.fill,
               //     )),
+              // Padding(
+              //   padding: const EdgeInsets.all(80.0),
+              //   child: TextButton(
+              //     onPressed: () {
+              //       Navigator.push(
+              //           context,
+              //           MaterialPageRoute(
+              //               builder: (context) => LoginSelectionScreen()));
+              //       // Handle Skip button press
+              //     },
+              //     child: Text(
+              //       "Skip",
+              //       style: TextStyle(
+              //         color: const Color(0xFFEEEEEE),
+              //         fontSize: screenWidth * 0.040, // Responsive font size
+              //         //fontWeight: FontWeight.bold,
+              //       ),
+              //     ),
+              //   ),
+              // ),
+              // TextButton(
+              //     onPressed: () {
+              //       Navigator.push(
+              //           context,
+              //           MaterialPageRoute(
+              //               builder: (context) => LoginSelectionScreen()));
+              //     },
+              //     child: Text(
+              //       "Skip",
+              //       style: TextStyle(
+              //         color: const Color(0xFFEEEEEE),
+              //         fontSize: screenWidth * 0.040, // Responsive font size
+              //         //fontWeight: FontWeight.bold,
+              //       ),
+              //     )),
+
               // Skip Button
-              Align(
-                alignment: Alignment.topRight,
+              SafeArea(
                 child: Padding(
                   padding: EdgeInsets.only(
-                      top: screenHeight * 0.05, right: screenWidth * 0.05),
+                      left: screenWidth * 0.8, top: screenHeight * 0.05),
                   child: TextButton(
                     onPressed: () {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
                               builder: (context) => LoginSelectionScreen()));
-
                       // Handle Skip button press
                     },
                     child: Text(
                       "Skip",
                       style: TextStyle(
-                        color: Colors.black54,
-                        fontSize: screenWidth * 0.045,
+                        color: const Color(0xFF333333),
+                        fontSize: screenWidth * 0.040, // Responsive font size
+                        //fontWeight: FontWeight.bold,
                       ),
                     ),
                   ),
@@ -253,9 +288,10 @@ class _Page4State extends State<Page4> {
                   // Illustration Image
                   Padding(
                     padding: EdgeInsets.only(top: screenHeight * 0.1),
-                    child: SizedBox(
+                    child: Container(
                       height: screenHeight * 0.4,
                       width: screenWidth * 0.8,
+                      // decoration: BoxDecoration(border: Border.all()),
                       child: Image.asset(
                         'assets/3.png',
                         fit: BoxFit.contain,
@@ -335,8 +371,10 @@ class _Page4State extends State<Page4> {
                       ),
                     ],
                   ),
-
-                  const Spacer(),
+                  SizedBox(
+                    height: screenHeight * 0.045,
+                  ),
+                  //  Spacer(),
 
                   // Next Button
                   // Padding(
@@ -452,9 +490,9 @@ class _Page4State extends State<Page4> {
                       TextSpan(
                         text: "By registering, you agree to ",
                         style: TextStyle(
-                          color: Colors.black,
+                          color: Color(0xFF222222),
                           fontSize: screenWidth * 0.035, // Responsive font size
-                          fontWeight: FontWeight.bold,
+                          // fontWeight: FontWeight.bold,
                         ),
                         children: const [
                           TextSpan(

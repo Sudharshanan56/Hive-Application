@@ -451,8 +451,13 @@
 //     );
 //   }
 // }
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import '../Credentials/Credentials_1.dart';
+import 'package:http/http.dart' as http;
+
+import 'API Playground/Credentials_Api.dart';
 
 class OTPVerificationScreen extends StatefulWidget {
   const OTPVerificationScreen({super.key});
@@ -504,14 +509,47 @@ class _OTPVerificationScreenState extends State<OTPVerificationScreen> {
     return _otpControllers.every((controller) => controller.text.isNotEmpty);
   }
 
-  void _handleButtonPress() {
+  bool x = false;
+  // void _handleButtonPress() {
+  //   if (!isOtpSent) {
+  //     // Handle sending OTP
+  //     if (phoneController.text.length == 10) {
+  //       setState(() {
+  //         isOtpSent = true;
+  //         x = true;
+  //       });
+  //       // Add your OTP sending logic here
+  //     } else {
+  //       ScaffoldMessenger.of(context).showSnackBar(
+  //         SnackBar(
+  //             content: Text('Please enter a valid 10-digit mobile number')),
+  //       );
+  //     }
+  //   } else {
+  //     // Handle OTP verification and navigation
+  //     if (isOtpComplete()) {
+  //       // Add your OTP verification logic here
+  //       Navigator.push(
+  //         context,
+  //         // MaterialPageRoute(builder: (context) => NEETFormPage()),
+  //         MaterialPageRoute(
+  //             builder: (context) => StudentDetailsPage(userId: userId)),
+  //       );
+  //     } else {
+  //       ScaffoldMessenger.of(context).showSnackBar(
+  //         SnackBar(content: Text('Please enter the complete OTP')),
+  //       );
+  //     }
+  //   }
+  // }
+  void _handleButtonPress() async {
     if (!isOtpSent) {
       // Handle sending OTP
       if (phoneController.text.length == 10) {
         setState(() {
           isOtpSent = true;
+          x = true;
         });
-        // Add your OTP sending logic here
       } else {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
@@ -519,18 +557,67 @@ class _OTPVerificationScreenState extends State<OTPVerificationScreen> {
         );
       }
     } else {
-      // Handle OTP verification and navigation
+      // Handle OTP verification
       if (isOtpComplete()) {
-        // Add your OTP verification logic here
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => NEETFormPage()),
-        );
+        // Fetch user data before navigating
+        await fetchUserData(phoneController.text, phoneController.text);
+
+        if (userId.isNotEmpty) {
+          // Navigate after userId is set
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => StudentDetailsPage(userId: userId),
+            ),
+          );
+        } else {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text('Failed to retrieve user ID. Try again.')),
+          );
+        }
       } else {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(content: Text('Please enter the complete OTP')),
         );
       }
+    }
+  }
+
+  String userId = "";
+  String mobileNumber = "";
+  Future<void> fetchUserData(String userId, String mobileNumber) async {
+    final String apiUrl =
+        "http://localhost:3000/api/hiveapp/getOrCreateUser?userId=$userId&mobileNumber=$mobileNumber";
+
+    try {
+      final response = await http.get(Uri.parse(apiUrl));
+
+      print("Response Code: ${response.statusCode}");
+      print("Response Body: ${response.body}");
+
+      if (response.statusCode == 200) {
+        var data = json.decode(response.body);
+
+        print("Decoded Data: $data"); // Debugging output
+
+        setState(() {
+          this.userId = data['userId']?.toString() ?? "No ID";
+          this.mobileNumber = data['mobileNumber']?.toString() ?? "No Mobile";
+        });
+
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text("User Data Retrieved: $userId")),
+        );
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text("Failed to fetch user data")),
+        );
+      }
+    } catch (e) {
+      print("Error: $e");
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text("An error occurred")),
+      );
     }
   }
 
@@ -541,7 +628,7 @@ class _OTPVerificationScreenState extends State<OTPVerificationScreen> {
 
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: Color(0xFFFCFEFF),
         // appBar: AppBar(
         //   backgroundColor: Colors.white,
         //   leading: IconButton(
@@ -564,7 +651,7 @@ class _OTPVerificationScreenState extends State<OTPVerificationScreen> {
                   child: IconButton(
                     icon: Icon(Icons.arrow_back_ios_new),
                     iconSize: 15,
-                    color: Colors.grey.shade800,
+                    color: Color(0xFF666666),
                     onPressed: () {
                       Navigator.pop(context);
                     },
@@ -595,7 +682,7 @@ class _OTPVerificationScreenState extends State<OTPVerificationScreen> {
                       style: TextStyle(
                         fontSize: screenWidth * 0.060,
                         fontWeight: FontWeight.bold,
-                        color: Colors.black,
+                        color: Color(0xFF111111),
                       ),
                       textAlign: TextAlign.center,
                     ),
@@ -606,7 +693,7 @@ class _OTPVerificationScreenState extends State<OTPVerificationScreen> {
                           height: screenHeight * 0.07,
                           width: screenWidth * 0.15,
                           decoration: BoxDecoration(
-                            border: Border.all(color: Colors.grey),
+                            border: Border.all(color: Color(0xFF666666)),
                             borderRadius: BorderRadius.circular(8),
                           ),
                           child: Center(
@@ -621,7 +708,7 @@ class _OTPVerificationScreenState extends State<OTPVerificationScreen> {
                           child: Container(
                             height: screenHeight * 0.07,
                             decoration: BoxDecoration(
-                              border: Border.all(color: Colors.grey),
+                              border: Border.all(color: Color(0xFF666666)),
                               borderRadius: BorderRadius.circular(8),
                             ),
                             child: Padding(
@@ -655,7 +742,7 @@ class _OTPVerificationScreenState extends State<OTPVerificationScreen> {
                           "Enter your mobile number for verification.",
                           style: TextStyle(
                             fontSize: screenWidth * 0.035,
-                            color: Colors.black,
+                            color: Color(0xFF222222),
                           ),
                         ),
                       ],
@@ -678,7 +765,8 @@ class _OTPVerificationScreenState extends State<OTPVerificationScreen> {
                               counterText: "",
                               border: OutlineInputBorder(),
                               enabledBorder: OutlineInputBorder(
-                                borderSide: BorderSide(color: Colors.grey),
+                                borderSide:
+                                    BorderSide(color: Color(0xFF666666)),
                                 borderRadius: BorderRadius.circular(8),
                               ),
                               focusedBorder: OutlineInputBorder(
@@ -698,12 +786,27 @@ class _OTPVerificationScreenState extends State<OTPVerificationScreen> {
                         // Resend OTP action
                       },
                       child: Center(
-                        child: Text(
-                          "OTP not received? Resend now",
-                          style: TextStyle(
-                            color: Colors.black,
-                            fontSize: screenWidth * 0.04,
-                          ),
+                        child: Row(
+                          children: [
+                            Center(
+                              child: Text(
+                                "OTP not received?",
+                                style: TextStyle(
+                                  color: Color(0xFF666666),
+                                  fontSize: screenWidth * 0.04,
+                                ),
+                              ),
+                            ),
+                            Center(
+                              child: Text(
+                                " Resend now",
+                                style: TextStyle(
+                                  color:
+                                      x ? Color(0xFF5A9ECF) : Color(0xFF666666),
+                                ),
+                              ),
+                            )
+                          ],
                         ),
                       ),
                     ),
@@ -723,7 +826,11 @@ class _OTPVerificationScreenState extends State<OTPVerificationScreen> {
                           ],
                         ),
                         child: ElevatedButton(
-                          onPressed: _handleButtonPress,
+                          onPressed: () {
+                            _handleButtonPress();
+                            fetchUserData(
+                                phoneController.text, phoneController.text);
+                          },
                           style: ElevatedButton.styleFrom(
                             backgroundColor: Color(0xFF5A9ECF),
                             padding: EdgeInsets.symmetric(
@@ -738,23 +845,23 @@ class _OTPVerificationScreenState extends State<OTPVerificationScreen> {
                             isOtpSent ? "Verify Now" : "Get OTP",
                             style: TextStyle(
                               fontSize: screenWidth * 0.045,
-                              color: Colors.white,
+                              color: Color(0xFFFCFEFF),
                             ),
                           ),
                         ),
                       ),
                     ),
-                    SizedBox(height: screenHeight * 0.02),
+                    SizedBox(height: screenHeight * 0.06),
                     Padding(
                       padding: EdgeInsets.only(
                           bottom: screenHeight * 0.05,
-                          left: screenWidth * 0.10,
+                          left: screenWidth * 0.16,
                           right: screenWidth * 0.05),
                       child: Text.rich(
                         TextSpan(
                           text: "By registering, you agree to ",
                           style: TextStyle(
-                            color: Colors.black,
+                            color: Color(0xFF222222),
                             fontSize: screenWidth * 0.035,
                             fontWeight: FontWeight.bold,
                           ),

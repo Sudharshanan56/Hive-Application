@@ -425,8 +425,9 @@ class _MockTestPageState extends State<MockTestPage> {
                 //   ),
                 // ),
                 Padding(
-                  padding:
-                      EdgeInsets.all(screenWidth * 0.02), // 2% of screen width
+                  padding: EdgeInsets.only(
+                      top: screenHeight * 0.05,
+                      right: screenWidth * 0.05), // 2% of screen width
                   child: Center(
                     child: Container(
                       height: screenHeight * 0.04, // 4% of screen height
@@ -510,56 +511,56 @@ class _MockTestPageState extends State<MockTestPage> {
                 //     ],
                 //   ),
                 // ),
-                AnimatedContainer(
-                  duration: Duration(milliseconds: 600),
-                  curve: Curves.easeInOut,
-                  width: screenWidth * 0.5, // 50% of screen width
-                  height: screenHeight * 0.05, // 5% of screen height
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(screenWidth * 0.05),
-                  ),
-                  child: Stack(
-                    children: [
-                      // Icon that appears when text is hiddeni
-                      Align(
-                        alignment: Alignment.center,
-                        child: AnimatedOpacity(
-                          duration: Duration(milliseconds: 500),
-                          opacity: showText ? 0.0 : 1.0,
-                          child: Icon(
-                            statuses[statusIndex]["icon"],
-                            color: Colors.redAccent,
-                            size: screenWidth * 0.06, // 6% of screen width
-                          ),
-                        ),
-                      ),
-                      // Sliding and Fading Text
-                      AnimatedAlign(
-                        duration: Duration(milliseconds: 600),
-                        alignment: textAlignment,
-                        curve: Curves.easeInOut,
-                        child: AnimatedOpacity(
-                          duration: Duration(milliseconds: 500),
-                          opacity: showText ? textOpacity : 0.0,
-                          child: Padding(
-                            padding: EdgeInsets.symmetric(
-                                horizontal:
-                                    screenWidth * 0.04), // 4% of screen width
-                            child: Text(
-                              statuses[statusIndex]["text"]!,
-                              style: TextStyle(
-                                color: Colors.redAccent,
-                                fontSize:
-                                    screenWidth * 0.04, // 4% of screen width
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
+                // AnimatedContainer(
+                //   duration: Duration(milliseconds: 600),
+                //   curve: Curves.easeInOut,
+                //   width: screenWidth * 0.5, // 50% of screen width
+                //   height: screenHeight * 0.05, // 5% of screen height
+                //   decoration: BoxDecoration(
+                //     color: Colors.white,
+                //     borderRadius: BorderRadius.circular(screenWidth * 0.05),
+                //   ),
+                //   child: Stack(
+                //     children: [
+                //       // Icon that appears when text is hiddeni
+                //       Align(
+                //         alignment: Alignment.center,
+                //         child: AnimatedOpacity(
+                //           duration: Duration(milliseconds: 500),
+                //           opacity: showText ? 0.0 : 1.0,
+                //           child: Icon(
+                //             statuses[statusIndex]["icon"],
+                //             color: Colors.redAccent,
+                //             size: screenWidth * 0.06, // 6% of screen width
+                //           ),
+                //         ),
+                //       ),
+                //       // Sliding and Fading Text
+                //       AnimatedAlign(
+                //         duration: Duration(milliseconds: 600),
+                //         alignment: textAlignment,
+                //         curve: Curves.easeInOut,
+                //         child: AnimatedOpacity(
+                //           duration: Duration(milliseconds: 500),
+                //           opacity: showText ? textOpacity : 0.0,
+                //           child: Padding(
+                //             padding: EdgeInsets.symmetric(
+                //                 horizontal:
+                //                     screenWidth * 0.04), // 4% of screen width
+                //             child: Text(
+                //               statuses[statusIndex]["text"]!,
+                //               style: TextStyle(
+                //                 color: Colors.redAccent,
+                //                 fontSize:
+                //                     screenWidth * 0.04, // 4% of screen width
+                //               ),
+                //             ),
+                //           ),
+                //         ),
+                //       ),
+                //     ],
+                //   ),
+                // ),
               ],
             ),
           ],
@@ -598,7 +599,7 @@ class _MockTestPageState extends State<MockTestPage> {
                   ["Heart", "Liver", "Skin", "Lungs"],
                 ),
                 SizedBox(height: screenHeight * 0.020),
-      
+
                 // SizedBox(
                 //   height: 45,
                 //   width: double.infinity,
@@ -674,9 +675,9 @@ class _MockTestPageState extends State<MockTestPage> {
       children: [
         Text(
           question,
-          style:  TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+          style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
         ),
-         SizedBox(height: 10),
+        SizedBox(height: 10),
         Column(
           children: options.asMap().entries.map((entry) {
             int index = entry.key;
@@ -692,7 +693,7 @@ class _MockTestPageState extends State<MockTestPage> {
                     });
                   },
                 ),
-                Text(option, style:  TextStyle(fontSize: 16)),
+                Text(option, style: TextStyle(fontSize: 16)),
               ],
             );
           }).toList(),

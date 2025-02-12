@@ -225,9 +225,14 @@ import 'Exam Cracker/Exam Cracker 1.dart';
 import 'MockMaster/MockMaster_1.dart';
 import 'Online Exam/Online Exam 1.dart';
 
-class DashboardPage extends StatelessWidget {
+class DashboardPage extends StatefulWidget {
   const DashboardPage({super.key});
 
+  @override
+  State<DashboardPage> createState() => _DashboardPageState();
+}
+
+class _DashboardPageState extends State<DashboardPage> {
   @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
@@ -235,7 +240,7 @@ class DashboardPage extends StatelessWidget {
 
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: Color(0xFFFCFEFF),
         body: Padding(
           padding: EdgeInsets.all(screenWidth * 0.04),
           child: Column(
@@ -287,14 +292,16 @@ class DashboardPage extends StatelessWidget {
                   child: TextFormField(
                     readOnly: true,
                     onTap: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => SearchPage()));
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => SearchPage()));
                     },
                     decoration: InputDecoration(
                       border: InputBorder.none,
                       prefixIcon: const Icon(
                         Icons.search,
-                        color: Colors.grey,
+                        color: Color(0xFFF1F1F1),
                       ),
                       hintText: "Search",
                       hintStyle: TextStyle(fontSize: screenWidth * 0.045),
@@ -334,13 +341,13 @@ class DashboardPage extends StatelessWidget {
                               ),
                             ),
                             Positioned(
-                              left: screenWidth * 0.05,
-                              top: screenHeight * 0.08,
+                              left: screenWidth * 0.08,
+                              top: screenHeight * 0.09,
                               child: Center(
                                 child: Text(
                                   "Exam Cracker",
                                   style: TextStyle(
-                                    color: Colors.red,
+                                    color: Color(0xFFEC2929),
                                     fontWeight: FontWeight.bold,
                                     fontSize: screenWidth * 0.045,
                                   ),
@@ -373,8 +380,8 @@ class DashboardPage extends StatelessWidget {
                               ),
                             ),
                             Positioned(
-                              left: screenWidth * 0.04,
-                              top: screenHeight * 0.08,
+                              left: screenWidth * 0.08,
+                              top: screenHeight * 0.09,
                               child: Center(
                                 child: Text(
                                   "MockMaster",

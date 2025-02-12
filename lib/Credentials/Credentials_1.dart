@@ -195,9 +195,9 @@ class _NEETFormPageState extends State<NEETFormPage> {
                       Text(
                         "Step in and share\n  your story with us!",
                         style: TextStyle(
-                          fontSize: screenWidth * 0.07,
-                          fontWeight: FontWeight.bold,
-                        ),
+                            fontSize: screenWidth * 0.07,
+                            fontWeight: FontWeight.bold,
+                            color: Color(0xFF111111)),
                         textAlign: TextAlign.center,
                       ),
                     ],
@@ -207,6 +207,7 @@ class _NEETFormPageState extends State<NEETFormPage> {
                     controller: nameController,
                     decoration: InputDecoration(
                       labelText: "Enter Name",
+                      
                       labelStyle: TextStyle(fontSize: screenWidth * 0.04),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),

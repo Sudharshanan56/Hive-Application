@@ -210,32 +210,32 @@ class _Mockmaster1State extends State<Mockmaster1> {
                     SizedBox(height: screenHeight * 0.2),
                     Padding(
                       padding: EdgeInsets.only(right: screenWidth * 0.25),
-                      child: Text(
-                        "       Master Your\n       Medical Entrance!",
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: screenWidth * 0.06,
-                          color: Colors.white,
-                        ),
-                      ),
+                      // child: Text(
+                      //   "       Master Your\n       Medical Entrance!",
+                      //   style: TextStyle(
+                      //     fontWeight: FontWeight.bold,
+                      //     fontSize: screenWidth * 0.06,
+                      //     color: Colors.white,
+                      //   ),
+                      // ),
                     ),
                     SizedBox(height: screenHeight * 0.03),
                     Padding(
                       padding: EdgeInsets.only(left: screenWidth * 0.07),
-                      child: Text(
-                        "Prepare for success with our \nMedical Entrance Mock Test!\nSharpen your skills, boost \nconfidence, and ace your\nexam with practice tailored to\nyour goals.",
-                        style: TextStyle(
-                          fontSize: screenWidth * 0.045,
-                          color: Colors.white,
-                          fontFamily: 'Poppins',
-                          letterSpacing: 2.0,
-                        ),
-                      ),
+                      // child: Text(
+                      //   "Prepare for success with our \nMedical Entrance Mock Test!\nSharpen your skills, boost \nconfidence, and ace your\nexam with practice tailored to\nyour goals.",
+                      //   style: TextStyle(
+                      //     fontSize: screenWidth * 0.045,
+                      //     color: Colors.white,
+                      //     fontFamily: 'Poppins',
+                      //     letterSpacing: 2.0,
+                      //   ),
+                      // ),
                     ),
                     Padding(
                       padding: EdgeInsets.only(
                         right: screenWidth * 0.6,
-                        top: screenHeight * 0.03,
+                        top: screenHeight * 0.35,
                         left: screenWidth * 0.07,
                       ),
                       child: GestureDetector(
@@ -255,6 +255,41 @@ class _Mockmaster1State extends State<Mockmaster1> {
                     ),
                   ],
                 ),
+              ),
+              AnimatedPositioned(
+                child: Text(
+                  "       Master Your\n       Medical Entrance!",
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: screenWidth * 0.06,
+                    color: Colors.white,
+                  ),
+                ),
+                curve: Curves.easeInOut,
+                left: _startAnimation
+                    ? screenWidth * 0.0
+                    : -screenWidth, // Start from outside screen
+
+                top: screenHeight * 0.24,
+                duration: Duration(seconds: 1),
+              ),
+              AnimatedPositioned(
+                child: Text(
+                  "Prepare for success with our \nMedical Entrance Mock Test!\nSharpen your skills, boost \nconfidence, and ace your\nexam with practice tailored to\nyour goals.",
+                  style: TextStyle(
+                    fontSize: screenWidth * 0.045,
+                    color: Colors.white,
+                    fontFamily: 'Poppins',
+                    letterSpacing: 2.0,
+                  ),
+                ),
+                curve: Curves.easeInOut,
+                left: _startAnimation
+                    ? screenWidth * 0.1
+                    : -screenWidth, // Start from outside screen
+
+                top: screenHeight * 0.34,
+                duration: Duration(seconds: 1),
               ),
             ],
           );

@@ -168,7 +168,7 @@ class _ExamCracker1State extends State<ExamCracker1>
                 //rectangle-2
                 // AnimatedPositioned(
                 //   child:
-      
+
                 AnimatedPositioned(
                   child: Container(
                     height: screenHeight * 0.22,
@@ -201,7 +201,7 @@ class _ExamCracker1State extends State<ExamCracker1>
                   bottom: _startAnimation ? 0.0 : -300.0,
                 ),
                 //rectangle-4
-      
+
                 AnimatedPositioned(
                     child: Container(
                       height: screenHeight * 0.42,
@@ -229,37 +229,43 @@ class _ExamCracker1State extends State<ExamCracker1>
                 //   left: screenWidth * 0.70,
                 //   right: _startAnimation ? screenHeight * 0.00 : -100,
                 // ),
-      
+
                 Stack(
                   children: [
                     Positioned(
-                      top: 340,
+                      top: 0,
                       child: Column(
                         children: [
-                          Padding(
-                            padding: EdgeInsets.only(right: screenWidth * 0.25),
-                            child: Text(
-                              "    Master Your\n    Medical Entrance!",
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: screenWidth * 0.06,
-                                color: const Color(0xffF45C5C),
-                              ),
-                            ),
-                          ),
-                          SizedBox(height: screenHeight * 0.03),
-                          Padding(
-                            padding: EdgeInsets.only(left: screenWidth * 0.06),
-                            child: Text(
-                              "Prepare for success with our \nMedical Entrance Mock Test!\nSharpen your skills, boost \nconfidence, and ace your\nexam with practice tailored to\nyour goals.",
-                              style: TextStyle(
-                                fontSize: screenWidth * 0.045,
-                                color: const Color(0xff9F0000),
-                                fontFamily: 'poppins',
-                                letterSpacing: 1.5,
-                              ),
-                            ),
-                          ),
+                          // AnimatedPositioned(
+                          //   child: Text(
+                          //     "    Master Your\n    Medical Entrance!",
+                          //     style: TextStyle(
+                          //       fontWeight: FontWeight.bold,
+                          //       fontSize: screenWidth * 0.06,
+                          //       color: const Color(0xffF45C5C),
+                          //     ),
+                          //   ),
+                          //   curve: Curves.easeInOut,
+                          //   left: _startAnimation
+                          //       ? screenWidth * 0.05
+                          //       : -screenWidth, // Start from outside screen
+
+                          //   top: screenHeight * 0.82,
+                          //   duration: Duration(seconds: 1),
+                          // ),
+                          // SizedBox(height: screenHeight * 0.03),
+                          // Padding(
+                          //   padding: EdgeInsets.only(left: screenWidth * 0.06),
+                          //   child: Text(
+                          //     "Prepare for success with our \nMedical Entrance Mock Test!\nSharpen your skills, boost \nconfidence, and ace your\nexam with practice tailored to\nyour goals.",
+                          //     style: TextStyle(
+                          //       fontSize: screenWidth * 0.045,
+                          //       color: const Color(0xff9F0000),
+                          //       fontFamily: 'poppins',
+                          //       letterSpacing: 1.5,
+                          //     ),
+                          //   ),
+                          // ),
                         ],
                       ),
                     ),
@@ -278,6 +284,43 @@ class _ExamCracker1State extends State<ExamCracker1>
                       ),
                     ),
                   ),
+                ),
+
+                AnimatedPositioned(
+                  child: Text(
+                    "    Master Your\n    Medical Entrance!",
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: screenWidth * 0.06,
+                      color: const Color(0xffF45C5C),
+                    ),
+                  ),
+                  curve: Curves.easeInOut,
+                  left: _startAnimation
+                      ? screenWidth * 0.05
+                      : -screenWidth, // Start from outside screen
+
+                  top: screenHeight * 0.24,
+                  duration: Duration(seconds: 1),
+                ),
+
+                AnimatedPositioned(
+                  child: Text(
+                    "Prepare for success with our \nMedical Entrance Mock Test!\nSharpen your skills, boost \nconfidence, and ace your\nexam with practice tailored to\nyour goals.",
+                    style: TextStyle(
+                      fontSize: screenWidth * 0.045,
+                      color: const Color(0xff9F0000),
+                      fontFamily: 'poppins',
+                      letterSpacing: 1.5,
+                    ),
+                  ),
+                  curve: Curves.easeInOut,
+                  left: _startAnimation
+                      ? screenWidth * 0.1
+                      : -screenWidth, // Start from outside screen
+
+                  top: screenHeight * 0.35,
+                  duration: Duration(seconds: 1),
                 ),
               ],
             );

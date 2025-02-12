@@ -775,11 +775,12 @@ class _SliverAppBarExampleState extends State<SliverAppBarExample> {
             SliverAppBar(
               expandedHeight: 300.0,
               floating: false,
-              pinned: true,
+              pinned: false,
               flexibleSpace: FlexibleSpaceBar(
                 background: Hero(
                   tag: "post1",
                   child: Container(
+                    // height: screenHeight * 0.002,
                     width: double.infinity,
                     // decoration:
                     //     BoxDecoration(border: Border.all(color: Colors.black)),
@@ -796,35 +797,36 @@ class _SliverAppBarExampleState extends State<SliverAppBarExample> {
             SliverList(
               delegate: SliverChildBuilderDelegate(
                 (BuildContext context, int index) {
-                  return ClipRRect(
-                      borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(90),
-                        topRight: Radius.circular(90),
-                      ),
-                      child: Container(
-                        decoration: BoxDecoration(
-                          color: Color(0xFFFCFEFF),
-                          // border: Border.all(color: Colors.red),
-                          borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(90),
-                              topRight: Radius.circular(90)),
+                  return Container(
+                    decoration: BoxDecoration(
+                        // border: Border.all(),
+                        borderRadius: BorderRadius.circular(60)),
+                    child: ClipRRect(
+                        borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(90),
+                          topRight: Radius.circular(90),
                         ),
-                        child: Padding(
-                          padding: EdgeInsets.all(25.0),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              // Tags Section
-                              Row(
-                                children: [
-                                  _buildTag('Tags'),
-                                  SizedBox(width: 8),
-                                  _buildTag('Tags'),
-                                  const Spacer(),
-                                  SizedBox(
-                                    height: screenHeight * 0.07,
-                                    width: screenWidth * 0.10,
-                                    child: IconButton(
+                        child: Container(
+                          decoration: BoxDecoration(
+                            color: Color(0xFFFCFEFF),
+                            // border: Border.all(color: Colors.red),
+                            borderRadius: BorderRadius.only(
+                                topLeft: Radius.circular(90),
+                                topRight: Radius.circular(90)),
+                          ),
+                          child: Padding(
+                            padding: EdgeInsets.all(25.0),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                // Tags Section
+                                Row(
+                                  children: [
+                                    _buildTag('Tags'),
+                                    SizedBox(width: screenWidth * 0.02),
+                                    _buildTag('Tags'),
+                                    const Spacer(),
+                                    IconButton(
                                       iconSize: screenWidth * 0.10,
                                       icon: Icon(
                                         isLikedList[index]
@@ -833,7 +835,7 @@ class _SliverAppBarExampleState extends State<SliverAppBarExample> {
                                         color: isLikedList[index]
                                             ? Colors.red
                                             : Colors.black,
-                                      ),
+                                        ),
                                       onPressed: () {
                                         setState(() {
                                           isLikedList[index] =
@@ -841,77 +843,77 @@ class _SliverAppBarExampleState extends State<SliverAppBarExample> {
                                         });
                                       },
                                     ),
-                                  ),
-                                  SizedBox(width: 8),
-                                ],
-                              ),
-                              SizedBox(height: 16),
+                                    SizedBox(width: screenWidth * 0.02),
+                                  ],
+                                ),
+                                SizedBox(height: screenHeight * 0.02),
 
-                              // Header Section
-                              Row(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  CircleAvatar(
-                                    backgroundColor: Colors.blue[50],
-                                    radius: 24,
-                                    child: Image.asset("assets/7.png"),
-                                  ),
-                                  SizedBox(width: 12),
-                                  Expanded(
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Text(
-                                          'Asia International University',
-                                          style: TextStyle(
-                                            fontSize: 16,
-                                            fontWeight: FontWeight.bold,
-                                            color: Colors.black,
-                                          ),
-                                        ),
-                                        SizedBox(height: 4),
-                                        Text(
-                                          'plans in the field of investment',
-                                          style: TextStyle(
-                                            fontSize: 20,
-                                            fontWeight: FontWeight.bold,
-                                            color: Colors.black,
-                                          ),
-                                        ),
-                                      ],
+                                // Header Section
+                                Row(
+                                  // crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Container(
+                                      // decoration:
+                                      //  BoxDecoration(border: Border.all()),
+                                      child: CircleAvatar(
+                                        backgroundColor: Colors.blue[50],
+                                        radius: screenWidth * 0.064,
+                                        child: Image.asset("assets/7.png"),
+                                      ),
                                     ),
+                                    SizedBox(
+                                      width: screenWidth * 0.04,
+                                    ),
+                                    Center(
+                                      child: Text(
+                                        'Asia International University',
+                                        style: TextStyle(
+                                          fontSize: screenWidth * 0.050,
+                                          fontWeight: FontWeight.bold,
+                                          color: Color(0xFF1C3E5A),
+                                        ),
+                                      ),
+                                    ),
+                                    SizedBox(height: 4),
+                                  ],
+                                ),
+                                Text(
+                                  'plans in the field of investment',
+                                  style: TextStyle(
+                                    fontSize: screenWidth * 0.060,
+                                    fontWeight: FontWeight.bold,
+                                    color: Color(0xFF1C3E5A),
                                   ),
-                                ],
-                              ),
-                              SizedBox(height: 16),
-
-                              // Subtitle
-                              Text(
-                                'Meeting on 2024 Investment Plans',
-                                style: TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w600,
-                                  color: Colors.grey[700],
                                 ),
-                              ),
-                              SizedBox(height: 16),
+                                SizedBox(height: screenHeight * 0.016),
 
-                              // Body Paragraph
-                              Text(
-                                'On December 19, President Shavkat Mirziyoyev held a meeting to review 2024 investment outcomes and set tasks for the upcoming year. Since 2017, 188 billion in investments have been made, including 87 billion in foreign investments, boosting GDP growth with investments now exceeding 30% of GDP.\n\n'
-                                'In 2023, investments grew by 1.3 times to 36 billion, launching 560 projects worth 70 trillion soums and creating opportunities to increase exports by 1 billion next year. For 2024, 43 billion in investments and over 300 major projects are planned, including 662 import-substitution products.\n\n'
-                                'President Mirziyoyev emphasized creating favorable conditions for foreign investors, expediting ongoing projects, and addressing export logistics challenges amid global difficulties. The goal is to double annual exports to 45 billion by 2030 by increasing high-value products and services and expanding export markets.',
-                                style: TextStyle(
-                                  fontSize: 24,
-                                  color: Colors.grey[800],
-                                  height: 1.5,
+                                // Subtitle
+                                Text(
+                                  'Meeting on 2024 Investment Plans',
+                                  style: TextStyle(
+                                      fontSize: screenWidth * 0.050,
+                                      fontWeight: FontWeight.bold,
+                                      color: Color(0xFF5F7388),
+                                      fontFamily: "Poppins"),
                                 ),
-                              ),
-                            ],
+                                SizedBox(height: screenHeight * 0.016),
+
+                                // Body Paragraph
+                                Text(
+                                  'On December 19, President Shavkat Mirziyoyev held a meeting to review 2024 investment outcomes and set tasks for the upcoming year. Since 2017, 188 billion in investments have been made, including 87 billion in foreign investments, boosting GDP growth with investments now exceeding 30% of GDP.\n\n'
+                                  'In 2023, investments grew by 1.3 times to 36 billion, launching 560 projects worth 70 trillion soums and creating opportunities to increase exports by 1 billion next year. For 2024, 43 billion in investments and over 300 major projects are planned, including 662 import-substitution products.\n\n'
+                                  'President Mirziyoyev emphasized creating favorable conditions for foreign investors, expediting ongoing projects, and addressing export logistics challenges amid global difficulties. The goal is to double annual exports to 45 billion by 2030 by increasing high-value products and services and expanding export markets.',
+                                  style: TextStyle(
+                                    fontSize: screenWidth * 0.045,
+                                    color: Colors.grey[800],
+                                    height: 1.5,
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
-                        ),
-                      ));
+                        )),
+                  );
                 },
                 childCount: 1,
               ),
