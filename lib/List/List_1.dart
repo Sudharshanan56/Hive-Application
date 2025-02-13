@@ -287,6 +287,8 @@
 // }
 import 'package:flutter/material.dart';
 
+import '../Search Page/Search page.dart';
+
 class UniversityListPage extends StatefulWidget {
   const UniversityListPage({super.key});
 
@@ -341,22 +343,41 @@ class _UniversityListPageState extends State<UniversityListPage> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SizedBox(height: screenHeight * 0.03),
-              Container(
-                height: screenHeight * 0.06,
-                width: screenWidth * 0.9,
-                decoration: BoxDecoration(
-                  border: Border.all(),
-                  borderRadius: BorderRadius.circular(screenWidth * 0.06),
-                ),
-                child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.03),
-                  child: TextFormField(
-                    decoration: InputDecoration(
-                      border: InputBorder.none,
-                      prefixIcon: Icon(Icons.search, size: screenWidth * 0.06),
-                      hintText: "Search",
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => SearchPage()),
+                  );
+                },
+                child: Container(
+                  height: screenHeight * 0.06,
+                  width: screenWidth * 0.90,
+                  decoration: BoxDecoration(
+                      border: Border.all(color: Color(0xffF1F1F1)),
+                      borderRadius: BorderRadius.circular(30),
+                      color: Color(0xFFF1F1F1)),
+                  child: ListTile(
+                    leading: Icon(
+                      Icons.search_outlined,
+                      // color: Color(0xFF00000080),
                     ),
+                    title: Text('Search'),
                   ),
+                  // child: TextField(
+                  //   readOnly: true,
+                  //   decoration: InputDecoration(
+                  //     hintText: 'Search...',
+                  //     fillColor: Colors.grey[200],
+                  //     filled: true,
+                  //     prefixIcon: Icon(Icons.search),
+                  //     border: OutlineInputBorder(
+                  //       borderRadius: BorderRadius.circular(30),
+                  //       borderSide: BorderSide.none,
+                  //     ),
+                  //     contentPadding: EdgeInsets.zero,
+                  //   ),
+                  // ),
                 ),
               ),
               SizedBox(height: screenHeight * 0.02),
@@ -391,7 +412,8 @@ class _UniversityListPageState extends State<UniversityListPage> {
                   Row(
                     children: [
                       Transform.scale(
-                        scale: MediaQuery.of(context).size.width * 0.0020, // Scale dynamically based on screen width
+                        scale: MediaQuery.of(context).size.width *
+                            0.0020, // Scale dynamically based on screen width
                         child: Checkbox(
                           value: _isChecked,
                           checkColor: Colors.white,
@@ -405,11 +427,11 @@ class _UniversityListPageState extends State<UniversityListPage> {
                       ),
                       Text(
                         ' Saved',
-                        style: TextStyle(fontSize: MediaQuery.of(context).size.width * 0.04),
+                        style: TextStyle(
+                            fontSize: MediaQuery.of(context).size.width * 0.04),
                       ),
                     ],
                   ),
-      
                 ],
               ),
               SizedBox(height: screenHeight * 0.02),
@@ -418,12 +440,12 @@ class _UniversityListPageState extends State<UniversityListPage> {
                   itemCount: universities.length,
                   itemBuilder: (context, index) {
                     final university = universities[index];
-      
+
                     // If 'Saved' checkbox is checked, show only bookmarked universities
                     if (_isChecked && !_bookmarked[index]) {
                       return const SizedBox.shrink(); // Skip this item
                     }
-      
+
                     return Column(
                       children: [
                         ListTile(
@@ -433,11 +455,21 @@ class _UniversityListPageState extends State<UniversityListPage> {
                           ),
                           title: Text(
                             university['name']!,
-                            style: TextStyle(fontSize: screenWidth * 0.045),
+                            style: TextStyle(
+                                fontSize: screenWidth * 0.045,
+                                color: Color(0xFF222222)),
                           ),
-                          subtitle: Text(
-                            university['location']!,
-                            style: TextStyle(fontSize: screenWidth * 0.04),
+                          subtitle: Row(
+                            children: [
+                              Icon(
+                                Icons.location_on_outlined,
+                                size: screenWidth * 0.05,
+                              ),
+                              Text(
+                                university['location']!,
+                                style: TextStyle(fontSize: screenWidth * 0.04),
+                              ),
+                            ],
                           ),
                           trailing: IconButton(
                             icon: Icon(

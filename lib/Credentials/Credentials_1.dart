@@ -118,7 +118,8 @@ import '../HomePage/HomePage1.dart';
 import 'package:http/http.dart' as http;
 
 class NEETFormPage extends StatefulWidget {
-  const NEETFormPage({super.key});
+  final String userId;
+  const NEETFormPage({Key? key, required this.userId}) : super(key: key);
 
   @override
   State<NEETFormPage> createState() => _NEETFormPageState();
@@ -128,29 +129,48 @@ class _NEETFormPageState extends State<NEETFormPage> {
   TextEditingController nameController = TextEditingController();
   TextEditingController neetidController = TextEditingController();
   TextEditingController neetscoreController = TextEditingController();
-  Future<void> sendDetailRequest() async {
-    const String apiUrl = "http://localhost:3004/studentDetails/add";
+  bool isLoading = false;
 
-    Map<String, dynamic> requestData = {
+  Future<void> submitStudentDetails() async {
+    final String apiUrl = "http://localhost:3000/api/hiveapp/addStudent";
+
+    // Data to send
+    Map<String, dynamic> data = {
+      "UserId": widget.userId, // UserId from OTP page
       "Name": nameController.text,
-      "NeetId": neetidController.text,
-      "NeetScore": int.tryParse(neetscoreController.text) ?? 0,
+      "NeedId": neetidController.text,
+      "NeedScore": int.tryParse(neetscoreController.text) ?? 0,
     };
+
+    setState(() {
+      isLoading = true;
+    });
 
     try {
       final response = await http.post(
         Uri.parse(apiUrl),
         headers: {"Content-Type": "application/json"},
-        body: jsonEncode(requestData),
+        body: jsonEncode(data),
       );
 
       if (response.statusCode == 201 || response.statusCode == 200) {
+        // Successfully added
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text("Post created successfully!")),
+          SnackBar(content: Text("Student Details Saved Successfully!")),
+        );
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) =>
+                BottomSheetApp(
+                  // userId: widget.userId
+                  ), // Pass userId here
+          ),
         );
       } else {
+        // Error response
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text("Failed to create post")),
+          SnackBar(content: Text("Failed to save details")),
         );
       }
     } catch (error) {
@@ -158,6 +178,10 @@ class _NEETFormPageState extends State<NEETFormPage> {
         SnackBar(content: Text("Error: $error")),
       );
     }
+
+    setState(() {
+      isLoading = false;
+    });
   }
 
   @override
@@ -207,7 +231,6 @@ class _NEETFormPageState extends State<NEETFormPage> {
                     controller: nameController,
                     decoration: InputDecoration(
                       labelText: "Enter Name",
-                      
                       labelStyle: TextStyle(fontSize: screenWidth * 0.04),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
@@ -250,11 +273,13 @@ class _NEETFormPageState extends State<NEETFormPage> {
                     ),
                     child: ElevatedButton(
                       onPressed: () {
-                        sendDetailRequest();
+                        submitStudentDetails();
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => BottomSheetApp()));
+                                builder: (context) => BottomSheetApp(
+                                     // userId: widget.userId,
+                                    )));
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: const Color(0xFF3C97D3),

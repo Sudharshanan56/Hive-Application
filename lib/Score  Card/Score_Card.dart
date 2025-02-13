@@ -51,11 +51,14 @@ class _ScoreCardState extends State<ScoreCard> {
             onPressed: () {
               Navigator.pop(context);
             },
-            icon: const Icon(Icons.arrow_back_ios),
+            icon: Icon(Icons.arrow_back_ios),
           ),
-          title: const Row(
+          title: Row(
             children: [
-              Text('Score Card'),
+              Text(
+                'Score Card',
+                style: TextStyle(color: Color(0xFF1E293B)),
+              ),
             ],
           ),
           centerTitle: true,
@@ -63,14 +66,14 @@ class _ScoreCardState extends State<ScoreCard> {
         body: Column(
           children: [
             Padding(
-              padding: const EdgeInsets.only(top: 50),
+              padding: EdgeInsets.only(top: 50),
               child: Hero(
                 tag: 'scorecard',
                 child: Container(
                   width: screenWidth * 0.9, // Corrected width
                   height: 180,
                   decoration: BoxDecoration(
-                    color: const Color(0xFFF4FAFF),
+                    color: Color(0xFFF4FAFF),
                     //  border: Border.all(color: Colors.black),
                     borderRadius: BorderRadius.circular(15),
                     boxShadow: [
@@ -82,22 +85,23 @@ class _ScoreCardState extends State<ScoreCard> {
                     ],
                   ),
                   child: Padding(
-                    padding: const EdgeInsets.all(16.0),
+                    padding: EdgeInsets.all(16.0),
                     child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         // Circular Score
                         Stack(
                           alignment: Alignment.center,
                           children: [
-                            Container(
-                              width: 80,
-                              height: 80,
-                              decoration: const BoxDecoration(
-                                shape: BoxShape.circle,
-                                color: Color(0xffe8f2fa),
-                              ),
-                            ),
+                            // Container(
+                            //   width: 80,
+                            //   height: 80,
+                            //   decoration: BoxDecoration(
+                            //     shape: BoxShape.circle,
+                            //     border: Border.all(color: Colors.red),
+                            //     // color: Color(0xffe8f2fa),
+                            //   ),
+                            // ),
                             // Container(
                             //   width: 70,
                             //   height: 70,
@@ -118,8 +122,7 @@ class _ScoreCardState extends State<ScoreCard> {
                             // ),
                             CircleAvatar(
                               radius: 60,
-                              backgroundColor:
-                                  const Color.fromARGB(92, 158, 158, 158),
+                              backgroundColor: Color.fromARGB(28, 33, 149, 243),
                               child: CircleAvatar(
                                 radius: 50,
                                 backgroundColor: Color(0xFF5F99BF),
@@ -136,7 +139,10 @@ class _ScoreCardState extends State<ScoreCard> {
                           ],
                         ),
                         // Text and Information
-                        const Column(
+                        SizedBox(
+                          width: screenWidth * 0.07,
+                        ),
+                        Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
@@ -145,7 +151,7 @@ class _ScoreCardState extends State<ScoreCard> {
                               style: TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.w600,
-                                color: Color(0xFF5F99BF),
+                                color: Color(0xFF22465E),
                               ),
                             ),
                             SizedBox(height: 16),
@@ -202,14 +208,18 @@ class _ScoreCardState extends State<ScoreCard> {
                 ),
               ),
             ),
-            const SizedBox(
-              height: 10,
+            SizedBox(
+              height: screenHeight * 0.05,
             ),
-            const Row(
+            Row(
               children: [
                 Text(
                   "Universities",
-                  style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+                  style: TextStyle(
+                    fontSize: screenWidth * 0.05,
+                    color: Color(0xFF111111),
+                    // fontWeight: FontWeight.bold),
+                  ),
                 ),
               ],
             ),
@@ -235,7 +245,7 @@ class _ScoreCardState extends State<ScoreCard> {
             //     ),
             //   ),
             // ),
-            const SizedBox(height: 20),
+             SizedBox(height: 20),
             Expanded(
               child: GestureDetector(
                 onTap: () {
@@ -261,9 +271,17 @@ class _ScoreCardState extends State<ScoreCard> {
                             university['name']!,
                             style: TextStyle(fontSize: screenWidth * 0.045),
                           ),
-                          subtitle: Text(
-                            university['location']!,
-                            style: TextStyle(fontSize: screenWidth * 0.04),
+                          subtitle: Row(
+                            children: [
+                              Icon(
+                                Icons.location_on_outlined,
+                                size: screenWidth * 0.05,
+                              ),
+                              Text(
+                                university['location']!,
+                                style: TextStyle(fontSize: screenWidth * 0.03),
+                              ),
+                            ],
                           ),
                         ),
                         Divider(thickness: 1, height: screenHeight * 0.02),

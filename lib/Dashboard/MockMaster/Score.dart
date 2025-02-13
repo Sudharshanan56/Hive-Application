@@ -102,7 +102,7 @@ class ResultScreen extends StatelessWidget {
                     style: TextStyle(
                       fontSize: screenWidth * 0.12, // Responsive font size
                       fontWeight: FontWeight.bold,
-                      color: const Color(0xFFF3434E),
+                      color:  Color(0xFFF3434E),
                     ),
                   ),
                 ),
@@ -139,7 +139,7 @@ class ResultScreen extends StatelessWidget {
                   style: TextStyle(
                     fontSize: screenWidth * 0.05, // Responsive font size
                     fontWeight: FontWeight.bold,
-                    color: const Color(0xFFF3434E),
+                    color:  Color(0xFFF3434E),
                   ),
                 ),
               ),

@@ -135,7 +135,6 @@
 //   }
 // }
 
-
 import 'package:flutter/material.dart';
 
 class Notification_1 extends StatelessWidget {
@@ -146,6 +145,7 @@ class Notification_1 extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
+        backgroundColor: Color(0xFFFCFEFF),
         appBar: AppBar(
           title: const Text('Notifications'),
           backgroundColor: Colors.blue,
@@ -189,7 +189,7 @@ class NotificationList extends StatelessWidget {
             image: "assets/8.png",
             title: 'Sanjay replied to your comment on the article:',
             subtitle:
-            'The article looks perfect! Everything is well-organized and accurate',
+                'The article looks perfect! Everything is well-organized and accurate',
             trailing: '8h',
             imageSize: imageSize,
             fontSizeTitle: fontSizeTitle,
@@ -201,7 +201,7 @@ class NotificationList extends StatelessWidget {
             image: "assets/9.png",
             title: 'Ace Your Exams!',
             subtitle:
-            'Check out expert tips to succeed in your upcoming medical entrance tests.',
+                'Check out expert tips to succeed in your upcoming medical entrance tests.',
             trailing: '14h',
             imageSize: imageSize,
             fontSizeTitle: fontSizeTitle,
@@ -212,7 +212,8 @@ class NotificationList extends StatelessWidget {
           _buildNotificationTile(
             image: "assets/10.png",
             title: 'Your Scores Are In!',
-            subtitle: 'Check your eligibility for top medical universities now!',
+            subtitle:
+                'Check your eligibility for top medical universities now!',
             trailing: '17h',
             imageSize: imageSize,
             fontSizeTitle: fontSizeTitle,
@@ -224,7 +225,7 @@ class NotificationList extends StatelessWidget {
             image: "assets/11.png",
             title: 'Fresh Off the Press!',
             subtitle:
-            'Read our new article, "Scientists’ Week at TSMU" and excel in your exams!',
+                'Read our new article, "Scientists’ Week at TSMU" and excel in your exams!',
             trailing: '2d',
             imageSize: imageSize,
             fontSizeTitle: fontSizeTitle,
@@ -261,9 +262,7 @@ class NotificationList extends StatelessWidget {
       ),
       subtitle: Text(
         subtitle,
-        style: TextStyle(
-          fontSize: fontSizeSubtitle,
-        ),
+        style: TextStyle(fontSize: fontSizeSubtitle, color: Color(0xFF1E293B)),
       ),
       trailing: Text(
         trailing,

@@ -155,10 +155,33 @@
 //   }
 // }
 
-import 'package:flutter/material.dart';
+import 'dart:io';
 
-class ProfilePageEdit extends StatelessWidget {
-  const ProfilePageEdit({super.key});
+import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:permission_handler/permission_handler.dart';
+
+
+class ProfilePageEdit extends StatefulWidget {
+  ProfilePageEdit({super.key});
+
+  @override
+  State<ProfilePageEdit> createState() => _ProfilePageEditState();
+}
+
+class _ProfilePageEditState extends State<ProfilePageEdit> {
+  File? _image;
+
+  final ImagePicker _picker = ImagePicker();
+
+  Future<void> _pickImage() async {
+    final pickedFile = await _picker.pickImage(source: ImageSource.gallery);
+    if (pickedFile != null) {
+      setState(() {
+        _image = File(pickedFile.path);
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -171,10 +194,10 @@ class ProfilePageEdit extends StatelessWidget {
         appBar: AppBar(
           elevation: 0,
           leading: IconButton(
-            icon: const Icon(Icons.arrow_back, color: Colors.black),
+            icon: Icon(Icons.arrow_back, color: Colors.black),
             onPressed: () => Navigator.pop(context),
           ),
-          title: const Text(
+          title: Text(
             'Edit Profile',
             style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
           ),
@@ -201,22 +224,44 @@ class ProfilePageEdit extends StatelessWidget {
                 Center(
                   child: Stack(
                     children: [
+                      // CircleAvatar(
+                      //   radius: screenWidth * 0.15,
+                      //   backgroundImage:
+                      //       AssetImage('assets/profile_placeholder.png'),
+                      //   backgroundColor: Colors.grey.shade300,
+                      // ),
+                      // Positioned(
+                      //   bottom: 0,
+                      //   right: 0,
+                      //   child: CircleAvatar(
+                      //     radius: screenWidth * 0.05,
+                      //     backgroundColor: Colors.blue,
+                      //     child: Icon(
+                      //       Icons.add,
+                      //       color: Color(0xFFFFFFFF),
+                      //       size: screenWidth * 0.05,
+                      //     ),
+                      //   ),
                       CircleAvatar(
                         radius: screenWidth * 0.15,
-                        backgroundImage:
-                            AssetImage('assets/profile_placeholder.png'),
                         backgroundColor: Colors.grey.shade300,
+                        backgroundImage: _image != null
+                            ? FileImage(_image!) as ImageProvider
+                            : AssetImage('assets/profile_placeholder.png'),
                       ),
                       Positioned(
                         bottom: 0,
                         right: 0,
-                        child: CircleAvatar(
-                          radius: screenWidth * 0.05,
-                          backgroundColor: Colors.blue,
-                          child: Icon(
-                            Icons.add,
-                            color: Color(0xFFFFFFFF),
-                            size: screenWidth * 0.05,
+                        child: GestureDetector(
+                          onTap: _pickImage,
+                          child: CircleAvatar(
+                            radius: screenWidth * 0.05,
+                            backgroundColor: Colors.blue,
+                            child: Icon(
+                              Icons.add,
+                              color: Colors.white,
+                              size: screenWidth * 0.05,
+                            ),
                           ),
                         ),
                       ),
