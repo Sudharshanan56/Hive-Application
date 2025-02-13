@@ -163,7 +163,7 @@ class _NEETFormPageState extends State<NEETFormPage> {
           MaterialPageRoute(
             builder: (context) =>
                 BottomSheetApp(
-                  // userId: widget.userId
+                  userId: widget.userId
                   ), // Pass userId here
           ),
         );
@@ -278,7 +278,7 @@ class _NEETFormPageState extends State<NEETFormPage> {
                             context,
                             MaterialPageRoute(
                                 builder: (context) => BottomSheetApp(
-                                     // userId: widget.userId,
+                                      userId: widget.userId,
                                     )));
                       },
                       style: ElevatedButton.styleFrom(
