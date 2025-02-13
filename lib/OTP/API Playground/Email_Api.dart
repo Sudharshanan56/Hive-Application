@@ -264,7 +264,7 @@ import 'dart:convert';
 class EmailPage extends StatefulWidget {
   final String userId;
 
-  const EmailPage({Key? key, required this.userId}) : super(key: key);
+   EmailPage({Key? key, required this.userId}) : super(key: key);
 
   @override
   _EmailPageState createState() => _EmailPageState();

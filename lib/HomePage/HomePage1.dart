@@ -697,24 +697,28 @@
 //   }
 // }
 
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:hive_application/Bottom%20Navigation%20Bar/Navigation%201.dart';
 import 'package:lottie/lottie.dart';
 import '../Countdown/CountDown.dart';
 import 'HomePage_Without_email.dart';
 import '../University/Screen_1.dart';
+import 'package:http/http.dart' as http;
 
 class BottomSheetApp extends StatefulWidget {
-  BottomSheetApp({super.key});
+  final String userId;
+  const BottomSheetApp({Key? key, required this.userId}) : super(key: key);
 
   @override
   State<BottomSheetApp> createState() => _BottomSheetAppState();
 }
 
 class _BottomSheetAppState extends State<BottomSheetApp> {
-  final List<TextEditingController> _otpControllers =
-      List.generate(4, (_) => TextEditingController());
-  final List<FocusNode> _focusNodes = List.generate(4, (_) => FocusNode());
+  // final List<TextEditingController> _otpControllers =
+  //     List.generate(4, (_) => TextEditingController());
+  // final List<FocusNode> _focusNodes = List.generate(4, (_) => FocusNode());
   final List<Map<String, String>> posts = List.generate(
       10,
       (index) => {
@@ -724,64 +728,15 @@ class _BottomSheetAppState extends State<BottomSheetApp> {
             'image': 'https://via.placeholder.com/150'
           });
 
-  void _onOtpChanged(String value, int index) {
-    if (value.isNotEmpty && index < 3) {
-      FocusScope.of(context).requestFocus(_focusNodes[index + 1]);
-    } else if (value.isEmpty && index > 0) {
-      FocusScope.of(context).requestFocus(_focusNodes[index - 1]);
-    }
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    final mediaQuery = MediaQuery.of(context);
-    final screenWidth = mediaQuery.size.width;
-
-    return SafeArea(
-      child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-        home: Scaffold(
-          // s
-          body: PostsList(posts: posts),
-          // floatingActionButton: FloatingActionButton(
-          //   shape: const CircleBorder(),
-          //   backgroundColor: const Color(0xFF5A9ECF),
-          //   onPressed: () {
-          //     Navigator.push(context, MaterialPageRoute(builder: (context) => CountdownPage()));
-          //   },
-          //   child: Container(
-          //     height: screenWidth * 0.13,
-          //     width: screenWidth * 0.13,
-          //     margin: EdgeInsets.symmetric(vertical: screenWidth * 0.02),
-          //     decoration: BoxDecoration(
-          //       borderRadius: BorderRadius.circular(90),
-          //       color: const Color(0xFF5A9ECF),
-          //     ),
-          //     child: Icon(
-          //       Icons.school_outlined,
-          //       color: Colors.white,
-          //       size: screenWidth * 0.08,
-          //     ),
-          //   ),
-          // ),
-        ),
-      ),
-    );
-  }
-}
-
-class PostsList extends StatefulWidget {
-  final List<Map<String, String>> posts;
-
-  const PostsList({super.key, required this.posts});
-
-  @override
-  _PostsListState createState() => _PostsListState();
-}
-
-class _PostsListState extends State<PostsList> {
+  // void _onOtpChanged(String value, int index) {
+  //   if (value.isNotEmpty && index < 3) {
+  //     FocusScope.of(context).requestFocus(_focusNodes[index + 1]);
+  //   } else if (value.isEmpty && index > 0) {
+  //     FocusScope.of(context).requestFocus(_focusNodes[index - 1]);
+  //   }
+  // }
   final TextEditingController mail = TextEditingController();
-  double _opacity = 0.1;
+
   final List<TextEditingController> _otpControllers =
       List.generate(4, (_) => TextEditingController());
   final List<FocusNode> _focusNodes = List.generate(4, (_) => FocusNode());
@@ -794,12 +749,12 @@ class _PostsListState extends State<PostsList> {
     });
     Future.delayed(const Duration(milliseconds: 3000), () {
       setState(() {
-        _opacity = 1.0;
+        // _opacity = 1.0;
       });
     });
   }
 
-  void _onOtpChanged(String value, int index) {
+  void _onOtpChange(String value, int index) {
     if (value.isNotEmpty && index < 3) {
       FocusScope.of(context).requestFocus(_focusNodes[index + 1]);
     } else if (value.isEmpty && index > 0) {
@@ -909,7 +864,7 @@ class _PostsListState extends State<PostsList> {
                               FocusScope.of(context)
                                   .requestFocus(_focusNodes[index + 1]);
                             }
-                            _onOtpChanged(value, index);
+                            _onOtpChange(value, index);
                           },
                         ),
                       );
@@ -1054,38 +1009,31 @@ class _PostsListState extends State<PostsList> {
                     ],
                   ),
                   SizedBox(height: screenHeight * 0.02),
-                  GestureDetector(
-                    onTap: () {
-                      if (mail.text.isNotEmpty) {
+                  SizedBox(
+                    height: screenHeight * 0.07,
+                    width: double.infinity,
+                    child: ElevatedButton(
+                      onPressed: () async {
+                        await _submitEmail();
                         Navigator.pop(context);
                         _otp_verification(context);
-                      }
-                    },
-                    child: SizedBox(
-                      height: screenHeight * 0.07,
-                      width: double.infinity,
-                      child: ElevatedButton(
-                        onPressed: () {
-                          Navigator.pop(context);
-                          _otp_verification(context);
-                        },
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: const Color(0xFF5A9ECF),
-                          padding: EdgeInsets.symmetric(
-                            horizontal: screenWidth * 0.3,
-                            vertical: screenHeight * 0.02,
-                          ),
-                          shape: RoundedRectangleBorder(
-                            borderRadius:
-                                BorderRadius.circular(screenWidth * 0.02),
-                          ),
+                      },
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: const Color(0xFF5A9ECF),
+                        padding: EdgeInsets.symmetric(
+                          horizontal: screenWidth * 0.3,
+                          vertical: screenHeight * 0.02,
                         ),
-                        child: Text(
-                          "Get OTP",
-                          style: TextStyle(
-                            fontSize: screenWidth * 0.040,
-                            color: Colors.white,
-                          ),
+                        shape: RoundedRectangleBorder(
+                          borderRadius:
+                              BorderRadius.circular(screenWidth * 0.02),
+                        ),
+                      ),
+                      child: Text(
+                        "Get OTP",
+                        style: TextStyle(
+                          fontSize: screenWidth * 0.040,
+                          color: Colors.white,
                         ),
                       ),
                     ),
@@ -1099,6 +1047,411 @@ class _PostsListState extends State<PostsList> {
     );
   }
 
+  Future<void> _submitEmail() async {
+    final email = mail.text;
+
+    // API URL
+    final url = Uri.parse('http://localhost:3000/api/hiveapp/addEmail');
+
+    // Prepare the data to send
+    final Map<String, String> data = {
+      'userId': widget.userId,
+      'email': email,
+    };
+
+    try {
+      final response = await http.post(
+        url,
+        headers: {'Content-Type': 'application/json'},
+        body: jsonEncode(data),
+      );
+
+      if (response.statusCode == 200) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Email saved successfully!')),
+        );
+      } else {
+        final errorData = jsonDecode(response.body);
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Error: ${errorData['message']}')),
+        );
+      }
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('An error occurred: $e')),
+      );
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final mediaQuery = MediaQuery.of(context);
+    final screenWidth = mediaQuery.size.width;
+
+    return SafeArea(
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        home: Scaffold(
+          // s
+          body: PostsList(posts: posts),
+          // floatingActionButton: FloatingActionButton(
+          //   shape: const CircleBorder(),
+          //   backgroundColor: const Color(0xFF5A9ECF),
+          //   onPressed: () {
+          //     Navigator.push(context, MaterialPageRoute(builder: (context) => CountdownPage()));
+          //   },
+          //   child: Container(
+          //     height: screenWidth * 0.13,
+          //     width: screenWidth * 0.13,
+          //     margin: EdgeInsets.symmetric(vertical: screenWidth * 0.02),
+          //     decoration: BoxDecoration(
+          //       borderRadius: BorderRadius.circular(90),
+          //       color: const Color(0xFF5A9ECF),
+          //     ),
+          //     child: Icon(
+          //       Icons.school_outlined,
+          //       color: Colors.white,
+          //       size: screenWidth * 0.08,
+          //     ),
+          //   ),
+          // ),
+        ),
+      ),
+    );
+  }
+}
+
+class PostsList extends StatefulWidget {
+  final List<Map<String, String>> posts;
+
+  const PostsList({super.key, required this.posts});
+
+  @override
+  _PostsListState createState() => _PostsListState();
+}
+
+class _PostsListState extends State<PostsList> {
+  double _opacity = 0.1;
+  //xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+//   final TextEditingController mail = TextEditingController();
+
+//   final List<TextEditingController> _otpControllers =
+//       List.generate(4, (_) => TextEditingController());
+//   final List<FocusNode> _focusNodes = List.generate(4, (_) => FocusNode());
+
+//   @override
+//   void initState() {
+//     super.initState();
+//     WidgetsBinding.instance.addPostFrameCallback((_) {
+//       _showEmailVerificationSheet();
+//     });
+//     Future.delayed(const Duration(milliseconds: 3000), () {
+//       setState(() {
+//         _opacity = 1.0;
+//       });
+//     });
+//   }
+
+//   void _onOtpChange(String value, int index) {
+//     if (value.isNotEmpty && index < 3) {
+//       FocusScope.of(context).requestFocus(_focusNodes[index + 1]);
+//     } else if (value.isEmpty && index > 0) {
+//       FocusScope.of(context).requestFocus(_focusNodes[index - 1]);
+//     }
+//   }
+
+// //=========================================================================
+//   void _otp_verification(BuildContext context) {
+//     final mediaQuery = MediaQuery.of(context);
+//     final screenHeight = mediaQuery.size.height;
+//     final screenWidth = mediaQuery.size.width;
+
+//     showModalBottomSheet<void>(
+//       context: context,
+//       isDismissible: false,
+//       isScrollControlled: true,
+//       enableDrag: false,
+//       shape: RoundedRectangleBorder(
+//         borderRadius: BorderRadius.only(
+//           topRight: Radius.circular(screenWidth * 0.08),
+//           topLeft: Radius.circular(screenWidth * 0.08),
+//         ),
+//       ),
+//       builder: (BuildContext context) {
+//         return Padding(
+//           padding: EdgeInsets.only(
+//             bottom: MediaQuery.of(context).viewInsets.bottom,
+//           ),
+//           child: SingleChildScrollView(
+//             child: Container(
+//               height: screenHeight * 0.40,
+//               width: screenWidth,
+//               decoration: BoxDecoration(
+//                 color: Colors.white,
+//                 borderRadius: BorderRadius.only(
+//                   topRight: Radius.circular(screenWidth * 0.08),
+//                   topLeft: Radius.circular(screenWidth * 0.08),
+//                 ),
+//               ),
+//               padding: EdgeInsets.all(screenWidth * 0.045),
+//               child: Column(
+//                 mainAxisSize: MainAxisSize.min,
+//                 children: <Widget>[
+//                   Row(
+//                     children: [
+//                       Text(
+//                         "Enter OTP",
+//                         style: TextStyle(
+//                           fontSize: screenWidth * 0.055,
+//                           fontWeight: FontWeight.bold,
+//                           color: Colors.black,
+//                         ),
+//                         textAlign: TextAlign.center,
+//                       ),
+//                     ],
+//                   ),
+//                   SizedBox(height: screenHeight * 0.02),
+//                   Row(
+//                     children: [
+//                       Text(
+//                         "OTP sent to ",
+//                         style: TextStyle(
+//                           //fontWeight: FontWeight.bold,
+//                           fontSize: screenWidth * 0.03,
+//                         ),
+//                       ),
+//                       Text(
+//                         "sample@gmail.com",
+//                         style: TextStyle(
+//                           color: Color(0xFF3C97D3),
+//                           fontSize: screenWidth * 0.03,
+//                         ),
+//                       ),
+//                       Icon(Icons.edit, size: screenWidth * 0.05),
+//                     ],
+//                   ),
+//                   SizedBox(height: screenHeight * 0.02),
+//                   Row(
+//                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+//                     children: List.generate(4, (index) {
+//                       return SizedBox(
+//                         width: 50,
+//                         child: TextFormField(
+//                           controller: _otpControllers[index],
+//                           focusNode: _focusNodes[index],
+//                           keyboardType: TextInputType.number,
+//                           textAlign: TextAlign.center,
+//                           maxLength: 1,
+//                           style: TextStyle(
+//                               fontSize: 18, fontWeight: FontWeight.bold),
+//                           decoration: InputDecoration(
+//                             counterText: "",
+//                             border: OutlineInputBorder(),
+//                             enabledBorder: OutlineInputBorder(
+//                               borderSide: BorderSide(color: Colors.grey),
+//                               borderRadius: BorderRadius.circular(8),
+//                             ),
+//                             focusedBorder: OutlineInputBorder(
+//                               borderSide: BorderSide(
+//                                   color: Theme.of(context).primaryColor),
+//                               borderRadius: BorderRadius.circular(8),
+//                             ),
+//                           ),
+//                           onChanged: (value) {
+//                             if (value.isNotEmpty && index < 3) {
+//                               FocusScope.of(context)
+//                                   .requestFocus(_focusNodes[index + 1]);
+//                             }
+//                             _onOtpChange(value, index);
+//                           },
+//                         ),
+//                       );
+//                     }),
+//                   ),
+//                   SizedBox(height: screenHeight * 0.0),
+//                   TextButton(
+//                     onPressed: () {
+//                       // Resend OTP action
+//                     },
+//                     child: Row(
+//                       mainAxisAlignment: MainAxisAlignment.center,
+//                       children: [
+//                         Text(
+//                           "OTP not received?",
+//                           style: TextStyle(
+//                             color: Colors.black,
+//                             fontSize: screenWidth * 0.04,
+//                           ),
+//                         ),
+//                         Text(
+//                           " Resend now",
+//                           style: TextStyle(
+//                             color: Color(0xFF3C97D3),
+//                             fontSize: screenWidth * 0.04,
+//                           ),
+//                         ),
+//                       ],
+//                     ),
+//                   ),
+//                   SizedBox(height: screenHeight * 0.02),
+//                   Container(
+//                     height: screenHeight * 0.08,
+//                     width: screenWidth * 0.88,
+//                     child: ElevatedButton(
+//                       onPressed: () {
+//                         Navigator.push(
+//                           context,
+//                           MaterialPageRoute(builder: (context) => navi_home()),
+//                         );
+//                       },
+//                       style: ElevatedButton.styleFrom(
+//                         backgroundColor: Color(0xFF5A9ECF),
+//                         padding: EdgeInsets.symmetric(
+//                           horizontal: screenWidth * 0.35,
+//                           vertical: screenHeight * 0.02,
+//                         ),
+//                         shape: RoundedRectangleBorder(
+//                           borderRadius: BorderRadius.circular(8),
+//                         ),
+//                       ),
+//                       child: FittedBox(
+//                         fit: BoxFit.scaleDown,
+//                         child: Text(
+//                           "Verify Now",
+//                           style: TextStyle(
+//                             fontSize: screenWidth * 0.045,
+//                             color: Colors.white,
+//                           ),
+//                         ),
+//                       ),
+//                     ),
+//                   ),
+//                 ],
+//               ),
+//             ),
+//           ),
+//         );
+//       },
+//     );
+//   }
+// //=========================================================================
+
+//   void _showEmailVerificationSheet() {
+//     final mediaQuery = MediaQuery.of(context);
+//     final screenHeight = mediaQuery.size.height;
+//     final screenWidth = mediaQuery.size.width;
+
+//     showModalBottomSheet<void>(
+//       context: context,
+//       isScrollControlled: true,
+//       isDismissible: false,
+//       enableDrag: false,
+//       builder: (BuildContext context) {
+//         return Padding(
+//           padding: EdgeInsets.only(
+//             bottom: MediaQuery.of(context).viewInsets.bottom,
+//           ),
+//           child: SingleChildScrollView(
+//             child: Container(
+//               height: screenHeight * 0.3,
+//               decoration: const BoxDecoration(
+//                   color: Colors.white,
+//                   borderRadius: BorderRadius.only(
+//                       topLeft: Radius.circular(
+//                         30,
+//                       ),
+//                       topRight: Radius.circular(
+//                         30,
+//                       ))),
+//               padding: EdgeInsets.all(screenWidth * 0.04),
+//               child: Column(
+//                 mainAxisSize: MainAxisSize.min,
+//                 children: <Widget>[
+//                   Row(
+//                     children: [
+//                       Text(
+//                         "Add Email",
+//                         style: TextStyle(
+//                           fontSize: 20,
+//                           fontWeight: FontWeight.bold,
+//                         ),
+//                       ),
+//                     ],
+//                   ),
+//                   SizedBox(
+//                     height: screenHeight * 0.01,
+//                   ),
+//                   TextField(
+//                     controller: mail,
+//                     style: TextStyle(fontSize: screenWidth * 0.04),
+//                     decoration: InputDecoration(
+//                       labelText: "Enter email",
+//                       labelStyle: TextStyle(fontSize: screenWidth * 0.04),
+//                       border: OutlineInputBorder(
+//                         borderRadius:
+//                             BorderRadius.circular(screenWidth * 0.025),
+//                       ),
+//                     ),
+//                   ),
+//                   SizedBox(height: screenHeight * 0.02),
+//                   Row(
+//                     children: [
+//                       Text(
+//                         "*",
+//                         style: TextStyle(color: Colors.red),
+//                       ),
+//                       Text(
+//                         "Add your email for updates and security",
+//                         style: TextStyle(fontSize: 12),
+//                       )
+//                     ],
+//                   ),
+//                   SizedBox(height: screenHeight * 0.02),
+//                   GestureDetector(
+//                     onTap: () {
+//                       if (mail.text.isNotEmpty) {
+//                         Navigator.pop(context);
+//                         _otp_verification(context);
+//                       }
+//                     },
+//                     child: SizedBox(
+//                       height: screenHeight * 0.07,
+//                       width: double.infinity,
+//                       child: ElevatedButton(
+//                         onPressed: () {
+//                           Navigator.pop(context);
+//                           _otp_verification(context);
+//                         },
+//                         style: ElevatedButton.styleFrom(
+//                           backgroundColor: const Color(0xFF5A9ECF),
+//                           padding: EdgeInsets.symmetric(
+//                             horizontal: screenWidth * 0.3,
+//                             vertical: screenHeight * 0.02,
+//                           ),
+//                           shape: RoundedRectangleBorder(
+//                             borderRadius:
+//                                 BorderRadius.circular(screenWidth * 0.02),
+//                           ),
+//                         ),
+//                         child: Text(
+//                           "Get OTP",
+//                           style: TextStyle(
+//                             fontSize: screenWidth * 0.040,
+//                             color: Colors.white,
+//                           ),
+//                         ),
+//                       ),
+//                     ),
+//                   ),
+//                 ],
+//               ),
+//             ),
+//           ),
+//         );
+//       },
+//     );
+//   }
+//xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
   // void _showDoneAnimationSheet() {
   //   final mediaQuery = MediaQuery.of(context);
   //   final screenHeight = mediaQuery.size.height;
