@@ -826,23 +826,32 @@ class _SliverAppBarExampleState extends State<SliverAppBarExample> {
                                     SizedBox(width: screenWidth * 0.02),
                                     _buildTag('Tags'),
                                     const Spacer(),
-                                    IconButton(
-                                      iconSize: screenWidth * 0.10,
-                                      icon: Icon(
-                                        isLikedList[index]
-                                            ? Icons.favorite
-                                            : Icons.favorite_border,
-                                        color: isLikedList[index]
-                                            ? Colors.red
-                                            : Colors.black,
-                                        ),
-                                      onPressed: () {
-                                        setState(() {
-                                          isLikedList[index] =
-                                              !isLikedList[index];
-                                        });
-                                      },
-                                    ),
+                                    // IconButton(
+                                    //   iconSize: screenWidth * 0.08,
+                                    //   icon: Icon(
+                                    //     isLikedList[index]
+                                    //         ? Icons.favorite
+                                    //         : Icons.favorite_border,
+                                    //     color: isLikedList[index]
+                                    //         ? Colors.red
+                                    //         : Colors.black,
+                                    //   ),
+                                    //   onPressed: () {
+                                    //     setState(() {
+                                    //       isLikedList[index] =
+                                    //           isLikedList[index];
+                                    //     });
+                                    //   },
+                                    // ),
+                                    // Example usage in a widget
+LikeButton(
+  size: 30, // Optional: customize size
+  initialState: false, // Optional: set initial liked state
+  onTap: (isLiked) {
+    // Optional: handle tap event
+    print('Liked state: $isLiked');
+  },
+),
                                     SizedBox(width: screenWidth * 0.02),
                                   ],
                                 ),
@@ -868,7 +877,7 @@ class _SliverAppBarExampleState extends State<SliverAppBarExample> {
                                       child: Text(
                                         'Asia International University',
                                         style: TextStyle(
-                                          fontSize: screenWidth * 0.050,
+                                          fontSize: screenWidth * 0.045,
                                           fontWeight: FontWeight.bold,
                                           color: Color(0xFF1C3E5A),
                                         ),
@@ -880,7 +889,7 @@ class _SliverAppBarExampleState extends State<SliverAppBarExample> {
                                 Text(
                                   'plans in the field of investment',
                                   style: TextStyle(
-                                    fontSize: screenWidth * 0.060,
+                                    fontSize: screenWidth * 0.055,
                                     fontWeight: FontWeight.bold,
                                     color: Color(0xFF1C3E5A),
                                   ),
@@ -891,7 +900,7 @@ class _SliverAppBarExampleState extends State<SliverAppBarExample> {
                                 Text(
                                   'Meeting on 2024 Investment Plans',
                                   style: TextStyle(
-                                      fontSize: screenWidth * 0.050,
+                                      fontSize: screenWidth * 0.045,
                                       fontWeight: FontWeight.bold,
                                       color: Color(0xFF5F7388),
                                       fontFamily: "Poppins"),
@@ -904,7 +913,7 @@ class _SliverAppBarExampleState extends State<SliverAppBarExample> {
                                   'In 2023, investments grew by 1.3 times to 36 billion, launching 560 projects worth 70 trillion soums and creating opportunities to increase exports by 1 billion next year. For 2024, 43 billion in investments and over 300 major projects are planned, including 662 import-substitution products.\n\n'
                                   'President Mirziyoyev emphasized creating favorable conditions for foreign investors, expediting ongoing projects, and addressing export logistics challenges amid global difficulties. The goal is to double annual exports to 45 billion by 2030 by increasing high-value products and services and expanding export markets.',
                                   style: TextStyle(
-                                    fontSize: screenWidth * 0.045,
+                                    fontSize: screenWidth * 0.040,
                                     color: Colors.grey[800],
                                     height: 1.5,
                                   ),
@@ -1948,6 +1957,89 @@ class _SliverAppBarExampleState extends State<SliverAppBarExample> {
           fontSize: 12,
           color: Colors.blue,
         ),
+      ),
+    );
+  }
+}
+// import 'package:flutter/material.dart';
+
+class LikeButton extends StatefulWidget {
+  final double size;
+  final Function(bool)? onTap;
+  final bool initialState;
+
+  const LikeButton({
+    Key? key,
+    this.size = 24.0,
+    this.onTap,
+    this.initialState = false,
+  }) : super(key: key);
+
+  @override
+  State<LikeButton> createState() => _LikeButtonState();
+}
+
+class _LikeButtonState extends State<LikeButton> with SingleTickerProviderStateMixin {
+  late bool isLiked;
+  late AnimationController _controller;
+  late Animation<double> _scaleAnimation;
+
+  @override
+  void initState() {
+    super.initState();
+    isLiked = widget.initialState;
+    
+    _controller = AnimationController(
+      duration: const Duration(milliseconds: 200),
+      vsync: this,
+    );
+
+    _scaleAnimation = TweenSequence<double>([
+      TweenSequenceItem(
+        tween: Tween<double>(begin: 1.0, end: 1.2),
+        weight: 50,
+      ),
+      TweenSequenceItem(
+        tween: Tween<double>(begin: 1.2, end: 1.0),
+        weight: 50,
+      ),
+    ]).animate(_controller);
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  void _toggleLike() {
+    setState(() {
+      isLiked = !isLiked;
+      if (isLiked) {
+        _controller.forward();
+      } else {
+        _controller.reverse();
+      }
+    });
+    widget.onTap?.call(isLiked);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: _toggleLike,
+      child: AnimatedBuilder(
+        animation: _scaleAnimation,
+        builder: (context, child) {
+          return Transform.scale(
+            scale: _scaleAnimation.value,
+            child: Icon(
+              isLiked ? Icons.favorite : Icons.favorite_border,
+              size: widget.size,
+              color: isLiked ? Colors.red : Colors.grey,
+            ),
+          );
+        },
       ),
     );
   }

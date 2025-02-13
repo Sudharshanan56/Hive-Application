@@ -30,6 +30,7 @@ import 'PlayGround/TimerPeriodic.dart';
 import 'PlayGround/otp api.dart';
 import 'Profile Page/Profile Edit.dart';
 import 'Profile Page/Profile_1.dart';
+import 'Score  Card/Score_Card.dart';
 import 'University Profile/University_Profile.dart';
 
 void main() {
@@ -50,7 +51,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
         useMaterial3: true,
       ),
-      home: OTPVerificationScreen(),
+      home: ProfilePageEdit(),
     );
   }
 }
