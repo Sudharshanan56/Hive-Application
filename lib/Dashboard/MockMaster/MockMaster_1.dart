@@ -232,26 +232,40 @@ class _Mockmaster1State extends State<Mockmaster1> {
                       //   ),
                       // ),
                     ),
-                    Padding(
-                      padding: EdgeInsets.only(
-                        right: screenWidth * 0.6,
-                        top: screenHeight * 0.35,
-                        left: screenWidth * 0.07,
-                      ),
-                      child: GestureDetector(
-                        onTap: () => Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => MockMasterScreen()),
-                        ),
-                        child: CircleAvatar(
-                          radius: screenWidth * 0.06,
-                          child: const Icon(
-                            Icons.arrow_right_alt,
-                            size: 30,
+                    Stack(
+                      children: [
+                        Padding(
+                          padding: EdgeInsets.only(
+                            right: screenWidth * 0.6,
+                            top: screenHeight * 0.35,
+                            left: screenWidth * 0.07,
+                          ),
+                          child: GestureDetector(
+                            onTap: () => Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => MockMasterScreen(
+                                        navigateToPage: (int) {},
+                                      )),
+                            ),
+                            child: AnimatedPositioned(
+                              duration: Duration(seconds: 1),
+                              curve: Curves.easeInOut,
+                              left: _startAnimation
+                                  ? screenWidth * 0.07
+                                  : -screenWidth, // Starts off-screen
+                              top: screenHeight * 0.24,
+                              child: CircleAvatar(
+                                radius: screenWidth * 0.06,
+                                child: const Icon(
+                                  Icons.arrow_right_alt,
+                                  size: 30,
+                                ),
+                              ),
+                            ),
                           ),
                         ),
-                      ),
+                      ],
                     ),
                   ],
                 ),

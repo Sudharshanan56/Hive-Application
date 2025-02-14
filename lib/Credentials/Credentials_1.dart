@@ -119,8 +119,8 @@ import '../HomePage/HomePage1.dart';
 import 'package:http/http.dart' as http;
 
 class NEETFormPage extends StatefulWidget {
-  final String userId;
-  const NEETFormPage({Key? key, required this.userId}) : super(key: key);
+  //final String userId;
+  const NEETFormPage({super.key});
 
   @override
   State<NEETFormPage> createState() => _NEETFormPageState();
@@ -132,56 +132,56 @@ class _NEETFormPageState extends State<NEETFormPage> {
   TextEditingController neetscoreController = TextEditingController();
   bool isLoading = false;
 
-  Future<void> submitStudentDetails() async {
-    final String apiUrl = "http://localhost:3000/api/hiveapp/addStudent";
+  // Future<void> submitStudentDetails() async {
+  //   final String apiUrl = "http://localhost:3000/api/hiveapp/addStudent";
 
-    // Data to send
-    Map<String, dynamic> data = {
-      "UserId": widget.userId, // UserId from OTP page
-      "Name": nameController.text,
-      "NeedId": neetidController.text,
-      "NeedScore": int.tryParse(neetscoreController.text) ?? 0,
-    };
+  //   // Data to send
+  //   Map<String, dynamic> data = {
+  //     "UserId": widget.userId, // UserId from OTP page
+  //     "Name": nameController.text,
+  //     "NeedId": neetidController.text,
+  //     "NeedScore": int.tryParse(neetscoreController.text) ?? 0,
+  //   };
 
-    setState(() {
-      isLoading = true;
-    });
+  //   setState(() {
+  //     isLoading = true;
+  //   });
 
-    try {
-      final response = await http.post(
-        Uri.parse(apiUrl),
-        headers: {"Content-Type": "application/json"},
-        body: jsonEncode(data),
-      );
+  //   try {
+  //     final response = await http.post(
+  //       Uri.parse(apiUrl),
+  //       headers: {"Content-Type": "application/json"},
+  //       body: jsonEncode(data),
+  //     );
 
-      if (response.statusCode == 201 || response.statusCode == 200) {
-        // Successfully added
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text("Student Details Saved Successfully!")),
-        );
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) =>
-                BottomSheetApp(userId: widget.userId), // Pass userId here
-          ),
-        );
-      } else {
-        // Error response
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text("Failed to save details")),
-        );
-      }
-    } catch (error) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text("Error: $error")),
-      );
-    }
+  //     if (response.statusCode == 201 || response.statusCode == 200) {
+  //       // Successfully added
+  //       ScaffoldMessenger.of(context).showSnackBar(
+  //         SnackBar(content: Text("Student Details Saved Successfully!")),
+  //       );
+  //       Navigator.push(
+  //         context,
+  //         MaterialPageRoute(
+  //           builder: (context) =>
+  //               BottomSheetApp(userId: widget.userId), // Pass userId here
+  //         ),
+  //       );
+  //     } else {
+  //       // Error response
+  //       ScaffoldMessenger.of(context).showSnackBar(
+  //         SnackBar(content: Text("Failed to save details")),
+  //       );
+  //     }
+  //   } catch (error) {
+  //     ScaffoldMessenger.of(context).showSnackBar(
+  //       SnackBar(content: Text("Error: $error")),
+  //     );
+  //   }
 
-    setState(() {
-      isLoading = false;
-    });
-  }
+  //   setState(() {
+  //     isLoading = false;
+  //   });
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -276,12 +276,12 @@ class _NEETFormPageState extends State<NEETFormPage> {
                     ),
                     child: ElevatedButton(
                       onPressed: () {
-                        submitStudentDetails();
+                      //  submitStudentDetails();
                         Navigator.push(
                             context,
                             MaterialPageRoute(
                                 builder: (context) => BottomSheetApp(
-                                      userId: widget.userId,
+                                      //userId: widget.userId,
                                     )));
                       },
                       style: ElevatedButton.styleFrom(

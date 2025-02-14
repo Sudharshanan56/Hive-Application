@@ -269,7 +269,9 @@ class MockMasterScreen extends StatefulWidget {
   //  final CarouselController carouselController = CarouselController();
   // int _currentIndex = 0; // Track active page index
 
-  MockMasterScreen({super.key});
+  final Function(int) navigateToPage; // Callback to navigate
+
+  const MockMasterScreen({super.key, required this.navigateToPage});
 
   @override
   State<MockMasterScreen> createState() => _MockMasterScreenState();
@@ -307,10 +309,11 @@ class _MockMasterScreenState extends State<MockMasterScreen> {
           ),
           actions: [
             IconButton(
-              icon: const Icon(Icons.logout, color: Colors.black),
+              icon:  Icon(Icons.logout, color: Colors.black),
               onPressed: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => DashboardPage()));
+                widget.navigateToPage(2);
+                // Navigator.push(context,
+                //     MaterialPageRoute(builder: (context) => DashboardPage()));
               },
             ),
           ],

@@ -274,7 +274,7 @@ class _DashboardPageState extends State<DashboardPage> {
                       ],
                     ),
                     CircleAvatar(
-                      backgroundImage: const AssetImage('assets/person.png'),
+                      backgroundImage: AssetImage('assets/person.png'),
                       radius: screenWidth * 0.08,
                     ),
                   ],
@@ -284,7 +284,7 @@ class _DashboardPageState extends State<DashboardPage> {
               Container(
                 height: screenHeight * 0.07,
                 decoration: BoxDecoration(
-                  color: Colors.grey[200],
+                  color: Color(0xFFF1F1F1),
                   borderRadius: BorderRadius.circular(30),
                 ),
                 padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.05),
@@ -299,12 +299,15 @@ class _DashboardPageState extends State<DashboardPage> {
                     },
                     decoration: InputDecoration(
                       border: InputBorder.none,
-                      prefixIcon: const Icon(
+                      prefixIcon: Icon(
                         Icons.search,
-                        color: Color(0xFFF1F1F1),
+                        color: Color.fromARGB(95, 0, 0, 0),
                       ),
                       hintText: "Search",
-                      hintStyle: TextStyle(fontSize: screenWidth * 0.045),
+                      hintStyle: TextStyle(
+                        fontSize: screenWidth * 0.042,
+                        color: Color.fromARGB(95, 0, 0, 0),
+                      ),
                     ),
                   ),
                 ),
@@ -341,7 +344,7 @@ class _DashboardPageState extends State<DashboardPage> {
                               ),
                             ),
                             Positioned(
-                              left: screenWidth * 0.08,
+                              left: screenWidth * 0.07,
                               top: screenHeight * 0.09,
                               child: Center(
                                 child: Text(
@@ -380,13 +383,13 @@ class _DashboardPageState extends State<DashboardPage> {
                               ),
                             ),
                             Positioned(
-                              left: screenWidth * 0.08,
+                              left: screenWidth * 0.07,
                               top: screenHeight * 0.09,
                               child: Center(
                                 child: Text(
                                   "MockMaster",
                                   style: TextStyle(
-                                    color: Colors.white,
+                                    color: Color(0xFFF4FBFF),
                                     fontSize: screenWidth * 0.045,
                                     fontWeight: FontWeight.bold,
                                   ),
@@ -426,7 +429,7 @@ class _DashboardPageState extends State<DashboardPage> {
                         child: Text(
                           "Crack it Right:",
                           style: TextStyle(
-                            color: Colors.white,
+                            color: Color(0xFFF4FBFF),
                             fontSize: screenWidth * 0.045,
                           ),
                         ),
@@ -437,8 +440,8 @@ class _DashboardPageState extends State<DashboardPage> {
                         child: Text(
                           "Easy Exam Registration",
                           style: TextStyle(
-                            color: Colors.white,
-                            fontSize: screenWidth * 0.06,
+                            color: Color(0xFFF4FBFF),
+                            fontSize: screenWidth * 0.05,
                           ),
                         ),
                       ),

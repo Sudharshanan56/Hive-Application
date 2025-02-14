@@ -69,7 +69,7 @@ class _University_naviState extends State<University_navi> {
             tabBackgroundColor: const Color(0xff3C97D3),
             // Active tab background color
             color: Colors.black, // Inactive icon color
-            tabs: const [
+            tabs:  [
               // GButton(
               //   icon: Icons.home_outlined,
               //   // text: 'Home',
