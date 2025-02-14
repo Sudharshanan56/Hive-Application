@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:hive_application/Countdown/CountDown.dart';
 import 'package:hive_application/Credentials/Credentials_1.dart';
 import 'package:hive_application/Dashboard/Dashboard_1.dart';
@@ -48,7 +49,7 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        fontFamily: 'Poppins',
+        textTheme: GoogleFonts.poppinsTextTheme(), // Apply Poppins globally
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
         useMaterial3: true,
       ),

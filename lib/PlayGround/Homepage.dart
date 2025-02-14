@@ -67,6 +67,9 @@ class _PostsListState extends State<PostsList> {
                 controller: mail,
                 decoration: InputDecoration(
                   labelText: "Enter email",
+                  labelStyle: TextStyle(
+                    fontSize: 20,
+                  ),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
                   ),
@@ -174,7 +177,12 @@ class _PostsListState extends State<PostsList> {
                 child: ElevatedButton(
                   onPressed: () => Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => SliverAppBarExample()),
+                    MaterialPageRoute(builder: (context) => SliverAppBarExample(
+                      profileImage: post['profileImage']!, // Pass profile image
+            postImage: post['postImage']!,       // Pass post image
+            title: post['title']!,               // Pass title
+            description: post['description']!,
+                    )),
                   ),
                   style: ElevatedButton.styleFrom(
                     backgroundColor: const Color(0xFF5A9ECF),

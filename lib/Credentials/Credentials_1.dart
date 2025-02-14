@@ -112,6 +112,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import '../Bottom Navigation Bar/Navigation 1.dart';
 import '../HomePage/HomePage1.dart';
@@ -162,9 +163,7 @@ class _NEETFormPageState extends State<NEETFormPage> {
           context,
           MaterialPageRoute(
             builder: (context) =>
-                BottomSheetApp(
-                  userId: widget.userId
-                  ), // Pass userId here
+                BottomSheetApp(userId: widget.userId), // Pass userId here
           ),
         );
       } else {
@@ -218,9 +217,9 @@ class _NEETFormPageState extends State<NEETFormPage> {
                     children: [
                       Text(
                         "Step in and share\n  your story with us!",
-                        style: TextStyle(
+                        style: GoogleFonts.poppins(
                             fontSize: screenWidth * 0.07,
-                            fontWeight: FontWeight.bold,
+                            fontWeight: FontWeight.w500,
                             color: Color(0xFF111111)),
                         textAlign: TextAlign.center,
                       ),
@@ -231,7 +230,9 @@ class _NEETFormPageState extends State<NEETFormPage> {
                     controller: nameController,
                     decoration: InputDecoration(
                       labelText: "Enter Name",
-                      labelStyle: TextStyle(fontSize: screenWidth * 0.04),
+                      labelStyle: GoogleFonts.poppins(
+                        fontSize: screenWidth * 0.04,
+                      ),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
                       ),
@@ -242,7 +243,8 @@ class _NEETFormPageState extends State<NEETFormPage> {
                     controller: neetidController,
                     decoration: InputDecoration(
                       labelText: "Enter NEET ID",
-                      labelStyle: TextStyle(fontSize: screenWidth * 0.04),
+                      labelStyle:
+                          GoogleFonts.poppins(fontSize: screenWidth * 0.04),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
                       ),
@@ -253,7 +255,8 @@ class _NEETFormPageState extends State<NEETFormPage> {
                     controller: neetscoreController,
                     decoration: InputDecoration(
                       labelText: "Enter NEET Score",
-                      labelStyle: TextStyle(fontSize: screenWidth * 0.04),
+                      labelStyle:
+                          GoogleFonts.poppins(fontSize: screenWidth * 0.04),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
                       ),
@@ -299,7 +302,7 @@ class _NEETFormPageState extends State<NEETFormPage> {
                   ),
                   SizedBox(height: screenHeight * 0.03),
                   Padding(
-                    padding: EdgeInsets.only(left: screenWidth * 0.2),
+                    padding: EdgeInsets.only(left: screenWidth * 0.15),
                     child: Row(
                       children: [
                         Center(

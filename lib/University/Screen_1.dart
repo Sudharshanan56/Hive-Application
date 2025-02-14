@@ -676,8 +676,17 @@ import 'package:flutter/material.dart';
 import 'package:like_button/like_button.dart';
 
 class SliverAppBarExample extends StatefulWidget {
-  const SliverAppBarExample({super.key});
-
+  final String profileImage;
+  final String postImage;
+  final String title;
+  final String description;
+  const SliverAppBarExample({
+    Key? key,
+    required this.profileImage,
+    required this.postImage,
+    required this.title,
+    required this.description,
+  }) : super(key: key);
   @override
   State createState() => _SliverAppBarExampleState();
 }
@@ -695,6 +704,15 @@ class _SliverAppBarExampleState extends State<SliverAppBarExample> {
       'comment': 'AI in diagnostics is indeed a game-changer!',
       'replies': [],
     },
+  ];
+  final List<Map<String, String>> Post_data = [
+    {
+      'heading': 'Indo-Russian Education Summit',
+      'highlights': 'Education Summit Highlights',
+      'content': '                                  On December 19, President Shavkat Mirziyoyev held a meeting to review 2024 investment outcomes and set tasks for the upcoming year. Since 2017, 188 billion in investments have been made, including 87 billion in foreign investments, boosting GDP growth with investments now exceeding 30% of GDP.\n\n'
+          'In 2023, investments grew by 1.3 times to 36 billion, launching 560 projects worth 70 trillion soums and creating opportunities to increase exports by 1 billion next year. For 2024, 43 billion in investments and over 300 major projects are planned, including 662 import-substitution products.\n\n'
+          'President Mirziyoyev emphasized creating favorable conditions for foreign investors, expediting ongoing projects, and addressing export logistics challenges amid global difficulties. The goal is to double annual exports to 45 billion by 2030 by increasing high-value products and services and expanding export markets.'
+    }
   ];
   List<bool> isLikedList = [];
 
@@ -785,7 +803,7 @@ class _SliverAppBarExampleState extends State<SliverAppBarExample> {
                     // decoration:
                     //     BoxDecoration(border: Border.all(color: Colors.black)),
                     child: Image.asset(
-                      "assets/person.png",
+                      widget.postImage,
                       fit: BoxFit.cover,
                     ),
                   ),
@@ -844,14 +862,15 @@ class _SliverAppBarExampleState extends State<SliverAppBarExample> {
                                     //   },
                                     // ),
                                     // Example usage in a widget
-LikeButton(
-  size: 30, // Optional: customize size
-  initialState: false, // Optional: set initial liked state
-  onTap: (isLiked) {
-    // Optional: handle tap event
-    print('Liked state: $isLiked');
-  },
-),
+                                    LikeButton(
+                                      size: 30, // Optional: customize size
+                                      initialState:
+                                          false, // Optional: set initial liked state
+                                      onTap: (isLiked) {
+                                        // Optional: handle tap event
+                                        print('Liked state: $isLiked');
+                                      },
+                                    ),
                                     SizedBox(width: screenWidth * 0.02),
                                   ],
                                 ),
@@ -867,7 +886,7 @@ LikeButton(
                                       child: CircleAvatar(
                                         backgroundColor: Colors.blue[50],
                                         radius: screenWidth * 0.064,
-                                        child: Image.asset("assets/7.png"),
+                                        child: Image.asset(widget.profileImage),
                                       ),
                                     ),
                                     SizedBox(
@@ -875,9 +894,9 @@ LikeButton(
                                     ),
                                     Center(
                                       child: Text(
-                                        'Asia International University',
+                                        widget.title,
                                         style: TextStyle(
-                                          fontSize: screenWidth * 0.045,
+                                          fontSize: screenWidth * 0.040,
                                           fontWeight: FontWeight.bold,
                                           color: Color(0xFF1C3E5A),
                                         ),
@@ -886,10 +905,13 @@ LikeButton(
                                     SizedBox(height: 4),
                                   ],
                                 ),
+                                SizedBox(
+                                  height: screenHeight * 0.02,
+                                ),
                                 Text(
-                                  'plans in the field of investment',
+                                  Post_data[0]['heading']!,
                                   style: TextStyle(
-                                    fontSize: screenWidth * 0.055,
+                                    fontSize: screenWidth * 0.050,
                                     fontWeight: FontWeight.bold,
                                     color: Color(0xFF1C3E5A),
                                   ),
@@ -898,22 +920,20 @@ LikeButton(
 
                                 // Subtitle
                                 Text(
-                                  'Meeting on 2024 Investment Plans',
+                                  Post_data[0]['highlights']!,
                                   style: TextStyle(
-                                      fontSize: screenWidth * 0.045,
+                                      fontSize: screenWidth * 0.040,
                                       fontWeight: FontWeight.bold,
                                       color: Color(0xFF5F7388),
                                       fontFamily: "Poppins"),
                                 ),
-                                SizedBox(height: screenHeight * 0.016),
+                                SizedBox(height: screenHeight * 0.020),
 
                                 // Body Paragraph
                                 Text(
-                                  'On December 19, President Shavkat Mirziyoyev held a meeting to review 2024 investment outcomes and set tasks for the upcoming year. Since 2017, 188 billion in investments have been made, including 87 billion in foreign investments, boosting GDP growth with investments now exceeding 30% of GDP.\n\n'
-                                  'In 2023, investments grew by 1.3 times to 36 billion, launching 560 projects worth 70 trillion soums and creating opportunities to increase exports by 1 billion next year. For 2024, 43 billion in investments and over 300 major projects are planned, including 662 import-substitution products.\n\n'
-                                  'President Mirziyoyev emphasized creating favorable conditions for foreign investors, expediting ongoing projects, and addressing export logistics challenges amid global difficulties. The goal is to double annual exports to 45 billion by 2030 by increasing high-value products and services and expanding export markets.',
+                                  Post_data[0]['content']!,
                                   style: TextStyle(
-                                    fontSize: screenWidth * 0.040,
+                                    fontSize: screenWidth * 0.035,
                                     color: Colors.grey[800],
                                     height: 1.5,
                                   ),
@@ -932,6 +952,23 @@ LikeButton(
             SliverToBoxAdapter(
               child: Column(
                 children: [
+                  Row(
+                    children: [
+                      SizedBox(
+                        width: screenWidth * 0.050,
+                      ),
+                      Text(
+                        "Comments",
+                        style: TextStyle(
+                            fontSize: screenWidth * 0.05,
+                            color: Color(0xFF1C3E5A),
+                            fontWeight: FontWeight.bold),
+                      ),
+                    ],
+                  ),
+                  SizedBox(
+                    height: screenHeight * 0.020,
+                  ),
                   // Top Comment Box
                   Container(
                     height: 180,
@@ -969,6 +1006,9 @@ LikeButton(
                                   radius: 20,
                                   backgroundImage: AssetImage(
                                       'assets/profile_placeholder.png'),
+                                ),
+                                SizedBox(
+                                  width: screenWidth * 0.020,
                                 ),
                                 Text("Maria T"),
                               ],
@@ -1042,7 +1082,7 @@ LikeButton(
                       ),
                     ),
                   ),
-                  SizedBox(height: 15),
+                  // SizedBox(height: screenHeight * 0.08),
 
                   // Comments List
                   // ListView.builder(
@@ -1979,7 +2019,8 @@ class LikeButton extends StatefulWidget {
   State<LikeButton> createState() => _LikeButtonState();
 }
 
-class _LikeButtonState extends State<LikeButton> with SingleTickerProviderStateMixin {
+class _LikeButtonState extends State<LikeButton>
+    with SingleTickerProviderStateMixin {
   late bool isLiked;
   late AnimationController _controller;
   late Animation<double> _scaleAnimation;
@@ -1988,7 +2029,7 @@ class _LikeButtonState extends State<LikeButton> with SingleTickerProviderStateM
   void initState() {
     super.initState();
     isLiked = widget.initialState;
-    
+
     _controller = AnimationController(
       duration: const Duration(milliseconds: 200),
       vsync: this,

@@ -421,7 +421,7 @@ class _HomepageWithoutEmailState extends State<HomepageWithoutEmail> {
       'location': 'Moscow, RU',
       'description': 'Mari State University Shines at',
       'highlight': 'Indo-Russian Education Summit',
-      'postImage': 'person_2.png', // Replace with actual post image
+      'postImage': 'post_img_1.png', // Replace with actual post image
     },
     {
       'profileImage': '8.png',
@@ -654,12 +654,23 @@ class _PostsListState extends State<PostsList> {
                           EdgeInsets.only(left: 0), // Moves it to the left
 
                       leading: Container(
-                        // decoration: BoxDecoration(border: Border.all()),
-                        child: CircleAvatar(
-                          backgroundImage: AssetImage(post['profileImage']!),
-                          radius: screenWidth * 0.075,
+                        height: screenHeight * 0.18,
+                        width: screenWidth * 0.13,
+                        decoration: BoxDecoration(
+                            // border: Border.all(),
+                            borderRadius: BorderRadius.circular(100)),
+                        child: Image(
+                          image: AssetImage(post['profileImage']!),
+                          fit: BoxFit.fill,
                         ),
                       ),
+                      // Container(
+                      //   // decoration: BoxDecoration(border: Border.all()),
+                      //   child: CircleAvatar(
+                      //     backgroundImage: AssetImage(post['profileImage']!),
+                      //     radius: screenWidth * 0.075,
+                      //   ),
+                      // ),
                       title: Text(
                         post['title']!,
                         style: TextStyle(fontSize: screenWidth * 0.037),
@@ -686,7 +697,7 @@ class _PostsListState extends State<PostsList> {
                   Row(
                     children: [
                       Text(
-                        '${post['description']} Shines at',
+                        '${post['description']} ',
                         style: TextStyle(
                           fontSize: screenWidth * 0.03,
                           fontWeight: FontWeight.w500,
@@ -723,12 +734,12 @@ class _PostsListState extends State<PostsList> {
                         ),
                         child: Center(
                           child: Container(
-                              height: screenHeight * 0.30,
+                              height: screenHeight * 0.32,
                               width: screenWidth * 0.7,
                               // decoration: BoxDecoration(border: Border.all()),
                               child: Image(
                                 image: AssetImage(post['postImage']!),
-                                fit: BoxFit.fill,
+                                fit: BoxFit.cover,
                               )),
                         ),
                       )),
@@ -748,7 +759,14 @@ class _PostsListState extends State<PostsList> {
                             context,
                             PageTransition(
                                 type: PageTransitionType.bottomToTop,
-                                child: SliverAppBarExample(),
+                                child: SliverAppBarExample(
+                                  profileImage: post[
+                                      'profileImage']!, // Pass profile image
+                                  postImage:
+                                      post['postImage']!, // Pass post image
+                                  title: post['title']!, // Pass title
+                                  description: post['description']!,
+                                ),
                                 duration: const Duration(milliseconds: 300)),
                           ),
                           style: ElevatedButton.styleFrom(
