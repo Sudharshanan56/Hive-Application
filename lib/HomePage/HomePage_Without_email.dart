@@ -414,6 +414,32 @@ class HomepageWithoutEmail extends StatefulWidget {
 }
 
 class _HomepageWithoutEmailState extends State<HomepageWithoutEmail> {
+  final List<Map<String, String>> posts_List = [
+    {
+      'profileImage': '7.png', // Replace with actual profile image
+      'title': 'Mari State University',
+      'location': 'Moscow, RU',
+      'description': 'Mari State University Shines at',
+      'highlight': 'Indo-Russian Education Summit',
+      'postImage': 'post_img_1.png', // Replace with actual post image
+    },
+    {
+      'profileImage': '8.png',
+      'title': 'Oxford University',
+      'location': 'Oxford, UK',
+      'description': 'Oxford University Represents at',
+      'highlight': 'Global Research Meet 2024',
+      'postImage': 'person_3.png',
+    },
+    {
+      'profileImage': '9.png',
+      'title': 'Harvard University',
+      'location': 'Cambridge, USA',
+      'description': 'Harvard Highlights Innovations at',
+      'highlight': 'Tech Summit 2024',
+      'postImage': 'person_4.png',
+    },
+  ];
   @override
   void initState() {
     super.initState();
@@ -539,7 +565,7 @@ class _HomepageWithoutEmailState extends State<HomepageWithoutEmail> {
               ),
             ),
           ),
-          body: SafeArea(child: PostsList(posts: posts)),
+          body: SafeArea(child: PostsList(posts: posts_List)),
           floatingActionButton: Padding(
             padding: EdgeInsets.only(bottom: 80),
             child: FloatingActionButton(
@@ -628,14 +654,25 @@ class _PostsListState extends State<PostsList> {
                           EdgeInsets.only(left: 0), // Moves it to the left
 
                       leading: Container(
-                        // decoration: BoxDecoration(border: Border.all()),
-                        child: CircleAvatar(
-                          backgroundImage: const AssetImage('assets/7.png'),
-                          radius: screenWidth * 0.075,
+                        height: screenHeight * 0.18,
+                        width: screenWidth * 0.13,
+                        decoration: BoxDecoration(
+                            // border: Border.all(),
+                            borderRadius: BorderRadius.circular(100)),
+                        child: Image(
+                          image: AssetImage(post['profileImage']!),
+                          fit: BoxFit.fill,
                         ),
                       ),
+                      // Container(
+                      //   // decoration: BoxDecoration(border: Border.all()),
+                      //   child: CircleAvatar(
+                      //     backgroundImage: AssetImage(post['profileImage']!),
+                      //     radius: screenWidth * 0.075,
+                      //   ),
+                      // ),
                       title: Text(
-                        post['university']!,
+                        post['title']!,
                         style: TextStyle(fontSize: screenWidth * 0.037),
                       ),
                       subtitle: Text(
@@ -660,7 +697,7 @@ class _PostsListState extends State<PostsList> {
                   Row(
                     children: [
                       Text(
-                        '${post['university']} Shines at',
+                        '${post['description']} ',
                         style: TextStyle(
                           fontSize: screenWidth * 0.03,
                           fontWeight: FontWeight.w500,
@@ -677,7 +714,7 @@ class _PostsListState extends State<PostsList> {
                   // SizedBox(height: screenHeight * 0.001),
                   Row(
                     children: [
-                      Text(post['event']!,
+                      Text(post['highlight']!,
                           style: TextStyle(
                               fontSize: screenWidth * 0.038,
                               // fontWeight: FontWeight.bold,
@@ -697,12 +734,12 @@ class _PostsListState extends State<PostsList> {
                         ),
                         child: Center(
                           child: Container(
-                              height: screenHeight * 0.30,
+                              height: screenHeight * 0.32,
                               width: screenWidth * 0.7,
                               // decoration: BoxDecoration(border: Border.all()),
                               child: Image(
-                                image: AssetImage("assets/post1.png"),
-                                fit: BoxFit.fill,
+                                image: AssetImage(post['postImage']!),
+                                fit: BoxFit.cover,
                               )),
                         ),
                       )),
@@ -722,7 +759,14 @@ class _PostsListState extends State<PostsList> {
                             context,
                             PageTransition(
                                 type: PageTransitionType.bottomToTop,
-                                child: SliverAppBarExample(),
+                                child: SliverAppBarExample(
+                                  profileImage: post[
+                                      'profileImage']!, // Pass profile image
+                                  postImage:
+                                      post['postImage']!, // Pass post image
+                                  title: post['title']!, // Pass title
+                                  description: post['description']!,
+                                ),
                                 duration: const Duration(milliseconds: 300)),
                           ),
                           style: ElevatedButton.styleFrom(

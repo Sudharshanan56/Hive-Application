@@ -26,10 +26,10 @@ class _University_naviState extends State<University_navi> {
 
   static final List<Widget> _widgetOptions = <Widget>[
     // Intro1(),
-    const PopularTopicsScreen(),
+    // const PopularTopicsScreen(),
     Notifications(),
     // Notification_1(),
-    UnivProfilePage(),
+    // UnivProfilePage(),
   ];
 
   @override

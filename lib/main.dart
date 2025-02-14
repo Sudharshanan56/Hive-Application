@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:hive_application/Countdown/CountDown.dart';
 import 'package:hive_application/Credentials/Credentials_1.dart';
 import 'package:hive_application/Dashboard/Dashboard_1.dart';
@@ -26,6 +27,7 @@ import 'PlayGround/Color animation/Color_pageRouteBuilder.dart';
 import 'PlayGround/Color animation/Hero_Color_animation.dart';
 import 'PlayGround/Color animation/PageTransition_blackbox.dart';
 import 'PlayGround/New_Profile_Page.dart';
+import 'PlayGround/Post_List_Data.dart';
 import 'PlayGround/TimerPeriodic.dart';
 import 'PlayGround/otp api.dart';
 import 'Profile Page/Profile Edit.dart';
@@ -47,7 +49,7 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        fontFamily: 'Poppins',
+        textTheme: GoogleFonts.poppinsTextTheme(), // Apply Poppins globally
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
         useMaterial3: true,
       ),

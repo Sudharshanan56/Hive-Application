@@ -787,7 +787,7 @@ class _OTPVerificationScreenState extends State<OTPVerificationScreen> {
                                       color:
                                           Color.fromARGB(142, 102, 102, 102)),
                                   color: Color(0xFFFFFFFF),
-                                  borderRadius: BorderRadius.circular(8),
+                                  borderRadius: BorderRadius.circular(10),
                                 ),
                                 child: Padding(
                                   padding: EdgeInsets.all(8.0),

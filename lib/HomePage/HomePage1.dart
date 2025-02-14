@@ -987,8 +987,8 @@ class _BottomSheetAppState extends State<BottomSheetApp> {
                     controller: mail,
                     style: TextStyle(fontSize: screenWidth * 0.04),
                     decoration: InputDecoration(
-                      labelText: "Enter email",
-                      labelStyle: TextStyle(fontSize: screenWidth * 0.04),
+                      labelText: " Enter email",
+                      labelStyle: TextStyle(fontSize: screenWidth * 0.038),
                       border: OutlineInputBorder(
                         borderRadius:
                             BorderRadius.circular(screenWidth * 0.025),
@@ -1572,7 +1572,13 @@ class _PostsListState extends State<PostsList> {
                   onPressed: () => Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => SliverAppBarExample()),
+                        builder: (context) => SliverAppBarExample(
+                              profileImage:
+                                  post['profileImage']!, // Pass profile image
+                              postImage: post['postImage']!, // Pass post image
+                              title: post['title']!, // Pass title
+                              description: post['description']!,
+                            )),
                   ),
                   style: ElevatedButton.styleFrom(
                     backgroundColor: const Color(0xFF5A9ECF),
