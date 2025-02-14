@@ -193,23 +193,23 @@ class _Page4State extends State<Page4> {
         body: SafeArea(
           child: Stack(
             children: [
-              Padding(
-                padding: const EdgeInsets.only(left: 50),
-                child: Container(
-                  height: screenHeight * 0.48,
-                  width: screenWidth * 0.72,
-                  decoration: BoxDecoration(
-                    color: Color(0xFFF4FAFF),
-                    // border: Border.all(
-                    //   style: BorderStyle.solid,
-                    // ),
-                    borderRadius: BorderRadius.only(
-                      bottomRight: Radius.circular(screenWidth * 0.5),
-                      bottomLeft: Radius.circular(screenWidth * 0.5),
-                    ),
-                  ),
-                ),
-              ),
+              // Padding(
+              //   padding: EdgeInsets.only(left: 0),
+              //   child: Container(
+              //     height: screenHeight * 0.48,
+              //     width: screenWidth * 0.72,
+              //     decoration: BoxDecoration(
+              //       color: Color(0xFFF4FAFF),
+              //       // border: Border.all(
+              //       //   style: BorderStyle.solid,
+              //       // ),
+              //       borderRadius: BorderRadius.only(
+              //         bottomRight: Radius.circular(screenWidth * 0.5),
+              //         bottomLeft: Radius.circular(screenWidth * 0.5),
+              //       ),
+              //     ),
+              //   ),
+              // ),
               // Container(
               //     // decoration:
               //     // BoxDecoration(border: Border.all(style: BorderStyle.solid)),
@@ -256,25 +256,23 @@ class _Page4State extends State<Page4> {
               //     )),
 
               // Skip Button
-              SafeArea(
-                child: Padding(
-                  padding: EdgeInsets.only(
-                      left: screenWidth * 0.8, top: screenHeight * 0.05),
-                  child: TextButton(
-                    onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => LoginSelectionScreen()));
-                      // Handle Skip button press
-                    },
-                    child: Text(
-                      "Skip",
-                      style: TextStyle(
-                        color: const Color(0xFF333333),
-                        fontSize: screenWidth * 0.040, // Responsive font size
-                        //fontWeight: FontWeight.bold,
-                      ),
+              Padding(
+                padding: EdgeInsets.only(
+                    left: screenWidth * 0.8, top: screenHeight * 0.05),
+                child: TextButton(
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => LoginSelectionScreen()));
+                    // Handle Skip button press
+                  },
+                  child: Text(
+                    "Skip",
+                    style: TextStyle(
+                      color: const Color(0xFF333333),
+                      fontSize: screenWidth * 0.040, // Responsive font size
+                      //fontWeight: FontWeight.bold,
                     ),
                   ),
                 ),
@@ -282,8 +280,8 @@ class _Page4State extends State<Page4> {
 
               // Main Content
               Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
+                // mainAxisAlignment: MainAxisAlignment.center,
+                //crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   // Illustration Image
                   Padding(
@@ -372,7 +370,7 @@ class _Page4State extends State<Page4> {
                     ],
                   ),
                   SizedBox(
-                    height: screenHeight * 0.045,
+                    height: screenHeight * 0.11,
                   ),
                   //  Spacer(),
 

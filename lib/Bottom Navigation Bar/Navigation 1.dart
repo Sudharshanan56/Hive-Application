@@ -115,12 +115,12 @@ class _navi_homeState extends State<navi_home> {
 
   static final List<Widget> _widgetOptions = <Widget>[
     HomepageWithoutEmail(
-      // GoToProfile: () {
-      //     setState(() {
-      //       _selectedIndex = 2;
-      //     });
-      //   },
-    ),
+        // GoToProfile: () {
+        //     setState(() {
+        //       _selectedIndex = 2;
+        //     });
+        //   },
+        ),
     UniversityListPage(),
     DashboardPage(),
     const Notification_1(),
@@ -149,7 +149,8 @@ class _navi_homeState extends State<navi_home> {
               child: Container(
                 decoration: BoxDecoration(
                   color: Colors.white, // Adjust transparency here
-                  borderRadius: BorderRadius.circular(screenWidth * 0.5), // Curved edges
+                  borderRadius:
+                      BorderRadius.circular(screenWidth * 0.5), // Curved edges
                   boxShadow: [
                     BoxShadow(
                       blurRadius: 20,
@@ -167,7 +168,6 @@ class _navi_homeState extends State<navi_home> {
                     horizontal: screenWidth * 0.04,
                     vertical: screenHeight * 0.01,
                   ),
-                  
                   child: GNav(
                     backgroundColor: Colors.transparent,
                     rippleColor: Colors.grey[300]!,
