@@ -121,7 +121,7 @@ class ResultScreen extends StatelessWidget {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => MockMasterScreen()),
+                    MaterialPageRoute(builder: (context) => MockMasterScreen(navigateToPage: (int ) {  },)),
                   );
                 },
                 style: ElevatedButton.styleFrom(

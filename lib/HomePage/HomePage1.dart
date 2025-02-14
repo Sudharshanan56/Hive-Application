@@ -708,8 +708,8 @@ import '../University/Screen_1.dart';
 import 'package:http/http.dart' as http;
 
 class BottomSheetApp extends StatefulWidget {
-  final String userId;
-  const BottomSheetApp({Key? key, required this.userId}) : super(key: key);
+  // final String userId;
+  const BottomSheetApp({super.key});
 
   @override
   State<BottomSheetApp> createState() => _BottomSheetAppState();
@@ -813,24 +813,30 @@ class _BottomSheetAppState extends State<BottomSheetApp> {
                     ],
                   ),
                   SizedBox(height: screenHeight * 0.02),
-                  Row(
-                    children: [
-                      Text(
-                        "OTP sent to ",
-                        style: TextStyle(
-                          //fontWeight: FontWeight.bold,
-                          fontSize: screenWidth * 0.03,
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.pop(context);
+                      _showEmailVerificationSheet();
+                    },
+                    child: Row(
+                      children: [
+                        Text(
+                          "OTP sent to ",
+                          style: TextStyle(
+                            //fontWeight: FontWeight.bold,
+                            fontSize: screenWidth * 0.03,
+                          ),
                         ),
-                      ),
-                      Text(
-                        "sample@gmail.com",
-                        style: TextStyle(
-                          color: Color(0xFF3C97D3),
-                          fontSize: screenWidth * 0.03,
+                        Text(
+                          "sample@gmail.com",
+                          style: TextStyle(
+                            color: Color(0xFF3C97D3),
+                            fontSize: screenWidth * 0.03,
+                          ),
                         ),
-                      ),
-                      Icon(Icons.edit, size: screenWidth * 0.05),
-                    ],
+                        Icon(Icons.edit, size: screenWidth * 0.05),
+                      ],
+                    ),
                   ),
                   SizedBox(height: screenHeight * 0.02),
                   Row(
@@ -1013,8 +1019,8 @@ class _BottomSheetAppState extends State<BottomSheetApp> {
                     height: screenHeight * 0.07,
                     width: double.infinity,
                     child: ElevatedButton(
-                      onPressed: () async {
-                        await _submitEmail();
+                      onPressed: () {
+                        //await _submitEmail();
                         Navigator.pop(context);
                         _otp_verification(context);
                       },
@@ -1047,41 +1053,41 @@ class _BottomSheetAppState extends State<BottomSheetApp> {
     );
   }
 
-  Future<void> _submitEmail() async {
-    final email = mail.text;
+  // Future<void> _submitEmail() async {
+  //   final email = mail.text;
 
-    // API URL
-    final url = Uri.parse('http://localhost:3000/api/hiveapp/addEmail');
+  //   // API URL
+  //   final url = Uri.parse('http://localhost:3000/api/hiveapp/addEmail');
 
-    // Prepare the data to send
-    final Map<String, String> data = {
-      'userId': widget.userId,
-      'email': email,
-    };
+  //   // Prepare the data to send
+  //   final Map<String, String> data = {
+  //     'userId': widget.userId,
+  //     'email': email,
+  //   };
 
-    try {
-      final response = await http.post(
-        url,
-        headers: {'Content-Type': 'application/json'},
-        body: jsonEncode(data),
-      );
+  //   try {
+  //     final response = await http.post(
+  //       url,
+  //       headers: {'Content-Type': 'application/json'},
+  //       body: jsonEncode(data),
+  //     );
 
-      if (response.statusCode == 200) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Email saved successfully!')),
-        );
-      } else {
-        final errorData = jsonDecode(response.body);
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Error: ${errorData['message']}')),
-        );
-      }
-    } catch (e) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('An error occurred: $e')),
-      );
-    }
-  }
+  //     if (response.statusCode == 200) {
+  //       ScaffoldMessenger.of(context).showSnackBar(
+  //         SnackBar(content: Text('Email saved successfully!')),
+  //       );
+  //     } else {
+  //       final errorData = jsonDecode(response.body);
+  //       ScaffoldMessenger.of(context).showSnackBar(
+  //         SnackBar(content: Text('Error: ${errorData['message']}')),
+  //       );
+  //     }
+  //   } catch (e) {
+  //     ScaffoldMessenger.of(context).showSnackBar(
+  //       SnackBar(content: Text('An error occurred: $e')),
+  //     );
+  //   }
+  // }
 
   @override
   Widget build(BuildContext context) {
