@@ -425,19 +425,35 @@ class _HomepageWithoutEmailState extends State<HomepageWithoutEmail> {
     },
     {
       'profileImage': '8.png',
-      'title': 'Oxford University',
-      'location': 'Oxford, UK',
-      'description': 'Oxford University Represents at',
-      'highlight': 'Global Research Meet 2024',
-      'postImage': 'person_3.png',
+      'title': 'Asia International University',
+      'location': 'bukhara city, UZ',
+      'description': 'Information was provided on',
+      'highlight': 'plans in the field of investment',
+      'postImage': 'post_img_2.png',
     },
     {
       'profileImage': '9.png',
-      'title': 'Harvard University',
-      'location': 'Cambridge, USA',
-      'description': 'Harvard Highlights Innovations at',
-      'highlight': 'Tech Summit 2024',
-      'postImage': 'person_4.png',
+      'title': 'Jalal-Abad State University',
+      'location': 'jalal-Abad,KGZ',
+      'description': '',
+      'highlight': 'ASU Graduation 2018-24 Batch',
+      'postImage': 'post_img_3.png',
+    },
+    {
+      'profileImage': 'post_img_4.png',
+      'title': 'Jalal-Abad State University',
+      'location': 'jalal-Abad,KGZ',
+      'description': '',
+      'highlight': 'ASU Graduation 2018-24 Batch',
+      'postImage': 'post_img_3.png',
+    },
+    {
+      'profileImage': '9.png',
+      'title': 'Jalal-Abad State University',
+      'location': 'jalal-Abad,KGZ',
+      'description': '',
+      'highlight': 'ASU Graduation 2018-24 Batch',
+      'postImage': 'post_img_3.png',
     },
   ];
   @override
@@ -656,12 +672,14 @@ class _PostsListState extends State<PostsList> {
                       leading: Container(
                         height: screenHeight * 0.18,
                         width: screenWidth * 0.13,
+                        // height: 50,
+                        // width: 50,
                         decoration: BoxDecoration(
                             // border: Border.all(),
                             borderRadius: BorderRadius.circular(100)),
                         child: Image(
                           image: AssetImage(post['profileImage']!),
-                          fit: BoxFit.fill,
+                          fit: BoxFit.contain,
                         ),
                       ),
                       // Container(
@@ -748,7 +766,7 @@ class _PostsListState extends State<PostsList> {
                     children: [
                       SizedBox(
                         height: screenHeight * 0.07,
-                        width: screenWidth * 0.78,
+                        width: screenWidth * 0.75,
                         child: ElevatedButton(
                           onPressed: () =>
                               //     Navigator.push(
@@ -770,7 +788,7 @@ class _PostsListState extends State<PostsList> {
                                 duration: const Duration(milliseconds: 300)),
                           ),
                           style: ElevatedButton.styleFrom(
-                            backgroundColor: const Color(0xFF5A9ECF),
+                            backgroundColor: Color(0xFF5A9ECF),
                             shape: RoundedRectangleBorder(
                               borderRadius:
                                   BorderRadius.circular(screenWidth * 0.2),
