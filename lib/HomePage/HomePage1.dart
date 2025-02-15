@@ -1575,7 +1575,8 @@ class _PostsListState extends State<PostsList> {
                 height: screenHeight * 0.07,
                 width: screenWidth * 0.75,
                 child: ElevatedButton(
-                  onPressed: () => Navigator.push(
+                  onPressed: () => 
+                  Navigator.push(
                     context,
                     MaterialPageRoute(
                         builder: (context) => SliverAppBarExample(
@@ -1584,6 +1585,7 @@ class _PostsListState extends State<PostsList> {
                               postImage: post['postImage']!, // Pass post image
                               title: post['title']!, // Pass title
                               description: post['description']!,
+index: 0, 
                             )),
                   ),
                   style: ElevatedButton.styleFrom(

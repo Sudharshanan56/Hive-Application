@@ -680,12 +680,14 @@ class SliverAppBarExample extends StatefulWidget {
   final String postImage;
   final String title;
   final String description;
+  final int index;
   const SliverAppBarExample({
     Key? key,
     required this.profileImage,
     required this.postImage,
     required this.title,
     required this.description,
+    required this.index,
   }) : super(key: key);
   @override
   State createState() => _SliverAppBarExampleState();
@@ -709,16 +711,33 @@ class _SliverAppBarExampleState extends State<SliverAppBarExample> {
     {
       'heading': 'Indo-Russian Education Summit',
       'highlights': 'Education Summit Highlights',
-      'content': '        On December 19, President Shavkat Mirziyoyev held a meeting to review 2024 investment outcomes and set tasks for the upcoming year. Since 2017, 188 billion in investments have been made, including 87 billion in foreign investments, boosting GDP growth with investments now exceeding 30% of GDP.\n\n'
+      'content':
+          '        In a landmark move towards fostering cross-cultural educational ties, Mari State University with great enthusiasm participated at the Indo-Russian Education Summit held in New Delhi. From April 11th to April 13th, the university showcased its dedication to global academic cooperation and excellence.\n\nThe participation of Mari State University in this esteemed summit underscores its commitment to enhancing international collaborations and promoting educational opportunities on a global scale. With a focus on strengthening Indo-Russian educational relations, the university played a pivotal role in facilitating meaningful exchanges and partnerships between institutions from both nations.'
+    },
+    {
+      'heading': 'plans in the field of investment',
+      'highlights': 'Meeting on 2024 Investment Plans',
+      'content': '          On December 19, President Shavkat Mirziyoyev held a meeting to review 2024 investment outcomes and set tasks for the upcoming year. Since 2017, 188 billion in investments have been made, including 87 billion in foreign investments, boosting GDP growth with investments now exceeding 30% of GDP.\n\n'
           'In 2023, investments grew by 1.3 times to 36 billion, launching 560 projects worth 70 trillion soums and creating opportunities to increase exports by 1 billion next year. For 2024, 43 billion in investments and over 300 major projects are planned, including 662 import-substitution products.\n\n'
           'President Mirziyoyev emphasized creating favorable conditions for foreign investors, expediting ongoing projects, and addressing export logistics challenges amid global difficulties. The goal is to double annual exports to 45 billion by 2030 by increasing high-value products and services and expanding export markets.'
     },
     {
-      'heading': 'Indo-Russian Education Summit',
-      'highlights': 'Education Summit Highlights',
-      'content': '          On December 19, President Shavkat Mirziyoyev held a meeting to review 2024 investment outcomes and set tasks for the upcoming year. Since 2017, 188 billion in investments have been made, including 87 billion in foreign investments, boosting GDP growth with investments now exceeding 30% of GDP.\n\n'
-          'In 2023, investments grew by 1.3 times to 36 billion, launching 560 projects worth 70 trillion soums and creating opportunities to increase exports by 1 billion next year. For 2024, 43 billion in investments and over 300 major projects are planned, including 662 import-substitution products.\n\n'
-          'President Mirziyoyev emphasized creating favorable conditions for foreign investors, expediting ongoing projects, and addressing export logistics challenges amid global difficulties. The goal is to double annual exports to 45 billion by 2030 by increasing high-value products and services and expanding export markets.'
+      'heading': 'ASU Graduation 2018-24 Batch',
+      'highlights': '',
+      'content':
+          '               Celebrating the Class of 2018-2024! Jalal-Abad State University Named After B.Osmonov is proud to present a heartfelt video capturing the memorable moments from our recent graduation and farewell ceremony.\n\nOver the past six years, these exceptional students have dedicated themselves to the rigorous journey of medical education, transforming their dreams of becoming doctors into reality. As they step into their roles as healthcare professionals, we honor their hard work, resilience, and commitment to excellence. Here’s to the Class of 2018-2024, poised to make a significant impact in the world of medicine!'
+    },
+    {
+      'heading': 'Scientists’ Week at TSMU',
+      'highlights': '',
+      'content':
+          '          On June 17, 2024 within the framework of Young Scientists’ Week - “Young Scientists for a Better Future of the Planet “, initiated by the Ministry of Education, Science, and Youth of Georgia, Tbilisi State Medical University Scientific Research Skills Center and Student Scientific Research Club “Endeavor” organized events for students and pupils.\n\nProfessor Ramaz Shengelia delivered a lecture on "Modern and Paleo-Population Genetic Research: A New Stage in the Complex Development of Humanities and Natural Sciences." Professor Shengelia discussed the population genetics of Georgia, a study that has been ongoing since 2012. He highlighted that the research aims to genetically study, evaluate, and correlate local archaeological paleo pathological biomass with historical data on ethnogenesis, migrations, and both human and natural disasters. After the lecture the students had an excursion in the Museum of History of Georgian Medicine and Museum of Life Sciences.'
+    },
+    {
+      'heading': 'Undergraduate Researcher Snapshot',
+      'highlights': '',
+      'content':
+          '          Why does this research matter? This research project is not only important for my personal growth as a future professional in the field of science; it is also applicable to the general population. This project is important in explaining why patients suffer bone loss and increased risk of fractures after traumatic brain injury such as concussions. The quality of life is seen to decrease with such injuries, and this project is aiming to elucidate the molecular mechanisms behind such symptoms.\n\nWhat have you learned? From my experience, I have learned not only the concrete skills required to conduct the research itself, but also the hidden curriculum as well. I’ve learned professionalism, time management and persistence. Science doesn’t always work the way we intend for it to, and with all the setbacks I’ve faced, I understand this now more than ever. Most importantly, I’ve learned not to give up on reaching the end of the road, but just to look for another avenue.\n\nWhat do you hope to do in the future? I hope to attend medical school and practice pediatric medicine in underserved areas.\n\nHow will this experience help you? The experiences I have gained while conducting research have helped me understand collaboration, form contacts and understand what it is truly like to be in the field. I have learned invaluable skills that have propelled me further towards my career goals. Although I do not plan to continue research as a career, I do find it to be one of the most rewarding experiences in my time as an undergraduate. The support and opportunities the CURS department has offered me have helped me achieve heights I did not know even existed.',
     }
   ];
   List<bool> isLikedList = [];
@@ -922,7 +941,7 @@ class _SliverAppBarExampleState extends State<SliverAppBarExample> {
                                   height: screenHeight * 0.02,
                                 ),
                                 Text(
-                                  Post_data[0]['heading']!,
+                                  Post_data[widget.index]['heading']!,
                                   style: TextStyle(
                                     fontSize: screenWidth * 0.050,
                                     fontWeight: FontWeight.bold,
@@ -933,7 +952,7 @@ class _SliverAppBarExampleState extends State<SliverAppBarExample> {
 
                                 // Subtitle
                                 Text(
-                                  Post_data[0]['highlights']!,
+                                  Post_data[widget.index]['highlights']!,
                                   style: TextStyle(
                                       fontSize: screenWidth * 0.040,
                                       fontWeight: FontWeight.bold,
@@ -944,7 +963,7 @@ class _SliverAppBarExampleState extends State<SliverAppBarExample> {
 
                                 // Body Paragraph
                                 Text(
-                                  Post_data[0]['content']!,
+                                  Post_data[widget.index]['content']!,
                                   style: TextStyle(
                                     fontSize: screenWidth * 0.035,
                                     color: Colors.grey[800],

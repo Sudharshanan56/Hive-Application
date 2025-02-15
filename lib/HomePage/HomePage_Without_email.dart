@@ -423,6 +423,7 @@ class _HomepageWithoutEmailState extends State<HomepageWithoutEmail> {
       'description': 'Mari State University Shines at',
       'highlight': 'Indo-Russian Education Summit',
       'postImage': 'assets/post_img_1.png', // Replace with actual post image
+      
     },
     {
       'profileImage': 'assets/8.png',
@@ -821,6 +822,7 @@ class _PostsListState extends State<PostsList> {
                                       post['postImage']!, // Pass post image
                                   title: post['title']!, // Pass title
                                   description: post['description']!,
+                                  index: index, 
                                 ),
                                 duration: const Duration(milliseconds: 300)),
                           ),
