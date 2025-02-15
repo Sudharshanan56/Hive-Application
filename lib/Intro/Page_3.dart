@@ -171,7 +171,7 @@ class Page3 extends StatelessWidget {
           child: Stack(
             children: [
               Padding(
-                padding: const EdgeInsets.only(left: 50),
+                padding:  EdgeInsets.only(left: 50),
                 child: Container(
                   height: screenHeight * 0.48,
                   width: screenWidth * 0.72,
@@ -313,7 +313,7 @@ class Page3 extends StatelessWidget {
                     ],
                   ),
 
-                  const Spacer(),
+                   Spacer(),
 
                   // Next Button
                   // Padding(

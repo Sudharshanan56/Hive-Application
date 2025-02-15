@@ -405,6 +405,7 @@ import 'package:page_transition/page_transition.dart';
 import '../Countdown/CountDown.dart';
 import '../Profile Page/Profile_1.dart';
 import '../University/Screen_1.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class HomepageWithoutEmail extends StatefulWidget {
   HomepageWithoutEmail({super.key});
@@ -416,52 +417,87 @@ class HomepageWithoutEmail extends StatefulWidget {
 class _HomepageWithoutEmailState extends State<HomepageWithoutEmail> {
   final List<Map<String, String>> posts_List = [
     {
-      'profileImage': '7.png', // Replace with actual profile image
+      'profileImage': 'assets/7.png', // Replace with actual profile image
       'title': 'Mari State University',
       'location': 'Moscow, RU',
       'description': 'Mari State University Shines at',
       'highlight': 'Indo-Russian Education Summit',
-      'postImage': 'post_img_1.png', // Replace with actual post image
+      'postImage': 'assets/post_img_1.png', // Replace with actual post image
     },
     {
-      'profileImage': '8.png',
+      'profileImage': 'assets/8.png',
       'title': 'Asia International University',
       'location': 'bukhara city, UZ',
       'description': 'Information was provided on',
       'highlight': 'plans in the field of investment',
-      'postImage': 'post_img_2.png',
+      'postImage': 'assets/post_img_2.png',
     },
     {
-      'profileImage': '9.png',
+      'profileImage': 'assets/9.png',
       'title': 'Jalal-Abad State University',
       'location': 'jalal-Abad,KGZ',
       'description': '',
       'highlight': 'ASU Graduation 2018-24 Batch',
-      'postImage': 'post_img_3.png',
+      'postImage': 'assets/post_img_3.png',
     },
     {
-      'profileImage': 'post_img_4.png',
+      'profileImage': 'assets/post_img_4.png',
       'title': 'Jalal-Abad State University',
       'location': 'jalal-Abad,KGZ',
       'description': '',
       'highlight': 'ASU Graduation 2018-24 Batch',
-      'postImage': 'post_img_3.png',
+      'postImage': 'assets/post_img_3.png',
     },
     {
-      'profileImage': '9.png',
+      'profileImage': 'assets/9.png',
       'title': 'Jalal-Abad State University',
       'location': 'jalal-Abad,KGZ',
       'description': '',
       'highlight': 'ASU Graduation 2018-24 Batch',
-      'postImage': 'post_img_3.png',
+      'postImage': 'assets/post_img_3.png',
     },
   ];
   @override
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      _showDoneBottomSheet();
+      // _showDoneBottomSheet();
+      _checkAndShowAnimation();
     });
+  }
+
+  // Future<void> _checkAndShowAnimation() async {
+  //   // Retrieve the flag from SharedPreferences
+  //   SharedPreferences prefs = await SharedPreferences.getInstance();
+  //   await prefs.clear();
+  //   bool hasShown = prefs.getBool('hasShownAnimation') ?? false;
+
+  //   if (!hasShown) {
+  //     // Show the animation
+  //     WidgetsBinding.instance.addPostFrameCallback((_) {
+  //       _showDoneBottomSheet();
+  //     });
+
+  //     // Update the flag in SharedPreferences
+  //     await prefs.setBool('hasShownAnimation', true);
+  //   }
+  // }
+  Future<void> _checkAndShowAnimation() async {
+    // Retrieve the flag from SharedPreferences
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+
+    // Check if the animation has already been shown
+    bool hasShown = prefs.getBool('hasShownAnimation') ?? false;
+
+    if (!hasShown) {
+      // Show the animation
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        _showDoneBottomSheet();
+      });
+
+      // Update the flag in SharedPreferences
+      await prefs.setBool('hasShownAnimation', true);
+    }
   }
 
   void _showDoneBottomSheet() {
@@ -583,15 +619,16 @@ class _HomepageWithoutEmailState extends State<HomepageWithoutEmail> {
           ),
           body: SafeArea(child: PostsList(posts: posts_List)),
           floatingActionButton: Padding(
-            padding: EdgeInsets.only(bottom: 80),
+            padding: EdgeInsets.only(bottom: 0),
             child: FloatingActionButton(
               shape: CircleBorder(),
-              backgroundColor: const Color(0xFF5A9ECF),
+              backgroundColor: Color(0xFF5A9ECF),
               onPressed: () {
                 Navigator.push(context,
                     MaterialPageRoute(builder: (context) => CountdownPage()));
               },
-              child: const Icon(Icons.school, size: 40, color: Colors.white),
+              child: Icon(Icons.school,
+                  size: screenWidth * 0.11, color: Color(0xFFF4FAFF)),
             ),
           ),
         ),
@@ -698,10 +735,10 @@ class _PostsListState extends State<PostsList> {
                         style: TextStyle(fontSize: screenWidth * 0.03),
                       ),
                       trailing: Container(
-                          height: screenHeight * 0.04,
+                          height: screenHeight * 0.02,
                           width: screenWidth * 0.10,
                           // decoration: BoxDecoration(border: Border.all()),
-                          child: Image.asset("assets/vector.png")),
+                          child: Image.asset("assets/share_icon.png")),
                       // Positioned(
                       //   top: 100,
                       //   child: Icon(

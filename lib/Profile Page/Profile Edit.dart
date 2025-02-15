@@ -161,7 +161,6 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:permission_handler/permission_handler.dart';
 
-
 class ProfilePageEdit extends StatefulWidget {
   ProfilePageEdit({super.key});
 
@@ -192,6 +191,7 @@ class _ProfilePageEditState extends State<ProfilePageEdit> {
       child: Scaffold(
         backgroundColor: Color(0xFFFCFEFF),
         appBar: AppBar(
+          backgroundColor: Color(0xFFFCFEFF),
           elevation: 0,
           leading: IconButton(
             icon: Icon(Icons.arrow_back, color: Colors.black),
@@ -199,15 +199,16 @@ class _ProfilePageEditState extends State<ProfilePageEdit> {
           ),
           title: Text(
             'Edit Profile',
-            style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+            style: TextStyle(
+                color: Color(0xFF1E293B), fontWeight: FontWeight.bold),
           ),
           actions: [
             TextButton(
               onPressed: () => Navigator.pop(context),
               child: Text(
                 'Cancel',
-                style:
-                    TextStyle(color: Colors.red, fontWeight: FontWeight.bold),
+                style: TextStyle(
+                    color: Color(0xFFF3434E), fontWeight: FontWeight.bold),
               ),
             ),
           ],
@@ -290,7 +291,7 @@ class _ProfilePageEditState extends State<ProfilePageEdit> {
                   alignment: Alignment.centerLeft,
                   child: Text(
                     '*Make changes to your personal details only once per month.',
-                    style: TextStyle(color: Colors.red, fontSize: 12),
+                    style: TextStyle(color: Color(0xFFF3434E), fontSize: 12),
                   ),
                 ),
                 SizedBox(height: screenHeight * 0.05),

@@ -69,82 +69,184 @@
 //   }
 // }
 
+// import 'package:flutter/material.dart';
+// import 'MockMaster_2.dart';
 
+// class ResultScreen extends StatelessWidget {
+//   ResultScreen({super.key});
+
+//   @override
+//   Widget build(BuildContext context) {
+//     // Get screen dimensions
+//     double screenWidth = MediaQuery.of(context).size.width;
+//     double screenHeight = MediaQuery.of(context).size.height;
+
+//     return SafeArea(
+//       child: Scaffold(
+//         backgroundColor: const Color(0xFFF3434E), // Background color
+//         body: Center(
+//           child: Column(
+//             mainAxisAlignment: MainAxisAlignment.center,
+//             children: [
+//               Container(
+//                 height:
+//                     screenHeight * 0.2, // Adjusted size based on screen height
+//                 width: screenHeight * 0.2,
+//                 decoration: const BoxDecoration(
+//                   color: Colors.white,
+//                   shape: BoxShape.circle,
+//                 ),
+//                 child: Center(
+//                   child: Text(
+//                     '93', // Score text
+//                     style: TextStyle(
+//                       fontSize: screenWidth * 0.12, // Responsive font size
+//                       fontWeight: FontWeight.bold,
+//                       color: Color(0xFFF3434E),
+//                     ),
+//                   ),
+//                 ),
+//               ),
+//               SizedBox(height: screenHeight * 0.03),
+//               Text(
+//                 'Well done!', // Subtext
+//                 style: TextStyle(
+//                   fontSize: screenWidth * 0.06, // Responsive font size
+//                   fontWeight: FontWeight.bold,
+//                   color: Colors.white,
+//                 ),
+//               ),
+//               SizedBox(height: screenHeight * 0.06),
+//               //Spacer(),
+//               ElevatedButton(
+//                 onPressed: () {
+//                   Navigator.push(
+//                     context,
+//                     MaterialPageRoute(
+//                         builder: (context) => MockMasterScreen(
+//                               navigateToPage: (int) {},
+//                             )),
+//                   );
+//                 },
+//                 style: ElevatedButton.styleFrom(
+//                   backgroundColor: Colors.white,
+//                   shape: RoundedRectangleBorder(
+//                     borderRadius: BorderRadius.circular(screenWidth * 0.08),
+//                   ),
+//                   padding: EdgeInsets.symmetric(
+//                     horizontal: screenWidth * 0.4,
+//                     vertical: screenHeight * 0.018,
+//                   ),
+//                 ),
+//                 child: FittedBox(
+//                   child: Text(
+//                     'Done',
+//                     style: TextStyle(
+//                       fontSize: screenWidth * 0.05, // Responsive font size
+//                       fontWeight: FontWeight.bold,
+//                       color: Color(0xFFF3434E),
+//                     ),
+//                   ),
+//                 ),
+//               ),
+//               SizedBox(
+//                 height: screenHeight * 0.025,
+//               )
+//             ],
+//           ),
+//         ),
+//       ),
+//     );
+//   }
+// }
 import 'package:flutter/material.dart';
+import '../../Bottom Navigation Bar/Navigation 1.dart';
 import 'MockMaster_2.dart';
 
 class ResultScreen extends StatelessWidget {
-  const ResultScreen({super.key});
+  ResultScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    // Get screen dimensions
     double screenWidth = MediaQuery.of(context).size.width;
     double screenHeight = MediaQuery.of(context).size.height;
 
     return SafeArea(
       child: Scaffold(
-        backgroundColor: const Color(0xFFF3434E), // Background color
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Container(
-                height: screenHeight * 0.2, // Adjusted size based on screen height
-                width: screenHeight * 0.2,
-                decoration: const BoxDecoration(
-                  color: Colors.white,
-                  shape: BoxShape.circle,
-                ),
-                child: Center(
-                  child: Text(
-                    '93', // Score text
+        backgroundColor: const Color(0xFFF3434E),
+        body: Stack(
+          children: [
+            Center(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Container(
+                    height: screenHeight * 0.2,
+                    width: screenHeight * 0.2,
+                    decoration: const BoxDecoration(
+                      color: Colors.white,
+                      shape: BoxShape.circle,
+                    ),
+                    child: Center(
+                      child: Text(
+                        '93', // Score text
+                        style: TextStyle(
+                          fontSize: screenWidth * 0.12,
+                          fontWeight: FontWeight.bold,
+                          color: Color(0xFFF3434E),
+                        ),
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: screenHeight * 0.03),
+                  Text(
+                    'Well done!',
                     style: TextStyle(
-                      fontSize: screenWidth * 0.12, // Responsive font size
+                      fontSize: screenWidth * 0.06,
                       fontWeight: FontWeight.bold,
-                      color:  Color(0xFFF3434E),
+                      color: Colors.white,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Positioned(
+              bottom: screenHeight * 0.05, // Adjust bottom margin
+              left: 0,
+              right: 0,
+              child: Center(
+                child: ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => navi_home(initialIndex: 2)),
+                    );
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.white,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(screenWidth * 0.08),
+                    ),
+                    padding: EdgeInsets.symmetric(
+                      horizontal: screenWidth * 0.4,
+                      vertical: screenHeight * 0.018,
+                    ),
+                  ),
+                  child: FittedBox(
+                    child: Text(
+                      'Done',
+                      style: TextStyle(
+                        fontSize: screenWidth * 0.05,
+                        fontWeight: FontWeight.bold,
+                        color: Color(0xFFF3434E),
+                      ),
                     ),
                   ),
                 ),
               ),
-              SizedBox(height: screenHeight * 0.03),
-              Text(
-                'Well done!', // Subtext
-                style: TextStyle(
-                  fontSize: screenWidth * 0.06, // Responsive font size
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white,
-                ),
-              ),
-              SizedBox(height: screenHeight * 0.06),
-              ElevatedButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => MockMasterScreen(navigateToPage: (int ) {  },)),
-                  );
-                },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.white,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(screenWidth * 0.08),
-                  ),
-                  padding: EdgeInsets.symmetric(
-                    horizontal: screenWidth * 0.1,
-                    vertical: screenHeight * 0.02,
-                  ),
-                ),
-                child: Text(
-                  'Done',
-                  style: TextStyle(
-                    fontSize: screenWidth * 0.05, // Responsive font size
-                    fontWeight: FontWeight.bold,
-                    color:  Color(0xFFF3434E),
-                  ),
-                ),
-              ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

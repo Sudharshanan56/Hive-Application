@@ -404,10 +404,10 @@ class _OTPVerificationScreenState extends State<OTPVerificationScreen> {
                             ),
                           ),
                         ),
-                        SizedBox(height: screenHeight * 0.06),
+                        SizedBox(height: screenHeight * 0.075),
                         Padding(
                           padding: EdgeInsets.only(
-                              bottom: screenHeight * 0.05,
+                              bottom: screenHeight * 0.03,
                               left: screenWidth * 0.16,
                               right: screenWidth * 0.05),
                           child: Text.rich(
@@ -418,7 +418,7 @@ class _OTPVerificationScreenState extends State<OTPVerificationScreen> {
                                 fontSize: screenWidth * 0.035,
                                 // fontWeight: FontWeight.bold,
                               ),
-                              children: const [
+                              children: [
                                 TextSpan(
                                   text: "our terms.",
                                   style: TextStyle(

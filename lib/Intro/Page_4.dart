@@ -193,6 +193,23 @@ class _Page4State extends State<Page4> {
         body: SafeArea(
           child: Stack(
             children: [
+              Padding(
+                padding: const EdgeInsets.only(left: 50),
+                child: Container(
+                  height: screenHeight * 0.45,
+                  width: screenWidth * 0.72,
+                  decoration: BoxDecoration(
+                    color: Color(0xFFF4FAFF),
+                    // border: Border.all(
+                    //   style: BorderStyle.solid,
+                    // ),
+                    borderRadius: BorderRadius.only(
+                      bottomRight: Radius.circular(screenWidth * 0.5),
+                      bottomLeft: Radius.circular(screenWidth * 0.5),
+                    ),
+                  ),
+                ),
+              ),
               // Padding(
               //   padding: EdgeInsets.only(left: 0),
               //   child: Container(
@@ -370,7 +387,7 @@ class _Page4State extends State<Page4> {
                     ],
                   ),
                   SizedBox(
-                    height: screenHeight * 0.11,
+                    height: screenHeight * 0.08,
                   ),
                   //  Spacer(),
 
@@ -464,7 +481,7 @@ class _Page4State extends State<Page4> {
                               PageTransition(
                                   type: PageTransitionType.bottomToTop,
                                   child: OTPVerificationScreen(),
-                                  duration: const Duration(milliseconds: 300)),
+                                  duration: Duration(milliseconds: 300)),
                             );
                           },
                           child: Text(
@@ -492,7 +509,7 @@ class _Page4State extends State<Page4> {
                           fontSize: screenWidth * 0.035, // Responsive font size
                           // fontWeight: FontWeight.bold,
                         ),
-                        children: const [
+                        children: [
                           TextSpan(
                             text: "our terms.",
                             style: TextStyle(

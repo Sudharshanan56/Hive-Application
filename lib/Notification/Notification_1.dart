@@ -148,7 +148,7 @@ class Notification_1 extends StatelessWidget {
         backgroundColor: Color(0xFFFCFEFF),
         appBar: AppBar(
           title: const Text('Notifications'),
-          backgroundColor: Colors.blue,
+          backgroundColor: Color(0xFFFFFFFF),
         ),
         body: const NotificationList(),
       ),
@@ -175,7 +175,7 @@ class NotificationList extends StatelessWidget {
         ),
         children: [
           _buildNotificationTile(
-            image: "assets/7.png",
+            image: "assets/8.png",
             title: 'AIU has published a new article!',
             subtitle: 'Explore our latest insights on',
             trailing: '2m',
@@ -186,7 +186,7 @@ class NotificationList extends StatelessWidget {
           ),
           const Divider(thickness: 1),
           _buildNotificationTile(
-            image: "assets/8.png",
+            image: "assets/sanjay.png",
             title: 'Sanjay replied to your comment on the article:',
             subtitle:
                 'The article looks perfect! Everything is well-organized and accurate',
@@ -198,7 +198,7 @@ class NotificationList extends StatelessWidget {
           ),
           const Divider(thickness: 1),
           _buildNotificationTile(
-            image: "assets/9.png",
+            image: "assets/n3.png",
             title: 'Ace Your Exams!',
             subtitle:
                 'Check out expert tips to succeed in your upcoming medical entrance tests.',
@@ -210,7 +210,7 @@ class NotificationList extends StatelessWidget {
           ),
           const Divider(thickness: 1),
           _buildNotificationTile(
-            image: "assets/10.png",
+            image: "assets/n4.png",
             title: 'Your Scores Are In!',
             subtitle:
                 'Check your eligibility for top medical universities now!',
@@ -222,7 +222,7 @@ class NotificationList extends StatelessWidget {
           ),
           const Divider(thickness: 1),
           _buildNotificationTile(
-            image: "assets/11.png",
+            image: "assets/n5.png",
             title: 'Fresh Off the Press!',
             subtitle:
                 'Read our new article, "Scientists’ Week at TSMU" and excel in your exams!',
