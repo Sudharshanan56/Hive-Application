@@ -1,5 +1,3 @@
-
-
 // import 'package:flutter/material.dart';
 // import 'package:google_fonts/google_fonts.dart';
 // import 'package:hive_application/Intro/Page_3.dart';
@@ -239,6 +237,8 @@
 //     );
 //   }
 // }
+
+//=======================================================
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hive_application/Intro/Page_3.dart';
@@ -344,7 +344,8 @@ class Page2 extends StatelessWidget {
 
                       // Description Text
                       Padding(
-                        padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
+                        padding:
+                            EdgeInsets.symmetric(horizontal: horizontalPadding),
                         child: Text(
                           "Track your exam performance\nand eligibility for top medical\nuniversities.",
                           style: GoogleFonts.poppins(
@@ -363,45 +364,45 @@ class Page2 extends StatelessWidget {
                       // Next Button
                       Padding(
                         padding: EdgeInsets.symmetric(
-                          horizontal: horizontalPadding,
+                          horizontal: screenWidth * 0.02,
                           vertical: screenHeight * 0.02,
                         ),
                         child: Container(
-                          height: buttonHeight,
-                          width: double.infinity,
+                          height: screenHeight * 0.08,
+                          width: screenWidth * 0.9,
                           decoration: BoxDecoration(
                             boxShadow: [
                               BoxShadow(
                                 color: Colors.black.withOpacity(0.3),
                                 spreadRadius: 0,
                                 blurRadius: 4,
-                                offset: const Offset(0, 4),
+                                offset: Offset(0, 4),
                               ),
                             ],
                           ),
                           child: ElevatedButton(
                             style: ElevatedButton.styleFrom(
-                              backgroundColor: const Color(0xFF3C97D3),
+                              backgroundColor:
+                                  const Color(0xFF3C97D3), // Button color
                               shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(screenWidth * 0.02),
+                                borderRadius:
+                                    BorderRadius.circular(screenWidth * 0.02),
                               ),
                             ),
                             onPressed: () {
                               Navigator.push(
                                 context,
-                                MaterialPageRoute(builder: (context) => const Page3()),
+                                MaterialPageRoute(
+                                    builder: (context) => const Page3()),
                               );
                             },
-                            child: FittedBox(
-                              fit: BoxFit.scaleDown,
-                              child: Text(
-                                "Next",
-                                style: TextStyle(
-                                  fontSize: screenWidth * 0.05,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.white,
-                                  fontFamily: "Poppins",
-                                ),
+                            child: Text(
+                              "Next",
+                              style: TextStyle(
+                                fontSize:
+                                    screenWidth * 0.045, // Responsive font size
+                                // fontWeight: FontWeight.bold,
+                                color: Colors.white,
                               ),
                             ),
                           ),
@@ -444,7 +445,8 @@ class Page2 extends StatelessWidget {
     );
   }
 
-  Widget _buildProgressDot(double screenHeight, double screenWidth, bool isActive) {
+  Widget _buildProgressDot(
+      double screenHeight, double screenWidth, bool isActive) {
     return Container(
       height: screenHeight * 0.005,
       width: screenWidth * 0.1,

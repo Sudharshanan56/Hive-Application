@@ -274,6 +274,7 @@ class _ProfilePageEditState extends State<ProfilePageEdit> {
                 SizedBox(height: screenHeight * 0.02),
                 _buildTextField('Enter Email'),
                 SizedBox(height: screenHeight * 0.02),
+                _buildTextField('Enter NEET Score'),
                 Row(
                   children: [
                     SizedBox(

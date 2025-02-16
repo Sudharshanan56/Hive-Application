@@ -192,6 +192,8 @@
 //     );
 //   }
 // }
+
+//=======================================================
 import 'package:flutter/material.dart';
 import 'package:hive_application/Intro/Page_2.dart';
 import 'Page_5.dart';
@@ -322,7 +324,7 @@ class Page1 extends StatelessWidget {
                                 color: Colors.white,
                                 fontSize: screenWidth * 0.035,
                               ),
-                              children:  [
+                              children: const [
                                 TextSpan(
                                   text: "our terms.",
                                   style: TextStyle(
