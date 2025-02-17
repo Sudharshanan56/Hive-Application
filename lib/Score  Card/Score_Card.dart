@@ -47,6 +47,7 @@ class _ScoreCardState extends State<ScoreCard> {
       child: Scaffold(
         backgroundColor: Color(0xFFFCFEFF),
         appBar: AppBar(
+          backgroundColor: Color(0xFFFFFFFF),
           leading: IconButton(
             onPressed: () {
               Navigator.pop(context);
@@ -57,7 +58,11 @@ class _ScoreCardState extends State<ScoreCard> {
             children: [
               Text(
                 'Score Card',
-                style: TextStyle(color: Color(0xFF1E293B)),
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  color: Color(0xFF1E293B),
+                  fontSize: screenWidth * 0.05,
+                ),
               ),
             ],
           ),
@@ -65,142 +70,271 @@ class _ScoreCardState extends State<ScoreCard> {
         ),
         body: Column(
           children: [
+            // Padding(
+            //   padding: EdgeInsets.only(top: 50),
+            //   child: Hero(
+            //     tag: 'scorecard',
+            //     child: Container(
+            //       width: screenWidth * 0.9, // Corrected width
+            //       height: 180,
+            //       decoration: BoxDecoration(
+            //         color: Color(0xFFF4FAFF),
+            //         //  border: Border.all(color: Colors.black),
+            //         borderRadius: BorderRadius.circular(15),
+            //         boxShadow: [
+            //           BoxShadow(
+            //             color: Colors.black.withOpacity(0.1),
+            //             blurRadius: 10,
+            //             offset: const Offset(0, 5),
+            //           ),
+            //         ],
+            //       ),
+            //       child: Padding(
+            //         padding: EdgeInsets.all(16.0),
+            //         child: Row(
+            //           // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            //           children: [
+            //             // Circular Score
+            //             Stack(
+            //               alignment: Alignment.center,
+            //               children: [
+            //                 // Container(
+            //                 //   width: 80,
+            //                 //   height: 80,
+            //                 //   decoration: BoxDecoration(
+            //                 //     shape: BoxShape.circle,
+            //                 //     border: Border.all(color: Colors.red),
+            //                 //     // color: Color(0xffe8f2fa),
+            //                 //   ),
+            //                 // ),
+            //                 // Container(
+            //                 //   width: 70,
+            //                 //   height: 70,
+            //                 //   decoration: const BoxDecoration(
+            //                 //     shape: BoxShape.circle,
+            //                 //     color: Color(0xff3c97d3),
+            //                 //   ),
+            //                 //   child: const Center(
+            //                 //     child: Text(
+            //                 //       '97',
+            //                 //       style: TextStyle(
+            //                 //         fontSize: 22,
+            //                 //         fontWeight: FontWeight.bold,
+            //                 //         color: Colors.white,
+            //                 //       ),
+            //                 //     ),
+            //                 //   ),
+            //                 // ),
+            //                 CircleAvatar(
+            //                   radius: 60,
+            //                   backgroundColor: Color.fromARGB(28, 33, 149, 243),
+            //                   child: CircleAvatar(
+            //                     radius: 50,
+            //                     backgroundColor: Color(0xFF5F99BF),
+            //                     child: Text(
+            //                       '97',
+            //                       style: TextStyle(
+            //                         fontSize: screenWidth * 0.08,
+            //                         fontWeight: FontWeight.bold,
+            //                         color: Colors.white,
+            //                       ),
+            //                     ),
+            //                   ),
+            //                 ),
+            //               ],
+            //             ),
+            //             // Text and Information
+            //             SizedBox(
+            //               width: screenWidth * 0.07,
+            //             ),
+            //             Column(
+            //               mainAxisAlignment: MainAxisAlignment.center,
+            //               crossAxisAlignment: CrossAxisAlignment.start,
+            //               children: [
+            //                 Text(
+            //                   'Achieve MBBS\nAverage Excellence!',
+            //                   style: TextStyle(
+            //                     fontSize: 16,
+            //                     fontWeight: FontWeight.w600,
+            //                     color: Color(0xFF22465E),
+            //                   ),
+            //                 ),
+            //                 SizedBox(height: 16),
+            //                 Row(
+            //                   children: [
+            //                     Column(
+            //                       crossAxisAlignment: CrossAxisAlignment.start,
+            //                       children: [
+            //                         Text(
+            //                           '97',
+            //                           style: TextStyle(
+            //                             fontSize: 20,
+            //                             fontWeight: FontWeight.bold,
+            //                             color: Color(0xFF5F99BF),
+            //                           ),
+            //                         ),
+            //                         Text(
+            //                           'Highest',
+            //                           style: TextStyle(
+            //                             fontSize: 14,
+            //                             color: Color(0xFF5F99BF),
+            //                           ),
+            //                         ),
+            //                       ],
+            //                     ),
+            //                     SizedBox(width: 30),
+            //                     Column(
+            //                       crossAxisAlignment: CrossAxisAlignment.start,
+            //                       children: [
+            //                         Text(
+            //                           '75',
+            //                           style: TextStyle(
+            //                             fontSize: 20,
+            //                             fontWeight: FontWeight.bold,
+            //                             color: Color(0xFF5F99BF),
+            //                           ),
+            //                         ),
+            //                         Text(
+            //                           'Lowest',
+            //                           style: TextStyle(
+            //                             fontSize: 14,
+            //                             color: Color(0xFF5F99BF),
+            //                           ),
+            //                         ),
+            //                       ],
+            //                     ),
+            //                   ],
+            //                 ),
+            //               ],
+            //             ),
+            //           ],
+            //         ),
+            //       ),
+            //     ),
+            //   ),
+            // ),
             Padding(
               padding: EdgeInsets.only(top: 50),
               child: Hero(
                 tag: 'scorecard',
                 child: Container(
-                  width: screenWidth * 0.9, // Corrected width
+                  width: screenWidth *
+                      0.9, // Ensure it fits within the screen width
                   height: 180,
                   decoration: BoxDecoration(
                     color: Color(0xFFF4FAFF),
-                    //  border: Border.all(color: Colors.black),
                     borderRadius: BorderRadius.circular(15),
                     boxShadow: [
                       BoxShadow(
                         color: Colors.black.withOpacity(0.1),
                         blurRadius: 10,
-                        offset: const Offset(0, 5),
+                        offset: Offset(0, 5),
                       ),
                     ],
                   ),
                   child: Padding(
                     padding: EdgeInsets.all(16.0),
                     child: Row(
-                      // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      mainAxisAlignment:
+                          MainAxisAlignment.spaceBetween, // Spread items evenly
                       children: [
                         // Circular Score
-                        Stack(
-                          alignment: Alignment.center,
-                          children: [
-                            // Container(
-                            //   width: 80,
-                            //   height: 80,
-                            //   decoration: BoxDecoration(
-                            //     shape: BoxShape.circle,
-                            //     border: Border.all(color: Colors.red),
-                            //     // color: Color(0xffe8f2fa),
-                            //   ),
-                            // ),
-                            // Container(
-                            //   width: 70,
-                            //   height: 70,
-                            //   decoration: const BoxDecoration(
-                            //     shape: BoxShape.circle,
-                            //     color: Color(0xff3c97d3),
-                            //   ),
-                            //   child: const Center(
-                            //     child: Text(
-                            //       '97',
-                            //       style: TextStyle(
-                            //         fontSize: 22,
-                            //         fontWeight: FontWeight.bold,
-                            //         color: Colors.white,
-                            //       ),
-                            //     ),
-                            //   ),
-                            // ),
-                            CircleAvatar(
-                              radius: 60,
-                              backgroundColor: Color.fromARGB(28, 33, 149, 243),
-                              child: CircleAvatar(
-                                radius: 50,
-                                backgroundColor: Color(0xFF5F99BF),
-                                child: Text(
-                                  '97',
-                                  style: TextStyle(
-                                    fontSize: screenWidth * 0.08,
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.white,
-                                  ),
+                        Flexible(
+                          flex: 2, // Controls size ratio
+                          child: CircleAvatar(
+                            radius: 50,
+                            backgroundColor: Color.fromARGB(28, 33, 149, 243),
+                            child: CircleAvatar(
+                              radius: 40,
+                              backgroundColor: Color(0xFF5F99BF),
+                              child: Text(
+                                '97',
+                                style: TextStyle(
+                                  fontSize: screenWidth * 0.08,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white,
                                 ),
                               ),
                             ),
-                          ],
+                          ),
                         ),
+
+                        SizedBox(width: screenWidth * 0.05), // Small gap
+
                         // Text and Information
-                        SizedBox(
-                          width: screenWidth * 0.07,
-                        ),
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              'Achieve MBBS\nAverage Excellence!',
-                              style: TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.w600,
-                                color: Color(0xFF22465E),
+                        Expanded(
+                          flex:
+                              3, // Allow text to expand while keeping responsiveness
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                'Achieve MBBS\nAverage Excellence!',
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w600,
+                                  color: Color(0xFF22465E),
+                                ),
+                                maxLines: 2, // Prevents text overflow
+                                overflow: TextOverflow.ellipsis,
                               ),
-                            ),
-                            SizedBox(height: 16),
-                            Row(
-                              children: [
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      '97',
-                                      style: TextStyle(
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.bold,
-                                        color: Color(0xFF5F99BF),
-                                      ),
+                              SizedBox(height: 12),
+                              Row(
+                                children: [
+                                  // Highest Score
+                                  Expanded(
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          '97',
+                                          style: TextStyle(
+                                            fontSize: 20,
+                                            fontWeight: FontWeight.bold,
+                                            color: Color(0xFF5F99BF),
+                                          ),
+                                        ),
+                                        Text(
+                                          'Highest',
+                                          style: TextStyle(
+                                            fontSize: 14,
+                                            color: Color(0xFF5F99BF),
+                                          ),
+                                        ),
+                                      ],
                                     ),
-                                    Text(
-                                      'Highest',
-                                      style: TextStyle(
-                                        fontSize: 14,
-                                        color: Color(0xFF5F99BF),
-                                      ),
+                                  ),
+
+                                  // Lowest Score
+                                  Expanded(
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          '75',
+                                          style: TextStyle(
+                                            fontSize: 20,
+                                            fontWeight: FontWeight.bold,
+                                            color: Color(0xFF5F99BF),
+                                          ),
+                                        ),
+                                        Text(
+                                          'Lowest',
+                                          style: TextStyle(
+                                            fontSize: 14,
+                                            color: Color(0xFF5F99BF),
+                                          ),
+                                        ),
+                                      ],
                                     ),
-                                  ],
-                                ),
-                                SizedBox(width: 30),
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      '75',
-                                      style: TextStyle(
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.bold,
-                                        color: Color(0xFF5F99BF),
-                                      ),
-                                    ),
-                                    Text(
-                                      'Lowest',
-                                      style: TextStyle(
-                                        fontSize: 14,
-                                        color: Color(0xFF5F99BF),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ],
-                            ),
-                          ],
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
                         ),
                       ],
                     ),
@@ -213,9 +347,13 @@ class _ScoreCardState extends State<ScoreCard> {
             ),
             Row(
               children: [
+                SizedBox(
+                  width: screenWidth * 0.050,
+                ),
                 Text(
                   "Universities",
                   style: TextStyle(
+                    fontWeight: FontWeight.bold,
                     fontSize: screenWidth * 0.05,
                     color: Color(0xFF111111),
                     // fontWeight: FontWeight.bold),
@@ -245,7 +383,7 @@ class _ScoreCardState extends State<ScoreCard> {
             //     ),
             //   ),
             // ),
-             SizedBox(height: 20),
+            SizedBox(height: 20),
             Expanded(
               child: GestureDetector(
                 onTap: () {
@@ -263,19 +401,32 @@ class _ScoreCardState extends State<ScoreCard> {
                     return Column(
                       children: [
                         ListTile(
-                          leading: CircleAvatar(
-                            radius: screenWidth * 0.07,
-                            backgroundImage: AssetImage(university['logo']!),
+                          leading: Container(
+                            height: screenHeight * 0.18,
+                            width: screenWidth * 0.13,
+                            // height: 50,
+                            // width: 50,
+                            decoration: BoxDecoration(
+                                // border: Border.all(),
+                                borderRadius: BorderRadius.circular(100)),
+                            child: Image(
+                              image: AssetImage(university['logo']!),
+                              fit: BoxFit.contain,
+                            ),
                           ),
+                          // CircleAvatar(
+                          //   radius: screenWidth * 0.07,
+                          //   backgroundImage: AssetImage(university['logo']!),
+                          // ),
                           title: Text(
                             university['name']!,
-                            style: TextStyle(fontSize: screenWidth * 0.045),
+                            style: TextStyle(fontSize: screenWidth * 0.040),
                           ),
                           subtitle: Row(
                             children: [
                               Icon(
                                 Icons.location_on_outlined,
-                                size: screenWidth * 0.05,
+                                size: screenWidth * 0.04,
                               ),
                               Text(
                                 university['location']!,

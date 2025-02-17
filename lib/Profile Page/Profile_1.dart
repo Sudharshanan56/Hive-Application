@@ -109,12 +109,14 @@ class ProfilePage extends StatelessWidget {
                           ),
                           backgroundColor: const Color(0xff5A9ECF),
                         ),
-                        child: Text(
-                          'Edit',
-                          softWrap: false,
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontSize: screenWidth * 0.045),
+                        child: FittedBox(
+                          child: Text(
+                            'Edit',
+                            softWrap: false,
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize: screenWidth * 0.042),
+                          ),
                         ),
                       ),
                     ),
@@ -622,7 +624,7 @@ class ProfilePage extends StatelessWidget {
                                 child: Text(
                                   "Check",
                                   style: TextStyle(
-                                    color: Colors.white,
+                                    color: Color(0xFFFFFFFF),
                                     fontSize:
                                         (screenWidth * 0.035).clamp(14.0, 18.0),
                                   ),

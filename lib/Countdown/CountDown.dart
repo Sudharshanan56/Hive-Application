@@ -18,7 +18,7 @@ class _CountdownPageState extends State<CountdownPage>
   Duration _duration = const Duration();
 
   // Set your target date and time here
-  final DateTime targetDate = DateTime(2025, 1, 31, 12, 0, 0);
+  final DateTime targetDate = DateTime(2025, 3, 31, 12, 0, 0);
 
   @override
   void initState() {
@@ -86,7 +86,7 @@ class _CountdownPageState extends State<CountdownPage>
         appBar: AppBar(
           backgroundColor: Color(0xFF3C97D3),
           leading: Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: EdgeInsets.all(8.0),
             child: CircleAvatar(
               radius: 1,
               backgroundColor: Color(0xFF1D1D1D66),
@@ -174,10 +174,10 @@ class _CountdownPageState extends State<CountdownPage>
                         color: Colors.white,
                       ),
                     ),
-                    const SizedBox(height: 20),
+                    const SizedBox(height: 17),
                     Container(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 20, vertical: 20),
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 10, vertical: 20),
                       decoration: BoxDecoration(
                         color: Color(0xFF70777C66),
                         borderRadius: BorderRadius.circular(16),
@@ -229,7 +229,7 @@ class _CountdownPageState extends State<CountdownPage>
   }
 
   Widget _buildColon() {
-    return const Text(
+    return  Text(
       ":",
       style: TextStyle(
         fontSize: 36,

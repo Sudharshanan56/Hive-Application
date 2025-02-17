@@ -360,9 +360,13 @@ class _UniversityListPageState extends State<UniversityListPage> {
                   child: ListTile(
                     leading: Icon(
                       Icons.search_outlined,
+                      size: screenWidth * 0.07,
                       // color: Color(0xFF00000080),
                     ),
-                    title: Text('Search'),
+                    title: Text(
+                      'Search',
+                      style: TextStyle(fontSize: screenWidth * 0.04),
+                    ),
                   ),
                   // child: TextField(
                   //   readOnly: true,
@@ -456,18 +460,18 @@ class _UniversityListPageState extends State<UniversityListPage> {
                           title: Text(
                             university['name']!,
                             style: TextStyle(
-                                fontSize: screenWidth * 0.045,
+                                fontSize: screenWidth * 0.040,
                                 color: Color(0xFF222222)),
                           ),
                           subtitle: Row(
                             children: [
                               Icon(
                                 Icons.location_on_outlined,
-                                size: screenWidth * 0.05,
+                                size: screenWidth * 0.03,
                               ),
                               Text(
                                 university['location']!,
-                                style: TextStyle(fontSize: screenWidth * 0.04),
+                                style: TextStyle(fontSize: screenWidth * 0.03),
                               ),
                             ],
                           ),
@@ -477,7 +481,7 @@ class _UniversityListPageState extends State<UniversityListPage> {
                                   ? Icons.bookmark
                                   : Icons.bookmark_border,
                               color: _bookmarked[index] ? Colors.black : null,
-                              size: screenWidth * 0.06,
+                              size: screenWidth * 0.05,
                             ),
                             onPressed: () {
                               setState(() {

@@ -420,7 +420,7 @@ class _MockMasterScreenState extends State<MockMasterScreen> {
                         ),
                       ),
                       onPressed: () {
-                        Navigator.push(
+                        Navigator.pushReplacement(
                             context,
                             MaterialPageRoute(
                                 builder: (context) => MockTestPage()));

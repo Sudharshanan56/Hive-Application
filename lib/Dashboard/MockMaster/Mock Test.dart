@@ -390,7 +390,7 @@ class _MockTestPageState extends State<MockTestPage> {
             'Mock Test',
             style: TextStyle(
                 color: Colors.white,
-                fontSize: screenWidth * 0.070,
+                fontSize: screenWidth * 0.065,
                 fontWeight: FontWeight.bold),
           ),
           actions: [
@@ -430,7 +430,7 @@ class _MockTestPageState extends State<MockTestPage> {
                       right: screenWidth * 0.05), // 2% of screen width
                   child: Center(
                     child: Container(
-                      height: screenHeight * 0.04, // 4% of screen height
+                      height: screenHeight * 0.035, // 4% of screen height
                       width: screenWidth * 0.2, // 20% of screen width
                       decoration: BoxDecoration(
                         color: Colors.white,
@@ -452,7 +452,7 @@ class _MockTestPageState extends State<MockTestPage> {
                             formatTime(_remainingTime),
                             style: TextStyle(
                               fontSize:
-                                  screenWidth * 0.045, // 4.5% of screen width
+                                  screenWidth * 0.035, // 4.5% of screen width
                               fontWeight: FontWeight.bold,
                               color: Color(0xFFF3434E),
                             ),
@@ -573,7 +573,7 @@ class _MockTestPageState extends State<MockTestPage> {
               children: [
                 buildQuestion(
                   1,
-                  "What is the normal range of body temperature in humans?",
+                  "1. What is the normal range of body temperature in humans?",
                   [
                     "35.5 - 37.5°C",
                     "36.0 - 38.0°C",
@@ -584,7 +584,7 @@ class _MockTestPageState extends State<MockTestPage> {
                 SizedBox(height: screenHeight * 0.020),
                 buildQuestion(
                   2,
-                  "Which of the following is the primary function of haemoglobin in the blood?",
+                  "2.Which of the following is the primary function of haemoglobin in the blood?",
                   [
                     "Blood clotting",
                     "Oxygen transport",
@@ -595,7 +595,7 @@ class _MockTestPageState extends State<MockTestPage> {
                 SizedBox(height: screenHeight * 0.020),
                 buildQuestion(
                   3,
-                  "What is the largest organ in the human body?",
+                  "3.What is the largest organ in the human body?",
                   ["Heart", "Liver", "Skin", "Lungs"],
                 ),
                 SizedBox(height: screenHeight * 0.020),
