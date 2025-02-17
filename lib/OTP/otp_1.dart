@@ -547,7 +547,7 @@ class _OTPVerificationScreenState extends State<OTPVerificationScreen> {
                                 ),
                                 child: Text(countryCode,
                                     style: TextStyle(
-                                        fontSize: screenWidth * 0.05)),
+                                        fontSize: screenWidth * 0.045)),
                               ),
                             ),
                             SizedBox(width: screenWidth * 0.03),

@@ -1545,6 +1545,7 @@
 //   }
 // }
 import 'package:flutter/material.dart';
+import 'package:hive_application/HomePage/HomePage1.dart';
 import 'package:hive_application/Search%20Page/Search%20page.dart';
 import 'package:like_button/like_button.dart';
 import 'package:lottie/lottie.dart';
@@ -1628,146 +1629,135 @@ class _HomepageWithoutEmailState extends State<HomepageWithoutEmail> {
   //     }
   //   });
   // }
-  void _showDoneBottomSheet(BuildContext context) {
-    final size = MediaQuery.of(context).size;
+  //=========================================================================
+  // void _showDoneBottomSheet(BuildContext context) {
+  //   final size = MediaQuery.of(context).size;
 
-    showModalBottomSheet(
-      context: context,
-      isDismissible: false,
-      enableDrag: false,
-      builder: (context) {
-        return SizedBox(
-          height: size.height * 0.35,
-          child: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  "All Done!",
-                  style: TextStyle(
-                    fontSize: size.width * 0.06,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                Lottie.asset(
-                  'assets/done_1.json',
-                  width: size.width * 0.5,
-                  height: size.width * 0.5,
-                  repeat: false,
-                  onLoaded: (composition) {
-                    Future.delayed(const Duration(seconds: 3), () {
-                      if (mounted) {
-                        Navigator.pop(context);
-                      }
-                    });
-                  },
-                ),
-              ],
-            ),
-          ),
-        );
-      },
-    );
-  }
-
+  //   showModalBottomSheet(
+  //     context: context,
+  //     isDismissible: false,
+  //     enableDrag: false,
+  //     builder: (context) {
+  //       return SizedBox(
+  //         height: size.height * 0.35,
+  //         child: Center(
+  //           child: Column(
+  //             mainAxisAlignment: MainAxisAlignment.center,
+  //             children: [
+  //               Text(
+  //                 "All Done!",
+  //                 style: TextStyle(
+  //                   fontSize: size.width * 0.06,
+  //                   fontWeight: FontWeight.bold,
+  //                 ),
+  //               ),
+  //               Lottie.asset(
+  //                 'assets/done_1.json',
+  //                 width: size.width * 0.5,
+  //                 height: size.width * 0.5,
+  //                 repeat: false,
+  //                 onLoaded: (composition) {
+  //                   Future.delayed(const Duration(seconds: 3), () {
+  //                     if (mounted) {
+  //                       Navigator.pop(context);
+  //                     }
+  //                   });
+  //                 },
+  //               ),
+  //             ],
+  //           ),
+  //         ),
+  //       );
+  //     },
+  //   );
+  // }
+//=========================================================================
   @override
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context);
     final screenWidth = mediaQuery.size.width;
     final screenHeight = mediaQuery.size.height;
 
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        backgroundColor: const Color(0xFFFBFBFB),
-        appBar: AppBar(
-          backgroundColor: Color(0xFFFCFEFF),
-          scrolledUnderElevation: 0, // Add this line
-          elevation: 0,
-          toolbarHeight: screenHeight * 0.10,
-          leading: Padding(
-            padding: EdgeInsets.only(left: 14),
-            child: GestureDetector(
-              onTap: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => ProfilePage()));
-              },
-              child: Container(
-                child: CircleAvatar(
-                  backgroundImage: AssetImage("assets/person_2.png"),
-                  radius: screenWidth * 0.70,
-                ),
-              ),
-            ),
-          ),
-          title: GestureDetector(
+    return Scaffold(
+      backgroundColor: const Color(0xFFFBFBFB),
+      appBar: AppBar(
+        backgroundColor: Color(0xFFFCFEFF),
+        scrolledUnderElevation: 0, // Add this line
+        elevation: 0,
+        toolbarHeight: screenHeight * 0.10,
+        leading: Padding(
+          padding: EdgeInsets.only(left: 14),
+          child: GestureDetector(
             onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => SearchPage()),
-              );
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => ProfilePage()));
             },
             child: Container(
-              height: screenHeight * 0.06,
-              width: screenWidth * 0.75,
-              decoration: BoxDecoration(
-                  border: Border.all(color: Color(0xffF1F1F1)),
-                  borderRadius: BorderRadius.circular(30),
-                  color: Color(0xFFF1F1F1)),
-              child: ListTile(
-                leading: Icon(Icons.search_outlined),
-                title: Text('Search'),
+              child: CircleAvatar(
+                backgroundImage: AssetImage("assets/person_2.png"),
+                radius: screenWidth * 0.70,
               ),
-              // child: TextField(
-              //   readOnly: true,
-              //   decoration: InputDecoration(
-              //     hintText: 'Search...',
-              //     fillColor: Colors.grey[200],
-              //     filled: true,
-              //     prefixIcon: Icon(Icons.search),
-              //     border: OutlineInputBorder(
-              //       borderRadius: BorderRadius.circular(30),
-              //       borderSide: BorderSide.none,
-              //     ),
-              //     contentPadding: EdgeInsets.zero,
-              //   ),
-              // ),
             ),
           ),
         ),
-        body: SafeArea(
-          child: PostsList(posts: posts_List),
-        ),
-        floatingActionButton: Padding(
-          padding: EdgeInsets.only(bottom: screenHeight * 0.02),
-          child: FloatingActionButton(
-            shape: const CircleBorder(),
-            backgroundColor: const Color(0xFF5A9ECF),
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => CountdownPage()),
-              );
-            },
-            child: Icon(
-              Icons.school,
-              size: screenWidth * 0.11,
-              color: const Color(0xFFF4FAFF),
+        title: GestureDetector(
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => SearchPage()),
+            );
+          },
+          child: Container(
+            height: screenHeight * 0.06,
+            width: screenWidth * 0.75,
+            decoration: BoxDecoration(
+                border: Border.all(color: Color(0xffF1F1F1)),
+                borderRadius: BorderRadius.circular(30),
+                color: Color(0xFFF1F1F1)),
+            child: ListTile(
+              leading: Icon(Icons.search_outlined),
+              title: Text('Search'),
             ),
+            // child: TextField(
+            //   readOnly: true,
+            //   decoration: InputDecoration(
+            //     hintText: 'Search...',
+            //     fillColor: Colors.grey[200],
+            //     filled: true,
+            //     prefixIcon: Icon(Icons.search),
+            //     border: OutlineInputBorder(
+            //       borderRadius: BorderRadius.circular(30),
+            //       borderSide: BorderSide.none,
+            //     ),
+            //     contentPadding: EdgeInsets.zero,
+            //   ),
+            // ),
+          ),
+        ),
+      ),
+      body: SafeArea(
+        child: PostsList(posts: posts_List),
+      ),
+      floatingActionButton: Padding(
+        padding: EdgeInsets.only(bottom: screenHeight * 0.08),
+        child: FloatingActionButton(
+          shape: const CircleBorder(),
+          backgroundColor: const Color(0xFF5A9ECF),
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => CountdownPage()),
+            );
+          },
+          child: Icon(
+            Icons.school,
+            size: screenWidth * 0.11,
+            color: const Color(0xFFF4FAFF),
           ),
         ),
       ),
     );
   }
-}
-
-class PostsList extends StatefulWidget {
-  final List<Map<String, String>> posts;
-
-  const PostsList({super.key, required this.posts});
-
-  @override
-  _PostsListState createState() => _PostsListState();
 }
 
 class _PostsListState extends State<PostsList> {
@@ -1786,6 +1776,9 @@ class _PostsListState extends State<PostsList> {
     final screenHeight = mediaQuery.size.height;
 
     return ListView.builder(
+      shrinkWrap: true, // Add this to prevent infinite height
+      physics:
+          const AlwaysScrollableScrollPhysics(), // Ensures scrolling behavior
       itemCount: widget.posts.length,
       itemBuilder: (context, index) {
         final post = widget.posts[index];
@@ -1801,124 +1794,285 @@ class _PostsListState extends State<PostsList> {
     BuildContext context,
     int index,
   ) {
-    return Padding(
-      padding: EdgeInsets.all(screenWidth * 0.04),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          ListTile(
-            contentPadding: EdgeInsets.zero,
-            leading: CircleAvatar(
-              backgroundImage: AssetImage(post['profileImage']!),
-              radius: screenWidth * 0.07,
-            ),
-            title: Text(
-              post['title']!,
-              style: TextStyle(fontSize: screenWidth * 0.04),
-            ),
-            subtitle: Text(
-              post['location']!,
-              style: TextStyle(fontSize: screenWidth * 0.03),
-            ),
-            trailing: Container(
+    return Container(
+      // Wrap in Container with bounded constraints
+      constraints: BoxConstraints(
+        maxHeight: screenHeight * 0.7, // Adjust this value as needed
+        maxWidth: screenWidth,
+      ),
+      child: Padding(
+        padding: EdgeInsets.all(screenWidth * 0.04),
+        child: Column(
+          mainAxisSize:
+              MainAxisSize.min, // Add this to make Column take minimum space
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            ListTile(
+              contentPadding: EdgeInsets.zero,
+              leading: CircleAvatar(
+                backgroundImage: AssetImage(post['profileImage']!),
+                radius: screenWidth * 0.07,
+              ),
+              title: Text(
+                post['title']!,
+                style: TextStyle(fontSize: screenWidth * 0.04),
+              ),
+              subtitle: Text(
+                post['location']!,
+                style: TextStyle(fontSize: screenWidth * 0.03),
+              ),
+              trailing: SizedBox(
                 height: screenHeight * 0.02,
                 width: screenWidth * 0.10,
-                // decoration: BoxDecoration(border: Border.all()),
-                child: Image.asset("assets/share_icon.png")),
-            // Positioned(
-            //   top: 100,
-            //   child: Icon(
-            //     Icons.screen_share_rounded,
-            //     // color: Colors.white,
-            //   ),
-            // ),
-          ),
-          SizedBox(height: screenHeight * 0.01),
-          Text(
-            '${post['description']} ',
-            style: TextStyle(
-              fontSize: screenWidth * 0.035,
-              fontWeight: FontWeight.w500,
+                child: Image.asset("assets/share_icon.png"),
+              ),
             ),
-          ),
-          SizedBox(height: screenHeight * 0.01),
-          Text(
-            post['highlight']!,
-            style: TextStyle(
-              fontSize: screenWidth * 0.04,
-              fontWeight: FontWeight.bold,
+            SizedBox(height: screenHeight * 0.01),
+            Text(
+              '${post['description']} ',
+              style: TextStyle(
+                fontSize: screenWidth * 0.035,
+                fontWeight: FontWeight.w500,
+              ),
             ),
-          ),
-          SizedBox(height: screenHeight * 0.02),
-          Center(
-            child: Image.asset(
-              post['postImage']!,
-              width: screenWidth * 0.8,
-              height: screenHeight * 0.3,
-              fit: BoxFit.cover,
+            SizedBox(height: screenHeight * 0.01),
+            Text(
+              post['highlight']!,
+              style: TextStyle(
+                fontSize: screenWidth * 0.04,
+                fontWeight: FontWeight.bold,
+              ),
             ),
-          ),
-          SizedBox(height: screenHeight * 0.02),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              SizedBox(
-                height: screenHeight * 0.07,
-                width: screenWidth * 0.78,
-                child: ElevatedButton(
-                  onPressed: () =>
-                      //     Navigator.push(
-                      //   context,
-                      //   MaterialPageRoute(builder: (context) => SliverAppBarExample()),
-                      // ),
-                      Navigator.push(
-                    context,
-                    PageTransition(
+            SizedBox(height: screenHeight * 0.02),
+            Center(
+              child: Container(
+                // Wrap image in Container with fixed constraints
+                constraints: BoxConstraints(
+                  maxWidth: screenWidth * 0.8,
+                  maxHeight: screenHeight * 0.3,
+                ),
+                child: Image.asset(
+                  post['postImage']!,
+                  fit: BoxFit.cover,
+                ),
+              ),
+            ),
+            SizedBox(height: screenHeight * 0.02),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                SizedBox(
+                  height: screenHeight * 0.07,
+                  width: screenWidth * 0.78,
+                  child: ElevatedButton(
+                    onPressed: () => Navigator.push(
+                      context,
+                      PageTransition(
                         type: PageTransitionType.bottomToTop,
                         child: SliverAppBarExample(
-                          profileImage:
-                              post['profileImage']!, // Pass profile image
-                          postImage: post['postImage']!, // Pass post image
-                          title: post['title']!, // Pass title
+                          profileImage: post['profileImage']!,
+                          postImage: post['postImage']!,
+                          title: post['title']!,
                           description: post['description']!,
                           index: index,
                         ),
-                        duration: const Duration(milliseconds: 300)),
-                  ),
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Color(0xFF5A9ECF),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(screenWidth * 0.2),
+                        duration: const Duration(milliseconds: 300),
+                      ),
                     ),
-                  ),
-                  child: FittedBox(
-                    fit: BoxFit.contain,
-                    child: Text(
-                      'Explore Now',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: screenWidth * 0.04,
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Color(0xFF5A9ECF),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(screenWidth * 0.2),
+                      ),
+                    ),
+                    child: FittedBox(
+                      fit: BoxFit.contain,
+                      child: Text(
+                        'Explore Now',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: screenWidth * 0.04,
+                        ),
                       ),
                     ),
                   ),
                 ),
-              ),
-              LikeButton(
-                size: screenWidth * 0.07,
-                initialState: isLikedList[index],
-                onTap: (isLiked) {
-                  setState(() {
-                    isLikedList[index] = isLiked;
-                  });
-                },
-              ),
-            ],
-          ),
-        ],
+                LikeButton(
+                  size: screenWidth * 0.07,
+                  initialState: isLikedList[index],
+                  onTap: (isLiked) {
+                    setState(() {
+                      isLikedList[index] = isLiked;
+                    });
+                  },
+                ),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }
 }
+
+// class PostsList extends StatefulWidget {
+//   final List<Map<String, String>> posts;
+
+//   const PostsList({super.key, required this.posts});
+
+//   @override
+//   _PostsListState createState() => _PostsListState();
+// }
+
+// class _PostsListState extends State<PostsList> {
+//   late List<bool> isLikedList;
+
+//   @override
+//   void initState() {
+//     super.initState();
+//     isLikedList = List.filled(widget.posts.length, false);
+//   }
+
+//   @override
+//   Widget build(BuildContext context) {
+//     final mediaQuery = MediaQuery.of(context);
+//     final screenWidth = mediaQuery.size.width;
+//     final screenHeight = mediaQuery.size.height;
+
+//     return ListView.builder(
+//       itemCount: widget.posts.length,
+//       itemBuilder: (context, index) {
+//         final post = widget.posts[index];
+//         return _buildPostCard(post, screenWidth, screenHeight, context, index);
+//       },
+//     );
+//   }
+
+//   Widget _buildPostCard(
+//     Map<String, String> post,
+//     double screenWidth,
+//     double screenHeight,
+//     BuildContext context,
+//     int index,
+//   ) {
+//     return Padding(
+//       padding: EdgeInsets.all(screenWidth * 0.04),
+//       child: Column(
+//         crossAxisAlignment: CrossAxisAlignment.start,
+//         children: [
+//           ListTile(
+//             contentPadding: EdgeInsets.zero,
+//             leading: CircleAvatar(
+//               backgroundImage: AssetImage(post['profileImage']!),
+//               radius: screenWidth * 0.07,
+//             ),
+//             title: Text(
+//               post['title']!,
+//               style: TextStyle(fontSize: screenWidth * 0.04),
+//             ),
+//             subtitle: Text(
+//               post['location']!,
+//               style: TextStyle(fontSize: screenWidth * 0.03),
+//             ),
+//             trailing: Container(
+//                 height: screenHeight * 0.02,
+//                 width: screenWidth * 0.10,
+//                 // decoration: BoxDecoration(border: Border.all()),
+//                 child: Image.asset("assets/share_icon.png")),
+//             // Positioned(
+//             //   top: 100,
+//             //   child: Icon(
+//             //     Icons.screen_share_rounded,
+//             //     // color: Colors.white,
+//             //   ),
+//             // ),
+//           ),
+//           SizedBox(height: screenHeight * 0.01),
+//           Text(
+//             '${post['description']} ',
+//             style: TextStyle(
+//               fontSize: screenWidth * 0.035,
+//               fontWeight: FontWeight.w500,
+//             ),
+//           ),
+//           SizedBox(height: screenHeight * 0.01),
+//           Text(
+//             post['highlight']!,
+//             style: TextStyle(
+//               fontSize: screenWidth * 0.04,
+//               fontWeight: FontWeight.bold,
+//             ),
+//           ),
+//           SizedBox(height: screenHeight * 0.02),
+//           Center(
+//             child: Image.asset(
+//               post['postImage']!,
+//               width: screenWidth * 0.8,
+//               height: screenHeight * 0.3,
+//               fit: BoxFit.cover,
+//             ),
+//           ),
+//           SizedBox(height: screenHeight * 0.02),
+//           Row(
+//             mainAxisAlignment: MainAxisAlignment.spaceBetween,
+//             children: [
+//               SizedBox(
+//                 height: screenHeight * 0.07,
+//                 width: screenWidth * 0.78,
+//                 child: ElevatedButton(
+//                   onPressed: () =>
+//                       //     Navigator.push(
+//                       //   context,
+//                       //   MaterialPageRoute(builder: (context) => SliverAppBarExample()),
+//                       // ),
+//                       Navigator.push(
+//                     context,
+//                     PageTransition(
+//                         type: PageTransitionType.bottomToTop,
+//                         child: SliverAppBarExample(
+//                           profileImage:
+//                               post['profileImage']!, // Pass profile image
+//                           postImage: post['postImage']!, // Pass post image
+//                           title: post['title']!, // Pass title
+//                           description: post['description']!,
+//                           index: index,
+//                         ),
+//                         duration: const Duration(milliseconds: 300)),
+//                   ),
+//                   style: ElevatedButton.styleFrom(
+//                     backgroundColor: Color(0xFF5A9ECF),
+//                     shape: RoundedRectangleBorder(
+//                       borderRadius: BorderRadius.circular(screenWidth * 0.2),
+//                     ),
+//                   ),
+//                   child: FittedBox(
+//                     fit: BoxFit.contain,
+//                     child: Text(
+//                       'Explore Now',
+//                       style: TextStyle(
+//                         color: Colors.white,
+//                         fontSize: screenWidth * 0.04,
+//                       ),
+//                     ),
+//                   ),
+//                 ),
+//               ),
+//               LikeButton(
+//                 size: screenWidth * 0.07,
+//                 initialState: isLikedList[index],
+//                 onTap: (isLiked) {
+//                   setState(() {
+//                     isLikedList[index] = isLiked;
+//                   });
+//                 },
+//               ),
+//             ],
+//           ),
+//         ],
+//       ),
+//     );
+//   }
+// }
 
 class LikeButton extends StatefulWidget {
   final double size;
